@@ -16,6 +16,6 @@ git push -u origin master
 5. Remove any assets that do not have proper licensing for open source distribution
 6. Properly attribute all non EML work that is being included in the repository
 7. Upload cleaned version of the Master branch to Github on a public repository without any of the existing commit history.
-  ⋅⋅1. Follow the instructions above for using this starter project repository.
+  1. Follow the instructions above for using this starter project repository.
 8. Update the Readme with the necessary plugins needed to get the project updated
 
