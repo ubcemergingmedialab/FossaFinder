@@ -1,0 +1,4 @@
+repository "FossaFinder@142.103.81.170:8087"
+  path "/"
+    br "/main"
+    co "/main"
