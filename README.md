@@ -4,4 +4,4 @@ Archive of plastic project - this is an archive of main, but theres a lot of wor
 
 Requires whitney font
 
-Includes [VRTK](https://vrtoolkit.readme.io/) and (SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
+Includes [VRTK](https://vrtoolkit.readme.io/) and [SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
