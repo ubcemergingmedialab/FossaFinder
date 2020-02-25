@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 public class ObjectManager : MonoBehaviour {
+    /*
 
     public static ObjectManager instance = null;
 
@@ -159,5 +160,5 @@ public class ObjectManager : MonoBehaviour {
         {
             ToggleLabelOnTag(label, part);
         }
-    }
+    }*/
 }

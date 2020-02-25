@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 6d900b3285b50f9449da351f27ff1038
+timeCreated: 1533773314
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Whitney
+  fontNames:
+  - Whitney
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4f4f7ff1ad685a148aa4d181a237dd03, type: 3}
+  - {fileID: 12800000, guid: 69f922279054b884cbf2982ce5aa94b9, type: 3}
+  - {fileID: 12800000, guid: 638175ab8040ce94cb66ce0b682adea8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

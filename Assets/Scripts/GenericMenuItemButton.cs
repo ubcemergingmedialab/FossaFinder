@@ -10,6 +10,7 @@ using VRTK.UnityEventHelper;
 // Use: attach to each button on the menu. In inspector, choose the purpose of the button
 // Note: TransparencyPresets are used by tranparency buttons and reset. scaleSize is used by scale buttons and reset. part is used by transparency labelling and toggling
 public class GenericMenuItemButton : MonoBehaviour {
+    /*
     public string buttonName;
     public ButtonActions action; //action the button should preform
     public Parts part;      //part to perform it too Note - not used by reset or scale buttons
@@ -133,4 +134,5 @@ public class GenericMenuItemButton : MonoBehaviour {
     {
         GetComponent<Renderer>().material = buttonOn ? onMaterial : offMaterial;
     }
+    */
 }

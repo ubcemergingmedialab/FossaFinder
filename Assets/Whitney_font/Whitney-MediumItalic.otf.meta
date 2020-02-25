@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: dcd44de1a87d7c745adb17e2bb507c8f
+timeCreated: 1533773319
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Whitney
+  fontNames:
+  - Whitney
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4f4f7ff1ad685a148aa4d181a237dd03, type: 3}
+  - {fileID: 12800000, guid: 6d900b3285b50f9449da351f27ff1038, type: 3}
+  - {fileID: 12800000, guid: d76652623d2c40a42a112e82088cc1c6, type: 3}
+  - {fileID: 12800000, guid: 833a69b50e763774fa11f13956d1ea60, type: 3}
+  - {fileID: 12800000, guid: a448bf56ba786e34cbcbffbdd853e229, type: 3}
+  - {fileID: 12800000, guid: 69f922279054b884cbf2982ce5aa94b9, type: 3}
+  - {fileID: 12800000, guid: 93d75669dc8c13841b2cef4a6ab20b44, type: 3}
+  - {fileID: 12800000, guid: b8259c2b8c033e7489f314bd870b8eef, type: 3}
+  - {fileID: 12800000, guid: 638175ab8040ce94cb66ce0b682adea8, type: 3}
+  - {fileID: 12800000, guid: 81ad4b6ee0c27e241998a9c6e417cb02, type: 3}
+  - {fileID: 12800000, guid: a903026f582a7d24c8e082d46b418e71, type: 3}
+  - {fileID: 12800000, guid: 7368aedf95647fd4b940c701eca7b1e1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
