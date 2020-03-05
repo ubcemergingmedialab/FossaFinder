@@ -127,11 +127,17 @@ namespace VRTK
 
         protected virtual void Update()
         {
+            
             DrawLine();
             if (alwaysFaceHeadset)
             {
                 transform.LookAt(headset);
             }
+        }
+
+        protected virtual void OnBecameInvisible()
+        {
+            enabled = false;
         }
 
         protected virtual ObjectTooltipEventArgs SetEventPayload(string newText = "")
@@ -174,13 +180,13 @@ namespace VRTK
 #endif
             if (drawLineFrom == null)
             {
-                drawLineFrom = transform;
+                //drawLineFrom = transform;
             }
         }
 
         protected virtual void DrawLine()
         {
-            if (drawLineTo != null)
+            if (drawLineTo != null & drawLineFrom !=null )
             {
                 line.SetPosition(0, drawLineFrom.position);
                 line.SetPosition(1, drawLineTo.position);
