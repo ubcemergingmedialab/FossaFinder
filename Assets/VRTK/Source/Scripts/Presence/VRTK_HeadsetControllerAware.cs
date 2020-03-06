@@ -67,22 +67,17 @@ namespace VRTK
 
         protected GameObject leftController;
         protected GameObject rightController;
-        protected GameObject tips;
         protected Transform headset;
 
         protected bool leftControllerObscured = false;
         protected bool rightControllerObscured = false;
         protected bool leftControllerLastState = false;
         protected bool rightControllerLastState = false;
-        protected bool tipsObscured = false;
-        protected bool tipsLastState = false;
 
         protected bool leftControllerGlance = false;
         protected bool rightControllerGlance = false;
         protected bool leftControllerGlanceLastState = false;
         protected bool rightControllerGlanceLastState = false;
-        protected bool tipsGlance = false;
-        protected bool tipsGlanceLastState = false;
 
         public virtual void OnControllerObscured(HeadsetControllerAwareEventArgs e)
         {
@@ -126,15 +121,6 @@ namespace VRTK
         }
 
         /// <summary>
-        /// The TipsObscured method returns the state of if the tips is being obscured from the path of the headset.
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool TipsObscured()
-        {
-            return tipsObscured;
-        }
-
-        /// <summary>
         /// The RightControllerObscured method returns the state of if the right controller is being obscured from the path of the headset.
         /// </summary>
         /// <returns>Returns `true` if the path between the headset and the controller is obscured.</returns>
@@ -161,15 +147,6 @@ namespace VRTK
             return rightControllerGlance;
         }
 
-        /// <summary>
-        /// the TipsGlanced method returns the state of if the headset is currently looking at the Tips or not.
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool TipsGlanced()
-        {
-            return tipsGlance;
-        }
-
         protected virtual void Awake()
         {
             VRTK_SDKManager.AttemptAddBehaviourToToggleOnLoadedSetupChange(this);
@@ -180,7 +157,6 @@ namespace VRTK
             headset = VRTK_DeviceFinder.HeadsetTransform();
             leftController = VRTK_DeviceFinder.GetControllerLeftHand();
             rightController = VRTK_DeviceFinder.GetControllerRightHand();
-            tips = gameObject;
         }
 
         protected virtual void OnDisable()
@@ -236,26 +212,6 @@ namespace VRTK
 
                 lastState = obscured;
             }
-        }
-
-        protected virtual void RayCastToTips(GameObject tips, Transform customDestination, ref bool obscured, ref bool lastState)
-        {
-            obscured = false;
-
-                Vector3 destination = (customDestination ? customDestination.position : tips.transform.position);
-                RaycastHit hitInfo;
-                if (VRTK_CustomRaycast.Linecast(customRaycast, headset.position, destination, out hitInfo, Physics.IgnoreRaycastLayer, QueryTriggerInteraction.Ignore))
-                {
-                    obscured = true;
-                }
-
-                if (lastState != obscured)
-                {
-                    ObscuredStateChanged(controller.gameObject, obscured, hitInfo);
-                }
-
-                lastState = obscured;
-            
         }
 
         protected virtual void ObscuredStateChanged(GameObject controller, bool obscured, RaycastHit hitInfo)
