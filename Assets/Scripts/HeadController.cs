@@ -50,12 +50,6 @@ public class HeadController : MonoBehaviour {
             rigidbody.constraints = RigidbodyConstraints.None;
         }
 
-        UpdateHeadPosition();
-	}
-
-    void UpdateHeadPosition()
-    {
-        // Debug.Log(OVRInput.Get(OVRInput.RawButton.Any));
         if (transform.parent != null && OVRInput.Get(OVRInput.Button.PrimaryThumbstick))
         {
             // Debug.Log("Are we here yet?");
@@ -82,11 +76,62 @@ public class HeadController : MonoBehaviour {
                 journeyIsSet = false;
             }
         }
-    }
+	}
 
     public void setDefaultTransform()
     {
 
+    }
+
+    public void setHeadPositionX(float rotationValue)
+    {
+        transform.position = new Vector3(rotationValue, transform.position.y, transform.position.z);
+    }
+
+    public void incrHeadPositionX()
+    {
+        float currentPositionX = Mathf.Clamp(transform.position.x + 1, -10, 10);
+        transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
+    }
+
+    public void decrHeadPositionX()
+    {
+        float currentPositionX = Mathf.Clamp(transform.position.x - 1, -10, 10);
+        transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
+    }
+
+    public void setHeadPositionY(float rotationValue)
+    {
+        transform.position = new Vector3(transform.position.x, rotationValue, transform.position.z);
+    }
+
+    public void incrHeadPositionY()
+    {
+        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 20);
+        transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
+    }
+
+    public void decrHeadPositionY()
+    {
+        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 20);
+        transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
+    }
+
+    public void setHeadPositionZ(float rotationValue)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, rotationValue);
+    }
+
+    public void incrHeadPositionZ()
+    {
+        float currentPositionZ = Mathf.Clamp(transform.position.z + 1, -10, 10);
+        transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
+    }
+
+    public void decrHeadPositionZ()
+    {
+        float currentPositionZ = Mathf.Clamp(transform.position.z - 1, -10, 10);
+        transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
     }
 
     public void setHeadRotationX (float rotationValue)
