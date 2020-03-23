@@ -7,9 +7,9 @@ public class HeadController : MonoBehaviour {
     Rigidbody rigidbody;
     float rawInputFactor;
    
-    public GameObject xPositionSlider;
-    public GameObject yPositionSlider;
-    public GameObject zPositionSlider;
+    //public GameObject xPositionSlider;
+    //public GameObject yPositionSlider;
+    //public GameObject zPositionSlider;
     Vector3 defaultHeadPosition;
     Vector3 leftControllerPosition;
     float timeElapsed;
@@ -18,9 +18,9 @@ public class HeadController : MonoBehaviour {
     bool journeyIsSet;
     float fractionOfJourney;
 
-    public GameObject smallScaleButton;
-    public GameObject mediumScaleButton;
-    public GameObject largeScaleButton;
+    //public GameObject smallScaleButton;
+    //public GameObject mediumScaleButton;
+    //public GameObject largeScaleButton;
 
 	// Use this for initialization
 	void Start () {
@@ -83,109 +83,109 @@ public class HeadController : MonoBehaviour {
 
     }
 
-    public void setHeadPositionX(float rotationValue)
-    {
-        transform.position = new Vector3(rotationValue, transform.position.y, transform.position.z);
-    }
+    //public void setHeadPositionX(float rotationValue)
+    //{
+    //    transform.position = new Vector3(rotationValue, transform.position.y, transform.position.z);
+    //}
 
-    public void incrHeadPositionX()
-    {
-        float currentPositionX = Mathf.Clamp(transform.position.x + 1, -10, 10);
-        transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
-    }
+    //public void incrHeadPositionX()
+    //{
+    //    float currentPositionX = Mathf.Clamp(transform.position.x + 1, -10, 10);
+    //    transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
+    //}
 
-    public void decrHeadPositionX()
-    {
-        float currentPositionX = Mathf.Clamp(transform.position.x - 1, -10, 10);
-        transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
-    }
+    //public void decrHeadPositionX()
+    //{
+    //    float currentPositionX = Mathf.Clamp(transform.position.x - 1, -10, 10);
+    //    transform.position = new Vector3(currentPositionX, transform.position.y, transform.position.z);
+    //}
 
-    public void setHeadPositionY(float rotationValue)
-    {
-        transform.position = new Vector3(transform.position.x, rotationValue, transform.position.z);
-    }
+    //public void setHeadPositionY(float rotationValue)
+    //{
+    //    transform.position = new Vector3(transform.position.x, rotationValue, transform.position.z);
+    //}
 
-    public void incrHeadPositionY()
-    {
-        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 10);
-        transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
-    }
+    //public void incrHeadPositionY()
+    //{
+    //    float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 10);
+    //    transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
+    //}
 
-    public void decrHeadPositionY()
-    {
-        float currentPositionY = Mathf.Clamp(transform.position.y - 1, 0, 10);
-        transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
-    }
+    //public void decrHeadPositionY()
+    //{
+    //    float currentPositionY = Mathf.Clamp(transform.position.y - 1, 0, 10);
+    //    transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
+    //}
 
-    public void setHeadPositionZ(float rotationValue)
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, rotationValue);
-    }
+    //public void setHeadPositionZ(float rotationValue)
+    //{
+    //    transform.position = new Vector3(transform.position.x, transform.position.y, rotationValue);
+    //}
 
-    public void incrHeadPositionZ()
-    {
-        float currentPositionZ = Mathf.Clamp(transform.position.z + 1, -10, 10);
-        transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
-    }
+    //public void incrHeadPositionZ()
+    //{
+    //    float currentPositionZ = Mathf.Clamp(transform.position.z + 1, -10, 10);
+    //    transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
+    //}
 
-    public void decrHeadPositionZ()
-    {
-        float currentPositionZ = Mathf.Clamp(transform.position.z - 1, -10, 10);
-        transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
-    }
+    //public void decrHeadPositionZ()
+    //{
+    //    float currentPositionZ = Mathf.Clamp(transform.position.z - 1, -10, 10);
+    //    transform.position = new Vector3(transform.position.x, transform.position.y, currentPositionZ);
+    //}
 
-    public void setHeadRotationX (float rotationValue)
-    {
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(rotationValue, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-        // transform.rotation.eulerAngles.x = rotationValue;
-        // transform.eulerAngles = new Vector3(rotationValue, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-    }
+    //public void setHeadRotationX (float rotationValue)
+    //{
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(rotationValue, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //    // transform.rotation.eulerAngles.x = rotationValue;
+    //    // transform.eulerAngles = new Vector3(rotationValue, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    //}
 
-    public void incrHeadRotationX()
-    {
-        float currentRotationX = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).x + 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(currentRotationX, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-    }
+    //public void incrHeadRotationX()
+    //{
+    //    float currentRotationX = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).x + 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(currentRotationX, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //}
 
-    public void decrHeadRotationX()
-    {
-        float currentRotationX = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).x - 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(currentRotationX, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-    }
+    //public void decrHeadRotationX()
+    //{
+    //    float currentRotationX = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).x - 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(currentRotationX, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //}
 
-    public void setHeadRotationY(float rotationValue)
-    {
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, rotationValue, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-    }
+    //public void setHeadRotationY(float rotationValue)
+    //{
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, rotationValue, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //}
 
-    public void incrHeadRotationY()
-    {
-        float currentRotationY = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).y + 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, currentRotationY, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-    }
+    //public void incrHeadRotationY()
+    //{
+    //    float currentRotationY = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).y + 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, currentRotationY, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //}
 
-    public void decrHeadRotationY()
-    {
-        float currentRotationY = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).y - 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, currentRotationY, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
-    }
+    //public void decrHeadRotationY()
+    //{
+    //    float currentRotationY = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).y - 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, currentRotationY, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+    //}
 
-    public void setHeadRotationZ(float rotationValue)
-    {
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, rotationValue));
-    }
+    //public void setHeadRotationZ(float rotationValue)
+    //{
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, rotationValue));
+    //}
 
-    public void incrHeadRotationZ()
-    {
-        float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z + 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
-    }
+    //public void incrHeadRotationZ()
+    //{
+    //    float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z + 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
+    //}
 
-    public void decrHeadRotationZ()
-    {
-        float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z - 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
-    }
+    //public void decrHeadRotationZ()
+    //{
+    //    float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z - 1, -360, 360);
+    //    UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
+    //}
 
     public void setHeadScale(float scale)
     {
