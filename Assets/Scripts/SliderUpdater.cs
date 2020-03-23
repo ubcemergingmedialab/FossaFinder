@@ -36,13 +36,17 @@ public class SliderUpdater : MonoBehaviour {
             thisSlider.value = head.transform.position.z;
         } else if (thisSliderName == XRotationSlider.transform.name)
         {
-            thisSlider.value = head.transform.rotation.x;
+            thisSlider.value = UnityEditor.TransformUtils.GetInspectorRotation(head.transform).x;
+            // thisSlider.value = head.transform.rotation.eulerAngles.x;
         } else if (thisSliderName == YRotationSlider.transform.name)
         {
-            thisSlider.value = head.transform.rotation.y;
-        } else if (thisSliderName == ZRotationSlider.transform.name)
+            thisSlider.value = UnityEditor.TransformUtils.GetInspectorRotation(head.transform).y;
+            // thisSlider.value = head.transform.rotation.eulerAngles.y;
+        }
+        else if (thisSliderName == ZRotationSlider.transform.name)
         {
-            thisSlider.value = head.transform.rotation.z;
+            thisSlider.value = UnityEditor.TransformUtils.GetInspectorRotation(head.transform).z;
+            // thisSlider.value = head.transform.rotation.eulerAngles.z;
         } else if (thisSliderName == ZoomSlider.transform.name)
         {
             thisSlider.value = thisSlider.value = head.transform.localScale.x;

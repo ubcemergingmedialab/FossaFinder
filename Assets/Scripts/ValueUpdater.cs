@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ValueUpdater : MonoBehaviour {
     Text value;
@@ -12,6 +13,6 @@ public class ValueUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        value.text = slider.GetComponent<Slider>().value.ToString();
+        value.text = Math.Round(slider.GetComponent<Slider>().value, 1).ToString(); 
 	}
 }

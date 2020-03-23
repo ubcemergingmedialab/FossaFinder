@@ -107,13 +107,13 @@ public class HeadController : MonoBehaviour {
 
     public void incrHeadPositionY()
     {
-        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 20);
+        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 10);
         transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
     }
 
     public void decrHeadPositionY()
     {
-        float currentPositionY = Mathf.Clamp(transform.position.y + 1, 0, 20);
+        float currentPositionY = Mathf.Clamp(transform.position.y - 1, 0, 10);
         transform.position = new Vector3(transform.position.x, currentPositionY, transform.position.z);
     }
 
@@ -137,6 +137,8 @@ public class HeadController : MonoBehaviour {
     public void setHeadRotationX (float rotationValue)
     {
         UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(rotationValue, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).z));
+        // transform.rotation.eulerAngles.x = rotationValue;
+        // transform.eulerAngles = new Vector3(rotationValue, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
 
     public void incrHeadRotationX()
@@ -176,13 +178,13 @@ public class HeadController : MonoBehaviour {
     public void incrHeadRotationZ()
     {
         float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z + 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
+        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
     }
 
     public void decrHeadRotationZ()
     {
         float currentRotationZ = Mathf.Clamp(UnityEditor.TransformUtils.GetInspectorRotation(transform).z - 1, -360, 360);
-        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).y, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
+        UnityEditor.TransformUtils.SetInspectorRotation(transform, new Vector3(UnityEditor.TransformUtils.GetInspectorRotation(transform).x, UnityEditor.TransformUtils.GetInspectorRotation(transform).y, currentRotationZ));
     }
 
     public void setHeadScale(float scale)
