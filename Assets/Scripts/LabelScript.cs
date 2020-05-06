@@ -66,12 +66,16 @@ public class LabelScript : MonoBehaviour
         }
 
 
-
+        
         Undo.RecordObject(label.transform, "make change to the line width, txetwindow and dot size");
         textWindow.localScale = new Vector3(textWindowMul, textWindowMul, textWindowMul);
+        //print("aaa");
         dot.transform.localScale = new Vector3(dotMul,dotMul,dotMul);
+        print("aaa");
         textWindowBackground.GetComponent<LineRenderer>().widthMultiplier = indicatorLineWidth;
+        //print("aaa");
         PrefabUtility.RecordPrefabInstancePropertyModifications(label.transform);
+        
 
         //change line width in exsisting labels
         if (labels.Count > 0)
@@ -99,11 +103,14 @@ public class LabelScript : MonoBehaviour
             labelTexts.Add(labelText);
             labels.Add(newlabel);
            
-            newlabel.transform.Find("LabelDotBackground").position = labelPosition + surfaceNormal*0.05f;
+            newlabel.transform.Find("LabelDotBackground").position = labelPosition + surfaceNormal*0.05f; 
             newlabel.transform.Find("LabelDotBackground").rotation = Quaternion.LookRotation(-surfaceNormal);
             newlabel.transform.Find("TextWindow").position = labelPosition + surfaceNormal;
+            print(newlabel.transform.Find("TextWindow").localScale);
+            newlabel.transform.Find("LabelDotBackground").localScale = new Vector3(dotMul, dotMul, dotMul);
+            print(newlabel.transform.Find("TextWindow").localScale);
             newlabel.transform.Find("LabelDotBackground").Find("LabelIndex").GetComponent<TextMeshPro>().text = labelTexts.Count.ToString();
-            // newlabel.transform.Find("TextWindow").Find("TextBackground").GetComponent<LineRenderer>().widthMultiplier = indicatorLineWidth;
+            newlabel.transform.Find("TextWindow").Find("TextBackground").GetComponent<LineRenderer>().widthMultiplier = indicatorLineWidth;
             newlabel.GetComponent<LabelTextManager>().showText(showAllText);
             dotPosition.Add(newlabel.transform.Find("LabelDotBackground").position);
             textWindowPosition.Add(newlabel.transform.Find("TextWindow").position);
