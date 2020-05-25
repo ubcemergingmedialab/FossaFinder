@@ -5,31 +5,32 @@ using UnityEngine.UI;
 
 public class SceneButtonManager : MonoBehaviour {
 
-    public Button previousSceneButtonScript;
-    public Button nextSceneButtonScript;
-    public Button skipButtonScript;
-    public GuidedTourManager guidedTourManagerScript;
+    public Button previousSceneNumberButton;
+    public Button nextSceneNumberButton;
+    public Button skipButton;
+    public GuidedTourManager guidedTourManager;
 
     bool isDuringSceneTransition;
 
 	// Use this for initialization
 	void Start () {
         // isDuringSceneTransition = guidedTourManager.GetComponent<GuidedTourManager>().GetIsDuringSceneTransition();
-        skipButtonScript.GetComponent<Button>().onClick.AddListener(() => guidedTourManagerScript.SkipToScene(guidedTourManagerScript.GetCurrentSceneNumber()));
+        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()));
 	}
 	
 	// Update is called once per frame
+    // Checks whether a scene transition is taking place every frame. Adjust the interactivity of the buttons accordingly.
 	void Update () {
-		if (guidedTourManagerScript.GetIsDuringSceneTransition())
+		if (guidedTourManager.GetIsDuringSceneTransition())
         {
-            previousSceneButtonScript.interactable = false;
-            nextSceneButtonScript.interactable = false;
-            skipButtonScript.interactable = true;
+            previousSceneNumberButton.interactable = false;
+            nextSceneNumberButton.interactable = false;
+            skipButton.interactable = true;
         } else
         {
-            previousSceneButtonScript.interactable = true;
-            nextSceneButtonScript.interactable = true;
-            skipButtonScript.interactable = false;
+            previousSceneNumberButton.interactable = true;
+            nextSceneNumberButton.interactable = true;
+            skipButton.interactable = false;
         }
 	}
 }

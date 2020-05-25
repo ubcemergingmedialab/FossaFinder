@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class GuidedTourManager : MonoBehaviour {
 
-    public GameObject head;
-    public GameObject cameraRig;
-    public GameObject mainCamera;
+    public GameObject head; 
+    public GameObject cameraRig;  
+    public GameObject mainCamera; 
 
-    int currentSceneNumber;
-    int previousSceneNumber;
-    bool isDuringSceneTransition;
-    float distanceFromDefaultCameraPositionThreshold;
-    bool isPastDistanceThreshold;
-    Vector2 defaultTopDownCameraCoordinates;
-    Vector3 defaultCameraRigPosition;
+    int currentSceneDestination; // the current scene number
+    int lastVisitedScene; // the previous scene number after a scene transition
+    bool isDuringSceneTransition; // whether a scene transition is taking place or not
+    float distanceFromDefaultCameraPositionThreshold; // the maximum allowed distance from the default camera position before the user should be teleported
+    bool isPastDistanceThreshold; // whether the user is past the aforementioned distance threshold
+    Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
     
 	// Use this for initialization
 	void Start () {
-        currentSceneNumber = 1;
-        previousSceneNumber = 1;
+        currentSceneDestination = 1;
+        lastVisitedScene = 1;
         isDuringSceneTransition = false;
         distanceFromDefaultCameraPositionThreshold = 0.2f;
         isPastDistanceThreshold = false;
@@ -28,56 +27,61 @@ public class GuidedTourManager : MonoBehaviour {
         StartCoroutine(Compensate());
     }
 
+    // Defines the world position of the camera rig and the skull, after the position of the camera is set
     IEnumerator Compensate()
     {
-        yield return new WaitForSeconds(.5f);
         // InputTracking.Recenter();
         // Valve.VR.OpenVR.System.ResetSeatedZeroPose();
         // XRDevice.SetTrackingSpaceType(TrackingSpaceType.RoomScale);
         // OVRManager.display.RecenterPose();
+        // preservedHeightValue = transform.position.y;
+        // isReadyToTrackPathFollower = true;
+        // path.GetComponent<CPC_Path>().PlayPath(3);
+        // defaultCameraRigPosition = cameraRig.transform.position;
+        yield return new WaitForSeconds(.5f);
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        defaultCameraRigPosition = cameraRig.transform.position;
-        head.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
-        //preservedHeightValue = transform.position.y;
-        //isReadyToTrackPathFollower = true;
-        //path.GetComponent<CPC_Path>().PlayPath(3);
+       
+        head.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);   
     }
 
-    public int GetCurrentSceneNumber()
+    // Returns the current scene number.
+    public int GetCurrentSceneDestination()
     {
-        return currentSceneNumber;
+        return currentSceneDestination;
     }
 
+    // Returns whether a scene transition is currently taking place.
     public bool GetIsDuringSceneTransition()
     {
         return isDuringSceneTransition;
     }
 
-    public void SetUpVariablesForPreviousScene()
+    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). Update() will then check these variables and handle the actual movement
+    public void SetUpVariablesForPreviousSceneNumber()
     {
-        if (currentSceneNumber > 1)
+        if (currentSceneDestination > 1)
         {
-            previousSceneNumber = currentSceneNumber;
-            Debug.Log(previousSceneNumber);
-            currentSceneNumber -= 1;
-            // check if transition is completed here
+            lastVisitedScene = currentSceneDestination;
+            // Debug.Log(lastVisitedScene);
+            currentSceneDestination -= 1;
+            // if Dante's idea doesn't work, check if transition is completed here
             isDuringSceneTransition = true;
             CheckIfPastDistanceThreshold();
         }
-        // Update will handle the rest
     }
 
-    public void SetUpVariablesForNextScene()
+    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). Update() will then check these variables and handle the actual movement
+    public void SetUpVariablesForNextSceneNumber()
     {
-        previousSceneNumber = currentSceneNumber;
-        Debug.Log(previousSceneNumber);
-        currentSceneNumber += 1;
-        // check if transition is completed here
+        lastVisitedScene = currentSceneDestination;
+        // Debug.Log(lastVisitedScene);
+        currentSceneDestination += 1;
+        // if Dante's idea doesn't work, check if transition is completed here
         isDuringSceneTransition = true;
         CheckIfPastDistanceThreshold();
-        // Update will handle the rest
     }
 
+    // Checks whether the user is past the distance threshold based on the default position of the user (positoin of user = position of camera)
     void CheckIfPastDistanceThreshold()
     {
         Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
@@ -87,31 +91,33 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Teleports the user back to its default position
     void TeleportBackToDefaultCameraPosition()
     {
-        Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
         // Debug.Log(Vector2.Distance(currentTopDownCameraCoordinates, defaultTopDownCameraCoordinates));
         // cameraRig.transform.position = new Vector3(0 - mainCamera.GetComponent<SteamVR_Camera>().head.position.x, cameraRig.transform.position.y, 1 - mainCamera.GetComponent<SteamVR_Camera>().head.position.z);
         // cameraRig.transform.position = new Vector3(0 + mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.x, cameraRig.transform.position.y, 1 + mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.z);
-        cameraRig.transform.position = new Vector3(0, cameraRig.transform.position.y, .5f) - new Vector3(mainCamera.GetComponent<SteamVR_Camera>().head.position.x - cameraRig.transform.position.x, 0, mainCamera.GetComponent<SteamVR_Camera>().head.position.z - cameraRig.transform.position.z);
         //Debug.Log("Camera rig is now at: " + cameraRig.transform.position);
         //Debug.Log("After teleportation: " + Vector2.Distance(currentTopDownCameraCoordinates, defaultTopDownCameraCoordinates).ToString());
+        cameraRig.transform.position = new Vector3(0, cameraRig.transform.position.y, .5f) - new Vector3(mainCamera.GetComponent<SteamVR_Camera>().head.position.x - cameraRig.transform.position.x, 0, mainCamera.GetComponent<SteamVR_Camera>().head.position.z - cameraRig.transform.position.z);
         isPastDistanceThreshold = false;
     }
 
     // Update is called once per frame
+    // If the user is in a scene transition, incrementally changes the transform value of the skull based on which scene the user wants to go to
     void Update () {
-        //Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
-        //Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
-        //Debug.Log("Current distance from default: " + Vector2.Distance(currentTopDownCameraCoordinates, defaultTopDownCameraCoordinates));
+        // Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
+        // Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
+        // Debug.Log("Current distance from default: " + Vector2.Distance(currentTopDownCameraCoordinates, defaultTopDownCameraCoordinates));
         // Debug.Log(previousSceneNumber);
+        // Debug.Log(isSwitching);
         if (isDuringSceneTransition)
         {
-            TransitionToScene(currentSceneNumber);
+            TransitionToScene(currentSceneDestination);
         }
-        // Debug.Log(isSwitching);
 	}
 
+    // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
     void TransitionToScene(int sceneNumber)
     {
         if (isPastDistanceThreshold)
@@ -119,9 +125,9 @@ public class GuidedTourManager : MonoBehaviour {
             TeleportBackToDefaultCameraPosition();
         }
 
-        // make sure previous scenes are done
+        // If Dante's idea doesn't work, this is where you check if previous scenes are completed
         
-        switch (sceneNumber) // gotta reset position every time
+        switch (sceneNumber)
         {
             case 1:
                 TransitionToScene1();
@@ -144,6 +150,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 1
     void TransitionToScene1()
     {
         float newEulerAngle = Mathf.MoveTowardsAngle(head.transform.eulerAngles.y, 0, 90 * Time.deltaTime);
@@ -155,6 +162,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 2
     void TransitionToScene2()
     {
         head.transform.GetChild(0).gameObject.SetActive(true);
@@ -168,9 +176,10 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 3
     void TransitionToScene3()
     {
-        if (previousSceneNumber == 2)
+        if (lastVisitedScene == 2)
         {
             head.transform.GetChild(0).gameObject.SetActive(false);
             isDuringSceneTransition = false;
@@ -185,9 +194,10 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 4
     void TransitionToScene4()
     {
-        if (previousSceneNumber == 3)
+        if (lastVisitedScene == 3)
         {
             Vector3 newLocalScale = new Vector3(2, 2, 2);
             head.transform.localScale = Vector3.MoveTowards(head.transform.localScale, newLocalScale, Mathf.Sqrt(3) * Time.deltaTime);
@@ -206,9 +216,10 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 5
     void TransitionToScene5()
     {
-        if (previousSceneNumber == 4)
+        if (lastVisitedScene == 4)
         {
             float newEulerAngle = Mathf.MoveTowardsAngle(head.transform.eulerAngles.z, 45, 45 * Time.deltaTime);
             // Debug.Log(newEulerAngle);
@@ -228,6 +239,7 @@ public class GuidedTourManager : MonoBehaviour {
         } 
     }
 
+    // Incrementally changes the transform values of the skull to where the skull should be in scene 6
     void TransitionToScene6()
     {
         Vector3 newLocalScale = new Vector3(5, 5, 5);
@@ -238,6 +250,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Skips to a particular end state/scene of a transition 
     public void SkipToScene(int sceneNumber)
     {
         switch (sceneNumber)
@@ -263,33 +276,39 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
+    // Defines what the transform values of the skull should be in scene 1
     void SkipToScene1()
     {
         head.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
+    // Defines what the transform values of the skull should be in scene 2
     void SkipToScene2()
     {
         head.transform.eulerAngles = new Vector3(0, -90, 0);
     }
 
+    // Defines what the transform values of the skull should be in scene 3
     void SkipToScene3()
     {
         head.transform.localScale = new Vector3(1, 1, 1);
     }
 
+    // Defines what the transform values of the skull should be in scene 4
     void SkipToScene4()
     {
         head.transform.eulerAngles = new Vector3(0, -90, 0);
         head.transform.localScale = new Vector3(2, 2, 2);
     }
 
+    // Defines what the transform values of the skull should be in scene 5
     void SkipToScene5()
     {
         head.transform.eulerAngles = new Vector3(0, -90, 45);
         head.transform.localScale = new Vector3(2, 2, 2);
     }
 
+    // Defines what the transform values of the skull should be in scene 6
     void SkipToScene6()
     {
         head.transform.localScale = new Vector3(5, 5, 5);
