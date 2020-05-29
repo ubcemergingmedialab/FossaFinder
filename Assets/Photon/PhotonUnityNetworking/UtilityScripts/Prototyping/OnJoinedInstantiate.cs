@@ -134,7 +134,7 @@ namespace Photon.Pun.UtilityScripts
             GameObject validated = unvalidated;
 
             if (unvalidated != null && PrefabUtility.GetPrefabType(unvalidated) != PrefabType.Prefab)
-                validated = PrefabUtility.GetPrefabParent(unvalidated) as GameObject;
+                validated = PrefabUtility.GetCorrespondingObjectFromSource(unvalidated) as GameObject;
 #endif
             return validated;
         }
