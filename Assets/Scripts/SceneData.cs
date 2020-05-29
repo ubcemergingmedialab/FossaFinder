@@ -5,7 +5,7 @@ using PathCreation;
 
 [CreateAssetMenu(fileName = "NewSceneData", menuName = "Scene Data", order = 51)]
 public class SceneData : ScriptableObject {
-    public Vector3 skullPosition;
+    public Vector3 skullPosition; // endOfPathPosition; remove the rest
     public Vector3 skullRotation;
     public Vector3 skullScale;
     public string forwardAnimationClipName;

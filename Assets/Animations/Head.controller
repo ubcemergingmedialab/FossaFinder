@@ -45,7 +45,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102354875975036454
 AnimatorState:
   serializedVersion: 5
@@ -70,7 +70,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102455000268302250
 AnimatorState:
   serializedVersion: 5
@@ -120,7 +120,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102544392672204002
 AnimatorState:
   serializedVersion: 5
@@ -170,7 +170,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102688919590119786
 AnimatorState:
   serializedVersion: 5
@@ -195,7 +195,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102744624219651780
 AnimatorState:
   serializedVersion: 5
@@ -220,7 +220,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102770464636721490
 AnimatorState:
   serializedVersion: 5
@@ -245,7 +245,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102793685763923180
 AnimatorState:
   serializedVersion: 5
@@ -270,7 +270,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102865879699306848
 AnimatorState:
   serializedVersion: 5
@@ -295,7 +295,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1102 &1102913950978730678
 AnimatorState:
   serializedVersion: 5
@@ -320,7 +320,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: progress
 --- !u!1107 &1107464264598384624
 AnimatorStateMachine:
   serializedVersion: 5
