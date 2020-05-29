@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 47953ff16996e2541936f192f91f819c
+guid: f18bbc1dddec987479e399f5a7533f7a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: PPF_Region_v6:PPF_Region_v5
-    100002: //RootNode
-    400000: PPF_Region_v6:PPF_Region_v5
-    400002: //RootNode
-    2100000: PPF_Region_v6_PPF_Region_v5Mat
-    2300000: PPF_Region_v6:PPF_Region_v5
-    3300000: PPF_Region_v6:PPF_Region_v5
-    4300000: PPF_Region_v6:PPF_Region_v5
+    100000: //RootNode
+    100002: PPF_Region_v8
+    400000: //RootNode
+    400002: PPF_Region_v8
+    2100000: PPF_Region_v8Mat
+    2300000: PPF_Region_v8
+    3300000: PPF_Region_v8
+    4300000: PPF_Region_v8
   externalObjects: {}
   materials:
     importMaterials: 1
