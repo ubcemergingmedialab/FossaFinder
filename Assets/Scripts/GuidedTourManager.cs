@@ -4,13 +4,11 @@ using UnityEngine;
 using PathCreation;
 
 public class GuidedTourManager : MonoBehaviour {
-
     public GameObject head; 
     public GameObject cameraRig;  
     public GameObject mainCamera;
     public Animator anim;
     public SceneData[] sceneDataArray;
-    public GameObject[] pathObjects;
 
     int currentSceneDestination; // the current scene number
     int lastVisitedScene; // the previous scene number after a scene transition
@@ -21,8 +19,8 @@ public class GuidedTourManager : MonoBehaviour {
 
     string currentNameOfAnimationClip;
     GameObject currentPathObject;
-    float distanceTravelled;
-    float speed;
+    float currentDistanceTravelled;
+    float currentPathTraversalSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -32,8 +30,7 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromDefaultCameraPositionThreshold = 0.2f;
         isPastDistanceThreshold = false;
         defaultTopDownCameraCoordinates = new Vector2(0, .5f);
-        distanceTravelled = 0;
-        speed = 0.01f;
+        currentDistanceTravelled = 0;
 
         StartCoroutine(Compensate());
     }
@@ -44,20 +41,6 @@ public class GuidedTourManager : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
         head.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
-
-        //foreach (SceneData sceneData in sceneDataArray)
-        //{
-        //    sceneData.skullPosition.y += head.transform.position.y;
-        //}
-        foreach(GameObject pathObject in pathObjects)
-        {
-            pathObject.transform.position = new Vector3(pathObject.transform.position.x, pathObject.transform.position.y + head.transform.position.y, pathObject.transform.position.z);
-
-        }
-        sceneDataArray[3].forwardPathObject = pathObjects[0]; // this will likely be a foreach later on
-        sceneDataArray[2].backwardPathObject = pathObjects[1];
-        sceneDataArray[5].forwardPathObject = pathObjects[2];
-        sceneDataArray[4].backwardPathObject = pathObjects[3];
     }
 
     // Returns the current scene number.
@@ -85,12 +68,13 @@ public class GuidedTourManager : MonoBehaviour {
             if (sceneDataArray[currentSceneDestination - 1].backwardPathObject != null)
             {
                 currentPathObject = sceneDataArray[currentSceneDestination - 1].backwardPathObject;
+                currentPathObject.transform.position = new Vector3(sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.x, sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.z);
                 Debug.Log(currentPathObject.name);
-                speed = sceneDataArray[currentSceneDestination - 1].backwardSpeed;
+                currentPathTraversalSpeed = sceneDataArray[currentSceneDestination - 1].backwardPathTraversalSpeed;
             } else
             {
                 currentPathObject = null;
-                speed = 0;
+                currentPathTraversalSpeed = 0;
             }
             
             CheckIfPastDistanceThreshold();
@@ -108,12 +92,13 @@ public class GuidedTourManager : MonoBehaviour {
         if (sceneDataArray[currentSceneDestination - 1].forwardPathObject != null)
         {
             currentPathObject = sceneDataArray[currentSceneDestination - 1].forwardPathObject;
+            currentPathObject.transform.position = new Vector3(sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.x, sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.z);
             Debug.Log(currentPathObject.name);
-            speed = sceneDataArray[currentSceneDestination - 1].forwardSpeed;
+            currentPathTraversalSpeed = sceneDataArray[currentSceneDestination - 1].forwardPathTraversalSpeed;
         } else
         {
             currentPathObject = null;
-            speed = 0;
+            currentPathTraversalSpeed = 0;
         }
         CheckIfPastDistanceThreshold();
     }
@@ -142,8 +127,6 @@ public class GuidedTourManager : MonoBehaviour {
         {
             TransitionToAnotherScene();
         }
-        //distanceTravelled += Time.deltaTime * speed;
-        //head.transform.position = pathObjects[0].GetComponent<PathCreator>().path.GetPointAtDistance(distanceTravelled);
 	}
 
     // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
@@ -163,40 +146,29 @@ public class GuidedTourManager : MonoBehaviour {
 
         if (currentPathObject != null)
         {
-            // Debug.Log("sup");
-            // Debug.Log("distance travelled: " + distanceTravelled);
-            distanceTravelled += speed * Time.deltaTime;
-            head.transform.position = currentPathObject.GetComponent<PathCreator>().path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
+            currentDistanceTravelled += currentPathTraversalSpeed * Time.deltaTime;
+            head.transform.position = currentPathObject.GetComponent<PathCreator>().path.GetPointAtDistance(currentDistanceTravelled, EndOfPathInstruction.Stop);
         }
 
-        // isDuringSceneTransition = false;
-        // Debug.Log("current head position: " + head.transform.position);
-        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].skullPosition.x, sceneDataArray[currentSceneDestination - 1].skullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].skullPosition.z);
-        //Debug.Log("Distance between current skull position and end skull position: " + Vector3.Distance(head.transform.position, endskullPosition));
-        //Debug.Log("Abs delta angle between current skull rotation.x and end skull rotation.x: " + Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].skullRotation.x));
-        //Debug.Log("Abs delta angle between current skull rotation.y and end skull rotation.y: " + Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].skullRotation.y));
-        //Debug.Log("Abs delta angle between current skull rotation.x and end skull rotation.z: " + Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].skullRotation.z));
-        //Debug.Log("Distance between current skull scale and end skull scale: " + Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].skullScale));
+        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         if (Vector3.Distance(head.transform.position, endskullPosition) <= 0.01f && 
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].skullRotation.x)) <= 0.01f &&
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].skullRotation.y)) <= 0.01f && 
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].skullRotation.z)) <= 0.01f &&
-            Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].skullScale) <= 0.01f)
+            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)) <= 0.01f &&
+            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].endSkullRotation.y)) <= 0.01f && 
+            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].endSkullRotation.z)) <= 0.01f &&
+            Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale) <= 0.01f)
         {
             isDuringSceneTransition = false;
-            distanceTravelled = 0;
+            currentDistanceTravelled = 0;
         }
     }
 
     // Skips to a particular end state/scene of a transition 
     public void SkipToScene(int sceneNumber)
     {
-        // Debug.Log("hello am i here yet");
-        // head.GetComponent<Animator>().enabled = false;
         anim.Play(currentNameOfAnimationClip, -1, 1);
-        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].skullPosition.x, sceneDataArray[currentSceneDestination - 1].skullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].skullPosition.z);
+        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         head.transform.position = endskullPosition;
         isDuringSceneTransition = false;
-        distanceTravelled = 0;
+        currentDistanceTravelled = 0;
     }
 }

@@ -11,12 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene5Data
   m_EditorClassIdentifier: 
-  skullPosition: {x: 0.15, y: 0, z: 0}
-  skullRotation: {x: 0, y: -90, z: 45}
-  skullScale: {x: 2, y: 2, z: 2}
+  endSkullPosition: {x: 0.15, y: 0, z: 0}
+  endSkullRotation: {x: 0, y: -90, z: 45}
+  endSkullScale: {x: 2, y: 2, z: 2}
   forwardAnimationClipName: Scene4ToScene5
   backwardAnimationClipName: Scene6ToScene5
   forwardPathObject: {fileID: 0}
-  backwardPathObject: {fileID: 0}
-  forwardSpeed: 0
-  backwardSpeed: 0.15
+  forwardPathDefaultPosition: {x: 0, y: 0, z: 0}
+  backwardPathObject: {fileID: 1446527306908728, guid: 38175d61261e93947bade198711e9e15,
+    type: 2}
+  backwardPathDefaultPosition: {x: 0.225, y: 0, z: 0}
+  forwardPathTraversalSpeed: 0
+  backwardPathTraversalSpeed: 0.15

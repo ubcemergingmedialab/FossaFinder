@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SceneButtonManager : MonoBehaviour {
-
     public Button previousSceneNumberButton;
     public Button nextSceneNumberButton;
     public Button skipButton;
