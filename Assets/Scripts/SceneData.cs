@@ -10,10 +10,4 @@ public class SceneData : ScriptableObject {
     public Vector3 endSkullScale;
     public string forwardAnimationClipName;
     public string backwardAnimationClipName;
-    public GameObject forwardPathObject;
-    public Vector3 forwardPathDefaultPosition;
-    public GameObject backwardPathObject;
-    public Vector3 backwardPathDefaultPosition;
-    public float forwardPathTraversalSpeed;
-    public float backwardPathTraversalSpeed;
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 using PathCreation;
 
 public class GuidedTourManager : MonoBehaviour {
-    public GameObject head; 
-    public GameObject cameraRig;  
-    public GameObject mainCamera;
+    public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
 
@@ -18,9 +16,6 @@ public class GuidedTourManager : MonoBehaviour {
     Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
 
     string currentNameOfAnimationClip;
-    GameObject currentPathObject;
-    float currentDistanceTravelled;
-    float currentPathTraversalSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +25,6 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromDefaultCameraPositionThreshold = 0.2f;
         isPastDistanceThreshold = false;
         defaultTopDownCameraCoordinates = new Vector2(0, .5f);
-        currentDistanceTravelled = 0;
 
         StartCoroutine(Compensate());
     }
@@ -40,7 +34,7 @@ public class GuidedTourManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        head.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
     }
 
     // Returns the current scene number.
@@ -65,17 +59,6 @@ public class GuidedTourManager : MonoBehaviour {
             // if Dante's idea doesn't work, check if transition is completed here
             isDuringSceneTransition = true;
             currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
-            if (sceneDataArray[currentSceneDestination - 1].backwardPathObject != null)
-            {
-                currentPathObject = sceneDataArray[currentSceneDestination - 1].backwardPathObject;
-                currentPathObject.transform.position = new Vector3(sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.x, sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].backwardPathDefaultPosition.z);
-                Debug.Log(currentPathObject.name);
-                currentPathTraversalSpeed = sceneDataArray[currentSceneDestination - 1].backwardPathTraversalSpeed;
-            } else
-            {
-                currentPathObject = null;
-                currentPathTraversalSpeed = 0;
-            }
             
             CheckIfPastDistanceThreshold();
         }
@@ -89,17 +72,7 @@ public class GuidedTourManager : MonoBehaviour {
         // if Dante's idea doesn't work, check if transition is completed here
         isDuringSceneTransition = true;
         currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
-        if (sceneDataArray[currentSceneDestination - 1].forwardPathObject != null)
-        {
-            currentPathObject = sceneDataArray[currentSceneDestination - 1].forwardPathObject;
-            currentPathObject.transform.position = new Vector3(sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.x, sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].forwardPathDefaultPosition.z);
-            Debug.Log(currentPathObject.name);
-            currentPathTraversalSpeed = sceneDataArray[currentSceneDestination - 1].forwardPathTraversalSpeed;
-        } else
-        {
-            currentPathObject = null;
-            currentPathTraversalSpeed = 0;
-        }
+
         CheckIfPastDistanceThreshold();
     }
 
@@ -144,12 +117,6 @@ public class GuidedTourManager : MonoBehaviour {
             anim.Play(currentNameOfAnimationClip);
         }
 
-        if (currentPathObject != null)
-        {
-            currentDistanceTravelled += currentPathTraversalSpeed * Time.deltaTime;
-            head.transform.position = currentPathObject.GetComponent<PathCreator>().path.GetPointAtDistance(currentDistanceTravelled, EndOfPathInstruction.Stop);
-        }
-
         Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         if (Vector3.Distance(head.transform.position, endskullPosition) <= 0.01f && 
             Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)) <= 0.01f &&
@@ -158,7 +125,6 @@ public class GuidedTourManager : MonoBehaviour {
             Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale) <= 0.01f)
         {
             isDuringSceneTransition = false;
-            currentDistanceTravelled = 0;
         }
     }
 
@@ -169,6 +135,5 @@ public class GuidedTourManager : MonoBehaviour {
         Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         head.transform.position = endskullPosition;
         isDuringSceneTransition = false;
-        currentDistanceTravelled = 0;
     }
 }
