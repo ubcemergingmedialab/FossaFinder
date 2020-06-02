@@ -117,7 +117,14 @@ public class GuidedTourManager : MonoBehaviour {
             anim.Play(currentNameOfAnimationClip);
         }
 
-        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
+        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
+        //Debug.Log("current position.y: " + head.transform.position.y);
+        //Debug.Log("end position.y: " + endskullPosition.y);
+        //Debug.Log("Difference between current and end position: " + Vector3.Distance(head.transform.position, endskullPosition));
+        //Debug.Log("Difference between current and end rotation x: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)));
+        //Debug.Log("Difference between current and end rotation y: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].endSkullRotation.y)));
+        //Debug.Log("Difference between current and end rotation z: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].endSkullRotation.z)));
+        //Debug.Log("Difference between current and end scale: " + Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale));
         if (Vector3.Distance(head.transform.position, endskullPosition) <= 0.01f && 
             Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)) <= 0.01f &&
             Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].endSkullRotation.y)) <= 0.01f && 
@@ -135,5 +142,12 @@ public class GuidedTourManager : MonoBehaviour {
         Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         head.transform.position = endskullPosition;
         isDuringSceneTransition = false;
+    }
+
+    public void PrintCurrentSkullTransformValues()
+    {
+        Debug.Log("Current position: " + head.transform.localPosition.ToString("F8"));
+        Debug.Log("Current rotation: " + head.transform.localRotation.ToString("F8"));
+        Debug.Log("Current scale: " + head.transform.localScale.ToString("F8"));
     }
 }
