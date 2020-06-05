@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene7Data
+  m_Name: Scene8Data
   m_EditorClassIdentifier: 
-  endSkullPosition: {x: 4.78, y: 0.68, z: -3.02}
+  endSkullPosition: {x: 4.63, y: 0.68, z: -2.76}
   endSkullRotation: {x: 0, y: -90, z: 45}
   endSkullScale: {x: 100, y: 100, z: 100}
-  forwardAnimationClipName: Scene6ToScene7
-  backwardAnimationClipName: Scene8ToScene7
+  forwardAnimationClipName: Scene7ToScene8
+  backwardAnimationClipName: Scene9ToScene8
