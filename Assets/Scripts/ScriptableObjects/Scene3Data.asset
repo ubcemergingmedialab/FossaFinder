@@ -16,10 +16,3 @@ MonoBehaviour:
   endSkullScale: {x: 1, y: 1, z: 1}
   forwardAnimationClipName: Scene2ToScene3
   backwardAnimationClipName: Scene4ToScene3
-  forwardPathObject: {fileID: 0}
-  forwardPathDefaultPosition: {x: 0, y: 0, z: 0}
-  backwardPathObject: {fileID: 1949745682796860, guid: 38175d61261e93947bade198711e9e15,
-    type: 2}
-  backwardPathDefaultPosition: {x: 0.075, y: 0, z: 0}
-  forwardPathTraversalSpeed: 0
-  backwardPathTraversalSpeed: 0.15
