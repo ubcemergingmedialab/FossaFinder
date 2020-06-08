@@ -2211,7 +2211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4989040965648172, guid: 32d0ef0bd66528348b88f11e9aa3174d, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1949808020589170, guid: 32d0ef0bd66528348b88f11e9aa3174d, type: 2}
       propertyPath: m_Name
@@ -2473,7 +2473,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4330709247905092, guid: df4d59d5cca7d2448941ab263421176c, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1429798509798028, guid: df4d59d5cca7d2448941ab263421176c, type: 2}
       propertyPath: m_Name
@@ -4989,7 +4989,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4671591425961352, guid: c3ea2e272aec9864890edf9be2cbbe82, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1913119783531380, guid: c3ea2e272aec9864890edf9be2cbbe82, type: 2}
       propertyPath: m_Name
@@ -9921,7 +9921,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4071315711625494, guid: 8f9126396cf75a4468058cb202e7c592, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1420869453643148, guid: 8f9126396cf75a4468058cb202e7c592, type: 2}
       propertyPath: m_Name
@@ -10063,11 +10063,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 671531740}
@@ -12286,11 +12286,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 843459129}
@@ -21517,11 +21517,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1391473903}
@@ -28603,7 +28603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4902433430263226, guid: 467a480eaff578a49ba7475792c3f444, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1413479303658184, guid: 467a480eaff578a49ba7475792c3f444, type: 2}
       propertyPath: m_Name
@@ -29647,11 +29647,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2002681744}
@@ -29848,11 +29848,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2003204642}
@@ -31502,11 +31502,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2106919867}

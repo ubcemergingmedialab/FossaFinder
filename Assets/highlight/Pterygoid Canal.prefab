@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33531220595603826}
   - component: {fileID: 23865412776558692}
   m_Layer: 0
-  m_Name: Pterygoid Canal 01 1
+  m_Name: Pterygoid Canal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
