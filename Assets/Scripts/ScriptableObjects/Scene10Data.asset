@@ -15,4 +15,4 @@ MonoBehaviour:
   endSkullRotation: {x: 0, y: 0, z: 0}
   endSkullScale: {x: 100, y: 100, z: 100}
   forwardAnimationClipName: Scene9ToScene10
-  backwardAnimationClipName: 
+  backwardAnimationClipName: Scene11ToScene10
