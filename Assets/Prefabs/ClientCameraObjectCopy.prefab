@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224504241960090506}
   - component: {fileID: 20080404697806544}
   m_Layer: 0
-  m_Name: ClientCameraPrefabCopy
+  m_Name: ClientCameraObjectCopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

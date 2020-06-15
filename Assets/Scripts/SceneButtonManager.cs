@@ -14,7 +14,9 @@ public class SceneButtonManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         // isDuringSceneTransition = guidedTourManager.GetComponent<GuidedTourManager>().GetIsDuringSceneTransition();
-        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()));
+        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()))
+
+        //register subscribers to GuidedTourManager's events here
 	}
 	
 	// Update is called once per frame
@@ -32,4 +34,26 @@ public class SceneButtonManager : MonoBehaviour {
             skipButton.interactable = false;
         }
 	}
+
+    //isDuringSceneTransition
+     //          previousSceneNumberButton false
+     //         nextButton false
+     //         skip true
+     //         zoom false
+     //
+     //
+      // isOutOfSceneTransition
+     //         previous true
+     //         next true
+      //         skip false
+      //         zoom true
+     //
+      
+    //
+     // isZoomed
+     //          previous false
+     //         next false
+    //          skip false
+     //          zoom true
+     //
 }

@@ -11,11 +11,14 @@ public class GuidedTourManager : MonoBehaviour {
     int currentSceneDestination; // the current scene number
     int lastVisitedScene; // the previous scene number after a scene transition
     bool isDuringSceneTransition; // whether a scene transition is taking place or not
+    bool isInZoom;
     float distanceFromDefaultCameraPositionThreshold; // the maximum allowed distance from the default camera position before the user should be teleported
     bool isPastDistanceThreshold; // whether the user is past the aforementioned distance threshold
     Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
 
     string currentNameOfAnimationClip;
+
+    //declare "isInZoom", "isInTransition" and "isOutOfTransition" delegates and corresponding events here
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +52,22 @@ public class GuidedTourManager : MonoBehaviour {
         return isDuringSceneTransition;
     }
 
+    public void SetUpVariablesForZoomOut()
+    {
+        isInZoom = true;
+        currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].zoomOutClip;
+        CheckIfPastDistanceThreshold();
+        TransitionIntoZoom();
+    }
+
+    public void SetUpVariablesZoomIn()
+    {
+        isInZoom = false;
+        currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].zoomInClip;
+        CheckIfPastDistanceThreshold();
+        TransitionOutOfZoom();
+    }
+
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). Update() will then check these variables and handle the actual movement
     public void SetUpVariablesForPreviousSceneNumber()
     {
@@ -58,9 +77,12 @@ public class GuidedTourManager : MonoBehaviour {
             currentSceneDestination -= 1;
             // if Dante's idea doesn't work, check if transition is completed here
             isDuringSceneTransition = true;
+            //call "isInTransition" event on view
             currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             
             CheckIfPastDistanceThreshold();
+
+            TransitionToAnotherScene();
         }
     }
 
@@ -71,9 +93,12 @@ public class GuidedTourManager : MonoBehaviour {
         currentSceneDestination += 1;
         // if Dante's idea doesn't work, check if transition is completed here
         isDuringSceneTransition = true;
+        //call "isInTransition" event on view
         currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
 
         CheckIfPastDistanceThreshold();
+
+        TransitionToAnotherScene();
     }
 
     // Checks whether the user is past the distance threshold based on the default position of the user (positoin of user = position of camera)
@@ -96,10 +121,6 @@ public class GuidedTourManager : MonoBehaviour {
     // Update is called once per frame
     // If the user is in a scene transition, incrementally changes the transform value of the skull based on which scene the user wants to go to
     void Update () {
-        if (isDuringSceneTransition)
-        {
-            TransitionToAnotherScene();
-        }
 	}
 
     // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
@@ -132,7 +153,43 @@ public class GuidedTourManager : MonoBehaviour {
             Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale) <= 0.01f)
         {
             isDuringSceneTransition = false;
+            //call "isOutOfSceneTransition" event on view
         }
+    }
+
+    void TransitionIntoZoom()
+    {
+        if (isPastDistanceThreshold)
+        {
+            TeleportBackToDefaultCameraPosition();
+        }
+
+        // If Dante's idea doesn't work, this is where you check if previous scenes are completed
+
+        if (!string.IsNullOrEmpty(currentNameOfAnimationClip))
+        {
+            anim.Play(currentNameOfAnimationClip);
+        }
+
+        //call view's "isZoomed" event
+    }
+
+    void TransitionOutOfZoom()
+    {
+        if (isPastDistanceThreshold)
+        {
+            TeleportBackToDefaultCameraPosition();
+        }
+
+        // If Dante's idea doesn't work, this is where you check if previous scenes are completed
+
+        if (!string.IsNullOrEmpty(currentNameOfAnimationClip))
+        {
+            anim.Play(currentNameOfAnimationClip);
+        }
+
+        //call view's "isOutOfTransition" event
+
     }
 
     // Skips to a particular end state/scene of a transition 
@@ -142,6 +199,7 @@ public class GuidedTourManager : MonoBehaviour {
         Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
         head.transform.position = endskullPosition;
         isDuringSceneTransition = false;
+        //call "isOutOfSceneTransition" event on view
     }
 
     public void PrintCurrentSkullTransformValues()
