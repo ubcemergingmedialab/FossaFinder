@@ -9,27 +9,35 @@ public class SceneButtonManager : MonoBehaviour {
     public Button skipButton;
     public GuidedTourManager guidedTourManager;
 
-    bool isDuringSceneTransition;
+    void OnEnable()
+    {
+        GuidedTourManager.DefaultState += OnDefaultState;
+        GuidedTourManager.DuringSceneTransition += OnDuringSceneTransition;
+    }
 
-	// Use this for initialization
-	void Start () {
+    void OnDisable()
+    {
+        GuidedTourManager.DefaultState -= OnDefaultState;
+        GuidedTourManager.DuringSceneTransition -= OnDuringSceneTransition;
+    }
+
+    // Use this for initialization
+    void Start () {
         // isDuringSceneTransition = guidedTourManager.GetComponent<GuidedTourManager>().GetIsDuringSceneTransition();
         skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()));
 	}
-	
-	// Update is called once per frame
-    // Checks whether a scene transition is taking place every frame. Adjust the interactivity of the buttons accordingly.
-	void Update () {
-		if (guidedTourManager.GetIsDuringSceneTransition())
-        {
-            previousSceneNumberButton.interactable = false;
-            nextSceneNumberButton.interactable = false;
-            skipButton.interactable = true;
-        } else
-        {
-            previousSceneNumberButton.interactable = true;
-            nextSceneNumberButton.interactable = true;
-            skipButton.interactable = false;
-        }
-	}
+
+    void OnDefaultState()
+    {
+        previousSceneNumberButton.interactable = true;
+        nextSceneNumberButton.interactable = true;
+        skipButton.interactable = false;
+    }
+
+    void OnDuringSceneTransition()
+    {
+        previousSceneNumberButton.interactable = false;
+        nextSceneNumberButton.interactable = false;
+        skipButton.interactable = true;
+    }
 }

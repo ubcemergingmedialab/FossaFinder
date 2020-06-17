@@ -8630,7 +8630,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 707967612}
   m_OnClick:
     m_PersistentCalls:
@@ -19881,7 +19881,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 440099698}
-        m_MethodName: SetUpVariablesForNextSceneNumber
+        m_MethodName: TransitionToNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20849,7 +20849,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 440099698}
-        m_MethodName: SetUpVariablesForPreviousSceneNumber
+        m_MethodName: TransitionToPreviousScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

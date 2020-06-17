@@ -11,8 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene12Data
   m_EditorClassIdentifier: 
-  endSkullPosition: {x: -3.6, y: 2.31, z: 5.15}
-  endSkullRotation: {x: 0, y: 120, z: 22.5}
-  endSkullScale: {x: 120, y: 120, z: 120}
-  forwardAnimationClipName: Scene11ToScene12
+  forwardAnimationClipName: Scene11ToScene12AnimationClip
+  forwardAnimationClipLength: 20
   backwardAnimationClipName: 
+  backwardAnimationClipLength: 0

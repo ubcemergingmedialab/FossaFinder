@@ -11,15 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene4Data
   m_EditorClassIdentifier: 
-  endSkullPosition: {x: 0.15, y: 0, z: 0}
-  endSkullRotation: {x: 0, y: -90, z: 0}
-  endSkullScale: {x: 2, y: 2, z: 2}
-  forwardAnimationClipName: Scene3ToScene4
-  backwardAnimationClipName: Scene5ToScene4
-  forwardPathObject: {fileID: 1422789643448108, guid: 38175d61261e93947bade198711e9e15,
-    type: 2}
-  forwardPathDefaultPosition: {x: 0.075, y: 0, z: 0}
-  backwardPathObject: {fileID: 0}
-  backwardPathDefaultPosition: {x: 0, y: 0, z: 0}
-  forwardPathTraversalSpeed: 0.15
-  backwardPathTraversalSpeed: 0
+  forwardAnimationClipName: Scene3ToScene4AnimationClip
+  forwardAnimationClipLength: 1
+  backwardAnimationClipName: Scene5ToScene4AnimationClip
+  backwardAnimationClipLength: 1

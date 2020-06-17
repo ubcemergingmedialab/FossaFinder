@@ -8,29 +8,35 @@ public class GuidedTourManager : MonoBehaviour {
     public Animator anim;
     public SceneData[] sceneDataArray;
 
+    public delegate void DefaultStateHandler();
+    public delegate void DuringSceneTransitionHandler();
+    public delegate void DuringZoomTransitionHandler();
+    public delegate void ZoomedOutHandler();
+    public static event DefaultStateHandler DefaultState;
+    public static event DuringSceneTransitionHandler DuringSceneTransition;
+    public static event DuringZoomTransitionHandler DuringZoomTransition;
+    public static event ZoomedOutHandler ZoomedOut;
+
+    Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
     int currentSceneDestination; // the current scene number
-    int lastVisitedScene; // the previous scene number after a scene transition
-    bool isDuringSceneTransition; // whether a scene transition is taking place or not
+    string currentAnimationClipName;
+    float currentAnimationClipLength;
     float distanceFromDefaultCameraPositionThreshold; // the maximum allowed distance from the default camera position before the user should be teleported
     bool isPastDistanceThreshold; // whether the user is past the aforementioned distance threshold
-    Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
+    Coroutine runningChangeButtonStatesCoroutine;
 
-    string currentNameOfAnimationClip;
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        defaultTopDownCameraCoordinates = new Vector2(0, .5f);
         currentSceneDestination = 1;
-        lastVisitedScene = 1;
-        isDuringSceneTransition = false;
         distanceFromDefaultCameraPositionThreshold = 0.2f;
         isPastDistanceThreshold = false;
-        defaultTopDownCameraCoordinates = new Vector2(0, .5f);
 
-        StartCoroutine(Compensate());
+        StartCoroutine(AdjustCameraRigAndUserHeight());
     }
 
     // Defines the world position of the camera rig and the skull, after the position of the camera is set
-    IEnumerator Compensate()
+    IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
@@ -43,37 +49,48 @@ public class GuidedTourManager : MonoBehaviour {
         return currentSceneDestination;
     }
 
-    // Returns whether a scene transition is currently taking place.
-    public bool GetIsDuringSceneTransition()
-    {
-        return isDuringSceneTransition;
-    }
-
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). Update() will then check these variables and handle the actual movement
-    public void SetUpVariablesForPreviousSceneNumber()
+    public void TransitionToPreviousScene()
     {
         if (currentSceneDestination > 1)
         {
-            lastVisitedScene = currentSceneDestination;
             currentSceneDestination -= 1;
-            // if Dante's idea doesn't work, check if transition is completed here
-            isDuringSceneTransition = true;
-            currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
-            
-            CheckIfPastDistanceThreshold();
+            currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
+            currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
+
+            TransitionToScene();
         }
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). Update() will then check these variables and handle the actual movement
-    public void SetUpVariablesForNextSceneNumber()
+    public void TransitionToNextScene()
     {
-        lastVisitedScene = currentSceneDestination;
-        currentSceneDestination += 1;
-        // if Dante's idea doesn't work, check if transition is completed here
-        isDuringSceneTransition = true;
-        currentNameOfAnimationClip = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
+        if (currentSceneDestination < sceneDataArray.Length)
+        {
+            currentSceneDestination += 1;
+            currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
+            currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
+            TransitionToScene();
+        }
+    }
+
+    // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
+    void TransitionToScene()
+    {
         CheckIfPastDistanceThreshold();
+        if (isPastDistanceThreshold)
+        {
+            TeleportBackToDefaultCameraPosition();
+        }
+
+        if (!string.IsNullOrEmpty(currentAnimationClipName))
+        {
+            anim.Play(currentAnimationClipName);
+            DuringSceneTransition?.Invoke();
+        }
+
+        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
     // Checks whether the user is past the distance threshold based on the default position of the user (positoin of user = position of camera)
@@ -93,61 +110,19 @@ public class GuidedTourManager : MonoBehaviour {
         isPastDistanceThreshold = false;
     }
 
-    // Update is called once per frame
-    // If the user is in a scene transition, incrementally changes the transform value of the skull based on which scene the user wants to go to
-    void Update () {
-        if (isDuringSceneTransition)
-        {
-            TransitionToAnotherScene();
-        }
-	}
-
-    // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
-    void TransitionToAnotherScene()
+    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
     {
-        if (isPastDistanceThreshold)
-        {
-            TeleportBackToDefaultCameraPosition();
-        }
-
-        // If Dante's idea doesn't work, this is where you check if previous scenes are completed
-
-        if (!string.IsNullOrEmpty(currentNameOfAnimationClip))
-        {
-            anim.Play(currentNameOfAnimationClip);
-        }
-
-        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
-        //Debug.Log("current position.y: " + head.transform.position.y);
-        //Debug.Log("end position.y: " + endskullPosition.y);
-        //Debug.Log("Difference between current and end position: " + Vector3.Distance(head.transform.position, endskullPosition));
-        //Debug.Log("Difference between current and end rotation x: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)));
-        //Debug.Log("Difference between current and end rotation y: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].endSkullRotation.y)));
-        //Debug.Log("Difference between current and end rotation z: " + Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].endSkullRotation.z)));
-        //Debug.Log("Difference between current and end scale: " + Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale));
-        if (Vector3.Distance(head.transform.position, endskullPosition) <= 0.01f && 
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.x, sceneDataArray[currentSceneDestination - 1].endSkullRotation.x)) <= 0.01f &&
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.y, sceneDataArray[currentSceneDestination - 1].endSkullRotation.y)) <= 0.01f && 
-            Mathf.Abs(Mathf.DeltaAngle(head.transform.rotation.eulerAngles.z, sceneDataArray[currentSceneDestination - 1].endSkullRotation.z)) <= 0.01f &&
-            Vector3.Distance(head.transform.localScale, sceneDataArray[currentSceneDestination - 1].endSkullScale) <= 0.01f)
-        {
-            isDuringSceneTransition = false;
-        }
+        yield return new WaitForSeconds(currentAnimationClipLength);
+        DefaultState?.Invoke();
     }
 
     // Skips to a particular end state/scene of a transition 
     public void SkipToScene(int sceneNumber)
     {
-        anim.Play(currentNameOfAnimationClip, -1, 1);
-        Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
-        head.transform.position = endskullPosition;
-        isDuringSceneTransition = false;
-    }
-
-    public void PrintCurrentSkullTransformValues()
-    {
-        Debug.Log("Current position: " + head.transform.localPosition.ToString("F8"));
-        Debug.Log("Current rotation: " + head.transform.localRotation.ToString("F8"));
-        Debug.Log("Current scale: " + head.transform.localScale.ToString("F8"));
+        StopCoroutine(runningChangeButtonStatesCoroutine);
+        anim.Play(currentAnimationClipName, -1, 1);
+        //Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
+        //head.transform.position = endskullPosition;
+        DefaultState?.Invoke();
     }
 }
