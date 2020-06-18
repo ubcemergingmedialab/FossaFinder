@@ -17,20 +17,17 @@ public class GuidedTourManager : MonoBehaviour {
     public static event DuringZoomTransitionHandler DuringZoomTransition;
     public static event ZoomedOutHandler ZoomedOut;
 
-    Vector2 defaultTopDownCameraCoordinates; // the top down coordinates (x and z values only) of the default camera position
-    int currentSceneDestination; // the current scene number
+    Vector3 adjustedCameraPosition;
+    int currentSceneDestination; // the current scene destination number
     string currentAnimationClipName;
     float currentAnimationClipLength;
-    float distanceFromDefaultCameraPositionThreshold; // the maximum allowed distance from the default camera position before the user should be teleported
-    bool isPastDistanceThreshold; // whether the user is past the aforementioned distance threshold
+    float distanceFromAdjustedCameraPositionThreshold;
     Coroutine runningChangeButtonStatesCoroutine;
 
     // Use this for initialization
     void Start () {
-        defaultTopDownCameraCoordinates = new Vector2(0, .5f);
         currentSceneDestination = 1;
-        distanceFromDefaultCameraPositionThreshold = 0.2f;
-        isPastDistanceThreshold = false;
+        distanceFromAdjustedCameraPositionThreshold = 0.2f;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -39,17 +36,19 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
+        Debug.Log(adjustedCameraPosition);
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
         headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        adjustedCameraPosition = mainCamera.transform.position;
     }
 
-    // Returns the current scene number.
+    // Returns the current scene number
     public int GetCurrentSceneDestination()
     {
         return currentSceneDestination;
     }
 
-    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). Update() will then check these variables and handle the actual movement
+    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToPreviousScene()
     {
         if (currentSceneDestination > 1)
@@ -58,11 +57,11 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
 
-            TransitionToScene();
+            TransitionToAnotherScene();
         }
     }
 
-    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). Update() will then check these variables and handle the actual movement
+    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToNextScene()
     {
         if (currentSceneDestination < sceneDataArray.Length)
@@ -71,18 +70,14 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
-            TransitionToScene();
+            TransitionToAnotherScene();
         }
     }
 
-    // Checks whether the user needs to be teleported first. Then, incrementally changes the transform values of the skull based on which scene the user wants to go to
-    void TransitionToScene()
+    // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
+    void TransitionToAnotherScene()
     {
-        CheckIfPastDistanceThreshold();
-        if (isPastDistanceThreshold)
-        {
-            TeleportBackToDefaultCameraPosition();
-        }
+        AdjustSkullPositionIfPastThreshold();
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
@@ -93,21 +88,15 @@ public class GuidedTourManager : MonoBehaviour {
         runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
-    // Checks whether the user is past the distance threshold based on the default position of the user (positoin of user = position of camera)
-    void CheckIfPastDistanceThreshold()
+    void AdjustSkullPositionIfPastThreshold()
     {
-        Vector2 currentTopDownCameraCoordinates = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.z);
-        if (Vector2.Distance(currentTopDownCameraCoordinates, defaultTopDownCameraCoordinates) > distanceFromDefaultCameraPositionThreshold)
+        Vector3 currentCameraPosition = mainCamera.transform.position;
+        if (Vector3.Distance(currentCameraPosition, adjustedCameraPosition) > distanceFromAdjustedCameraPositionThreshold)
         {
-            isPastDistanceThreshold = true;
+            Vector3 offset = new Vector3(currentCameraPosition.x - adjustedCameraPosition.x, currentCameraPosition.y - adjustedCameraPosition.y, currentCameraPosition.z - adjustedCameraPosition.z);
+            headContainer.transform.position += offset;
+            adjustedCameraPosition = mainCamera.transform.position;
         }
-    }
-
-    // Teleports the user back to its default position
-    void TeleportBackToDefaultCameraPosition()
-    {
-        cameraRig.transform.position = new Vector3(0, cameraRig.transform.position.y, .5f) - new Vector3(mainCamera.GetComponent<SteamVR_Camera>().head.position.x - cameraRig.transform.position.x, 0, mainCamera.GetComponent<SteamVR_Camera>().head.position.z - cameraRig.transform.position.z);
-        isPastDistanceThreshold = false;
     }
 
     IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
@@ -121,8 +110,6 @@ public class GuidedTourManager : MonoBehaviour {
     {
         StopCoroutine(runningChangeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
-        //Vector3 endskullPosition = new Vector3(sceneDataArray[currentSceneDestination - 1].endSkullPosition.x, sceneDataArray[currentSceneDestination - 1].endSkullPosition.y + head.transform.position.y, sceneDataArray[currentSceneDestination - 1].endSkullPosition.z);
-        //head.transform.position = endskullPosition;
         DefaultState?.Invoke();
     }
 }
