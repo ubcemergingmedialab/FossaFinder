@@ -39,7 +39,7 @@
             if (showlabel)
             {
                 Label.SetActive(true);
-                print("triggered11");
+                //print("triggered11");
             }
             else { Label.SetActive(false); }
         }
