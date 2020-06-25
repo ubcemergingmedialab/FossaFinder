@@ -7,6 +7,8 @@ public class GuidedTourManager : MonoBehaviour {
     public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
+    public Material highlightmaterial;
+    public Material defaultmaterial;
 
     public delegate void DefaultStateHandler();
     public delegate void DuringSceneTransitionHandler();
@@ -50,6 +52,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToPreviousScene()
     {
+        Cleanthehighlights();
         if (currentSceneDestination > 1)
         {
             currentSceneDestination -= 1;
@@ -63,11 +66,14 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToNextScene()
     {
+        Cleanthehighlights();
         if (currentSceneDestination < sceneDataArray.Length)
         {
             currentSceneDestination += 1;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
+
+            
 
             TransitionToAnotherScene();
         }
@@ -77,6 +83,18 @@ public class GuidedTourManager : MonoBehaviour {
     void TransitionToAnotherScene()
     {
         AdjustSkullPositionIfPastThreshold();
+        if (sceneDataArray[currentSceneDestination - 1].highlights.Length != 0)
+        {
+            GameObject target;
+            Renderer rend;
+            foreach (string highlight in sceneDataArray[currentSceneDestination - 1].highlights)
+            {
+                //print(highlight);
+                target = GameObject.Find(highlight);
+                rend = target.GetComponent<Renderer>();
+                rend.material = highlightmaterial;
+            }
+        }
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
@@ -87,6 +105,13 @@ public class GuidedTourManager : MonoBehaviour {
         runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
+    void Cleanthehighlights() {
+        GameObject[] all= GameObject.FindGameObjectsWithTag("highlight");
+        foreach (GameObject highlight in all) {
+            highlight.GetComponent<Renderer>().material = defaultmaterial;
+        
+        }
+    }
     void AdjustSkullPositionIfPastThreshold()
     {
         Vector3 currentCameraPosition = mainCamera.transform.position;

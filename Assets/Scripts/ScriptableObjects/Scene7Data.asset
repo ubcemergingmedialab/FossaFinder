@@ -15,3 +15,5 @@ MonoBehaviour:
   forwardAnimationClipLength: 15
   backwardAnimationClipName: Scene8ToScene7AnimationClip
   backwardAnimationClipLength: 5
+  highlights:
+  - Sphenopalatine_Foramen

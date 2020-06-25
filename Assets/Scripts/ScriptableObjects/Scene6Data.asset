@@ -15,3 +15,5 @@ MonoBehaviour:
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene7ToScene6AnimationClip
   backwardAnimationClipLength: 15
+  highlights:
+  - Ptergomaxillary_Fissure

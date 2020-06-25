@@ -15,3 +15,5 @@ MonoBehaviour:
   forwardAnimationClipLength: 20
   backwardAnimationClipName: 
   backwardAnimationClipLength: 0
+  highlights:
+  - Inferior_Orbital_Fissure

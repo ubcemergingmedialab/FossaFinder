@@ -15,3 +15,7 @@ MonoBehaviour:
   forwardAnimationClipLength: 6
   backwardAnimationClipName: Scene10ToScene9AnimationClip
   backwardAnimationClipLength: 20
+  highlights:
+  - Foramen_Rotundum
+  - Superior_Orbital_Fissure
+  - Pterygoid_Canal

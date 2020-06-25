@@ -39,6 +39,7 @@
             if (showlabel)
             {
                 Label.SetActive(true);
+                print("triggered11");
             }
             else { Label.SetActive(false); }
         }
@@ -47,6 +48,7 @@
         {
             showlabel = true;
             //Label.SetActive(true);
+            print("triggered");
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)

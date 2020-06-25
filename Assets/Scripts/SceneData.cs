@@ -9,4 +9,5 @@ public class SceneData : ScriptableObject {
     public float forwardAnimationClipLength;
     public string backwardAnimationClipName;
     public float backwardAnimationClipLength;
+    public string[] highlights;
 }
