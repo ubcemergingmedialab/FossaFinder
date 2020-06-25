@@ -17395,6 +17395,7 @@ GameObject:
   - component: {fileID: 1318038131}
   - component: {fileID: 1318038130}
   - component: {fileID: 1318038129}
+  - component: {fileID: 1318038133}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -17481,6 +17482,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1318038133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318038127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32642724c1719444826991e4ff8fccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStartSampling: 1
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 10
 --- !u!1 &1324479462
 GameObject:
   m_ObjectHideFlags: 0
@@ -19252,6 +19267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516734280}
+  - component: {fileID: 1516734281}
   m_Layer: 0
   m_Name: Highlights
   m_TagString: Untagged
@@ -19279,6 +19295,19 @@ Transform:
   m_Father: {fileID: 1228305732}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516734281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516734279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e383ec818b390e49bb6dd354e62cca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 391f7a939c15b5a489a44a05ca95a449, type: 2}
 --- !u!1 &1519208245
 GameObject:
   m_ObjectHideFlags: 0

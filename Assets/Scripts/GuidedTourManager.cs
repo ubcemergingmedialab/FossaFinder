@@ -14,10 +14,12 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DuringSceneTransitionHandler();
     public delegate void DuringZoomTransitionHandler();
     public delegate void ZoomedOutHandler();
+    public delegate void SetHighlightsHandler(string[] names);
     public static event DefaultStateHandler DefaultState;
     public static event DuringSceneTransitionHandler DuringSceneTransition;
     public static event DuringZoomTransitionHandler DuringZoomTransition;
     public static event ZoomedOutHandler ZoomedOut;
+    public static event SetHighlightsHandler SetHighlights;
 
     Vector3 adjustedCameraPosition;
     int currentSceneDestination; // the current scene destination number
@@ -83,6 +85,7 @@ public class GuidedTourManager : MonoBehaviour {
     void TransitionToAnotherScene()
     {
         AdjustSkullPositionIfPastThreshold();
+        /*
         if (sceneDataArray[currentSceneDestination - 1].highlights.Length != 0)
         {
             GameObject target;
@@ -94,12 +97,13 @@ public class GuidedTourManager : MonoBehaviour {
                 rend = target.GetComponent<Renderer>();
                 rend.material = highlightmaterial;
             }
-        }
+        }*/
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
             anim.Play(currentAnimationClipName);
             DuringSceneTransition?.Invoke();
+            SetHighlights?.Invoke(sceneDataArray[currentSceneDestination - 1].highlights);
         }
 
         runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
