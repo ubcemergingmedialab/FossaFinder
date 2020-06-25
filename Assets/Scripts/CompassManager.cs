@@ -13,11 +13,11 @@ public class CompassManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         offset = 0.01f;
-	}
-	
-	// Update is called once per frame
-	void Update () {
         radius = GetComponent<SphereCollider>().radius;
+    }
+
+    // Update is called once per frame
+    void Update () {
         pointer.transform.position = transform.position + (radius + offset) * (entrance.transform.position - transform.position) / Vector3.Magnitude(entrance.transform.position - transform.position);
         pointer.transform.LookAt(entrance.transform, Vector3.left);
 	}
