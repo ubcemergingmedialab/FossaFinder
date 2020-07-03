@@ -4,6 +4,12 @@ using UnityEngine;
 using PathCreation;
 
 public class GuidedTourManager : MonoBehaviour {
+    private static GuidedTourManager _instance;
+    public static GuidedTourManager Instance
+    {
+        get { return _instance; }
+    }
+
     public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
@@ -19,14 +25,27 @@ public class GuidedTourManager : MonoBehaviour {
 
     Vector3 adjustedCameraPosition;
     int currentSceneDestination; // the current scene destination number
+    static bool isDuringSceneTransition;
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
     Coroutine runningChangeButtonStatesCoroutine;
 
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Use this for initialization
     void Start () {
         currentSceneDestination = 1;
+        isDuringSceneTransition = false;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
@@ -47,12 +66,18 @@ public class GuidedTourManager : MonoBehaviour {
         return currentSceneDestination;
     }
 
+    public bool GetIsDuringSceneTransition()
+    {
+        return isDuringSceneTransition;
+    }
+
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToPreviousScene()
     {
         if (currentSceneDestination > 1)
         {
             currentSceneDestination -= 1;
+            isDuringSceneTransition = true;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
 
@@ -66,6 +91,7 @@ public class GuidedTourManager : MonoBehaviour {
         if (currentSceneDestination < sceneDataArray.Length)
         {
             currentSceneDestination += 1;
+            isDuringSceneTransition = true;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
@@ -74,7 +100,7 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
-    void TransitionToAnotherScene()
+    void TransitionToAnotherScene() //PlaySceneTransitionAnimation()?
     {
         AdjustSkullPositionIfPastThreshold();
 
@@ -101,6 +127,7 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
     {
         yield return new WaitForSeconds(currentAnimationClipLength);
+        isDuringSceneTransition = false;
         DefaultState?.Invoke();
     }
 
@@ -109,6 +136,27 @@ public class GuidedTourManager : MonoBehaviour {
     {
         StopCoroutine(runningChangeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
+        isDuringSceneTransition = false;
         DefaultState?.Invoke();
+    }
+
+    public void SkipTransition()
+    {
+
+    }
+
+    public void ZoomInToCurrentScene()
+    {
+
+    }
+
+    public void ZoomOutFromCurrentScene()
+    {
+
+    }
+
+    public void PlayZoomTransitionAnimation()
+    {
+
     }
 }
