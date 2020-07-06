@@ -4,11 +4,15 @@ using UnityEngine;
 using PathCreation;
 
 public class GuidedTourManager : MonoBehaviour {
+    private static GuidedTourManager _instance;
+    public static GuidedTourManager Instance
+    {
+        get { return _instance; }
+    }
+
     public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
-    public Material highlightmaterial;
-    public Material defaultmaterial;
 
     public delegate void DefaultStateHandler();
     public delegate void DuringSceneTransitionHandler();
@@ -25,14 +29,27 @@ public class GuidedTourManager : MonoBehaviour {
 
     Vector3 adjustedCameraPosition;
     int currentSceneDestination; // the current scene destination number
+    static bool isDuringSceneTransition;
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
     Coroutine runningChangeButtonStatesCoroutine;
 
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Use this for initialization
     void Start () {
         currentSceneDestination = 1;
+        isDuringSceneTransition = false;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
@@ -53,53 +70,53 @@ public class GuidedTourManager : MonoBehaviour {
         return currentSceneDestination;
     }
 
-    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
-    public void TransitionToPreviousScene()
+    public bool GetIsDuringSceneTransition()
     {
-        //Cleanthehighlights();
+        return isDuringSceneTransition;
+    }
+
+    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
+    public void VisitPreviousScene()
+    {
         if (currentSceneDestination > 1)
         {
             currentSceneDestination -= 1;
+            isDuringSceneTransition = true;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
 
-            TransitionToAnotherScene();
+            PlayTransition();
         }
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
-    public void TransitionToNextScene()
+    public void VisitNextScene()
     {
-       //Cleanthehighlights();
         if (currentSceneDestination < sceneDataArray.Length)
         {
             currentSceneDestination += 1;
+            isDuringSceneTransition = true;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
-            
-
-            TransitionToAnotherScene();
+            PlayTransition();
         }
     }
 
+    public void ZoomInToCurrentScene()
+    {
+
+    }
+
+    public void ZoomOutFromCurrentScene()
+    {
+
+    }
+
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
-    void TransitionToAnotherScene()
+    void PlayTransition()
     {
         AdjustSkullPositionIfPastThreshold();
-        /*
-        if (sceneDataArray[currentSceneDestination - 1].highlights.Length != 0)
-        {
-            GameObject target;
-            Renderer rend;
-            foreach (string highlight in sceneDataArray[currentSceneDestination - 1].highlights)
-            {
-                //print(highlight);
-                target = GameObject.Find(highlight);
-                rend = target.GetComponent<Renderer>();
-                rend.material = highlightmaterial;
-            }
-        }*/
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
@@ -109,16 +126,9 @@ public class GuidedTourManager : MonoBehaviour {
             SetBoundaries?.Invoke(sceneDataArray[currentSceneDestination - 1].boundaries);
         }
 
-        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
+        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
     }
 
-    //void Cleanthehighlights() {
-    //    GameObject[] all= GameObject.FindGameObjectsWithTag("highlight");
-    //    foreach (GameObject highlight in all) {
-    //        highlight.GetComponent<Renderer>().material = defaultmaterial;
-        
-    //    }
-    //}
     void AdjustSkullPositionIfPastThreshold()
     {
         Vector3 currentCameraPosition = mainCamera.transform.position;
@@ -130,9 +140,10 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
+    IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
     {
         yield return new WaitForSeconds(currentAnimationClipLength);
+        isDuringSceneTransition = false;
         DefaultState?.Invoke();
     }
 
@@ -141,6 +152,12 @@ public class GuidedTourManager : MonoBehaviour {
     {
         StopCoroutine(runningChangeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
+        isDuringSceneTransition = false;
         DefaultState?.Invoke();
+    }
+
+    public void SkipTransition()
+    {
+
     }
 }
