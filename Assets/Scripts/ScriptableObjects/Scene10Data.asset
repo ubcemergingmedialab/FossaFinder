@@ -17,3 +17,5 @@ MonoBehaviour:
   backwardAnimationClipLength: 20
   highlights:
   - Palatovaginal_Canal
+  boundaries:
+  - Medial_Wall

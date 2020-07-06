@@ -15,3 +15,7 @@ MonoBehaviour:
   forwardAnimationClipLength: 20
   backwardAnimationClipName: Scene12ToScene11AnimationClip
   backwardAnimationClipLength: 20
+  highlights:
+  - Palatine_Canal
+  boundaries:
+  - Medial_Wall

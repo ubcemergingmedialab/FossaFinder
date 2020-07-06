@@ -15,11 +15,13 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DuringZoomTransitionHandler();
     public delegate void ZoomedOutHandler();
     public delegate void SetHighlightsHandler(string[] names);
+    public delegate void SetBoundarisHandler(string[] names);
     public static event DefaultStateHandler DefaultState;
     public static event DuringSceneTransitionHandler DuringSceneTransition;
     public static event DuringZoomTransitionHandler DuringZoomTransition;
     public static event ZoomedOutHandler ZoomedOut;
     public static event SetHighlightsHandler SetHighlights;
+    public static event SetBoundarisHandler SetBoundaries;
 
     Vector3 adjustedCameraPosition;
     int currentSceneDestination; // the current scene destination number
@@ -54,7 +56,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToPreviousScene()
     {
-        Cleanthehighlights();
+        //Cleanthehighlights();
         if (currentSceneDestination > 1)
         {
             currentSceneDestination -= 1;
@@ -68,7 +70,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
     public void TransitionToNextScene()
     {
-        Cleanthehighlights();
+       //Cleanthehighlights();
         if (currentSceneDestination < sceneDataArray.Length)
         {
             currentSceneDestination += 1;
@@ -104,18 +106,19 @@ public class GuidedTourManager : MonoBehaviour {
             anim.Play(currentAnimationClipName);
             DuringSceneTransition?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneDestination - 1].highlights);
+            SetBoundaries?.Invoke(sceneDataArray[currentSceneDestination - 1].boundaries);
         }
 
         runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
-    void Cleanthehighlights() {
-        GameObject[] all= GameObject.FindGameObjectsWithTag("highlight");
-        foreach (GameObject highlight in all) {
-            highlight.GetComponent<Renderer>().material = defaultmaterial;
+    //void Cleanthehighlights() {
+    //    GameObject[] all= GameObject.FindGameObjectsWithTag("highlight");
+    //    foreach (GameObject highlight in all) {
+    //        highlight.GetComponent<Renderer>().material = defaultmaterial;
         
-        }
-    }
+    //    }
+    //}
     void AdjustSkullPositionIfPastThreshold()
     {
         Vector3 currentCameraPosition = mainCamera.transform.position;

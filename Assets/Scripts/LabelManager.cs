@@ -12,6 +12,12 @@ public class LabelManager : MonoBehaviour {
         GuidedTourManager.DuringSceneTransition += DisableLabels;
 
     }
+
+    void OnDisable()
+    {
+        GuidedTourManager.DuringSceneTransition -= DisableLabels;
+    }
+
     //initialize list
     public void Start()
     {
@@ -22,8 +28,6 @@ public class LabelManager : MonoBehaviour {
             print(child.name);
         }
         int z = availableLabels.Count;
-        print("children number");
-        print(z);
     }
 
     void DisableLabels()

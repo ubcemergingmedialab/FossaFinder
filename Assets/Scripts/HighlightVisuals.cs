@@ -14,6 +14,13 @@ public class HighlightVisuals : MonoBehaviour {
         GuidedTourManager.SetHighlights += EnableHighlights;
 
     }
+
+    public void OnDisable()
+    {
+        GuidedTourManager.SetHighlights -= EnableHighlights;
+
+    }
+
     //initialize list
     public void Start()
     {

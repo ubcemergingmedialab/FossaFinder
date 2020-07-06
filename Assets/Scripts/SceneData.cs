@@ -10,4 +10,5 @@ public class SceneData : ScriptableObject {
     public string backwardAnimationClipName;
     public float backwardAnimationClipLength;
     public string[] highlights;
+    public string[] boundaries;
 }

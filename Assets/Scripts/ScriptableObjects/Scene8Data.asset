@@ -17,3 +17,5 @@ MonoBehaviour:
   backwardAnimationClipLength: 6
   highlights:
   - Sphenopalatine_Foramen
+  boundaries:
+  - Medial_Wall
