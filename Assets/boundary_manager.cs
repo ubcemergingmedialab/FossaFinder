@@ -7,9 +7,9 @@ public class boundary_manager : MonoBehaviour
 
     private Dictionary<string, GameObject> availableBoundaries;
     public Material defaultMaterial;
-    public Material highlightMaterial1;
-    public Material highlightMaterial2;
-    public Material highlightMaterial3;
+    //public Material highlightMaterial1;
+    //public Material highlightMaterial2;
+    //public Material highlightMaterial3;
 
 
     public void OnEnable()
@@ -38,11 +38,11 @@ public class boundary_manager : MonoBehaviour
     {
         foreach (KeyValuePair<string, GameObject> pair in availableBoundaries)
         {
-            pair.Value.GetComponent<Renderer>().material = defaultMaterial;
+            pair.Value.SetActive(false);
         }
         foreach (string name in names)
         {
-            availableBoundaries[name].GetComponent<Renderer>().material = highlightMaterial1;
+           availableBoundaries[name].SetActive(true);
         }
     }
 }

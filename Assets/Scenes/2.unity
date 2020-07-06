@@ -4161,8 +4161,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3b095fe97c427a4697edae14ae9d4b1, type: 2}
   - {fileID: 11400000, guid: 1e9baa366b7ba35468a8497d587bdfbf, type: 2}
   - {fileID: 11400000, guid: 51259a63129febf418071257f01efcb6, type: 2}
-  highlightmaterial: {fileID: 2100000, guid: 391f7a939c15b5a489a44a05ca95a449, type: 2}
-  defaultmaterial: {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
 --- !u!4 &440099699
 Transform:
   m_ObjectHideFlags: 0
@@ -9403,7 +9401,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
+  - {fileID: 2100000, guid: e5c6865bb9456244da81c446f97fce81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13639,7 +13637,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
+  - {fileID: 2100000, guid: ebec9785c3fbf034992761fbec27e7be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14830,7 +14828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1245672618
 Transform:
   m_ObjectHideFlags: 0
@@ -15712,17 +15710,17 @@ Prefab:
     - target: {fileID: 114575446238718476, guid: b59ec39608e20f844b490aa06b9f09cc,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114596844116564180, guid: b59ec39608e20f844b490aa06b9f09cc,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114686631397889664, guid: b59ec39608e20f844b490aa06b9f09cc,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1284490537919968, guid: b59ec39608e20f844b490aa06b9f09cc, type: 2}
       propertyPath: m_IsActive
@@ -15731,7 +15729,7 @@ Prefab:
     - target: {fileID: 114906841515856746, guid: b59ec39608e20f844b490aa06b9f09cc,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224470515930143078, guid: b59ec39608e20f844b490aa06b9f09cc,
         type: 2}
@@ -17840,7 +17838,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
+  - {fileID: 2100000, guid: 43d9231a6063d7f43b65004ed75e58ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19042,7 +19040,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 440099698}
-        m_MethodName: TransitionToNextScene
+        m_MethodName: VisitNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19829,7 +19827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 440099698}
-        m_MethodName: TransitionToPreviousScene
+        m_MethodName: VisitPreviousScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22354,9 +22352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
-  highlightMaterial1: {fileID: 2100000, guid: e5c6865bb9456244da81c446f97fce81, type: 2}
-  highlightMaterial2: {fileID: 2100000, guid: ebec9785c3fbf034992761fbec27e7be, type: 2}
-  highlightMaterial3: {fileID: 2100000, guid: 43d9231a6063d7f43b65004ed75e58ee, type: 2}
 --- !u!1 &1867355208
 GameObject:
   m_ObjectHideFlags: 0
