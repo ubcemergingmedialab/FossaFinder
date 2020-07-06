@@ -72,7 +72,7 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
-    public void TransitionToPreviousScene()
+    public void VisitPreviousScene()
     {
         if (currentSceneDestination > 1)
         {
@@ -81,12 +81,12 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
 
-            TransitionToAnotherScene();
+            PlayTransition();
         }
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
-    public void TransitionToNextScene()
+    public void VisitNextScene()
     {
         if (currentSceneDestination < sceneDataArray.Length)
         {
@@ -95,12 +95,22 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
-            TransitionToAnotherScene();
+            PlayTransition();
         }
     }
 
+    public void ZoomInToCurrentScene()
+    {
+
+    }
+
+    public void ZoomOutFromCurrentScene()
+    {
+
+    }
+
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
-    void TransitionToAnotherScene() //PlaySceneTransitionAnimation()?
+    void PlayTransition()
     {
         AdjustSkullPositionIfPastThreshold();
 
@@ -110,7 +120,7 @@ public class GuidedTourManager : MonoBehaviour {
             DuringSceneTransition?.Invoke();
         }
 
-        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
+        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -124,7 +134,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
+    IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
     {
         yield return new WaitForSeconds(currentAnimationClipLength);
         isDuringSceneTransition = false;
@@ -141,21 +151,6 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     public void SkipTransition()
-    {
-
-    }
-
-    public void ZoomInToCurrentScene()
-    {
-
-    }
-
-    public void ZoomOutFromCurrentScene()
-    {
-
-    }
-
-    public void PlayZoomTransitionAnimation()
     {
 
     }

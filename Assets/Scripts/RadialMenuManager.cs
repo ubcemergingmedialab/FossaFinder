@@ -7,9 +7,9 @@ public class RadialMenuManager : MonoBehaviour {
     enum ButtonMode
     {
         None,
-        GotoNextScene,
+        NextScene,
         ZoomIn,
-        GotoPreviousScene,
+        PreviousScene,
         ZoomOut,
         SkipNextSceneTransition,
         SkipPreviousSceneTransition
@@ -52,11 +52,11 @@ public class RadialMenuManager : MonoBehaviour {
         float angle = Vector2.SignedAngle(Vector2.right, thumbStickCoordinates);
         if (-45 <= angle && angle <= 45 && isRightButtonActive)
         {
-            if (currentSelectedButtonMode != ButtonMode.GotoNextScene)
+            if (currentSelectedButtonMode != ButtonMode.NextScene)
             {
                 StopCoroutine(runningCoroutine);
                 HighlightCurrentSelectedButton();
-                currentSelectedButtonMode = ButtonMode.GotoNextScene;
+                currentSelectedButtonMode = ButtonMode.NextScene;
                 runningCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
             } else if (guidedTourManager.GetIsDuringSceneTransition() && currentSelectedButtonMode != ButtonMode.SkipNextSceneTransition)
             {
@@ -72,11 +72,11 @@ public class RadialMenuManager : MonoBehaviour {
             }
         } else if ((angle >= 125 || angle <= -125) && isLeftButtonActive)
         {
-            if (currentSelectedButtonMode != ButtonMode.GotoPreviousScene)
+            if (currentSelectedButtonMode != ButtonMode.PreviousScene)
             {
                 StopCoroutine(runningCoroutine);
                 HighlightCurrentSelectedButton();
-                currentSelectedButtonMode = ButtonMode.GotoPreviousScene;
+                currentSelectedButtonMode = ButtonMode.PreviousScene;
                 runningCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
             }
             else if (guidedTourManager.GetIsDuringSceneTransition() && currentSelectedButtonMode != ButtonMode.SkipPreviousSceneTransition)
@@ -102,10 +102,10 @@ public class RadialMenuManager : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         switch (currentSelectedButtonMode)
         {
-            case ButtonMode.GotoNextScene:
+            case ButtonMode.NextScene:
                 currentSelectedButtonMode = ButtonMode.SkipNextSceneTransition;
                 break;
-            case ButtonMode.GotoPreviousScene:
+            case ButtonMode.PreviousScene:
                 currentSelectedButtonMode = ButtonMode.SkipPreviousSceneTransition;
                 break;
         }
@@ -121,14 +121,14 @@ public class RadialMenuManager : MonoBehaviour {
         DehighlightCurrentSelectedButton();
         switch (currentSelectedButtonMode)
         {
-            case ButtonMode.GotoNextScene:
-                guidedTourManager.TransitionToNextScene();
+            case ButtonMode.NextScene:
+                guidedTourManager.VisitNextScene();
                 break;
             case ButtonMode.ZoomIn:
                 guidedTourManager.ZoomInToCurrentScene();
                 break;
-            case ButtonMode.GotoPreviousScene:
-                guidedTourManager.TransitionToPreviousScene();
+            case ButtonMode.PreviousScene:
+                guidedTourManager.VisitPreviousScene();
                 break;
             case ButtonMode.ZoomOut:
                 guidedTourManager.ZoomOutFromCurrentScene();
