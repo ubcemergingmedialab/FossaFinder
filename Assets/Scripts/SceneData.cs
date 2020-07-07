@@ -9,6 +9,10 @@ public class SceneData : ScriptableObject {
     public float forwardAnimationClipLength;
     public string backwardAnimationClipName;
     public float backwardAnimationClipLength;
+    public string ZoomOutAnimationClipName;
+    public float ZoomOutAnimationClipLength;
+    public string ZoomInAnimationClipName;
+    public float ZoomIndAnimationClipLength;
     public string[] highlights;
     public string[] boundaries;
 }

@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
+public enum TransitionType
+{
+    None,
+    Forward,
+    Backward,
+    Outward,
+    Inward
+}
+
 public class GuidedTourManager : MonoBehaviour {
+
     private static GuidedTourManager _instance;
     public static GuidedTourManager Instance
     {
@@ -15,21 +25,20 @@ public class GuidedTourManager : MonoBehaviour {
     public SceneData[] sceneDataArray;
 
     public delegate void DefaultStateHandler();
-    public delegate void DuringSceneTransitionHandler();
-    public delegate void DuringZoomTransitionHandler();
+    public delegate void DuringTransitionHandler();
     public delegate void ZoomedOutHandler();
     public delegate void SetHighlightsHandler(string[] names);
     public delegate void SetBoundarisHandler(string[] names);
     public static event DefaultStateHandler DefaultState;
-    public static event DuringSceneTransitionHandler DuringSceneTransition;
-    public static event DuringZoomTransitionHandler DuringZoomTransition;
+    public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
     public static event SetHighlightsHandler SetHighlights;
     public static event SetBoundarisHandler SetBoundaries;
 
     Vector3 adjustedCameraPosition;
     int currentSceneDestination; // the current scene destination number
-    static bool isDuringSceneTransition;
+    static bool isDuringTransition;
+    TransitionType currentTransitionType;
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
@@ -49,7 +58,8 @@ public class GuidedTourManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentSceneDestination = 1;
-        isDuringSceneTransition = false;
+        isDuringTransition = false;
+        currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
@@ -70,9 +80,15 @@ public class GuidedTourManager : MonoBehaviour {
         return currentSceneDestination;
     }
 
-    public bool GetIsDuringSceneTransition()
+    public bool GetIsDuringTransition()
     {
-        return isDuringSceneTransition;
+        return isDuringTransition;
+    }
+
+    public TransitionType GetCurrentTransitionType()
+    {
+
+        return currentTransitionType;
     }
 
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
@@ -81,7 +97,8 @@ public class GuidedTourManager : MonoBehaviour {
         if (currentSceneDestination > 1)
         {
             currentSceneDestination -= 1;
-            isDuringSceneTransition = true;
+            isDuringTransition = true;
+            currentTransitionType = TransitionType.Backward;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
 
@@ -95,7 +112,8 @@ public class GuidedTourManager : MonoBehaviour {
         if (currentSceneDestination < sceneDataArray.Length)
         {
             currentSceneDestination += 1;
-            isDuringSceneTransition = true;
+            isDuringTransition = true;
+            currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
 
@@ -105,12 +123,22 @@ public class GuidedTourManager : MonoBehaviour {
 
     public void ZoomInToCurrentScene()
     {
+        isDuringTransition = true;
+        currentTransitionType = TransitionType.Inward;
+        currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName; // Need to change
+        currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength; // Need to change
 
+        PlayTransition();
     }
 
     public void ZoomOutFromCurrentScene()
     {
+        isDuringTransition = true;
+        currentTransitionType = TransitionType.Outward;
+        currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName; // Need to change
+        currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength; // Need to change
 
+        PlayTransition();
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
@@ -121,7 +149,7 @@ public class GuidedTourManager : MonoBehaviour {
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
             anim.Play(currentAnimationClipName);
-            DuringSceneTransition?.Invoke();
+            DuringTransition?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneDestination - 1].highlights);
             SetBoundaries?.Invoke(sceneDataArray[currentSceneDestination - 1].boundaries);
         }
@@ -143,7 +171,8 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
     {
         yield return new WaitForSeconds(currentAnimationClipLength);
-        isDuringSceneTransition = false;
+        isDuringTransition = false;
+        currentTransitionType = TransitionType.None;
         DefaultState?.Invoke();
     }
 
@@ -152,12 +181,15 @@ public class GuidedTourManager : MonoBehaviour {
     {
         StopCoroutine(runningChangeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
-        isDuringSceneTransition = false;
+        isDuringTransition = false;
         DefaultState?.Invoke();
     }
 
     public void SkipTransition()
     {
-
+        anim.Play(currentAnimationClipName, -1, 1);
+        isDuringTransition = false;
+        currentTransitionType = TransitionType.None;
+        DefaultState?.Invoke();
     }
 }

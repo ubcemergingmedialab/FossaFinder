@@ -14,4 +14,9 @@ public class MiniSkullManager : MonoBehaviour {
 	void Update () {
         transform.rotation = skull.transform.rotation;
 	}
+
+    public void ToggleMiniSkull()
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
+    }
 }

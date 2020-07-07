@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 5bf89341012d5104286d3d51e6e254dc
+guid: b6e5db6965a92704fa27bce3a296e2ea
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: gameObject/XingLight
-    400000: gameObject/XingLight/Transform
-    2800000: texAtlas
-    21200000: gameObject/XingLight/SpriteRenderer
+    100000: gameObject/chevron-up
+    400000: gameObject/chevron-up/Transform
+    21200000: gameObject/chevron-up/SpriteRenderer
     21300000: sprite
     100100000: gameObject
   externalObjects: {}
@@ -54,5 +53,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 947fb88e81916f74590b3c0809ebaff5
+      spriteID: af2bc16e06a27a64da9970acc7a40f27
     PhysicsOutlines: []

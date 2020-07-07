@@ -9,13 +9,13 @@ public class LabelManager : MonoBehaviour {
     private Dictionary<string, GameObject> availableLabels;
     public void OnEnable()
     {
-        GuidedTourManager.DuringSceneTransition += DisableLabels;
+        GuidedTourManager.DuringTransition += DisableLabels;
 
     }
 
     void OnDisable()
     {
-        GuidedTourManager.DuringSceneTransition -= DisableLabels;
+        GuidedTourManager.DuringTransition -= DisableLabels;
     }
 
     //initialize list
