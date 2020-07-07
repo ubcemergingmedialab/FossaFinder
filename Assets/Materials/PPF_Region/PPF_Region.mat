@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PPF_Region
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
@@ -83,7 +83,7 @@ Material:
     - _Cutoff: 0.87
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0
+    - _GlossMapScale: 0.119
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HitSize: 0.2
