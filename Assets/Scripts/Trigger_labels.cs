@@ -34,39 +34,20 @@
             }
         }
 
-<<<<<<< HEAD
-        protected virtual void Update()
-        {
-            if (showlabel)
-            {
-                Label.SetActive(true);
-            }
-            else { Label.SetActive(false); }
-        }
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
-            showlabel = true;
-            //Label.SetActive(true);
-=======
-       
 
-        protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
-        {
             Label.SetActive(true);
             showlabel = true;
-            //Label.SetActive(true);
-            //print("triggered");
->>>>>>> e54dca577dc5590e849fdd81cda89f13bf397836
+
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
         {
-            showlabel = false;
-<<<<<<< HEAD
-=======
+
             Label.SetActive(false);
->>>>>>> e54dca577dc5590e849fdd81cda89f13bf397836
+
         }
     }
 }
