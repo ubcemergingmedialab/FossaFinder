@@ -23,7 +23,7 @@ public class SceneButtonManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()));
+        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneNumber()));
 	}
 
     void OnDefaultState()

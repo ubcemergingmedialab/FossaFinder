@@ -15,3 +15,9 @@ MonoBehaviour:
   forwardAnimationClipLength: 0
   backwardAnimationClipName: Scene2ToScene1AnimationClip
   backwardAnimationClipLength: 1
+  ZoomOutAnimationClipName: Scene1ToScene2AnimationClip
+  ZoomOutAnimationClipLength: 1
+  ZoomInAnimationClipName: Scene2ToScene1AnimationClip
+  ZoomInAnimationClipLength: 1
+  highlights: []
+  boundaries: []

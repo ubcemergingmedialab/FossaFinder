@@ -69,11 +69,11 @@ public class RadialMenuManager : MonoBehaviour {
         {
             // Debug.Log(currentSelectedButtonMode);
             /// the != NextScene check is to prevent the following code (73~84) from being called too many times; the != SkipNextScene check is to prevent the back and forth buttonMode change (rmb what
-            /// the coroutine does) when holding the thumbstick
+            /// the coroutine does) when holding the thumbstick; the !gtm check is to make sure the following code doesn't get called during transition; 
             if (!guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.NextScene && currentSelectedButtonMode != ButtonMode.SkipNextSceneTransition) 
             {
                 // Debug.Log("This should only get called from none to right");
-                Debug.Log("Does this still get called during transition? Cuz if so, hmm??");
+                // Debug.Log("Does this still get called during transition? Cuz if so, hmm??");
                 if (isCoroutineRunning)
                 {
                     StopCoroutine(upgradeButtonModeCoroutine);
@@ -90,14 +90,14 @@ public class RadialMenuManager : MonoBehaviour {
                 currentSelectedButtonMode = ButtonMode.SkipNextSceneTransition;
             }
         }
-        //else if (45 <= angle && angle <= 125 && isTopButtonActive)
-        //{
-        //    if (currentSelectedButtonMode != ButtonMode.ZoomIn)
-        //    {
-        //        HighlightCurrentSelectedButton(0);
-        //        currentSelectedButtonMode = ButtonMode.ZoomIn;
-        //    }
-        //}
+        else if (45 <= angle && angle <= 125 && isTopButtonActive)
+        {
+            if (currentSelectedButtonMode != ButtonMode.ZoomIn) /// you shouldn't need that many checks here
+            {
+                HighlightCurrentSelectedButton(0);
+                currentSelectedButtonMode = ButtonMode.ZoomIn;
+            }
+        }
         else if ((angle >= 125 || angle <= -125) && isLeftButtonActive)
         {
             if (!guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.PreviousScene && currentSelectedButtonMode != ButtonMode.SkipPreviousSceneTransition)
@@ -117,14 +117,14 @@ public class RadialMenuManager : MonoBehaviour {
                 currentSelectedButtonMode = ButtonMode.SkipPreviousSceneTransition;
             }
         }
-        //else if (-125 <= angle && angle <= -45 && isDownButtonActive)
-        //{
-        //    if (currentSelectedButtonMode != ButtonMode.ZoomOut)
-        //    {
-        //        HighlightCurrentSelectedButton(180);
-        //        currentSelectedButtonMode = ButtonMode.ZoomOut;
-        //    }
-        //}
+        else if (-125 <= angle && angle <= -45 && isDownButtonActive)
+        {
+            if (currentSelectedButtonMode != ButtonMode.ZoomOut)
+            {
+                HighlightCurrentSelectedButton(180);
+                currentSelectedButtonMode = ButtonMode.ZoomOut;
+            }
+        }
         else
         {
             currentSelectedButtonMode = ButtonMode.None;
@@ -174,8 +174,17 @@ public class RadialMenuManager : MonoBehaviour {
                 guidedTourManager.ZoomOutFromCurrentScene();
                 currentSelectedButtonMode = ButtonMode.None;
                 break;
-            case ButtonMode.SkipNextSceneTransition:
+            case ButtonMode.SkipNextSceneTransition: /// increment or decrement currentscenenumber, then set animationclipname based on that number, to skip. And maybe length too, for consistency??
+                guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() + 1);
+                guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipName);
+                // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipLength);
+                guidedTourManager.SkipTransition();
+                currentSelectedButtonMode = ButtonMode.None;
+                break;
             case ButtonMode.SkipPreviousSceneTransition:
+                guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() - 1);
+                guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipName);
+                // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipLength);
                 guidedTourManager.SkipTransition();
                 currentSelectedButtonMode = ButtonMode.None;
                 break;
@@ -190,9 +199,9 @@ public class RadialMenuManager : MonoBehaviour {
 
     void OnDefaultState()
     {
-        isRightButtonActive = (guidedTourManager.GetCurrentSceneDestination() != guidedTourManager.sceneDataArray.Length) ? true : false;
+        isRightButtonActive = (guidedTourManager.GetCurrentSceneNumber() != guidedTourManager.sceneDataArray.Length) ? true : false;
         isTopButtonActive = false;
-        isLeftButtonActive = (guidedTourManager.GetCurrentSceneDestination() != 1)? true : false;
+        isLeftButtonActive = (guidedTourManager.GetCurrentSceneNumber() != 1)? true : false;
         isDownButtonActive = true;
     }
 
