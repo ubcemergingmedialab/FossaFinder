@@ -37,8 +37,8 @@ public class GuidedTourManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         Debug.Log(adjustedCameraPosition);
-        cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
+        headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
         adjustedCameraPosition = mainCamera.transform.position;
     }
 
@@ -103,6 +103,7 @@ public class GuidedTourManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(currentAnimationClipLength);
         DefaultState?.Invoke();
+        TransitionToNextScene();
     }
 
     // Skips to a particular end state/scene of a transition 
