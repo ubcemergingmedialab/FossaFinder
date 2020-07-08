@@ -19,7 +19,7 @@ public class RadialMenuManager : MonoBehaviour {
     bool isRightButtonActive, isTopButtonActive, isLeftButtonActive, isDownButtonActive;
     ButtonMode currentSelectedButtonMode;
     float thumbStickThreshold;
-    Coroutine runningCoroutine;
+    Coroutine upgradeButtonModeCoroutine;
     bool isCoroutineRunning;
     GuidedTourManager guidedTourManager;
 
@@ -31,7 +31,7 @@ public class RadialMenuManager : MonoBehaviour {
         isLeftButtonActive = true; // false
         isDownButtonActive = true;
         currentSelectedButtonMode = ButtonMode.None;
-        thumbStickThreshold = .8f;
+        thumbStickThreshold = .5f;
         isCoroutineRunning = false;
         guidedTourManager = GuidedTourManager.Instance;
     }
@@ -45,6 +45,7 @@ public class RadialMenuManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        // Debug.Log(isCoroutineRunning);
         Vector2 thumbStickCoordinates = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         if (Mathf.Abs(thumbStickCoordinates.x) >= thumbStickThreshold || Mathf.Abs(thumbStickCoordinates.y) >= thumbStickThreshold)
         {
@@ -53,7 +54,8 @@ public class RadialMenuManager : MonoBehaviour {
         {
             if (isCoroutineRunning)
             {
-                StopCoroutine(runningCoroutine);
+                // Debug.Log(isCoroutineRunning);
+                StopCoroutine(upgradeButtonModeCoroutine);
                 isCoroutineRunning = false;
             }
             DehighlightCurrentSelectedButtonAndPlayAnimation();
@@ -63,47 +65,51 @@ public class RadialMenuManager : MonoBehaviour {
     void HighlightCurrentSelectedButtonAndSetItsMode(Vector2 thumbStickCoordinates)
     {
         float angle = Vector2.SignedAngle(Vector2.right, thumbStickCoordinates);
-        //Debug.Log(thumbStickCoordinates);
-        //Debug.Log(angle);
         if (-45 <= angle && angle <= 45 && isRightButtonActive)
         {
-            if (currentSelectedButtonMode != ButtonMode.NextScene)
+            // Debug.Log(currentSelectedButtonMode);
+            /// the != NextScene check is to prevent the following code (73~84) from being called too many times; the != SkipNextScene check is to prevent the back and forth buttonMode change (rmb what
+            /// the coroutine does) when holding the thumbstick
+            if (!guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.NextScene && currentSelectedButtonMode != ButtonMode.SkipNextSceneTransition) 
             {
+                // Debug.Log("This should only get called from none to right");
+                Debug.Log("Does this still get called during transition? Cuz if so, hmm??");
                 if (isCoroutineRunning)
                 {
-                    StopCoroutine(runningCoroutine);
+                    StopCoroutine(upgradeButtonModeCoroutine);
                     isCoroutineRunning = false;
                 }
                 HighlightCurrentSelectedButton(90);
                 currentSelectedButtonMode = ButtonMode.NextScene;
-                runningCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
+                upgradeButtonModeCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
             }
+            /// this is for skipping in the middle of a transition
             else if (guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.SkipNextSceneTransition)
             {
                 HighlightCurrentSelectedButton(90);
                 currentSelectedButtonMode = ButtonMode.SkipNextSceneTransition;
             }
         }
-        else if (45 <= angle && angle <= 125 && isTopButtonActive)
-        {
-            if (currentSelectedButtonMode != ButtonMode.ZoomIn)
-            {
-                HighlightCurrentSelectedButton(0);
-                currentSelectedButtonMode = ButtonMode.ZoomIn;
-            }
-        }
+        //else if (45 <= angle && angle <= 125 && isTopButtonActive)
+        //{
+        //    if (currentSelectedButtonMode != ButtonMode.ZoomIn)
+        //    {
+        //        HighlightCurrentSelectedButton(0);
+        //        currentSelectedButtonMode = ButtonMode.ZoomIn;
+        //    }
+        //}
         else if ((angle >= 125 || angle <= -125) && isLeftButtonActive)
         {
-            if (currentSelectedButtonMode != ButtonMode.PreviousScene)
+            if (!guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.PreviousScene && currentSelectedButtonMode != ButtonMode.SkipPreviousSceneTransition)
             {
                 if (isCoroutineRunning)
                 {
-                    StopCoroutine(runningCoroutine);
+                    StopCoroutine(upgradeButtonModeCoroutine);
                     isCoroutineRunning = false;
                 }
                 HighlightCurrentSelectedButton(270);
                 currentSelectedButtonMode = ButtonMode.PreviousScene;
-                runningCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
+                upgradeButtonModeCoroutine = StartCoroutine(UpgradeCurrentSelectedButtonMode());
             }
             else if (guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.SkipPreviousSceneTransition)
             {
@@ -111,14 +117,14 @@ public class RadialMenuManager : MonoBehaviour {
                 currentSelectedButtonMode = ButtonMode.SkipPreviousSceneTransition;
             }
         }
-        else if (-125 <= angle && angle <= -45 && isDownButtonActive)
-        {
-            if (currentSelectedButtonMode != ButtonMode.ZoomOut)
-            {
-                HighlightCurrentSelectedButton(180);
-                currentSelectedButtonMode = ButtonMode.ZoomOut;
-            }
-        }
+        //else if (-125 <= angle && angle <= -45 && isDownButtonActive)
+        //{
+        //    if (currentSelectedButtonMode != ButtonMode.ZoomOut)
+        //    {
+        //        HighlightCurrentSelectedButton(180);
+        //        currentSelectedButtonMode = ButtonMode.ZoomOut;
+        //    }
+        //}
         else
         {
             currentSelectedButtonMode = ButtonMode.None;

@@ -42,7 +42,8 @@ public class GuidedTourManager : MonoBehaviour {
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
-    Coroutine runningChangeButtonStatesCoroutine;
+    Coroutine changeButtonStatesCoroutine;
+    bool isChangeButtonStatesCoroutineRunning;
 
     void Awake()
     {
@@ -61,6 +62,7 @@ public class GuidedTourManager : MonoBehaviour {
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
+        isChangeButtonStatesCoroutineRunning = false;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -154,7 +156,7 @@ public class GuidedTourManager : MonoBehaviour {
             SetBoundaries?.Invoke(sceneDataArray[currentSceneDestination - 1].boundaries);
         }
 
-        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
+        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -170,16 +172,18 @@ public class GuidedTourManager : MonoBehaviour {
 
     IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
     {
+        isChangeButtonStatesCoroutineRunning = true;
         yield return new WaitForSeconds(currentAnimationClipLength);
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
         DefaultState?.Invoke();
+        isChangeButtonStatesCoroutineRunning = false;
     }
 
     // Skips to a particular end state/scene of a transition 
     public void SkipToScene(int sceneNumber)
     {
-        StopCoroutine(runningChangeButtonStatesCoroutine);
+        StopCoroutine(changeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
         DefaultState?.Invoke();
@@ -187,6 +191,11 @@ public class GuidedTourManager : MonoBehaviour {
 
     public void SkipTransition()
     {
+        if (isChangeButtonStatesCoroutineRunning)
+        {
+            StopCoroutine(changeButtonStatesCoroutine); /// you need this because you don't want this effect to take place unintentionally
+            isChangeButtonStatesCoroutineRunning = false;
+        }
         anim.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
