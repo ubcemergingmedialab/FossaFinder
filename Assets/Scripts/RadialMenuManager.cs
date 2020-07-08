@@ -23,6 +23,10 @@ public class RadialMenuManager : MonoBehaviour {
     bool isCoroutineRunning;
     GuidedTourManager guidedTourManager;
 
+    Dictionary<ButtonMode, string> buttonRelations = new Dictionary<ButtonMode, string> {
+
+    };
+
     // Use this for initialization
     void Start()
     {
