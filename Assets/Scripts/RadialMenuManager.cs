@@ -73,7 +73,7 @@ public class RadialMenuManager : MonoBehaviour {
             if (!guidedTourManager.GetIsDuringTransition() && currentSelectedButtonMode != ButtonMode.NextScene && currentSelectedButtonMode != ButtonMode.SkipNextSceneTransition) 
             {
                 // Debug.Log("This should only get called from none to right");
-                // Debug.Log("Does this still get called during transition? Cuz if so, hmm??");
+                Debug.Log("Does this still get called during transition? Cuz if so, hmm??");
                 if (isCoroutineRunning)
                 {
                     StopCoroutine(upgradeButtonModeCoroutine);
@@ -175,16 +175,22 @@ public class RadialMenuManager : MonoBehaviour {
                 currentSelectedButtonMode = ButtonMode.None;
                 break;
             case ButtonMode.SkipNextSceneTransition: /// increment or decrement currentscenenumber, then set animationclipname based on that number, to skip. And maybe length too, for consistency??
-                guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() + 1);
-                guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipName);
-                // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipLength);
+                if (!guidedTourManager.GetIsDuringTransition())
+                {
+                    guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() + 1);
+                    guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipName);
+                    // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipLength);
+                }
                 guidedTourManager.SkipTransition();
                 currentSelectedButtonMode = ButtonMode.None;
                 break;
             case ButtonMode.SkipPreviousSceneTransition:
-                guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() - 1);
-                guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipName);
-                // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipLength);
+                if (!guidedTourManager.GetIsDuringTransition())
+                {
+                    guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() - 1);
+                    guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipName);
+                    // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipLength);
+                }
                 guidedTourManager.SkipTransition();
                 currentSelectedButtonMode = ButtonMode.None;
                 break;

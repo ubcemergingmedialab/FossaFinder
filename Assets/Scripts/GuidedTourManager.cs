@@ -199,6 +199,8 @@ public class GuidedTourManager : MonoBehaviour {
             ZoomedOut?.Invoke();
         }
         currentTransitionType = TransitionType.None;
+        currentAnimationClipName = "";
+        currentAnimationClipLength = 0;
         isChangeButtonStatesCoroutineRunning = false;
     }
 
@@ -221,6 +223,8 @@ public class GuidedTourManager : MonoBehaviour {
         anim.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
+        currentAnimationClipName = "";
+        currentAnimationClipLength = 0;
         DefaultState?.Invoke();
     }
 }
