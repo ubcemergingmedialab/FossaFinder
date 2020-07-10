@@ -111,6 +111,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void VisitPreviousScene()
     {
+        // Debug.Log("Before decreement: " + currentSceneNumber);
         if (currentSceneNumber > 1)
         {
             currentSceneNumber -= 1;

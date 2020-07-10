@@ -6,13 +6,7 @@ using UnityEngine;
 public class RadialMenuManager : MonoBehaviour {
     enum ButtonType
     {
-        None,
-        Left,
-        Right,
-        Top,
-        Down,
-        LeftOuter,
-        RightOuter
+        None, Left, Right, Top, Down, LeftOuter, RightOuter
     }
     public GameObject leftButton, rightButton, topButton, downButton, leftOuterButton, rightOuterButton;
     ButtonType currentSelectedButtonType;
@@ -28,7 +22,7 @@ public class RadialMenuManager : MonoBehaviour {
         leftOuterButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         topButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         // currentSelectedButtonType = ButtonType.None;
-        thumbStickThreshold = .5f;
+        thumbStickThreshold = .7f;
         isCoroutineRunning = false;
         guidedTourManager = GuidedTourManager.Instance;
     }
@@ -42,7 +36,7 @@ public class RadialMenuManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(rightButton.GetComponent<RadialMenuButton>().CurrentState);
+        // Debug.Log(rightButton.GetComponent<RadialMenuButton>().CurrentState);
         Vector2 thumbStickCoordinates = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         if (Mathf.Abs(thumbStickCoordinates.x) >= thumbStickThreshold || Mathf.Abs(thumbStickCoordinates.y) >= thumbStickThreshold)
         {
@@ -78,6 +72,7 @@ public class RadialMenuManager : MonoBehaviour {
                     StopCoroutine(upgradeButtonCoroutine);
                     isCoroutineRunning = false;
                 }
+                DeselectButton(); // new
                 SelectButton(rightButton);
                 currentSelectedButtonType = ButtonType.Right;
                 // Debug.Log("is SelectButtonStates being called");
@@ -88,6 +83,7 @@ public class RadialMenuManager : MonoBehaviour {
                 currentSelectedButtonType != ButtonType.RightOuter)
             {
                 // Debug.Log("is this being called when during transition?");
+                DeselectButton();
                 SelectButton(rightOuterButton);
                 currentSelectedButtonType = ButtonType.RightOuter;
             }
@@ -96,6 +92,7 @@ public class RadialMenuManager : MonoBehaviour {
         {
             if (currentSelectedButtonType != ButtonType.Top) // you shouldn't need that many checks here
             {
+                DeselectButton();
                 SelectButton(topButton);
                 currentSelectedButtonType = ButtonType.Top;
             }
@@ -110,6 +107,7 @@ public class RadialMenuManager : MonoBehaviour {
                     StopCoroutine(upgradeButtonCoroutine);
                     isCoroutineRunning = false;
                 }
+                DeselectButton();
                 SelectButton(leftButton);
                 currentSelectedButtonType = ButtonType.Left;
                 upgradeButtonCoroutine = StartCoroutine(UpgradeCurrentSelectedButton());
@@ -117,6 +115,7 @@ public class RadialMenuManager : MonoBehaviour {
             else if (guidedTourManager.GetIsDuringTransition() && leftOuterButton.GetComponent<RadialMenuButton>().CurrentState != ButtonState.Disabled &&
                 currentSelectedButtonType != ButtonType.LeftOuter)
             {
+                DeselectButton();
                 SelectButton(leftOuterButton);
                 currentSelectedButtonType = ButtonType.LeftOuter;
             }
@@ -125,13 +124,14 @@ public class RadialMenuManager : MonoBehaviour {
         {
             if (currentSelectedButtonType != ButtonType.Down)
             {
+                DeselectButton();
                 SelectButton(downButton);
                 currentSelectedButtonType = ButtonType.Down;
             }
         }
         else
         {
-            currentSelectedButtonType = ButtonType.None;
+            DeselectButton();
         }
     }
 
@@ -163,11 +163,11 @@ public class RadialMenuManager : MonoBehaviour {
 
     void PlayTransition()
     {
-        Debug.Log("currentSelectedButtonType at PlayTransition():  " + currentSelectedButtonType);
+        // Debug.Log("currentSelectedButtonType at PlayTransition():  " + currentSelectedButtonType);
         switch (currentSelectedButtonType)
         {
             case ButtonType.Right:
-                Debug.Log("Right should be called");
+                // Debug.Log("Right should be called");
                 DeselectButton();
                 guidedTourManager.VisitNextScene();
                 break;
@@ -184,7 +184,7 @@ public class RadialMenuManager : MonoBehaviour {
                 guidedTourManager.ZoomOutFromCurrentScene();
                 break;
             case ButtonType.RightOuter: /// increment or decrement currentscenenumber, then set animationclipname based on that number, to skip. And maybe length too, for consistency??
-                if (!guidedTourManager.GetIsDuringTransition())
+                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.GetCurrentSceneNumber() < guidedTourManager.sceneDataArray.Length)
                 {
                     guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() + 1);
                     guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipName);
@@ -194,7 +194,7 @@ public class RadialMenuManager : MonoBehaviour {
                 guidedTourManager.SkipTransition();
                 break;
             case ButtonType.LeftOuter:
-                if (!guidedTourManager.GetIsDuringTransition())
+                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.GetCurrentSceneNumber() > 1)
                 {
                     guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() - 1);
                     guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipName);
@@ -222,8 +222,16 @@ public class RadialMenuManager : MonoBehaviour {
         currentSelectedButtonType = ButtonType.None;
     }
 
-    void OnDefaultState()
+    void OnDefaultState() // should probably set currentSelectedButtonType here ... 
     {
+        //
+        //if (currentSelectedButtonType == ButtonType.LeftOuter || currentSelectedButtonType == ButtonType.RightOuter)
+        //{
+        //    // isThumbstickReleasedAfterTransition = false;
+        //    currentSelectedButtonType = ButtonType.None;
+        //}
+        //
+
         if (guidedTourManager.GetCurrentSceneNumber() != 1)
         {
             leftButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
