@@ -38,6 +38,7 @@
         {
 
             Label.SetActive(true);
+            //print("triggered");
             showlabel = true;
 
         }

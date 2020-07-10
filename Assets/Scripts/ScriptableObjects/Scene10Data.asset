@@ -15,7 +15,6 @@ MonoBehaviour:
   forwardAnimationClipLength: 20
   backwardAnimationClipName: Scene11ToScene10AnimationClip
   backwardAnimationClipLength: 20
-  highlights:
-  - Palatovaginal_Canal
+  highlights: []
   boundaries:
   - Medial_Wall
