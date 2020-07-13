@@ -13269,7 +13269,6 @@ GameObject:
   - component: {fileID: 1108160148}
   - component: {fileID: 1108160147}
   - component: {fileID: 1108160146}
-  - component: {fileID: 1108160150}
   m_Layer: 0
   m_Name: '[CameraRig]'
   m_TagString: Untagged
@@ -13381,20 +13380,6 @@ MonoBehaviour:
   right: {fileID: 1585980129}
   objects: []
   assignAllBeforeIdentified: 0
---- !u!114 &1108160150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1108160144}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872c466891ae5974c82894e4c128179c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 900869779}
-  path: {fileID: 0}
-  pathFollower: {fileID: 0}
 --- !u!1 &1108728609
 GameObject:
   m_ObjectHideFlags: 0

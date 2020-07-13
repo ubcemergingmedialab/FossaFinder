@@ -15,7 +15,7 @@ public class RadialMenuManager : MonoBehaviour {
     Coroutine upgradeButtonCoroutine;
     bool isUpgradeButtonCoroutineRunning;
     GuidedTourManager guidedTourManager;
-    bool isThumbstickHeldAfterTransition;
+    // bool isThumbstickHeldAfterTransition;
 
 
     // Use this for initialization
@@ -29,7 +29,7 @@ public class RadialMenuManager : MonoBehaviour {
         thumbStickThreshold = .7f;
         isUpgradeButtonCoroutineRunning = false;
         guidedTourManager = GuidedTourManager.Instance;
-        isThumbstickHeldAfterTransition = false;
+        // isThumbstickHeldAfterTransition = false;
     }
 
     void OnEnable()
@@ -45,14 +45,13 @@ public class RadialMenuManager : MonoBehaviour {
         Vector2 thumbStickCoordinates = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         if (Mathf.Abs(thumbStickCoordinates.x) >= thumbStickThreshold || Mathf.Abs(thumbStickCoordinates.y) >= thumbStickThreshold)
         {
-            if (!isThumbstickHeldAfterTransition) // isThumbstickReleasedAfterBeingHeldDuringPreviousTransition?
-            {
-                SelectButtonBasedOnThumbstickCoordinates(thumbStickCoordinates);
-            }
+            SelectButtonBasedOnThumbstickCoordinates(thumbStickCoordinates);
+            //if (!isThumbstickHeldAfterTransition) {}
         } else
         {
             previousSelectedButtonType = currentSelectedButtonType;
             DeselectButton();
+            currentSelectedButtonType = ButtonType.None;
             if (isUpgradeButtonCoroutineRunning)
             {
                 // Debug.Log(isCoroutineRunning);
@@ -60,10 +59,7 @@ public class RadialMenuManager : MonoBehaviour {
                 isUpgradeButtonCoroutineRunning = false;
             }
             PlayTransition();
-            if (!guidedTourManager.GetIsDuringTransition())
-            {
-                isThumbstickHeldAfterTransition = false;
-            }
+            //if (!guidedTourManager.GetIsDuringTransition()) {isThumbstickHeldAfterTransition = false;}
         }
 	}
 
@@ -103,7 +99,7 @@ public class RadialMenuManager : MonoBehaviour {
         }
         else if (45 <= angle && angle <= 125 && topButton.GetComponent<RadialMenuButton>().CurrentState != ButtonState.Disabled)
         {
-            if (currentSelectedButtonType != ButtonType.Top) // you shouldn't need that many checks here
+            if (currentSelectedButtonType != ButtonType.Top)
             {
                 DeselectButton();
                 SelectButton(topButton);
@@ -145,6 +141,7 @@ public class RadialMenuManager : MonoBehaviour {
         else
         {
             DeselectButton();
+            currentSelectedButtonType = ButtonType.None;
         }
     }
 
@@ -226,7 +223,6 @@ public class RadialMenuManager : MonoBehaviour {
             }
           
         }
-        currentSelectedButtonType = ButtonType.None;
     }
 
     void OnDefaultState() // should probably set currentSelectedButtonType here ... 
@@ -269,12 +265,16 @@ public class RadialMenuManager : MonoBehaviour {
         downButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
         downButton.GetComponent<RadialMenuButton>().SwitchToDefaultSprite();
 
-        if (currentSelectedButtonType == ButtonType.LeftOuter || currentSelectedButtonType == ButtonType.RightOuter)
-        {
-            // Debug.Log("Does this tatement even get called");
-            isThumbstickHeldAfterTransition = true;
-            currentSelectedButtonType = ButtonType.None;
-        }
+        /// if this isn't here, then currentButtonType will still be left/right outer, and the SelectButtonBasedOnThumbstickCoordinates will have no effect. This means that with no buttons selected due
+        /// to above and the thumbstick released, we will still be able to skip
+        currentSelectedButtonType = ButtonType.None; 
+
+        //if (currentSelectedButtonType == ButtonType.LeftOuter || currentSelectedButtonType == ButtonType.RightOuter)
+        //{
+        //    // Debug.Log("Does this statement even get called");
+        //    isThumbstickHeldAfterTransition = true;
+        //    currentSelectedButtonType = ButtonType.None;
+        //}
     }
 
     void OnDuringTransition()
@@ -332,5 +332,7 @@ public class RadialMenuManager : MonoBehaviour {
 
         rightOuterButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         rightOuterButton.GetComponent<RadialMenuButton>().SwitchToDisabledSprite();
+
+        // currentSelectedButtonType = ButtonType.None;
     }
 }
