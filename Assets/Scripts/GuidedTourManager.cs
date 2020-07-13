@@ -28,6 +28,7 @@ public class GuidedTourManager : MonoBehaviour {
     void Start () {
         currentSceneDestination = 1;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
+        TransitionToNextScene();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }

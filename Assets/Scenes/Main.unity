@@ -4215,8 +4215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 1228305728}
   headContainer: {fileID: 385871840}
-  cameraRig: {fileID: 1108160144}
-  mainCamera: {fileID: 900869779}
+  cameraRig: {fileID: 1152595011}
+  mainCamera: {fileID: 709677865}
   anim: {fileID: 1228305729}
   sceneDataArray:
   - {fileID: 11400000, guid: 01d67808770a8b04d87069308a7801ed, type: 2}
@@ -8980,15 +8980,15 @@ MonoBehaviour:
   renderPanorama: {fileID: 0}
   StartFrame: 0
   panoramaType: 2
-  captureType: 0
+  captureType: 2
   captureAngle: 0
   RT2Video: 0
   ImageFormatType: 0
   Folder: VR_Sequence
   captureKey: 32
   FPS: 90
-  resolution: 7680
-  resolutionH: 4320
+  resolution: 2048
+  resolutionH: 2048
   step: 0
   NumberOfFramesToRender: 1262
   renderFromFrame: 1
@@ -9002,9 +9002,9 @@ MonoBehaviour:
   customPath: 0
   customPathFolder: C:/
   encodeToMp4: 1
-  Mp4Bitrate: 60000
+  Mp4Bitrate: 30000
   jpgQuality: 100
-  renderQuality: 16
+  renderQuality: 32
   formatString: .jpg"
   mailme: 0
   _mailto: name@domain.com
@@ -9026,8 +9026,8 @@ MonoBehaviour:
   smoothing: 1
   playPanorama: 0
   camCaptureComponent: {fileID: 0}
-  recordRT: 0
-  videoLenght: 1
+  recordRT: 1
+  videoLenght: 120
 --- !u!81 &709677868
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9055,7 +9055,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -13163,7 +13163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1012826283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13171,7 +13171,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012826282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5837af0260a118e4d808bfe0405429a1, type: 3}
   m_Name: 
@@ -15396,7 +15396,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1152595011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.61, z: -0.512}
+  m_LocalPosition: {x: -0.01, y: 3.2, z: -0.512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 709677866}
@@ -25954,7 +25954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4169206250898416, guid: 7ae19a435ba3e4941b7c96e01a234653, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.72
       objectReference: {fileID: 0}
     - target: {fileID: 4169206250898416, guid: 7ae19a435ba3e4941b7c96e01a234653, type: 2}
       propertyPath: m_LocalPosition.z

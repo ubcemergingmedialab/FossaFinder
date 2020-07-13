@@ -39,6 +39,6 @@ Material:
     - _APNG: 0
     - _Cutoff: 0.5
     - _TXWidth: 512
-    - _U: 4320
-    - _V: 7680
+    - _U: 2048
+    - _V: 2048
     m_Colors: []
