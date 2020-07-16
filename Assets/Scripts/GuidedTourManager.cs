@@ -20,7 +20,8 @@ public class GuidedTourManager : MonoBehaviour {
         get { return _instance; }
     }
 
-    public GameObject head, headContainer, cameraRig, mainCamera; 
+    public GameObject head, headContainer, cameraRig, mainCamera;
+    public GameObject zoomedOutModel;
     public Animator anim;
     public SceneData[] sceneDataArray;
 
@@ -44,6 +45,8 @@ public class GuidedTourManager : MonoBehaviour {
     float distanceFromAdjustedCameraPositionThreshold;
     Coroutine changeButtonStatesCoroutine;
     bool isChangeButtonStatesCoroutineRunning;
+    Coroutine swapToZoomedOutModelCoroutine;
+    bool isSwapToZoomedOutModelCoroutineRunning;
 
     void Awake()
     {
@@ -141,12 +144,20 @@ public class GuidedTourManager : MonoBehaviour {
 
     public void ZoomInToCurrentScene()
     {
+        SwapToDefaultModel();
+
         isDuringTransition = true;
         currentTransitionType = TransitionType.Inward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
 
         PlayTransition();
+    }
+
+    void SwapToDefaultModel()
+    {
+        zoomedOutModel.SetActive(false);
+        head.SetActive(true);
     }
 
     public void ZoomOutFromCurrentScene()
@@ -157,6 +168,8 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
 
         PlayTransition();
+
+        swapToZoomedOutModelCoroutine = StartCoroutine(SwapToZoomedOutModel());
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
@@ -227,5 +240,13 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
+    }
+
+    IEnumerator SwapToZoomedOutModel()
+    {
+        yield return new WaitForSeconds(currentAnimationClipLength);
+        head.SetActive(false);
+        zoomedOutModel.SetActive(true);
+        zoomedOutModel.transform.position = head.transform.position;
     }
 }
