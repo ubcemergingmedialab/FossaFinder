@@ -8,7 +8,6 @@
         public GameObject Label;
         
 
-        
         protected bool showlabel;
 
         protected virtual void OnEnable()
@@ -34,20 +33,21 @@
             }
         }
 
-       
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
+
             Label.SetActive(true);
-            showlabel = true;
-            //Label.SetActive(true);
             //print("triggered");
+            showlabel = true;
+
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
         {
-            showlabel = false;
+
             Label.SetActive(false);
+
         }
     }
 }
