@@ -23,5 +23,6 @@ MonoBehaviour:
   - Foramen_Rotundum
   - Superior_Orbital_Fissure
   - Pterygoid_Canal
+  - Palatovaginal_Canal
   boundaries:
   - Posterior_Wall
