@@ -9,7 +9,6 @@ public class LookAtCamera : MonoBehaviour
     public bool update;
     public bool lookForMainCamera;
 
-    public Camera playerCamera;
     public Transform cameraTransform;
     private Vector3 direction;
     private Quaternion rotation;
@@ -17,7 +16,7 @@ public class LookAtCamera : MonoBehaviour
     void Start()
     {
         if (lookForMainCamera)
-            cameraTransform = playerCamera.transform;
+            cameraTransform = Camera.main.transform;
         //cameraTransform = FindObjectOfType<OVRCameraRig>().transform;
         OnEnable();
     }

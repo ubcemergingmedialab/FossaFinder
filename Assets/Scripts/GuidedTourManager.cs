@@ -20,7 +20,7 @@ public class GuidedTourManager : MonoBehaviour {
         get { return _instance; }
     }
 
-    public GameObject head, headContainer, cameraRig, mainCamera;
+    public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
 
@@ -44,8 +44,6 @@ public class GuidedTourManager : MonoBehaviour {
     float distanceFromAdjustedCameraPositionThreshold;
     Coroutine changeButtonStatesCoroutine;
     bool isChangeButtonStatesCoroutineRunning;
-    Coroutine swapToZoomedOutModelCoroutine;
-    bool isSwapToZoomedOutModelCoroutineRunning;
 
     void Awake()
     {
@@ -159,8 +157,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
 
         PlayTransition();
-
-        // swapToZoomedOutModelCoroutine = StartCoroutine(SwapToZoomedOutModel());
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
