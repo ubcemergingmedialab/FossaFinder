@@ -15,10 +15,10 @@ MonoBehaviour:
   forwardAnimationClipLength: 20
   backwardAnimationClipName: Scene11ToScene10AnimationClip
   backwardAnimationClipLength: 20
-  ZoomOutAnimationClipName: 
-  ZoomOutAnimationClipLength: 0
-  ZoomInAnimationClipName: 
-  ZoomInAnimationClipLength: 0
+  ZoomOutAnimationClipName: ZoomOutFromScene10AnimationClip
+  ZoomOutAnimationClipLength: 12
+  ZoomInAnimationClipName: ZoomInToScene10AnimationClip
+  ZoomInAnimationClipLength: 12
   highlights:
   - Palatine_Canal
   boundaries:
