@@ -9,21 +9,21 @@ public class SceneButtonManager : MonoBehaviour {
     public Button skipButton;
     public GuidedTourManager guidedTourManager;
 
-    void OnEnable()
-    {
-        GuidedTourManager.DefaultState += OnDefaultState;
-        GuidedTourManager.DuringSceneTransition += OnDuringSceneTransition;
-    }
+    //void OnEnable()
+    //{
+    //    GuidedTourManager.DefaultState += OnDefaultState;
+    //    GuidedTourManager.DuringSceneTransition += OnDuringSceneTransition;
+    //}
 
-    void OnDisable()
-    {
-        GuidedTourManager.DefaultState -= OnDefaultState;
-        GuidedTourManager.DuringSceneTransition -= OnDuringSceneTransition;
-    }
+    //void OnDisable()
+    //{
+    //    GuidedTourManager.DefaultState -= OnDefaultState;
+    //    GuidedTourManager.DuringSceneTransition -= OnDuringSceneTransition;
+    //}
 
     // Use this for initialization
     void Start () {
-        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneDestination()));
+        skipButton.GetComponent<Button>().onClick.AddListener(() => guidedTourManager.SkipToScene(guidedTourManager.GetCurrentSceneNumber()));
 	}
 
     void OnDefaultState()

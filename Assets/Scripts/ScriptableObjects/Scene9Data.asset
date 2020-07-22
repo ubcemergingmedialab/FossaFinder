@@ -15,6 +15,10 @@ MonoBehaviour:
   forwardAnimationClipLength: 6
   backwardAnimationClipName: Scene10ToScene9AnimationClip
   backwardAnimationClipLength: 20
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
   highlights:
   - Foramen_Rotundum
   - Superior_Orbital_Fissure

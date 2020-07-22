@@ -21,7 +21,7 @@ public class LabelManager : MonoBehaviour {
 
     public void OnEnable()
     {
-        GuidedTourManager.DuringSceneTransition += DisableLabels;
+        GuidedTourManager.DuringTransition += DisableLabels;
 
     }
     /*! Setup OnDisable
@@ -31,7 +31,7 @@ public class LabelManager : MonoBehaviour {
     */
     void OnDisable()
     {
-        GuidedTourManager.DuringSceneTransition -= DisableLabels;
+        GuidedTourManager.DuringTransition -= DisableLabels;
     }
 
      /*! Initialize list

@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
+public enum TransitionType
+{
+    None,
+    Forward,
+    Backward,
+    Outward,
+    Inward
+}
+
 public class GuidedTourManager : MonoBehaviour {
+
     private static GuidedTourManager _instance;
     public static GuidedTourManager Instance
     {
@@ -15,25 +25,25 @@ public class GuidedTourManager : MonoBehaviour {
     public SceneData[] sceneDataArray;
 
     public delegate void DefaultStateHandler();
-    public delegate void DuringSceneTransitionHandler();
-    public delegate void DuringZoomTransitionHandler();
+    public delegate void DuringTransitionHandler();
     public delegate void ZoomedOutHandler();
     public delegate void SetHighlightsHandler(string[] names);
     public delegate void SetBoundarisHandler(string[] names);
     public static event DefaultStateHandler DefaultState;
-    public static event DuringSceneTransitionHandler DuringSceneTransition;
-    public static event DuringZoomTransitionHandler DuringZoomTransition;
+    public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
     public static event SetHighlightsHandler SetHighlights;
     public static event SetBoundarisHandler SetBoundaries;
 
     Vector3 adjustedCameraPosition;
-    int currentSceneDestination; // the current scene destination number
-    static bool isDuringSceneTransition;
+    int currentSceneNumber; // the current scene destination number
+    static bool isDuringTransition;
+    TransitionType currentTransitionType;
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
-    Coroutine runningChangeButtonStatesCoroutine;
+    Coroutine changeButtonStatesCoroutine;
+    bool isChangeButtonStatesCoroutineRunning;
 
     void Awake()
     {
@@ -48,9 +58,11 @@ public class GuidedTourManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        currentSceneDestination = 1;
-        isDuringSceneTransition = false;
+        currentSceneNumber = 1;
+        isDuringTransition = false;
+        currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
+        isChangeButtonStatesCoroutineRunning = false;
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -65,25 +77,48 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Returns the current scene number
-    public int GetCurrentSceneDestination()
+    public int GetCurrentSceneNumber()
     {
-        return currentSceneDestination;
+        return currentSceneNumber;
     }
 
-    public bool GetIsDuringSceneTransition()
+    public void SetCurrentSceneNumber(int sceneNumber)
     {
-        return isDuringSceneTransition;
+        currentSceneNumber = sceneNumber;
     }
+
+    public bool GetIsDuringTransition()
+    {
+        return isDuringTransition;
+    }
+
+    public TransitionType GetCurrentTransitionType()
+    {
+
+        return currentTransitionType;
+    }
+
+    public void SetCurrentAnimationClipName(string clipName)
+    {
+        currentAnimationClipName = clipName;
+    }
+
+    //public void SetCurrentAnimationClipLength(float clipLength)
+    //{
+    //    currentAnimationClipLength = clipLength;
+    //}
 
     // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void VisitPreviousScene()
     {
-        if (currentSceneDestination > 1)
+        // Debug.Log("Before decreement: " + currentSceneNumber);
+        if (currentSceneNumber > 1)
         {
-            currentSceneDestination -= 1;
-            isDuringSceneTransition = true;
-            currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipName;
-            currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].backwardAnimationClipLength;
+            currentSceneNumber -= 1;
+            isDuringTransition = true;
+            currentTransitionType = TransitionType.Backward;
+            currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipName;
+            currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
 
             PlayTransition();
         }
@@ -92,12 +127,13 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
     public void VisitNextScene()
     {
-        if (currentSceneDestination < sceneDataArray.Length)
+        if (currentSceneNumber < sceneDataArray.Length)
         {
-            currentSceneDestination += 1;
-            isDuringSceneTransition = true;
-            currentAnimationClipName = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipName;
-            currentAnimationClipLength = sceneDataArray[currentSceneDestination - 1].forwardAnimationClipLength;
+            currentSceneNumber += 1;
+            isDuringTransition = true;
+            currentTransitionType = TransitionType.Forward;
+            currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
+            currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             PlayTransition();
         }
@@ -105,12 +141,22 @@ public class GuidedTourManager : MonoBehaviour {
 
     public void ZoomInToCurrentScene()
     {
+        isDuringTransition = true;
+        currentTransitionType = TransitionType.Inward;
+        currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
+        currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
 
+        PlayTransition();
     }
 
     public void ZoomOutFromCurrentScene()
     {
+        isDuringTransition = true;
+        currentTransitionType = TransitionType.Outward;
+        currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
+        currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
 
+        PlayTransition();
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
@@ -121,12 +167,12 @@ public class GuidedTourManager : MonoBehaviour {
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
             anim.Play(currentAnimationClipName);
-            DuringSceneTransition?.Invoke();
-            SetHighlights?.Invoke(sceneDataArray[currentSceneDestination - 1].highlights);
-            SetBoundaries?.Invoke(sceneDataArray[currentSceneDestination - 1].boundaries);
+            DuringTransition?.Invoke();
+            SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+            SetBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
         }
 
-        runningChangeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
+        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -142,22 +188,44 @@ public class GuidedTourManager : MonoBehaviour {
 
     IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
     {
+        isChangeButtonStatesCoroutineRunning = true;
         yield return new WaitForSeconds(currentAnimationClipLength);
-        isDuringSceneTransition = false;
-        DefaultState?.Invoke();
+        isDuringTransition = false;
+        if (currentTransitionType == TransitionType.Forward || currentTransitionType == TransitionType.Backward || currentTransitionType == TransitionType.Inward)
+        {
+            DefaultState?.Invoke();
+        }
+        else if (currentTransitionType == TransitionType.Outward)
+        {
+            ZoomedOut?.Invoke();
+        }
+        currentTransitionType = TransitionType.None;
+        currentAnimationClipName = "";
+        currentAnimationClipLength = 0;
+        isChangeButtonStatesCoroutineRunning = false;
     }
 
     // Skips to a particular end state/scene of a transition 
     public void SkipToScene(int sceneNumber)
     {
-        StopCoroutine(runningChangeButtonStatesCoroutine);
+        StopCoroutine(changeButtonStatesCoroutine);
         anim.Play(currentAnimationClipName, -1, 1);
-        isDuringSceneTransition = false;
+        isDuringTransition = false;
         DefaultState?.Invoke();
     }
 
     public void SkipTransition()
     {
-
+        if (isChangeButtonStatesCoroutineRunning)
+        {
+            StopCoroutine(changeButtonStatesCoroutine); /// you need this because you don't want this effect to take place unintentionally
+            isChangeButtonStatesCoroutineRunning = false;
+        }
+        anim.Play(currentAnimationClipName, -1, 1);
+        isDuringTransition = false;
+        currentTransitionType = TransitionType.None;
+        currentAnimationClipName = "";
+        currentAnimationClipLength = 0;
+        DefaultState?.Invoke();
     }
 }
