@@ -23,3 +23,5 @@ MonoBehaviour:
   - Palatine_Canal
   boundaries:
   - Medial_Wall
+  lights:
+  - Palatine_Canal
