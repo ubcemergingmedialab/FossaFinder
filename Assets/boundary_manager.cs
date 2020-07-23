@@ -42,6 +42,7 @@ public class boundary_manager : MonoBehaviour
             foreach (string name in names)
             {
                 availableBoundaries[name].SetActive(true);
+            print(name);
             }
         
     

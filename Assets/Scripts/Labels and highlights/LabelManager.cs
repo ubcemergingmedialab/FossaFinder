@@ -55,14 +55,11 @@ public class LabelManager : MonoBehaviour {
      */
     public void DisableLabels()
     {
-        int i = 0;
+
         foreach (KeyValuePair<string, GameObject> pair in availableLabels)
         {
             
             pair.Value.SetActive(false);
-            print(pair.Key);
-            print(i);
-            i++;
         }
     
     }
