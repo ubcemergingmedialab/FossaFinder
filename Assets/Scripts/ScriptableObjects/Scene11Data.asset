@@ -21,5 +21,6 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 12
   highlights:
   - Inferior_Orbital_Fissure
+  - Ptergomaxillary_Fissure
   boundaries:
   - Anterior_Wall
