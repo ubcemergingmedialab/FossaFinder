@@ -16,9 +16,9 @@ MonoBehaviour:
   backwardAnimationClipName: 
   backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
-  ZoomOutAnimationClipLength: 12
+  ZoomOutAnimationClipLength: 14
   ZoomInAnimationClipName: ZoomInToScene11AnimationClip
-  ZoomInAnimationClipLength: 12
+  ZoomInAnimationClipLength: 14
   highlights:
   - Inferior_Orbital_Fissure
   boundaries:
