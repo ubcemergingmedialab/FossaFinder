@@ -44,6 +44,7 @@ public class GuidedTourManager : MonoBehaviour {
     float distanceFromAdjustedCameraPositionThreshold;
     Coroutine changeButtonStatesCoroutine;
     bool isChangeButtonStatesCoroutineRunning;
+    ActivityRecorder recorder;
 
     void Awake()
     {
@@ -74,6 +75,11 @@ public class GuidedTourManager : MonoBehaviour {
         cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
         headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
         adjustedCameraPosition = mainCamera.transform.position;
+    }
+
+    public void InjectRecorder(ActivityRecorder ar)
+    {
+        recorder = ar;
     }
 
     // Returns the current scene number
@@ -121,6 +127,11 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
 
             PlayTransition();
+
+            if (recorder != null)
+            {
+                recorder.QueueMessage("VisitPreviousScene");
+            }
         }
     }
 
@@ -136,6 +147,10 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             PlayTransition();
+            if (recorder != null)
+            {
+                recorder.QueueMessage("VisitNextScene");
+            }
         }
     }
 
@@ -147,6 +162,11 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
 
         PlayTransition();
+
+        if (recorder != null)
+        {
+            recorder.QueueMessage("ZoomInToCurrentScene");
+        }
     }
 
     public void ZoomOutFromCurrentScene()
@@ -157,6 +177,10 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
 
         PlayTransition();
+        if (recorder != null)
+        {
+            recorder.QueueMessage("ZoomOutFromCurrentScene");
+        }
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
@@ -227,5 +251,9 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
+        if (recorder != null)
+        {
+            recorder.QueueMessage("SkipTransition");
+        }
     }
 }
