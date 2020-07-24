@@ -38,21 +38,17 @@ public class ActivityRecorder : MonoBehaviour
                 {
                     while (messages.TryDequeue(out text))
                     {
-                        Debug.Log("message: " + text);
                         sw.Write(text);
-                        sw.Flush();
-                        sw.Close();
                     }
-                    Debug.Log("empty queue");
+                    sw.Flush();
+                    sw.Close();
                 }
-                Debug.Log("finished task");
             });
         }
     }
 
     public void QueueMessage(string text)
     {
-        Debug.Log("NEW MESSAGE");
         messages.Enqueue(Time.time + ";" + text + "\r\n");
     }
 
