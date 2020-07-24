@@ -12,13 +12,15 @@ public class boundary_manager : MonoBehaviour
 
     public void OnEnable()
     {
-        GuidedTourManager.SetBoundaries += EnableHighlights;
+        GuidedTourManager.EnableBoundaries += EnableBoundaries;
+        GuidedTourManager.DisableBoundaries += DisableBoundaries;
 
     }
 
     public void OnDisable()
     {
-        GuidedTourManager.SetBoundaries -= EnableHighlights;
+        GuidedTourManager.EnableBoundaries -= EnableBoundaries;
+        GuidedTourManager.DisableBoundaries -= DisableBoundaries;
 
     }
 
@@ -32,19 +34,21 @@ public class boundary_manager : MonoBehaviour
         }
     }
 
-    void EnableHighlights(string[] names)
+    void EnableBoundaries(string[] names)
     {
-        
-            foreach (KeyValuePair<string, GameObject> pair in availableBoundaries)
-            {
-                pair.Value.SetActive(false);
-            }
             foreach (string name in names)
             {
                 availableBoundaries[name].SetActive(true);
-            print(name);
-            }
-        
-    
-}
+                print(name);
+            }   
+    }
+
+
+    void DisableBoundaries()
+    {
+        foreach (KeyValuePair<string, GameObject> pair in availableBoundaries)
+        {
+            pair.Value.SetActive(false);
+        }
+    }
 }
