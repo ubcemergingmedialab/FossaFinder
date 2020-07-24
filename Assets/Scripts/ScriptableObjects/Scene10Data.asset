@@ -16,9 +16,9 @@ MonoBehaviour:
   backwardAnimationClipName: Scene11ToScene10AnimationClip
   backwardAnimationClipLength: 20
   ZoomOutAnimationClipName: ZoomOutFromScene10AnimationClip
-  ZoomOutAnimationClipLength: 12
+  ZoomOutAnimationClipLength: 14
   ZoomInAnimationClipName: ZoomInToScene10AnimationClip
-  ZoomInAnimationClipLength: 12
+  ZoomInAnimationClipLength: 14
   highlights:
   - Palatine_Canal
   boundaries:
