@@ -15,4 +15,5 @@ public class SceneData : ScriptableObject {
     public float ZoomInAnimationClipLength;
     public string[] highlights;
     public string[] boundaries;
+    public string[] lights;
 }

@@ -23,3 +23,5 @@ MonoBehaviour:
   - Sphenopalatine_Foramen
   boundaries:
   - Medial_Wall
+  lights:
+  - Sphenopalatine_Foramen

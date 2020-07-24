@@ -28,11 +28,13 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DuringTransitionHandler();
     public delegate void ZoomedOutHandler();
     public delegate void SetHighlightsHandler(string[] names);
+    public delegate void SetlightsHandler(string[] names);
     public delegate void SetBoundarisHandler(string[] names);
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
     public static event SetHighlightsHandler SetHighlights;
+    public static event SetlightsHandler Setlights;
     public static event SetBoundarisHandler SetBoundaries;
 
     Vector3 adjustedCameraPosition;
@@ -155,7 +157,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Outward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
-
         PlayTransition();
     }
 
@@ -170,6 +171,7 @@ public class GuidedTourManager : MonoBehaviour {
             DuringTransition?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             SetBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
+            Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         }
 
         changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
