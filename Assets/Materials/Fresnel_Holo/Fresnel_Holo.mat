@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Fresnel_Holo
   m_Shader: {fileID: 4800000, guid: 62ea2efaa971044a595e252df8c5aa04, type: 3}
-  m_ShaderKeywords: _EMISSION
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -50,7 +50,7 @@ Material:
     - _ShieldRimPower: 2.82
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.8901961, g: 0.85490197, b: 0.7882353, a: 1}
+    - _Color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 0.13333334}
     - _HitColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitPosition: {r: 0, g: 0, b: 0, a: 0}
     - _IntersectColor: {r: 0.59607846, g: 0.5529412, b: 0.41568628, a: 1}
