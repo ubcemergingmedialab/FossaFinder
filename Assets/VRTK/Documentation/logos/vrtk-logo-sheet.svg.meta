@@ -8,6 +8,7 @@ ScriptedImporter:
     21200000: gameObject/vrtk-logo-sheet/SpriteRenderer
     21300000: sprite
     100100000: gameObject
+    2186277476908879412: ImportLogs
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -54,5 +55,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: fe70e0d8f76ce0d4196f134a6612d2fe
+      spriteID: 5f7da67e01e048748b32744cb1b3f51c
     PhysicsOutlines: []

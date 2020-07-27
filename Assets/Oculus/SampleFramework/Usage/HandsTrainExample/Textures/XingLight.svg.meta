@@ -8,6 +8,7 @@ ScriptedImporter:
     21200000: gameObject/XingLight/SpriteRenderer
     21300000: sprite
     100100000: gameObject
+    2186277476908879412: ImportLogs
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -54,5 +55,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 947fb88e81916f74590b3c0809ebaff5
+      spriteID: 96b24536a50b82c47a0333421c5959ab
     PhysicsOutlines: []
