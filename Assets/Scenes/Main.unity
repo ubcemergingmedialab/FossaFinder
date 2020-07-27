@@ -19496,13 +19496,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1228305728}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 867587fd60f0b15478c2458e8b0983ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transparent: {fileID: 1392003855}
-  opaque: {fileID: 737789353}
+  opaque: {fileID: 238267659}
 --- !u!4 &1228305732
 Transform:
   m_ObjectHideFlags: 0

@@ -189,20 +189,20 @@ public class RadialMenuManager : MonoBehaviour {
             case ButtonType.Down:
                 guidedTourManager.ZoomOutFromCurrentScene();
                 break;
-            case ButtonType.RightOuter: /// increment or decrement currentscenenumber, then set animationclipname based on that number, to skip. And maybe length too, for consistency??
-                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.GetCurrentSceneNumber() < guidedTourManager.sceneDataArray.Length)
+            case ButtonType.RightOuter: /// increment or decrement, then set animationclipname based on that number, to skip. And maybe length too, for consistency??
+                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.CurrentSceneNumber < guidedTourManager.sceneDataArray.Length)
                 {
-                    guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() + 1);
-                    guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipName);
+                    guidedTourManager.CurrentSceneNumber += 1;
+                    guidedTourManager.CurrentAnimationClipName = guidedTourManager.sceneDataArray[guidedTourManager.CurrentSceneNumber - 1].forwardAnimationClipName;
                     // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].forwardAnimationClipLength);
                 }
                 guidedTourManager.SkipTransition();
                 break;
             case ButtonType.LeftOuter:
-                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.GetCurrentSceneNumber() > 1)
+                if (!guidedTourManager.GetIsDuringTransition() && guidedTourManager.CurrentSceneNumber > 1)
                 {
-                    guidedTourManager.SetCurrentSceneNumber(guidedTourManager.GetCurrentSceneNumber() - 1);
-                    guidedTourManager.SetCurrentAnimationClipName(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipName);
+                    guidedTourManager.CurrentSceneNumber -= 1;
+                    guidedTourManager.CurrentAnimationClipName = guidedTourManager.sceneDataArray[guidedTourManager.CurrentSceneNumber - 1].backwardAnimationClipName;
                     // guidedTourManager.SetCurrentAnimationClipLength(guidedTourManager.sceneDataArray[guidedTourManager.GetCurrentSceneNumber() - 1].backwardAnimationClipLength);
                 }
                 guidedTourManager.SkipTransition();
@@ -227,7 +227,7 @@ public class RadialMenuManager : MonoBehaviour {
 
     void OnDefaultState() // should probably set currentSelectedButtonType here ... 
     {
-        if (guidedTourManager.GetCurrentSceneNumber() != 1)
+        if (guidedTourManager.CurrentSceneNumber != 1)
         {
             leftButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
             leftButton.GetComponent<RadialMenuButton>().SwitchToDefaultSprite();
@@ -243,7 +243,7 @@ public class RadialMenuManager : MonoBehaviour {
             leftOuterButton.GetComponent<RadialMenuButton>().SwitchToDisabledSprite();
         }
 
-        if (guidedTourManager.GetCurrentSceneNumber() != guidedTourManager.sceneDataArray.Length)
+        if (guidedTourManager.CurrentSceneNumber != guidedTourManager.sceneDataArray.Length)
         {
             rightButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
             rightButton.GetComponent<RadialMenuButton>().SwitchToDefaultSprite();
@@ -262,9 +262,16 @@ public class RadialMenuManager : MonoBehaviour {
         topButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         topButton.GetComponent<RadialMenuButton>().SwitchToDisabledSprite();
 
-        downButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
-        downButton.GetComponent<RadialMenuButton>().SwitchToDefaultSprite();
-
+        if (!string.IsNullOrEmpty(guidedTourManager.sceneDataArray[guidedTourManager.CurrentSceneNumber - 1].ZoomOutAnimationClipName))
+        {
+            downButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Default;
+            downButton.GetComponent<RadialMenuButton>().SwitchToDefaultSprite();
+        } else
+        {
+            downButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
+            downButton.GetComponent<RadialMenuButton>().SwitchToDisabledSprite();
+        }
+        
         /// if this isn't here, then currentButtonType will still be left/right outer, and the SelectButtonBasedOnThumbstickCoordinates will have no effect. This means that with no buttons selected due
         /// to above and the thumbstick released, we will still be able to skip
         currentSelectedButtonType = ButtonType.None; 

@@ -15,8 +15,9 @@ public class LightVisuals : MonoBehaviour {
     public void OnEnable()
     {
         GuidedTourManager.Setlights += Enablelights;
-
+        GuidedTourManager.DisableLights += DisableAllLights;
     }
+
     /*! Setup OnDisable
     * 
     * Remove Enablelights() to eventsystem when enabled
@@ -25,7 +26,7 @@ public class LightVisuals : MonoBehaviour {
     public void OnDisable()
     {
         GuidedTourManager.Setlights -= Enablelights;
-
+        GuidedTourManager.DisableLights -= DisableAllLights;
     }
     /*! Initialize list
 * 
@@ -60,4 +61,11 @@ public class LightVisuals : MonoBehaviour {
         }
     }
 
+    public void DisableAllLights()
+    {
+        foreach (KeyValuePair<string, GameObject> pair in availablelights)
+        {
+            pair.Value.SetActive(false);
+        }
+    }
 }

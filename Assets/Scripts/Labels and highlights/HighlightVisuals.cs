@@ -24,7 +24,7 @@ public class HighlightVisuals : MonoBehaviour
     public void OnEnable()
     {
         GuidedTourManager.SetHighlights += EnableHighlights;
-
+        GuidedTourManager.DisableHighlights += DisableAllHighlights;
     }
     /*! Setup OnDisable
     * 
@@ -34,7 +34,7 @@ public class HighlightVisuals : MonoBehaviour
     public void OnDisable()
     {
         GuidedTourManager.SetHighlights -= EnableHighlights;
-
+        GuidedTourManager.DisableHighlights -= DisableAllHighlights;
     }
 
     /*! Initialize list
@@ -73,4 +73,11 @@ public class HighlightVisuals : MonoBehaviour
         }
     }
 
+    public void DisableAllHighlights()
+    {
+        foreach (KeyValuePair<string, GameObject> pair in availableHighlights)
+        {
+            pair.Value.GetComponent<Renderer>().material = defaultMaterial;
+        }
+    }
 }
