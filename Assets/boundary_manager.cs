@@ -31,6 +31,12 @@ public class boundary_manager : MonoBehaviour
 
     void EnableBoundaries(string[] names)
     {
+        // Debug.Log("Boundary_manager names length: " + names.Length);
+        foreach (GameObject current in availableBoundaries) 
+        {
+            current.SetActive(false);
+        }
+
         foreach (string name in names)
         {
             foreach (GameObject current in availableBoundaries)
