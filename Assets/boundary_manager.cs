@@ -5,7 +5,7 @@ using UnityEngine;
 public class boundary_manager : MonoBehaviour
 {
 
-    private Dictionary<string, GameObject> availableBoundaries;
+    public List<GameObject> availableBoundaries;
     public Material defaultMaterial;
 
 
@@ -27,28 +27,29 @@ public class boundary_manager : MonoBehaviour
     //initialize list
     public void Start()
     {
-        availableBoundaries = new Dictionary<string, GameObject>();
-        foreach (Transform child in transform)
-        {
-            availableBoundaries.Add(child.name, child.gameObject);
-        }
     }
 
     void EnableBoundaries(string[] names)
     {
             foreach (string name in names)
             {
-                availableBoundaries[name].SetActive(true);
-                print(name);
+                foreach(GameObject current in availableBoundaries)
+            {
+                if(current.name == name)
+                {
+                    current.SetActive(true);
+                    Debug.Log("BOUNDARY: enabling " + current.name);
+                }
+            }
             }   
     }
 
 
     void DisableBoundaries()
     {
-        foreach (KeyValuePair<string, GameObject> pair in availableBoundaries)
+        foreach (GameObject current in availableBoundaries)
         {
-            pair.Value.SetActive(false);
+            current.SetActive(false);
         }
     }
 }
