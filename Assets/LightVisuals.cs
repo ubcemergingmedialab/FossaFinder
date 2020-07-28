@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LightVisuals : MonoBehaviour {
 	private Dictionary<string, GameObject> availablelights;
+
+    public List<GameObject> availableLightss;
+
     // Use this for initialization
 
     /*! Setup onEnable
@@ -34,13 +37,13 @@ public class LightVisuals : MonoBehaviour {
 */
     public void Start()
     {
-        availablelights = new Dictionary<string, GameObject>();
-        foreach (Transform child in transform)
-        {
-            availablelights.Add(child.name, child.gameObject);
+        //availablelights = new Dictionary<string, GameObject>();
+        //foreach (Transform child in transform)
+        //{
+        //    availablelights.Add(child.name, child.gameObject);
             
 
-        }
+        //}
 
     }
 
@@ -51,21 +54,43 @@ public class LightVisuals : MonoBehaviour {
 
     public void Enablelights(string[] names)
     {
-        foreach (KeyValuePair<string, GameObject> pair in availablelights)
+        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
+        //{
+        //    pair.Value.SetActive(false);
+        //}
+        //foreach (string name in names)
+        //{
+        //    availablelights[name].SetActive(true);
+        //}
+
+        foreach (GameObject availableLight in availableLightss)
         {
-            pair.Value.SetActive(false);
+            availableLight.SetActive(false);
         }
+
         foreach (string name in names)
         {
-            availablelights[name].SetActive(true);
+            foreach (GameObject availableLight in availableLightss)
+            {
+                if (availableLight.name == name)
+                {
+                    availableLight.SetActive(true);
+                    Debug.Log("LIGHT: enabling " + availableLight.name);
+                }
+            }
         }
     }
 
     public void DisableAllLights()
     {
-        foreach (KeyValuePair<string, GameObject> pair in availablelights)
+        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
+        //{
+        //    pair.Value.SetActive(false);
+        //}
+
+        foreach (GameObject availableLight in availableLightss)
         {
-            pair.Value.SetActive(false);
+            availableLight.SetActive(false);
         }
     }
 }

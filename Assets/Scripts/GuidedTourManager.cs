@@ -71,9 +71,10 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         isChangeButtonStatesCoroutineRunning = false;
-        DisableBoundaries?.Invoke();
-        Debug.Log("Ok is highlights null? " + sceneDataArray[currentSceneNumber - 1].highlights == null);
         // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        DisableHighlights?.Invoke();
+        DisableLights?.Invoke();
+        DisableBoundaries?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
