@@ -24,6 +24,8 @@ public class RadialMenuManager : MonoBehaviour {
         leftButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         leftOuterButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
         topButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
+        downButton.GetComponent<RadialMenuButton>().CurrentState = ButtonState.Disabled;
+        Debug.Log("Ok, down button current state plz: " + downButton.GetComponent<RadialMenuButton>().CurrentState);
         // currentSelectedButtonType = ButtonType.None;
         // previousSelectedButtonType = ButtonType.None;
         thumbStickThreshold = .7f;
