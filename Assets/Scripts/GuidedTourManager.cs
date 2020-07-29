@@ -68,7 +68,7 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         isChangeButtonStatesCoroutineRunning = false;
         DisableBoundaries?.Invoke();
-        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        //SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
