@@ -15,3 +15,13 @@ MonoBehaviour:
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene6ToScene5AnimationClip
   backwardAnimationClipLength: 1
+  ZoomOutAnimationClipName: ZoomOutFromScene5AnimationClip
+  ZoomOutAnimationClipLength: 1
+  ZoomInAnimationClipName: ZoomInToScene5AnimationClip
+  ZoomInAnimationClipLength: 1
+  highlights: []
+  boundaries:
+  - Posterior_Wall
+  - Medial_Wall
+  - Anterior_Wall
+  lights: []

@@ -21,13 +21,13 @@ public class SwitchObjectOnZoom : MonoBehaviour {
     private void OnEnable()
     {
         GuidedTourManager.ZoomedOut += SwitchToTransparent;
-        GuidedTourManager.DefaultState += SwitchToOpaque;
+        GuidedTourManager.DuringTransition += SwitchToOpaque;
     }
 
     private void OnDisable()
     {
         GuidedTourManager.ZoomedOut -= SwitchToTransparent;
-        GuidedTourManager.DefaultState -= SwitchToOpaque;
+        GuidedTourManager.DuringTransition -= SwitchToOpaque;
     }
 
     private void SwitchToTransparent()

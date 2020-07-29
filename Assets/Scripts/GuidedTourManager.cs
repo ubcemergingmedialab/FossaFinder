@@ -30,14 +30,18 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void EnableBoundariesHandler(string[] names);
     public delegate void DisableBoundariesHandler();
     public delegate void SetlightsHandler(string[] names);
+    public delegate void DisableLightsHandler();
     public delegate void SetHighlightsHandler(string[] names);
+    public delegate void DisableHighlightsHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
     public static event EnableBoundariesHandler EnableBoundaries;
     public static event DisableBoundariesHandler DisableBoundaries;
     public static event SetlightsHandler Setlights;
+    public static event DisableLightsHandler DisableLights;
     public static event SetHighlightsHandler SetHighlights;
+    public static event DisableHighlightsHandler DisableHighlights;
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -67,8 +71,10 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         isChangeButtonStatesCoroutineRunning = false;
+        // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        DisableHighlights?.Invoke();
+        DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
-        //SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -83,14 +89,10 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Returns the current scene number
-    public int GetCurrentSceneNumber()
+    public int CurrentSceneNumber
     {
-        return currentSceneNumber;
-    }
-
-    public void SetCurrentSceneNumber(int sceneNumber)
-    {
-        currentSceneNumber = sceneNumber;
+        get { return currentSceneNumber; }
+        set { currentSceneNumber = value; }
     }
 
     public bool GetIsDuringTransition()
@@ -104,9 +106,10 @@ public class GuidedTourManager : MonoBehaviour {
         return currentTransitionType;
     }
 
-    public void SetCurrentAnimationClipName(string clipName)
+    public string CurrentAnimationClipName
     {
-        currentAnimationClipName = clipName;
+        get { return currentAnimationClipName; }
+        set { currentAnimationClipName = value; }
     }
 
     //public void SetCurrentAnimationClipLength(float clipLength)
@@ -125,6 +128,7 @@ public class GuidedTourManager : MonoBehaviour {
             currentTransitionType = TransitionType.Backward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
+
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
@@ -142,6 +146,7 @@ public class GuidedTourManager : MonoBehaviour {
             currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
+
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
@@ -155,6 +160,9 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Inward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
+
+        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         DisableBoundaries?.Invoke();
 
         PlayTransition();
@@ -166,7 +174,9 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Outward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
-        EnableBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
+
+        DisableHighlights?.Invoke();
+        DisableLights?.Invoke();
 
         PlayTransition();
     }
@@ -183,7 +193,6 @@ public class GuidedTourManager : MonoBehaviour {
         }
 
         changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
-
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -209,20 +218,12 @@ public class GuidedTourManager : MonoBehaviour {
         else if (currentTransitionType == TransitionType.Outward)
         {
             ZoomedOut?.Invoke();
+            EnableBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
         }
         currentTransitionType = TransitionType.None;
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         isChangeButtonStatesCoroutineRunning = false;
-    }
-
-    // Skips to a particular end state/scene of a transition 
-    public void SkipToScene(int sceneNumber)
-    {
-        StopCoroutine(changeButtonStatesCoroutine);
-        anim.Play(currentAnimationClipName, -1, 1);
-        isDuringTransition = false;
-        DefaultState?.Invoke();
     }
 
     public void SkipTransition()
