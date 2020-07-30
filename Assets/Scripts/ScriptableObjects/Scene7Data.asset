@@ -19,7 +19,6 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 12
   ZoomInAnimationClipName: ZoomInToScene7AnimationClip
   ZoomInAnimationClipLength: 12
-  highlights:
-  - Sphenopalatine_Foramen
+  highlights: []
   boundaries: []
   lights: []
