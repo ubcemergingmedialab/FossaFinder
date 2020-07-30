@@ -34944,6 +34944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3104ec1c510281248bfa2d0f20e2db8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableLabels: []
 --- !u!64 &2006413695
 MeshCollider:
   m_ObjectHideFlags: 0

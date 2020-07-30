@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11841,36 +11841,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a,
     type: 2}
   m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &733399891
 GameObject:
   m_ObjectHideFlags: 0
@@ -18339,10 +18309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 1108160144}
-  actualHeadset: {fileID: 900869779}
-  actualLeftController: {fileID: 1726956136}
-  actualRightController: {fileID: 1585980129}
+  actualBoundaries: {fileID: 0}
+  actualHeadset: {fileID: 0}
+  actualLeftController: {fileID: 0}
+  actualRightController: {fileID: 0}
   modelAliasLeftController: {fileID: 2039165622}
   modelAliasRightController: {fileID: 2039165621}
   cachedSystemSDKInfo:
@@ -19591,12 +19561,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 726004952}
-  actualHeadset: {fileID: 726004951}
-  actualLeftController: {fileID: 726004950}
-  actualRightController: {fileID: 726004948}
-  modelAliasLeftController: {fileID: 726004949}
-  modelAliasRightController: {fileID: 726004947}
+  actualBoundaries: {fileID: 0}
+  actualHeadset: {fileID: 0}
+  actualLeftController: {fileID: 0}
+  actualRightController: {fileID: 0}
+  modelAliasLeftController: {fileID: 0}
+  modelAliasRightController: {fileID: 0}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -32258,6 +32228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3104ec1c510281248bfa2d0f20e2db8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableLabels: []
 --- !u!64 &2006413695
 MeshCollider:
   m_ObjectHideFlags: 0
