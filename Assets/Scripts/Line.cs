@@ -11,17 +11,18 @@ public class Line : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         LineRenderer line = this.GetComponent<LineRenderer>();
         line.SetPosition(0, LabelDot.position);
-        line.SetPosition(1, this.transform.position);
+        line.SetPosition(1, text.position);
 
-        text.position = this.transform.position;
+        //text.position = this.transform.position;
         //text.GetComponent<RectTransform>().sizeDelta = this.GetComponent<SpriteRenderer>().bounds.size*100;
     }
 }

@@ -24,3 +24,5 @@ MonoBehaviour:
   boundaries: []
   lights:
   - Sphenopalatine_Foramen
+  - Sphenopalatine_Foramen1
+  - Sphenopalatine_Foramen2
