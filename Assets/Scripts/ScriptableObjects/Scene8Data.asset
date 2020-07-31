@@ -21,7 +21,8 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 12
   highlights:
   - Sphenopalatine_Foramen
-  boundaries: []
+  boundaries:
+  - Medial_Wall
   lights:
   - Sphenopalatine_Foramen
   - Sphenopalatine_Foramen1
