@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Valve.VR;
 
 public class ControllerRecording : MonoBehaviour {
 
@@ -39,11 +40,9 @@ public class ControllerRecording : MonoBehaviour {
 
     private void Update()
     {
-        QueueMessage("position;" + left.transform.position.ToString() + ";" + right.transform.position.ToString());
-
-
         if (recordingData)
         {
+            QueueMessage(left.transform.position.ToString("0.000") + ";" + right.transform.position.ToString("0.000") + ";" + left.transform.rotation.ToString("0.000") + ";" + right.transform.rotation.ToString("0.000"));
             if (dataTimer >= dataInterval)
             {
                 writeToDataFile();
@@ -58,7 +57,6 @@ public class ControllerRecording : MonoBehaviour {
 
     void startRecordingData()
     {
-        Debug.Log("recording data: ");
         filename = DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_controllers.txt";
         recordingData = true;
     }
@@ -75,7 +73,6 @@ public class ControllerRecording : MonoBehaviour {
                 {
                     while (messages.TryDequeue(out text))
                     {
-                        Debug.Log("message: " + text);
                         sw.Write(text);
                     }
                     sw.Flush();
@@ -89,7 +86,6 @@ public class ControllerRecording : MonoBehaviour {
 
     public void QueueMessage(string text)
     {
-        Debug.Log("NEW MESSAGE");
         messages.Enqueue(Time.time + ";" + text + "\r\n");
     }
 }

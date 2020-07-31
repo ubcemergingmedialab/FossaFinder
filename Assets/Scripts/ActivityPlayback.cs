@@ -21,16 +21,18 @@ public class ActivityPlayback : MonoBehaviour {
     private bool playing;
     private GuidedTourManager tour;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         FillQueue();
         tour = GameObject.Find("GuidedTourManager").GetComponent<GuidedTourManager>();
         playing = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(playing)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (playing && ActivityQueue.Count > 0)
         {
             float time = ActivityQueue.Peek().Timing;
             if (Time.time >= time)
@@ -40,7 +42,7 @@ public class ActivityPlayback : MonoBehaviour {
                 tour.GetType().GetMethod(activity.Action).Invoke(tour, new object[] { });
             }
         }
-	}
+    }
 
     void FillQueue()
     {
