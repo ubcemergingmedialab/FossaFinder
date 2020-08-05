@@ -34,6 +34,8 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void SetHighlightsHandler(string[] names);
     public delegate void DisableHighlightsHandler();
     public delegate void DisableLabelsHandler();
+    public delegate void SetNerveshandler(string[] names);
+    public delegate void DisableNervesHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
@@ -44,6 +46,8 @@ public class GuidedTourManager : MonoBehaviour {
     public static event SetHighlightsHandler SetHighlights;
     public static event DisableHighlightsHandler DisableHighlights;
     public static event DisableLabelsHandler DisableLabels;
+    public static event SetNerveshandler SetNerves;
+    public static event DisableNervesHandler DisableNerves;
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -78,6 +82,7 @@ public class GuidedTourManager : MonoBehaviour {
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
+        DisableNerves?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -135,6 +140,7 @@ public class GuidedTourManager : MonoBehaviour {
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             PlayTransition();
         }
@@ -154,6 +160,7 @@ public class GuidedTourManager : MonoBehaviour {
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             PlayTransition();
         }

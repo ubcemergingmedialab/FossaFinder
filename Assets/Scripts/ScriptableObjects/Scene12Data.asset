@@ -9,20 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene11Data
+  m_Name: Scene12Data
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene10ToScene11AnimationClip
-  forwardAnimationClipLength: 20
-  backwardAnimationClipName: Scene12ToScene11AnimationClip
-  backwardAnimationClipLength: 5
+  forwardAnimationClipName: Scene11ToScene12AnimationClip
+  forwardAnimationClipLength: 5
+  backwardAnimationClipName: 
+  backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
   ZoomOutAnimationClipLength: 14
   ZoomInAnimationClipName: ZoomInToScene11AnimationClip
   ZoomInAnimationClipLength: 14
-  highlights:
-  - Inferior_Orbital_Fissure
-  - Ptergomaxillary_Fissure1
-  boundaries:
-  - Anterior_Wall
+  highlights: []
+  boundaries: []
   lights: []
-  nerves: []
+  nerves:
+  - Nerves03_split

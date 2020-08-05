@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightVisuals : MonoBehaviour {
-	private Dictionary<string, GameObject> availablelights;
-
-    public List<GameObject> availableLightss;
+    public List<GameObject> availableLights;
 
     // Use this for initialization
 
@@ -63,14 +61,14 @@ public class LightVisuals : MonoBehaviour {
         //    availablelights[name].SetActive(true);
         //}
 
-        foreach (GameObject availableLight in availableLightss)
+        foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
         }
 
         foreach (string name in names)
         {
-            foreach (GameObject availableLight in availableLightss)
+            foreach (GameObject availableLight in availableLights)
             {
                 if (availableLight.name == name)
                 {
@@ -88,7 +86,7 @@ public class LightVisuals : MonoBehaviour {
         //    pair.Value.SetActive(false);
         //}
 
-        foreach (GameObject availableLight in availableLightss)
+        foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
         }
