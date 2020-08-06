@@ -20,5 +20,6 @@ MonoBehaviour:
   ZoomInAnimationClipName: ZoomInToScene7AnimationClip
   ZoomInAnimationClipLength: 12
   highlights: []
-  boundaries: []
+  boundaries: 
+  - Medial_Wall
   lights: []
