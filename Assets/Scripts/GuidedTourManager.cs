@@ -21,7 +21,7 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     public GameObject head, headContainer, cameraRig, mainCamera; 
-    public Animator anim;
+    public Animator animator;
     public SceneData[] sceneDataArray;
 
     public delegate void DefaultStateHandler();
@@ -36,6 +36,8 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DisableLabelsHandler();
     public delegate void SetNerveshandler(string[] names);
     public delegate void DisableNervesHandler();
+    public delegate void SetRenderTextureHandler(string name);
+    public delegate void DisableRenderTextureHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
@@ -48,6 +50,8 @@ public class GuidedTourManager : MonoBehaviour {
     public static event DisableLabelsHandler DisableLabels;
     public static event SetNerveshandler SetNerves;
     public static event DisableNervesHandler DisableNerves;
+    public static event SetRenderTextureHandler SetRenderTexture;
+    public static event DisableRenderTextureHandler DisableRenderTexture;
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -83,6 +87,7 @@ public class GuidedTourManager : MonoBehaviour {
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
         DisableNerves?.Invoke();
+        DisableRenderTexture?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -142,6 +147,13 @@ public class GuidedTourManager : MonoBehaviour {
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
+            if (sceneDataArray[currentSceneNumber - 1] is SceneData)
+            {
+                sceneDataArray[currentSceneNumber - 1].Assign(this);
+                ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+                SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+            }
+
             PlayTransition();
         }
     }
@@ -161,6 +173,13 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+
+            if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
+            {
+                sceneDataArray[currentSceneNumber - 1].Assign(this);
+                ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+                SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+            }
 
             PlayTransition();
         }
@@ -201,11 +220,11 @@ public class GuidedTourManager : MonoBehaviour {
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
-            anim.Play(currentAnimationClipName);
+            animator.Play(currentAnimationClipName);
             DuringTransition?.Invoke();   
         }
 
-        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
+        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -219,7 +238,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
+    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
     {
         isChangeButtonStatesCoroutineRunning = true;
         yield return new WaitForSeconds(currentAnimationClipLength);
@@ -246,7 +265,7 @@ public class GuidedTourManager : MonoBehaviour {
             StopCoroutine(changeButtonStatesCoroutine); /// you need this because you don't want this effect to take place unintentionally
             isChangeButtonStatesCoroutineRunning = false;
         }
-        anim.Play(currentAnimationClipName, -1, 1);
+        animator.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
         currentAnimationClipName = "";
@@ -255,5 +274,6 @@ public class GuidedTourManager : MonoBehaviour {
         DisableLabels?.Invoke();
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
+        SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
     }
 }

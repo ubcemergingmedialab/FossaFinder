@@ -29,21 +29,6 @@ public class LightVisuals : MonoBehaviour {
         GuidedTourManager.Setlights -= Enablelights;
         GuidedTourManager.DisableLights -= DisableAllLights;
     }
-    /*! Initialize list
-* 
-* Add all lights in the hierarchy to the dictionary
-*/
-    public void Start()
-    {
-        //availablelights = new Dictionary<string, GameObject>();
-        //foreach (Transform child in transform)
-        //{
-        //    availablelights.Add(child.name, child.gameObject);
-            
-
-        //}
-
-    }
 
     /*! \Manage lightss on the scene
         * only activate specific lights by the number of scene
@@ -52,15 +37,6 @@ public class LightVisuals : MonoBehaviour {
 
     public void Enablelights(string[] names)
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-        //foreach (string name in names)
-        //{
-        //    availablelights[name].SetActive(true);
-        //}
-
         foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
@@ -81,11 +57,6 @@ public class LightVisuals : MonoBehaviour {
 
     public void DisableAllLights()
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-
         foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);

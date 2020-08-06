@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using PathCreation;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSceneData", menuName = "Scene Data", order = 51)]
 public class SceneData : ScriptableObject {
@@ -17,4 +14,10 @@ public class SceneData : ScriptableObject {
     public string[] boundaries;
     public string[] lights;
     public string[] nerves;
+    public Animator animator;
+
+    public void Assign(GuidedTourManager manager)
+    {
+        manager.animator = animator;
+    }
 }

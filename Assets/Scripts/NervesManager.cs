@@ -19,15 +19,6 @@ public class NervesManager : MonoBehaviour {
 
     public void EnableNerves(string[] names)
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-        //foreach (string name in names)
-        //{
-        //    availablelights[name].SetActive(true);
-        //}
-
         foreach (GameObject availableNerve in availableNerves)
         {
             availableNerve.SetActive(false);
@@ -48,11 +39,6 @@ public class NervesManager : MonoBehaviour {
 
     public void DisableAllNerves()
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-
         foreach (GameObject availableNerve in availableNerves)
         {
             availableNerve.SetActive(false);
