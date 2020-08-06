@@ -6,6 +6,8 @@
     {
         public VRTK_InteractableObject linkedObject;
         public GameObject Label;
+
+        private LabelRecording recorder;
         
 
         protected bool showlabel;
@@ -41,6 +43,11 @@
             //print("triggered");
             showlabel = true;
 
+            if(recorder != null)
+            {
+                recorder.QueueMessage(Label.name + ";true");
+            }
+
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
@@ -48,6 +55,17 @@
 
             Label.SetActive(false);
 
+            if(recorder != null)
+            {
+                recorder.QueueMessage(Label.name + ";false");
+            }
+
+        }
+
+        public void InjectRecorder(LabelRecording recorder)
+        {
+            Debug.Log("inserted recorder");
+            this.recorder = recorder;
         }
     }
 }

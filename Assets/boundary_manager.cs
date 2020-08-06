@@ -5,45 +5,57 @@ using UnityEngine;
 public class boundary_manager : MonoBehaviour
 {
 
-    private Dictionary<string, GameObject> availableBoundaries;
+    public List<GameObject> availableBoundaries;
     public Material defaultMaterial;
 
 
 
     public void OnEnable()
     {
-        GuidedTourManager.SetBoundaries += EnableHighlights;
+        GuidedTourManager.EnableBoundaries += EnableBoundaries;
+        GuidedTourManager.DisableBoundaries += DisableBoundaries;
 
     }
 
     public void OnDisable()
     {
-        GuidedTourManager.SetBoundaries -= EnableHighlights;
+        GuidedTourManager.EnableBoundaries -= EnableBoundaries;
+        GuidedTourManager.DisableBoundaries -= DisableBoundaries;
 
     }
 
     //initialize list
     public void Start()
     {
-        availableBoundaries = new Dictionary<string, GameObject>();
-        foreach (Transform child in transform)
+    }
+
+    void EnableBoundaries(string[] names)
+    {
+        // Debug.Log("Boundary_manager names length: " + names.Length);
+        foreach (GameObject current in availableBoundaries) 
         {
-            availableBoundaries.Add(child.name, child.gameObject);
+            current.SetActive(false);
+        }
+
+        foreach (string name in names)
+        {
+            foreach (GameObject current in availableBoundaries)
+            {
+                if (current.name == name)
+                {
+                    current.SetActive(true);
+                    Debug.Log("BOUNDARY: enabling " + current.name);
+                }
+            }
         }
     }
 
-    void EnableHighlights(string[] names)
+
+    void DisableBoundaries()
     {
-        
-            foreach (KeyValuePair<string, GameObject> pair in availableBoundaries)
-            {
-                pair.Value.SetActive(false);
-            }
-            foreach (string name in names)
-            {
-                availableBoundaries[name].SetActive(true);
-            }
-        
-    
-}
+        foreach (GameObject current in availableBoundaries)
+        {
+            current.SetActive(false);
+        }
+    }
 }

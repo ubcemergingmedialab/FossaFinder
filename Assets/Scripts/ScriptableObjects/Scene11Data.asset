@@ -15,11 +15,13 @@ MonoBehaviour:
   forwardAnimationClipLength: 20
   backwardAnimationClipName: 
   backwardAnimationClipLength: 0
-  ZoomOutAnimationClipName: 
-  ZoomOutAnimationClipLength: 0
-  ZoomInAnimationClipName: 
-  ZoomInAnimationClipLength: 0
+  ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
+  ZoomOutAnimationClipLength: 14
+  ZoomInAnimationClipName: ZoomInToScene11AnimationClip
+  ZoomInAnimationClipLength: 14
   highlights:
   - Inferior_Orbital_Fissure
+  - Ptergomaxillary_Fissure1
   boundaries:
   - Anterior_Wall
+  lights: []

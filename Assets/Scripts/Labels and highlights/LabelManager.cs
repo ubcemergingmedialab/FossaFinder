@@ -11,7 +11,8 @@ using UnityEngine;
 public class LabelManager : MonoBehaviour {
 
     
-    private Dictionary<string, GameObject> availableLabels;
+    // private Dictionary<string, GameObject> availableLabels;
+    public List<GameObject> availableLabels;
 
     /*! Setup onEnable
     * 
@@ -21,7 +22,7 @@ public class LabelManager : MonoBehaviour {
 
     public void OnEnable()
     {
-        GuidedTourManager.DuringTransition += DisableLabels;
+        GuidedTourManager.DisableLabels += DisableLabels;
 
     }
     /*! Setup OnDisable
@@ -31,7 +32,7 @@ public class LabelManager : MonoBehaviour {
     */
     void OnDisable()
     {
-        GuidedTourManager.DuringTransition -= DisableLabels;
+        GuidedTourManager.DisableLabels -= DisableLabels;
     }
 
      /*! Initialize list
@@ -40,13 +41,13 @@ public class LabelManager : MonoBehaviour {
      */
     public void Start()
     {
-        availableLabels = new Dictionary<string, GameObject>();
-        foreach (Transform child in transform)
-        {
-            availableLabels.Add(child.name, child.gameObject);
-            print(child.name);
-        }
-        int z = availableLabels.Count;
+        //availableLabels = new Dictionary<string, GameObject>();
+        //foreach (Transform child in transform)
+        //{
+        //    availableLabels.Add(child.name, child.gameObject);
+        //    print(child.name);
+        //}
+        //int z = availableLabels.Count;
     }
 
      /*! \Disable labels on the scene
@@ -55,15 +56,15 @@ public class LabelManager : MonoBehaviour {
      */
     public void DisableLabels()
     {
-        int i = 0;
-        foreach (KeyValuePair<string, GameObject> pair in availableLabels)
+        //foreach (KeyValuePair<string, GameObject> pair in availableLabels)
+        //{
+
+        //    pair.Value.SetActive(false);
+        //}
+
+        foreach (GameObject availableLabel in availableLabels)
         {
-            
-            pair.Value.SetActive(false);
-            print(pair.Key);
-            print(i);
-            i++;
+            availableLabel.SetActive(false);
         }
-    
     }
 }
