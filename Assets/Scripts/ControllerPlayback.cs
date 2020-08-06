@@ -43,8 +43,8 @@ public class ControllerPlayback : MonoBehaviour {
             if (Time.time >= time)
             {
                 ControllerMovement movement = ActivityQueue.Dequeue();
-                right.position = movement.RightPosition;
-                right.rotation = movement.RightOrientation;
+                right.localPosition = movement.RightPosition;
+                right.localRotation = movement.RightOrientation;
             }
         }
     }

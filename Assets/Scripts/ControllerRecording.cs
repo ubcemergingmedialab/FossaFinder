@@ -42,7 +42,7 @@ public class ControllerRecording : MonoBehaviour {
     {
         if (recordingData)
         {
-            QueueMessage(left.transform.position.ToString("0.000") + ";" + right.transform.position.ToString("0.000") + ";" + left.transform.rotation.ToString("0.000") + ";" + right.transform.rotation.ToString("0.000"));
+            QueueMessage(left.transform.localPosition.ToString("0.000") + ";" + right.transform.localPosition.ToString("0.000") + ";" + left.transform.localRotation.ToString("0.000") + ";" + right.transform.localRotation.ToString("0.000"));
             if (dataTimer >= dataInterval)
             {
                 writeToDataFile();

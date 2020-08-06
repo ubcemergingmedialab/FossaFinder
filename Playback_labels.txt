@@ -1,16 +1,15 @@
-16.14798;label_Sphenopalatine Foramen;true
-17.93549;label_Sphenopalatine Foramen;false
-18.8484;label_Sphenopalatine Foramen;true
-19.54844;label_Sphenopalatine Foramen;false
-22.66155;label_Foramen Rotundum;true
-23.40961;label_Superior orbital fissure;true
-25.37386;label_Foramen Rotundum;true
-25.60169;label_Foramen Rotundum;false
-26.51161;label_Pterygoid Canal;true
-27.43648;label_Foramen Rotundum;true
-28.22314;label_Superior orbital fissure;true
-28.46517;label_Superior orbital fissure;false
-29.29794;label_Foramen Rotundum;true
-29.52373;label_Foramen Rotundum;false
-30.09835;label_Pterygoid Canal;true
-30.32444;label_Pterygoid Canal;false
+13.62109;label_Ptergomaxillary;true
+14.76297;label_Ptergomaxillary;false
+30.47165;label_Sphenopalatine Foramen;true
+33.44143;label_Sphenopalatine Foramen;false
+39.10172;label_Pterygoid Canal;true
+39.98299;label_Foramen Rotundum;true
+40.46964;label_Superior orbital fissure;true
+40.9232;label_Foramen Rotundum;true
+41.08998;label_Foramen Rotundum;false
+41.58167;label_Superior orbital fissure;true
+41.7626;label_Superior orbital fissure;false
+43.18996;label_Pterygoid Canal;true
+43.39082;label_Pterygoid Canal;false
+62.2726;label_Palatine Canal;true
+64.54432;label_Palatine Canal;false

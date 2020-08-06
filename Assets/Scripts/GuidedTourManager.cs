@@ -23,6 +23,7 @@ public class GuidedTourManager : MonoBehaviour {
     public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator anim;
     public SceneData[] sceneDataArray;
+    public GameObject miniSkull;
 
     public delegate void DefaultStateHandler();
     public delegate void DuringTransitionHandler();
@@ -55,6 +56,7 @@ public class GuidedTourManager : MonoBehaviour {
     Coroutine changeButtonStatesCoroutine;
     bool isChangeButtonStatesCoroutineRunning;
     ActivityRecorder recorder;
+    Coroutine miniSkullActive;
 
     void Awake()
     {
@@ -87,8 +89,8 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
-        cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
+        headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
         adjustedCameraPosition = mainCamera.transform.position;
     }
 
@@ -142,6 +144,14 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
+            if(miniSkull != null)
+            {
+                if(miniSkullActive != null)
+                {
+                    StopCoroutine(miniSkullActive);
+                }
+                miniSkullActive = StartCoroutine(EnableMiniSkull());
+            }
             PlayTransition();
 
             if (recorder != null)
@@ -149,6 +159,17 @@ public class GuidedTourManager : MonoBehaviour {
                 recorder.QueueMessage("VisitPreviousScene");
             }
         }
+    }
+
+    IEnumerator EnableMiniSkull()
+    {
+
+        Debug.Log("enabling miniskull");
+        miniSkull.SetActive(true);
+        yield return new WaitForSeconds(5);
+        Debug.Log("disabling miniskull");
+        miniSkull.SetActive(false);
+        miniSkullActive = null;
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
@@ -166,6 +187,14 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
+            if(miniSkull != null)
+            {
+                if (miniSkullActive != null)
+                {
+                    StopCoroutine(miniSkullActive);
+                }
+                miniSkullActive = StartCoroutine(EnableMiniSkull());
+            }
             PlayTransition();
             if (recorder != null)
             {
