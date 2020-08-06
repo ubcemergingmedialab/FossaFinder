@@ -24,5 +24,5 @@ MonoBehaviour:
   lights: []
   nerves:
   - Nerves03_split
-  animator: {fileID: 0}
+  animator: {fileID: 95837547498298628, guid: f974ff24b7bf13146ad2fbb0f1cd0bcd, type: 2}
   renderTexture: FirstNerveRenderTexture

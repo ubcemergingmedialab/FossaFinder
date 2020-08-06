@@ -26,3 +26,4 @@ MonoBehaviour:
   - Anterior_Wall
   lights: []
   nerves: []
+  animator: {fileID: 95442603931869012, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
