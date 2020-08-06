@@ -15,3 +15,12 @@ MonoBehaviour:
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene4ToScene3AnimationClip
   backwardAnimationClipLength: 1
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
+  highlights: []
+  boundaries: []
+  lights: []
+  skullCollider: {fileID: 135651244026623312, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f,
+    type: 2}

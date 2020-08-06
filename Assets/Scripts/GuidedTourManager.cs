@@ -144,6 +144,11 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
+            if(sceneDataArray[currentSceneNumber-1].skullCollider != null)
+            {
+                Debug.Log("Enabling collider");
+                sceneDataArray[currentSceneNumber - 1].skullCollider.enabled = true;
+            }
             if(miniSkull != null)
             {
                 if(miniSkullActive != null)
@@ -187,7 +192,12 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
-            if(miniSkull != null)
+            if (sceneDataArray[currentSceneNumber - 1].skullCollider != null)
+            {
+                Debug.Log("disabling collider");
+                sceneDataArray[currentSceneNumber - 1].skullCollider.enabled = false;
+            }
+            if (miniSkull != null)
             {
                 if (miniSkullActive != null)
                 {
