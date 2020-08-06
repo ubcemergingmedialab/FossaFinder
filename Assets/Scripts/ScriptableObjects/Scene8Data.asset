@@ -15,3 +15,15 @@ MonoBehaviour:
   forwardAnimationClipLength: 5
   backwardAnimationClipName: Scene9ToScene8AnimationClip
   backwardAnimationClipLength: 6
+  ZoomOutAnimationClipName: ZoomOutFromScene8AnimationClip
+  ZoomOutAnimationClipLength: 12
+  ZoomInAnimationClipName: ZoomInToScene8AnimationClip
+  ZoomInAnimationClipLength: 12
+  highlights:
+  - Sphenopalatine_Foramen
+  boundaries:
+  - Medial_Wall
+  lights:
+  - Sphenopalatine_Foramen
+  - Sphenopalatine_Foramen1
+  - Sphenopalatine_Foramen2

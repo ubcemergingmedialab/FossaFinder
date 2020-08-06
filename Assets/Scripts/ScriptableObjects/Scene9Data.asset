@@ -15,3 +15,14 @@ MonoBehaviour:
   forwardAnimationClipLength: 6
   backwardAnimationClipName: Scene10ToScene9AnimationClip
   backwardAnimationClipLength: 20
+  ZoomOutAnimationClipName: ZoomOutFromScene9AnimationClip
+  ZoomOutAnimationClipLength: 12
+  ZoomInAnimationClipName: ZoomInToScene9AnimationClip
+  ZoomInAnimationClipLength: 12
+  highlights:
+  - Foramen_Rotundum
+  - Superior_Orbital_Fissure
+  - Pterygoid_Canal
+  - Palatovaginal_Canal
+  boundaries:
+  - Posterior_Wall

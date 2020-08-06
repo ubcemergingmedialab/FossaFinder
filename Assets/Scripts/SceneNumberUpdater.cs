@@ -11,6 +11,6 @@ public class SceneNumberUpdater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Text>().text = guidedTourManager.GetComponent<GuidedTourManager>().GetCurrentSceneDestination().ToString();
+        gameObject.GetComponent<Text>().text = guidedTourManager.GetComponent<GuidedTourManager>().CurrentSceneNumber.ToString();
     }
 }

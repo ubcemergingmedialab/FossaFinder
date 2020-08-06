@@ -13,5 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene10ToScene11AnimationClip
   forwardAnimationClipLength: 20
-  backwardAnimationClipName: Scene12ToScene11AnimationClip
-  backwardAnimationClipLength: 20
+  backwardAnimationClipName: 
+  backwardAnimationClipLength: 0
+  ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
+  ZoomOutAnimationClipLength: 14
+  ZoomInAnimationClipName: ZoomInToScene11AnimationClip
+  ZoomInAnimationClipLength: 14
+  highlights:
+  - Inferior_Orbital_Fissure
+  - Ptergomaxillary_Fissure1
+  boundaries:
+  - Anterior_Wall
+  lights: []

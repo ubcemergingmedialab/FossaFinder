@@ -15,3 +15,12 @@ MonoBehaviour:
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene7ToScene6AnimationClip
   backwardAnimationClipLength: 15
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
+  highlights:
+  - Ptergomaxillary_Fissure
+  boundaries:
+  - Medial_Wall
+  lights: []
