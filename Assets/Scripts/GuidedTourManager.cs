@@ -22,6 +22,8 @@ public class GuidedTourManager : MonoBehaviour {
 
     public GameObject head, headContainer, cameraRig, mainCamera; 
     public Animator animator;
+    private Animator oldAnimator;
+    public Animator cameraAnimator;
     public SceneData[] sceneDataArray;
 
     public delegate void DefaultStateHandler();
@@ -82,6 +84,8 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         isChangeButtonStatesCoroutineRunning = false;
         // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        oldAnimator = animator;
+        //
         DisableHighlights?.Invoke();
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
@@ -147,11 +151,11 @@ public class GuidedTourManager : MonoBehaviour {
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
-            if (sceneDataArray[currentSceneNumber - 1] is SceneData)
+            if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
             {
-                sceneDataArray[currentSceneNumber - 1].Assign(this);
-                ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
-                SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+                animator = oldAnimator;
+                DisableRenderTexture?.Invoke();
             }
 
             PlayTransition();
@@ -176,7 +180,8 @@ public class GuidedTourManager : MonoBehaviour {
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
-                sceneDataArray[currentSceneNumber - 1].Assign(this);
+                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+                animator = cameraAnimator;
                 ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
                 SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
             }

@@ -15,9 +15,12 @@ public class SceneData : ScriptableObject {
     public string[] lights;
     public string[] nerves;
     public Animator animator;
+    // public RuntimeAnimatorController animatorController;
 
-    public void Assign(GuidedTourManager manager)
+    public void AssignAnimatorAndRuntimeController(GuidedTourManager manager)
     {
         manager.animator = animator;
+        // manager.animator.runtimeAnimatorController = animatorController;
+        // manager.animator.runtimeAnimatorController = Resources.Load() as RuntimeAnimatorController;
     }
 }
