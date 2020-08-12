@@ -19,7 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Cavity
   boundaries: []
   lights: []
-  colliderEnabled: 0
