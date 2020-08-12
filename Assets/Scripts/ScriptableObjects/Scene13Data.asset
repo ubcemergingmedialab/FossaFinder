@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dba5e537d0d6b409631aa50feffb24, type: 3}
   m_Name: Scene13Data
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: 
-  forwardAnimationClipLength: 0
+  forwardAnimationClipName: Scene12ToScene13AnimationClip
+  forwardAnimationClipLength: 5
   backwardAnimationClipName: Scene14ToScene13AnimationClip
   backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: 
@@ -25,5 +25,4 @@ MonoBehaviour:
   nerves:
   - Nerves03_split
   animator: {fileID: 95355520678075006, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  animatorController: {fileID: 9100000, guid: f19fd260f0927b541847f920086898ac, type: 2}
   renderTexture: FirstNerveRenderTexture
