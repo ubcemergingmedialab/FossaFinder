@@ -8,21 +8,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dba5e537d0d6b409631aa50feffb24, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene13Data
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene12ToScene13AnimationClip
   forwardAnimationClipLength: 5
-  backwardAnimationClipName: Scene14ToScene13AnimationClip
+  backwardAnimationClipName: 
   backwardAnimationClipLength: 0
-  ZoomOutAnimationClipName: 
-  ZoomOutAnimationClipLength: 0
-  ZoomInAnimationClipName: 
-  ZoomInAnimationClipLength: 0
+  ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
+  ZoomOutAnimationClipLength: 14
+  ZoomInAnimationClipName: ZoomInToScene11AnimationClip
+  ZoomInAnimationClipLength: 14
   highlights: []
   boundaries: []
   lights: []
   nerves:
   - Nerves03_split
-  animator: {fileID: 95355520678075006, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  renderTexture: FirstNerveRenderTexture
+  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
