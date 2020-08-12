@@ -1,21 +1,16 @@
 fileFormatVersion: 2
-guid: be8b8b345b1fcfa498d4598cbd1bdad2
+guid: d4741d8553882d242bd39f3a64079098
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: NERVESv05:nerves
-    100004: NERVESv05:skull
+    100002: polySurface108
     400000: //RootNode
-    400002: NERVESv05:nerves
-    400004: NERVESv05:skull
+    400002: polySurface108
     2100000: lambert1
-    2300000: NERVESv05:nerves
-    2300002: NERVESv05:skull
-    3300000: NERVESv05:nerves
-    3300002: NERVESv05:skull
-    4300000: NERVESv05:skull
-    4300002: NERVESv05:nerves
+    2300000: polySurface108
+    3300000: polySurface108
+    4300000: polySurface108
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -1,21 +1,14 @@
 fileFormatVersion: 2
-guid: be8b8b345b1fcfa498d4598cbd1bdad2
+guid: 323adeb3fa21146449b2b9ab55451d6f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: NERVESv05:nerves
-    100004: NERVESv05:skull
     400000: //RootNode
-    400002: NERVESv05:nerves
-    400004: NERVESv05:skull
-    2100000: lambert1
-    2300000: NERVESv05:nerves
-    2300002: NERVESv05:skull
-    3300000: NERVESv05:nerves
-    3300002: NERVESv05:skull
-    4300000: NERVESv05:skull
-    4300002: NERVESv05:nerves
+    2100000: lambert7
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: ptergomaxillary
   externalObjects: {}
   materials:
     importMaterials: 1
