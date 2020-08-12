@@ -21,6 +21,8 @@ public class ActivityPlayback : MonoBehaviour {
     private bool playing;
     private GuidedTourManager tour;
 
+    public GameObject miniSkull;
+
     // Use this for initialization
     void Start()
     {
@@ -39,7 +41,14 @@ public class ActivityPlayback : MonoBehaviour {
             {
                 Activity activity = ActivityQueue.Dequeue();
                 Debug.Log(time + ";" + activity.Action);
-                tour.GetType().GetMethod(activity.Action).Invoke(tour, new object[] { });
+                if(activity.Action == "ToggleMiniSkull")
+                {
+                    miniSkull.SetActive(!miniSkull.activeSelf);
+                } else
+                {
+                    tour.GetType().GetMethod(activity.Action).Invoke(tour, new object[] { });
+
+                }
             }
         }
     }

@@ -1,2 +1,2 @@
-13.8359;label_Ptergomaxillary;true
-17.06238;label_Ptergomaxillary;false
+24.61466;label_Sphenopalatine Foramen;true
+25.4626;label_Sphenopalatine Foramen;false
