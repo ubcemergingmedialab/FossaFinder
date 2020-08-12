@@ -22,4 +22,4 @@ MonoBehaviour:
   highlights: []
   boundaries: []
   lights: []
-  skullCollider: {fileID: 0}
+  colliderEnabled: 0

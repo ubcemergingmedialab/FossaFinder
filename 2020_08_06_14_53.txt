@@ -1,3 +1,0 @@
-1.649855;VisitNextScene
-17.59705;VisitNextScene
-18.72376;VisitPreviousScene

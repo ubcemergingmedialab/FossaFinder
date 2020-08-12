@@ -13,6 +13,8 @@ public class LaserController : MonoBehaviour {
 
     private void Update()
     {
-        laser.SetCursorRay(transform);
+        RaycastHit hit;
+        Physics.Raycast(new Ray(transform.position, transform.forward), out hit);
+        laser.SetCursorStartDest(transform.position, hit.point, transform.forward);
     }
 }

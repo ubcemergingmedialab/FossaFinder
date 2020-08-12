@@ -18,6 +18,8 @@ public class ControllerRecording : MonoBehaviour {
     public SteamVR_TrackedObject right;
     public SteamVR_ControllerManager manager;
     public SteamVR_Camera steamCamera;
+    public GameObject headContainer;
+    public GameObject pointerPlaceholder;
 
     private void Start()
     {
@@ -43,9 +45,12 @@ public class ControllerRecording : MonoBehaviour {
     {
         if (recordingData)
         {
-            Vector3 leftPosition = left.transform.position - steamCamera.head.transform.position;
-            Vector3 rightPosition = right.transform.position - steamCamera.head.transform.position;
-            QueueMessage(left.transform.position.ToString("0.000") + ";" + right.transform.position.ToString("0.000") + ";" + left.transform.rotation.ToString("0.000") + ";" + right.transform.rotation.ToString("0.000"));
+            Vector3 leftPosition = headContainer.transform.InverseTransformPoint(left.transform.position);
+            Vector3 rightPosition = headContainer.transform.InverseTransformPoint(right.transform.position);
+            Quaternion leftRotation = left.transform.rotation;
+            pointerPlaceholder.transform.rotation = right.transform.rotation;
+            Quaternion rightRotation = pointerPlaceholder.transform.localRotation;
+            QueueMessage(leftPosition.ToString("0.000") + ";" + rightPosition.ToString("0.000") + ";" + leftRotation.ToString("0.000") + ";" + rightRotation.ToString("0.000"));
             if (dataTimer >= dataInterval)
             {
                 writeToDataFile();

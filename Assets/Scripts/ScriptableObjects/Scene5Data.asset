@@ -25,3 +25,4 @@ MonoBehaviour:
   - Medial_Wall
   - Anterior_Wall
   lights: []
+  colliderEnabled: 0

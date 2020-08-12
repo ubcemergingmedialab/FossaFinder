@@ -20,7 +20,8 @@ public class GuidedTourManager : MonoBehaviour {
         get { return _instance; }
     }
 
-    public GameObject head, headContainer, cameraRig, mainCamera; 
+    public GameObject head, headContainer, cameraRig, mainCamera;
+    public Collider skullCollider;
     public Animator anim;
     public SceneData[] sceneDataArray;
     public GameObject miniSkull;
@@ -143,12 +144,8 @@ public class GuidedTourManager : MonoBehaviour {
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-
-            if(sceneDataArray[currentSceneNumber-1].skullCollider != null)
-            {
-                Debug.Log("Enabling collider");
-                sceneDataArray[currentSceneNumber - 1].skullCollider.enabled = true;
-            }
+            
+            skullCollider.enabled = sceneDataArray[currentSceneNumber - 1].colliderEnabled;
             if(miniSkull != null)
             {
                 if(miniSkullActive != null)
@@ -192,11 +189,7 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
-            if (sceneDataArray[currentSceneNumber - 1].skullCollider != null)
-            {
-                Debug.Log("disabling collider");
-                sceneDataArray[currentSceneNumber - 1].skullCollider.enabled = false;
-            }
+            skullCollider.enabled = sceneDataArray[currentSceneNumber - 1].colliderEnabled;
             if (miniSkull != null)
             {
                 if (miniSkullActive != null)
