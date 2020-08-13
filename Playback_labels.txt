@@ -1,2 +1,13 @@
-24.61466;label_Sphenopalatine Foramen;true
-25.4626;label_Sphenopalatine Foramen;false
+170.3059;label_Ptergomaxillary;true
+180.7663;label_Ptergomaxillary;false
+251.5449;label_Sphenopalatine Foramen;true
+262.0961;label_Sphenopalatine Foramen;false
+275.7387;label_Foramen Rotundum;true
+294.8983;label_Pterygoid Canal;true
+307.4556;label_Palatovaginal Canal;true
+319.1572;label_Superior orbital fissure;true
+332.5422;label_Superior orbital fissure;false
+374.1162;label_Palatine Canal;true
+389.1259;label_Palatine Canal;false
+410.4782;label_Inferior Orbital fissure;true
+410.4782;label_Ptergomaxillary1;true

@@ -1,0 +1,16 @@
+1.372845;VisitNextScene
+2.241283;SkipTransition
+2.772847;VisitNextScene
+3.25514;SkipTransition
+3.706685;VisitNextScene
+4.118736;SkipTransition
+4.511205;VisitNextScene
+4.93737;SkipTransition
+5.339328;VisitNextScene
+5.764528;SkipTransition
+6.164255;VisitNextScene
+6.613799;SkipTransition
+7.075591;VisitNextScene
+7.51261;SkipTransition
+7.885821;VisitNextScene
+8.274074;SkipTransition

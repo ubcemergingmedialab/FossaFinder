@@ -1,0 +1,7 @@
+159.5395;label_Ptergomaxillary;true
+168.6;label_Ptergomaxillary;false
+262.0151;label_Foramen Rotundum;true
+280.5179;label_Pterygoid Canal;true
+293.8554;label_Palatovaginal Canal;true
+306.2268;label_Superior orbital fissure;true
+317.4036;label_Superior orbital fissure;false

@@ -1,0 +1,11 @@
+1.343351;VisitNextScene
+71.86936;VisitNextScene
+92.27483;ToggleMiniSkull
+94.80933;VisitNextScene
+106.0222;VisitNextScene
+108.3755;ZoomOutFromCurrentScene
+143.2077;ZoomInToCurrentScene
+155.383;VisitNextScene
+178.095;VisitNextScene
+185.5208;SkipTransition
+186.089;ZoomOutFromCurrentScene

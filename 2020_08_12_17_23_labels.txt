@@ -1,0 +1,6 @@
+177.059;label_Ptergomaxillary;true
+186.4391;label_Ptergomaxillary;false
+280.6474;label_Foramen Rotundum;true
+299.5686;label_Pterygoid Canal;true
+312.491;label_Pterygoid Canal;false
+316.5308;label_Palatovaginal Canal;true
