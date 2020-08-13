@@ -14,7 +14,7 @@ MonoBehaviour:
   forwardAnimationClipName: Scene10ToScene11AnimationClip
   forwardAnimationClipLength: 20
   backwardAnimationClipName: Scene12ToScene11AnimationClip
-  backwardAnimationClipLength: 15
+  backwardAnimationClipLength: 13
   ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
   ZoomOutAnimationClipLength: 14
   ZoomInAnimationClipName: ZoomInToScene11AnimationClip
