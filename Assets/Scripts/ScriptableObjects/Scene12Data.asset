@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene11ToScene12AnimationClip
   forwardAnimationClipLength: 13
-  backwardAnimationClipName: 
-  backwardAnimationClipLength: 0
-  ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
-  ZoomOutAnimationClipLength: 14
-  ZoomInAnimationClipName: ZoomInToScene11AnimationClip
-  ZoomInAnimationClipLength: 14
+  backwardAnimationClipName: Scene13ToScene12AnimationClip
+  backwardAnimationClipLength: 15
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
   highlights:
   - Ptergomaxillary_Fissure
   boundaries: []
