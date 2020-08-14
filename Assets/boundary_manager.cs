@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class boundary_manager : MonoBehaviour
 {
-
     public List<GameObject> availableBoundaries;
     public Material defaultMaterial;
-
-
 
     public void OnEnable()
     {
@@ -31,7 +28,6 @@ public class boundary_manager : MonoBehaviour
 
     void EnableBoundaries(string[] names)
     {
-        // Debug.Log("Boundary_manager names length: " + names.Length);
         foreach (GameObject current in availableBoundaries) 
         {
             current.SetActive(false);
