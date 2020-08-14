@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
 
 /*! \brief Manage all the highlights over scences
@@ -10,11 +9,9 @@ using UnityEngine;
 
 
 public class HighlightVisuals : MonoBehaviour
-
 {
-    public Dictionary<string, GameObject> availableHighlights;
-    public Dictionary<string, Material> HighlightsMaterials;
-    public List<GameObject> availableHighlightss;
+    public Dictionary<string, Material> highlightsMaterials;
+    public List<GameObject> availableHighlights;
 
     /// Material of inactive highlights
     public Material defaultMaterial;
@@ -49,27 +46,18 @@ public class HighlightVisuals : MonoBehaviour
         GuidedTourManager.SetHighlights -= EnableHighlights;
         GuidedTourManager.DisableHighlights -= DisableAllHighlights;
     }
-
-
-    public void Start()
-    {
-
-    }
-
+    
     /*! \Manage labels on the scene
         * only activate specific highlights by the number of scene
         * @param names Names of fissures that should be shown on the scene
      */
     public void EnableHighlights(string[] names)
     {
-        foreach (GameObject availableHighlight in availableHighlightss)
-        {
-            availableHighlight.SetActive(false);
-        }
+        DisableAllHighlights();
 
         foreach (string name in names)
         {
-            foreach (GameObject availableHighlght in availableHighlightss)
+            foreach (GameObject availableHighlght in availableHighlights)
             {
                 if(availableHighlght.name == name)
                 {
@@ -82,7 +70,7 @@ public class HighlightVisuals : MonoBehaviour
 
     public void DisableAllHighlights()
     {
-        foreach (GameObject availableHighlight in availableHighlightss)
+        foreach (GameObject availableHighlight in availableHighlights)
         {
             availableHighlight.SetActive(false);
         }

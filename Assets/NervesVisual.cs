@@ -66,12 +66,7 @@ public class NervesVisual: MonoBehaviour
 
     public void EnableHighlights(string[] names)
     {
-
-
-        foreach (GameObject availableHighlight in availableHighlights)
-        {
-            availableHighlight.GetComponent<Renderer>().material = defaultMaterial;
-        }
+        DisableAllHighlights();
 
         foreach (string name in names)
         {
