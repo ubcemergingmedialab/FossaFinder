@@ -150,7 +150,7 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
 
             if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
             {
@@ -178,7 +178,7 @@ public class GuidedTourManager : MonoBehaviour {
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
@@ -283,6 +283,6 @@ public class GuidedTourManager : MonoBehaviour {
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-        SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+        SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
     }
 }

@@ -23,5 +23,18 @@ MonoBehaviour:
   boundaries: []
   lights: []
   nerves:
-  - Nerves03_split
+  - Maxillary
+  - Nasal
+  enabledNerves:
+  - Nasal
+  - Orbital
+  - Lesser_palatine_nerves
+  - Greater_palatine_nerves
+  - Zygomatic
+  - Nerves_of_ptergoid_canal
+  - Infraorbital
+  - Posterior_superior_alveolar
+  - Maxillary
+  - Pharyngeal
+  - others
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}

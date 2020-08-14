@@ -14,6 +14,7 @@ public class SceneData : ScriptableObject {
     public string[] boundaries;
     public string[] lights;
     public string[] nerves;
+    public string[] enabledNerves;
     public Animator animator;
     // public RuntimeAnimatorController animatorController;
 

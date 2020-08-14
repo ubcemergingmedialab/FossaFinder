@@ -26,6 +26,15 @@ public class NervesVisual: MonoBehaviour
 
     public void OnEnable()
     {
+        //availableHighlights = new Dictionary<string, GameObject>();
+        HighlightsMaterials = new Dictionary<GameObject, Material>();
+        foreach (GameObject availableHighlght in availableHighlights)
+        {
+            HighlightsMaterials.Add(availableHighlght, availableHighlght.GetComponent<Renderer>().material);
+            Debug.Log("NERVE VISUALS: " + availableHighlght.name);
+            Debug.Log("NERVE COLOUR" + HighlightsMaterials[availableHighlght].color);
+        }
+
         GuidedTourManager.SetHighlights += EnableHighlights;
         GuidedTourManager.DisableHighlights += DisableAllHighlights;
     }
@@ -46,12 +55,7 @@ public class NervesVisual: MonoBehaviour
 */
     public void Start()
     {
-        //availableHighlights = new Dictionary<string, GameObject>();
-        HighlightsMaterials = new Dictionary<GameObject, Material>();
-        foreach (GameObject availableHighlght in availableHighlights) {
-            HighlightsMaterials.Add(availableHighlght.gameObject, availableHighlght.gameObject.GetComponent<Renderer>().material);
-
-        }
+       
 
     }
 

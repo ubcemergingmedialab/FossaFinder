@@ -1220,7 +1220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &38991962
 Transform:
   m_ObjectHideFlags: 0
@@ -8011,6 +8011,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371445460}
   m_CullTransparentMesh: 0
+--- !u!1 &383115510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100012, guid: 244ff90484804434980eb05b0f6ab3f1,
+    type: 3}
+  m_PrefabInternal: {fileID: 1541031093}
 --- !u!1 &385871840
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,7 +9269,7 @@ MonoBehaviour:
   headContainer: {fileID: 385871840}
   cameraRig: {fileID: 1108160144}
   mainCamera: {fileID: 900869779}
-  animator: {fileID: 0}
+  animator: {fileID: 1228305729}
   cameraAnimator: {fileID: 0}
   sceneDataArray:
   - {fileID: 11400000, guid: 01d67808770a8b04d87069308a7801ed, type: 2}
@@ -9278,6 +9283,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd2c62da478a38a43a684eca0cc2f3f5, type: 2}
   - {fileID: 11400000, guid: 1e9baa366b7ba35468a8497d587bdfbf, type: 2}
   - {fileID: 11400000, guid: 51259a63129febf418071257f01efcb6, type: 2}
+  - {fileID: 11400000, guid: 6c3aa38feb9722446881d0ad6c49aec3, type: 2}
+  - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}
+  - {fileID: 11400000, guid: 73ff916ef05fe194d8807cc45d533e75, type: 2}
 --- !u!4 &440099699
 Transform:
   m_ObjectHideFlags: 0
@@ -45924,6 +45932,29 @@ MonoBehaviour:
   - {fileID: 194279107}
   - {fileID: 1156783489}
   defaultMaterial: {fileID: 2100000, guid: 0bfc55703435d314ba68cdae015cea64, type: 2}
+--- !u!114 &2110890771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110890768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2840ae4887e05564fb3e86d52ce763ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableNerves:
+  - {fileID: 1857367998}
+  - {fileID: 1264594608}
+  - {fileID: 256083598}
+  - {fileID: 344780400}
+  - {fileID: 78915738}
+  - {fileID: 742285744}
+  - {fileID: 1887266091}
+  - {fileID: 194279107}
+  - {fileID: 2104410688}
+  - {fileID: 1156783489}
+  - {fileID: 383115510}
 --- !u!1 &2116984304
 GameObject:
   m_ObjectHideFlags: 0
