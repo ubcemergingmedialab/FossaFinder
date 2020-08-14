@@ -22,3 +22,6 @@ MonoBehaviour:
   highlights: []
   boundaries: []
   lights: []
+  nerves:
+  - Nasal
+  - Maxillary

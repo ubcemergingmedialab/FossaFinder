@@ -25,3 +25,6 @@ MonoBehaviour:
   - Medial_Wall
   - Anterior_Wall
   lights: []
+  nerves:
+  - Nasal
+  - Maxillary

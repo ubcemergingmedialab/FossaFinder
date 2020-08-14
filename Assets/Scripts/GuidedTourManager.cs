@@ -134,6 +134,7 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+            SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
             PlayTransition();
@@ -153,6 +154,7 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+            SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
             PlayTransition();
@@ -167,6 +169,7 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
 
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         DisableBoundaries?.Invoke();
 
@@ -247,6 +250,7 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
         DisableLabels?.Invoke();
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
     }
 }

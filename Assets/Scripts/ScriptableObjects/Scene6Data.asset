@@ -24,3 +24,6 @@ MonoBehaviour:
   boundaries:
   - Medial_Wall
   lights: []
+  nerves:
+  - Nasal
+  - Maxillary

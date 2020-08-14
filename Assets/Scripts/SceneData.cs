@@ -16,4 +16,5 @@ public class SceneData : ScriptableObject {
     public string[] highlights;
     public string[] boundaries;
     public string[] lights;
+    public string[] nerves;
 }
