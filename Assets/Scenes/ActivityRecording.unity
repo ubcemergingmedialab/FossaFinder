@@ -13022,6 +13022,7 @@ GameObject:
   - component: {fileID: 602200416}
   - component: {fileID: 602200419}
   - component: {fileID: 602200418}
+  - component: {fileID: 602200417}
   m_Layer: 0
   m_Name: MiniSkull
   m_TagString: Head
@@ -13048,6 +13049,18 @@ Transform:
   m_Father: {fileID: 928739322}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: -179.99998, z: 0}
+--- !u!114 &602200417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 602200415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d69748e9e99074e8e4a62821781f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skull: {fileID: 1228305728}
 --- !u!135 &602200418
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14005,7 +14018,6 @@ GameObject:
   - component: {fileID: 679632751}
   - component: {fileID: 679632754}
   - component: {fileID: 679632753}
-  - component: {fileID: 679632752}
   m_Layer: 0
   m_Name: MiniSkull
   m_TagString: Head
@@ -14032,18 +14044,6 @@ Transform:
   m_Father: {fileID: 1726956137}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
---- !u!114 &679632752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 679632750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d69748e9e99074e8e4a62821781f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skull: {fileID: 1228305728}
 --- !u!135 &679632753
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15958,7 +15958,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 793288604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0aa36dc78c58e0647be7eabde4a5b6b9, type: 3}
   m_Name: 
@@ -29408,7 +29408,7 @@ MonoBehaviour:
   OnTouchpadPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 679632752}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleMiniSkull
         m_Mode: 1
         m_Arguments:
