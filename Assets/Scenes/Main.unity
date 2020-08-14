@@ -1470,6 +1470,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 51259a63129febf418071257f01efcb6, type: 2}
   - {fileID: 11400000, guid: 6c3aa38feb9722446881d0ad6c49aec3, type: 2}
   - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}
+  - {fileID: 11400000, guid: 73ff916ef05fe194d8807cc45d533e75, type: 2}
 --- !u!4 &440099699
 Transform:
   m_ObjectHideFlags: 0
@@ -3604,6 +3605,14 @@ Prefab:
     - target: {fileID: 4283161090174926, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010530868265332, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.0675
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010530868265332, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.0107
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
