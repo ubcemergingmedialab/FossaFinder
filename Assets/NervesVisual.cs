@@ -35,8 +35,8 @@ public class NervesVisual: MonoBehaviour
             Debug.Log("NERVE COLOUR" + HighlightsMaterials[availableHighlght].color);
         }
 
-        GuidedTourManager.SetHighlights += EnableHighlights;
-        GuidedTourManager.DisableHighlights += DisableAllHighlights;
+        GuidedTourManager.SetNerveHighlights += EnableHighlights;
+        GuidedTourManager.DisableNerveHighlights += DisableAllHighlights;
     }
     /*! Setup OnDisable
     * 
@@ -45,8 +45,8 @@ public class NervesVisual: MonoBehaviour
     */
     public void OnDisable()
     {
-        GuidedTourManager.SetHighlights -= EnableHighlights;
-        GuidedTourManager.DisableHighlights -= DisableAllHighlights;
+        GuidedTourManager.SetNerveHighlights -= EnableHighlights;
+        GuidedTourManager.DisableNerveHighlights -= DisableAllHighlights;
     }
 
     /*! Initialize list

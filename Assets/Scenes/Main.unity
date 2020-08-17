@@ -4541,7 +4541,8 @@ Prefab:
       propertyPath: availableHighlights.Array.data[8]
       value: 
       objectReference: {fileID: 1375880537}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114118617180559900, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &880393127 stripped

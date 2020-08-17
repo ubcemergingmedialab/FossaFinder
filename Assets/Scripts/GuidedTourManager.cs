@@ -39,6 +39,8 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void SetNerveshandler(string[] names);
     public delegate void DisableNervesHandler();
     public delegate void SetRenderTextureHandler(string name);
+    public delegate void SetNerveHighlightsHandler(string[] names);
+    public delegate void DisableNerveHighlightsHandler();
     public delegate void DisableRenderTextureHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
@@ -54,6 +56,8 @@ public class GuidedTourManager : MonoBehaviour {
     public static event DisableNervesHandler DisableNerves;
     public static event SetRenderTextureHandler SetRenderTexture;
     public static event DisableRenderTextureHandler DisableRenderTexture;
+    public static event SetNerveHighlightsHandler SetNerveHighlights;
+    public static event DisableNerveHighlightsHandler DisableNerveHighlights;
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -91,6 +95,7 @@ public class GuidedTourManager : MonoBehaviour {
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
         DisableNerves?.Invoke();
+        DisableNerveHighlights?.Invoke();
         DisableRenderTexture?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
@@ -148,9 +153,9 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
-            // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
             {
@@ -176,9 +181,9 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
-            // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
@@ -281,8 +286,8 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
         DisableLabels?.Invoke();
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
-        // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+        SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
     }
 }
