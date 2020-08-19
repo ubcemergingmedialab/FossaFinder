@@ -1,67 +1,14 @@
 fileFormatVersion: 2
-guid: 244ff90484804434980eb05b0f6ab3f1
+guid: f4d15b067c0b71d448b6853776facfa2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Greater_palatine_nerves
-    100002: Infraorbital
-    100004: Lesser_palatine_nerves
-    100006: Nasal
-    100008: Nerves_of_ptergoid_canal
-    100010: Orbital
-    100012: others
-    100014: Pharyngeal
-    100016: Posterior_superior_alveolar
-    100018: //RootNode
-    100020: V2
-    100022: Zygomatic
-    400000: Greater_palatine_nerves
-    400002: Infraorbital
-    400004: Lesser_palatine_nerves
-    400006: Nasal
-    400008: Nerves_of_ptergoid_canal
-    400010: Orbital
-    400012: others
-    400014: Pharyngeal
-    400016: Posterior_superior_alveolar
-    400018: //RootNode
-    400020: V2
-    400022: Zygomatic
-    2100000: lambert2
-    2100002: lambert1
-    2300000: Greater_palatine_nerves
-    2300002: Infraorbital
-    2300004: Lesser_palatine_nerves
-    2300006: Nasal
-    2300008: Nerves_of_ptergoid_canal
-    2300010: Orbital
-    2300012: others
-    2300014: Pharyngeal
-    2300016: Posterior_superior_alveolar
-    2300018: V2
-    2300020: Zygomatic
-    3300000: Greater_palatine_nerves
-    3300002: Infraorbital
-    3300004: Lesser_palatine_nerves
-    3300006: Nasal
-    3300008: Nerves_of_ptergoid_canal
-    3300010: Orbital
-    3300012: others
-    3300014: Pharyngeal
-    3300016: Posterior_superior_alveolar
-    3300018: V2
-    3300020: Zygomatic
-    4300000: Infraorbital
-    4300002: Pharyngeal
-    4300004: Greater_palatine_nerves
-    4300006: Nasal
-    4300008: Nerves_of_ptergoid_canal
-    4300010: Lesser_palatine_nerves
-    4300012: Posterior_superior_alveolar
-    4300014: Zygomatic
-    4300016: Orbital
-    4300018: V2
-    4300020: others
+    100000: //RootNode
+    400000: //RootNode
+    2100000: lambert3
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Inferior1
   externalObjects: {}
   materials:
     importMaterials: 1
