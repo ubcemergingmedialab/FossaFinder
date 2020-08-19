@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Scene16Data
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene15ToScene16AnimationClip
-  forwardAnimationClipLength: 5
+  forwardAnimationClipLength: 8
   backwardAnimationClipName: Scene17ToScene16AnimationClip
   backwardAnimationClipLength: 13
   ZoomOutAnimationClipName: 
