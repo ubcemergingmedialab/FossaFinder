@@ -9,21 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene18Data
+  m_Name: Scene19Data
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene17ToScene18AnimationClip
-  forwardAnimationClipLength: 17
-  backwardAnimationClipName: Scene19ToScene18AnimationClip
-  backwardAnimationClipLength: 10
+  forwardAnimationClipName: Scene18ToScene19AnimationClip
+  forwardAnimationClipLength: 10
+  backwardAnimationClipName: 
+  backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
   highlights:
-  - Palatine_Canal
+  - Palatovaginal_Canal
+  - Pterygoid_Canal
   boundaries: []
-  lights:
-  - Palatine_Canal
+  lights: []
   nerves:
   - Maxillary
   - Nasal
@@ -33,6 +33,7 @@ MonoBehaviour:
   - Lesser_palatine_nerves
   - Greater_palatine_nerves
   - Posterior_superior_alveolar
+  - Pharyngeal
   enabledNerves:
   - Nasal
   - Orbital
