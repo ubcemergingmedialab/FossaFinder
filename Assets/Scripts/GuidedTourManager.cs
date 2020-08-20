@@ -33,7 +33,6 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DisableBoundariesHandler();
     public delegate void SetlightsHandler(string[] names);
     public delegate void DisableLightsHandler();
-    public delegate void SetHighlightsHandler(string[] names);
     public delegate void DisableHighlightsHandler();
     public delegate void DisableLabelsHandler();
     public delegate void SetNerveshandler(string[] names);
@@ -49,7 +48,6 @@ public class GuidedTourManager : MonoBehaviour {
     public static event DisableBoundariesHandler DisableBoundaries;
     public static event SetlightsHandler Setlights;
     public static event DisableLightsHandler DisableLights;
-    public static event SetHighlightsHandler SetHighlights;
     public static event DisableHighlightsHandler DisableHighlights;
     public static event DisableLabelsHandler DisableLabels;
     public static event SetNerveshandler SetNerves;
@@ -59,6 +57,21 @@ public class GuidedTourManager : MonoBehaviour {
     public static event SetNerveHighlightsHandler SetNerveHighlights;
     public static event DisableNerveHighlightsHandler DisableNerveHighlights;
 
+    public delegate void Initialize();
+    public static event Initialize InitializeEvent;
+
+    public delegate void VisitPrevious(SceneData sceneData);
+    public static event VisitPrevious VisitPreviousEvent;
+
+    public delegate void VisitNext(SceneData sceneData);
+    public static event VisitNext VisitNextEvent;
+
+    public delegate void ZoomIn(SceneData sceneData);
+    public static event ZoomIn ZoomInEvent;
+
+    public delegate void Skip(SceneData sceneData);
+    public static event Skip SkipEvent;
+
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
     static bool isDuringTransition;
@@ -66,8 +79,8 @@ public class GuidedTourManager : MonoBehaviour {
     string currentAnimationClipName;
     float currentAnimationClipLength;
     float distanceFromAdjustedCameraPositionThreshold;
-    Coroutine changeButtonStatesCoroutine;
-    bool isChangeButtonStatesCoroutineRunning;
+    Coroutine afterAnimationCoroutine;
+    bool afterAnimationCoroutineIsRunning;
 
     void Awake()
     {
@@ -86,17 +99,19 @@ public class GuidedTourManager : MonoBehaviour {
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
-        isChangeButtonStatesCoroutineRunning = false;
+        afterAnimationCoroutineIsRunning = false;
         // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
         oldAnimator = animator;
         //
-        DisableHighlights?.Invoke();
+        
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
         DisableNerves?.Invoke();
         DisableNerveHighlights?.Invoke();
         DisableRenderTexture?.Invoke();
+
+        InitializeEvent?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -152,7 +167,6 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
 
             DisableLabels?.Invoke();
-            SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
             SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
@@ -163,6 +177,8 @@ public class GuidedTourManager : MonoBehaviour {
                 animator = oldAnimator;
                 DisableRenderTexture?.Invoke();
             }
+
+            VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
             PlayTransition();
         }
@@ -180,7 +196,6 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             DisableLabels?.Invoke();
-            SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
             SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
             SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
@@ -193,6 +208,8 @@ public class GuidedTourManager : MonoBehaviour {
                 SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
             }
 
+            VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
+
             PlayTransition();
         }
     }
@@ -203,11 +220,11 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Inward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
-
-        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
-        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+        
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         DisableBoundaries?.Invoke();
+
+        ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
     }
@@ -237,7 +254,7 @@ public class GuidedTourManager : MonoBehaviour {
             DuringTransition?.Invoke();   
         }
 
-        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
+        afterAnimationCoroutine = StartCoroutine(AfterAnimation());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -251,11 +268,25 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
+    IEnumerator AfterAnimation()
     {
-        isChangeButtonStatesCoroutineRunning = true;
+        afterAnimationCoroutineIsRunning = true;
         yield return new WaitForSeconds(currentAnimationClipLength);
         isDuringTransition = false;
+        if (currentTransitionType == TransitionType.Outward)
+        {
+            EnableBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
+        }
+        ChangeButtonStatesAfterAnimationCompleted();
+        currentTransitionType = TransitionType.None;
+        currentAnimationClipName = "";
+        currentAnimationClipLength = 0;
+        afterAnimationCoroutineIsRunning = false;
+    }
+
+    void ChangeButtonStatesAfterAnimationCompleted()
+    {
+
         if (currentTransitionType == TransitionType.Forward || currentTransitionType == TransitionType.Backward || currentTransitionType == TransitionType.Inward)
         {
             DefaultState?.Invoke();
@@ -263,20 +294,15 @@ public class GuidedTourManager : MonoBehaviour {
         else if (currentTransitionType == TransitionType.Outward)
         {
             ZoomedOut?.Invoke();
-            EnableBoundaries?.Invoke(sceneDataArray[currentSceneNumber - 1].boundaries);
         }
-        currentTransitionType = TransitionType.None;
-        currentAnimationClipName = "";
-        currentAnimationClipLength = 0;
-        isChangeButtonStatesCoroutineRunning = false;
     }
 
     public void SkipTransition()
     {
-        if (isChangeButtonStatesCoroutineRunning)
+        if (afterAnimationCoroutineIsRunning)
         {
-            StopCoroutine(changeButtonStatesCoroutine); /// you need this because you don't want this effect to take place unintentionally
-            isChangeButtonStatesCoroutineRunning = false;
+            StopCoroutine(afterAnimationCoroutine); /// you need this because you don't want this effect to take place unintentionally
+            afterAnimationCoroutineIsRunning = false;
         }
         animator.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
@@ -285,9 +311,10 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
         DisableLabels?.Invoke();
-        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
         SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+
+        SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
     }
 }
