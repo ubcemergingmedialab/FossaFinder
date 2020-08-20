@@ -26594,6 +26594,9 @@ GameObject:
   - component: {fileID: 1176951973}
   - component: {fileID: 1176951975}
   - component: {fileID: 1176951974}
+  - component: {fileID: 1176951978}
+  - component: {fileID: 1176951977}
+  - component: {fileID: 1176951976}
   m_Layer: 0
   m_Name: Middle_superior_alveolar
   m_TagString: Untagged
@@ -26659,6 +26662,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176951972}
   m_Mesh: {fileID: 4300020, guid: 32fade3bf5e4c6c4a99e35d74efba7b9, type: 3}
+--- !u!64 &1176951976
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176951972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300020, guid: 32fade3bf5e4c6c4a99e35d74efba7b9, type: 3}
+--- !u!114 &1176951977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176951972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObject: {fileID: 1176951978}
+  Label: {fileID: 240345866}
+--- !u!114 &1176951978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176951972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 1
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 1
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &1179167032
 GameObject:
   m_ObjectHideFlags: 0
@@ -46857,6 +46919,7 @@ MonoBehaviour:
   - {fileID: 2104410688}
   - {fileID: 194279107}
   - {fileID: 1156783489}
+  - {fileID: 1176951972}
   defaultMaterial: {fileID: 2100000, guid: 0bfc55703435d314ba68cdae015cea64, type: 2}
 --- !u!114 &2110890771
 MonoBehaviour:
