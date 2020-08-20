@@ -29,8 +29,8 @@ ModelImporter:
     400020: Posterior_superior_alveolar
     400022: V2
     400024: Zygomatic
-    2100000: lambert2
-    2100002: lambert1
+    2100000: lambert1
+    2100002: lambert2
     2300000: Greater_palatine_nerves
     2300002: Infraorbital
     2300004: Lesser_palatine_nerves
@@ -55,18 +55,18 @@ ModelImporter:
     3300018: Posterior_superior_alveolar
     3300020: V2
     3300022: Zygomatic
-    4300000: Infraorbital
-    4300002: Pharyngeal
-    4300004: Greater_palatine_nerves
-    4300006: Nasal
-    4300008: Nerves_of_ptergoid_canal
-    4300010: Lesser_palatine_nerves
-    4300012: Posterior_superior_alveolar
-    4300014: Zygomatic
-    4300016: Orbital
-    4300018: V2
-    4300020: Middle_superior_alveolar
-    4300022: others
+    4300000: Pharyngeal
+    4300002: Greater_palatine_nerves
+    4300004: Nasal
+    4300006: Nerves_of_ptergoid_canal
+    4300008: Lesser_palatine_nerves
+    4300010: Posterior_superior_alveolar
+    4300012: Zygomatic
+    4300014: Orbital
+    4300016: others
+    4300018: Infraorbital
+    4300020: V2
+    4300022: Middle_superior_alveolar
   externalObjects: {}
   materials:
     importMaterials: 1
