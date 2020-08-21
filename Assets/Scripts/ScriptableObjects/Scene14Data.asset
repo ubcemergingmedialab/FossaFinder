@@ -19,7 +19,8 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Sphenopalatine_Foramen
   boundaries: []
   lights:
   - Sphenopalatine_Foramen
@@ -40,4 +41,5 @@ MonoBehaviour:
   - Maxillary
   - Pharyngeal
   - others
+  - Middle_superior_alveolar
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
