@@ -13,7 +13,6 @@ public enum TransitionType
 }
 
 public class GuidedTourManager : MonoBehaviour {
-
     private static GuidedTourManager _instance;
     public static GuidedTourManager Instance
     {
@@ -35,11 +34,7 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DisableLightsHandler();
     public delegate void DisableHighlightsHandler();
     public delegate void DisableLabelsHandler();
-    public delegate void SetNerveshandler(string[] names);
-    public delegate void DisableNervesHandler();
     public delegate void SetRenderTextureHandler(string name);
-    public delegate void SetNerveHighlightsHandler(string[] names);
-    public delegate void DisableNerveHighlightsHandler();
     public delegate void DisableRenderTextureHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
@@ -50,12 +45,8 @@ public class GuidedTourManager : MonoBehaviour {
     public static event DisableLightsHandler DisableLights;
     public static event DisableHighlightsHandler DisableHighlights;
     public static event DisableLabelsHandler DisableLabels;
-    public static event SetNerveshandler SetNerves;
-    public static event DisableNervesHandler DisableNerves;
     public static event SetRenderTextureHandler SetRenderTexture;
     public static event DisableRenderTextureHandler DisableRenderTexture;
-    public static event SetNerveHighlightsHandler SetNerveHighlights;
-    public static event DisableNerveHighlightsHandler DisableNerveHighlights;
 
     public delegate void Initialize();
     public static event Initialize InitializeEvent;
@@ -100,15 +91,11 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.None;
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         afterAnimationCoroutineIsRunning = false;
-        // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
         oldAnimator = animator;
-        //
         
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
-        DisableNerves?.Invoke();
-        DisableNerveHighlights?.Invoke();
         DisableRenderTexture?.Invoke();
 
         InitializeEvent?.Invoke();
@@ -139,7 +126,6 @@ public class GuidedTourManager : MonoBehaviour {
 
     public TransitionType GetCurrentTransitionType()
     {
-
         return currentTransitionType;
     }
 
@@ -154,7 +140,7 @@ public class GuidedTourManager : MonoBehaviour {
     //    currentAnimationClipLength = clipLength;
     //}
 
-    // Maintains all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
+    // Adjusts all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void VisitPreviousScene()
     {
         // Debug.Log("Before decreement: " + currentSceneNumber);
@@ -168,8 +154,6 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
-            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
             {
@@ -184,7 +168,7 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). TransitionToAnotherScene() will handle the actual animation
+    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
     public void VisitNextScene()
     {
         if (currentSceneNumber < sceneDataArray.Length)
@@ -197,8 +181,6 @@ public class GuidedTourManager : MonoBehaviour {
 
             DisableLabels?.Invoke();
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
-            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
@@ -243,7 +225,7 @@ public class GuidedTourManager : MonoBehaviour {
         PlayTransition();
     }
 
-    // Checks whether the skull needs to be adjusted first. Then, plays the appropriate animation.
+    // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
     void PlayTransition()
     {
         AdjustSkullPositionIfPastThreshold();
@@ -286,7 +268,6 @@ public class GuidedTourManager : MonoBehaviour {
 
     void ChangeButtonStatesAfterAnimationCompleted()
     {
-
         if (currentTransitionType == TransitionType.Forward || currentTransitionType == TransitionType.Backward || currentTransitionType == TransitionType.Inward)
         {
             DefaultState?.Invoke();
@@ -312,8 +293,6 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
         DisableLabels?.Invoke();
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-        SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
-        SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
     }

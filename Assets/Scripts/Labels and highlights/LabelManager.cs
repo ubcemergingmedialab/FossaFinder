@@ -18,6 +18,12 @@ public class LabelManager : MonoBehaviour {
     */
     public void OnEnable()
     {
+        GuidedTourManager.InitializeEvent += DisableLabels;
+        //GuidedTourManager.VisitPreviousEvent += DisableLabels;
+        //GuidedTourManager.VisitNextEvent += EnableHighlights;
+        //GuidedTourManager.ZoomInEvent += EnableHighlights;
+        //GuidedTourManager.SkipEvent += EnableHighlights;
+
         GuidedTourManager.DisableLabels += DisableLabels;
     }
 
