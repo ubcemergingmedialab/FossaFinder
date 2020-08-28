@@ -20,9 +20,10 @@ public class GuidedTourManager : MonoBehaviour {
         get { return _instance; }
     }
 
-    public GameObject head, headContainer, cameraRig, mainCamera;
-    public Collider skullCollider;
-    public Animator anim;
+    public GameObject head, headContainer, cameraRig, mainCamera; 
+    public Animator animator;
+    private Animator oldAnimator;
+    public Animator cameraAnimator;
     public SceneData[] sceneDataArray;
 
     public delegate void DefaultStateHandler();
@@ -35,6 +36,12 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void SetHighlightsHandler(string[] names);
     public delegate void DisableHighlightsHandler();
     public delegate void DisableLabelsHandler();
+    public delegate void SetNerveshandler(string[] names);
+    public delegate void DisableNervesHandler();
+    public delegate void SetRenderTextureHandler(string name);
+    public delegate void SetNerveHighlightsHandler(string[] names);
+    public delegate void DisableNerveHighlightsHandler();
+    public delegate void DisableRenderTextureHandler();
     public static event DefaultStateHandler DefaultState;
     public static event DuringTransitionHandler DuringTransition;
     public static event ZoomedOutHandler ZoomedOut;
@@ -45,6 +52,12 @@ public class GuidedTourManager : MonoBehaviour {
     public static event SetHighlightsHandler SetHighlights;
     public static event DisableHighlightsHandler DisableHighlights;
     public static event DisableLabelsHandler DisableLabels;
+    public static event SetNerveshandler SetNerves;
+    public static event DisableNervesHandler DisableNerves;
+    public static event SetRenderTextureHandler SetRenderTexture;
+    public static event DisableRenderTextureHandler DisableRenderTexture;
+    public static event SetNerveHighlightsHandler SetNerveHighlights;
+    public static event DisableNerveHighlightsHandler DisableNerveHighlights;
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -76,10 +89,15 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         isChangeButtonStatesCoroutineRunning = false;
         // SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        oldAnimator = animator;
+        //
         DisableHighlights?.Invoke();
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
         DisableLabels?.Invoke();
+        DisableNerves?.Invoke();
+        DisableNerveHighlights?.Invoke();
+        DisableRenderTexture?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
     }
@@ -88,14 +106,9 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
-        cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
+        cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
+        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
         adjustedCameraPosition = mainCamera.transform.position;
-    }
-
-    public void InjectRecorder(ActivityRecorder ar)
-    {
-        recorder = ar;
     }
 
     // Returns the current scene number
@@ -142,14 +155,23 @@ public class GuidedTourManager : MonoBehaviour {
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
-            
-            skullCollider.enabled = sceneDataArray[currentSceneNumber - 1].colliderEnabled;
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
+
+            if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
+            {
+                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+                animator = oldAnimator;
+                DisableRenderTexture?.Invoke();
+            }
+
             PlayTransition();
 
             if (recorder != null)
             {
                 recorder.QueueMessage("VisitPreviousScene");
             }
+
         }
     }
 
@@ -167,9 +189,19 @@ public class GuidedTourManager : MonoBehaviour {
             DisableLabels?.Invoke();
             SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
             Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
+            SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+            SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
 
-            skullCollider.enabled = sceneDataArray[currentSceneNumber - 1].colliderEnabled;
+            if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
+            {
+                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+                animator = cameraAnimator;
+                ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+                SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+            }
+
             PlayTransition();
+
             if (recorder != null)
             {
                 recorder.QueueMessage("VisitNextScene");
@@ -185,6 +217,7 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
 
         SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         DisableBoundaries?.Invoke();
 
@@ -208,6 +241,7 @@ public class GuidedTourManager : MonoBehaviour {
         DisableLights?.Invoke();
 
         PlayTransition();
+
         if (recorder != null)
         {
             recorder.QueueMessage("ZoomOutFromCurrentScene");
@@ -221,11 +255,11 @@ public class GuidedTourManager : MonoBehaviour {
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
-            anim.Play(currentAnimationClipName);
+            animator.Play(currentAnimationClipName);
             DuringTransition?.Invoke();   
         }
 
-        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterTransitionIsCompleted());
+        changeButtonStatesCoroutine = StartCoroutine(ChangeButtonStatesAfterAnimationIsCompleted());
     }
 
     void AdjustSkullPositionIfPastThreshold()
@@ -239,7 +273,14 @@ public class GuidedTourManager : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeButtonStatesAfterTransitionIsCompleted()
+
+
+    public void InjectRecorder(ActivityRecorder ar)
+    {
+        recorder = ar;
+    }
+
+    IEnumerator ChangeButtonStatesAfterAnimationIsCompleted()
     {
         isChangeButtonStatesCoroutineRunning = true;
         yield return new WaitForSeconds(currentAnimationClipLength);
@@ -266,18 +307,20 @@ public class GuidedTourManager : MonoBehaviour {
             StopCoroutine(changeButtonStatesCoroutine); /// you need this because you don't want this effect to take place unintentionally
             isChangeButtonStatesCoroutineRunning = false;
         }
-        anim.Play(currentAnimationClipName, -1, 1);
+        animator.Play(currentAnimationClipName, -1, 1);
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
+        DisableLabels?.Invoke();
+        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
+        Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
+        SetNerves?.Invoke(sceneDataArray[currentSceneNumber - 1].enabledNerves);
+        SetNerveHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].nerves);
         if (recorder != null)
         {
             recorder.QueueMessage("SkipTransition");
         }
-        DisableLabels?.Invoke();
-        SetHighlights?.Invoke(sceneDataArray[currentSceneNumber - 1].highlights);
-        Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
     }
 }
