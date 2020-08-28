@@ -11,6 +11,9 @@
 
         protected bool showlabel;
 
+
+        private LabelRecording recorder;
+
         protected virtual void OnEnable()
         {
             showlabel = false;
@@ -41,6 +44,11 @@
             foreach(GameObject label in labels)
             {
                 label.SetActive(true);
+
+                if (recorder != null)
+                {
+                    recorder.QueueMessage(label.name + ";true");
+                }
             }
             //print("triggered");
             showlabel = true;
@@ -53,7 +61,18 @@
             foreach(GameObject label in labels)
             {
                 label.SetActive(false);
+
+                if (recorder != null)
+                {
+                    recorder.QueueMessage(label.name + ";false");
+                }
             }
+        }
+
+        public void InjectRecorder(LabelRecording recorder)
+        {
+            Debug.Log("inserted recorder");
+            this.recorder = recorder;
         }
     }
 }
