@@ -19,8 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights:
-  - Sphenopalatine_Foramen
+  highlights: []
   boundaries: []
   lights: []
   nerves:
