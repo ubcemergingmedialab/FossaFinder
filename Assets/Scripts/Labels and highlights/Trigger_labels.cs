@@ -5,10 +5,9 @@
     public class Trigger_labels : MonoBehaviour
     {
         public VRTK_InteractableObject linkedObject;
-        public GameObject Label;
+        // public GameObject Label;
 
-        private LabelRecording recorder;
-        
+        public GameObject[] labels;
 
         protected bool showlabel;
 
@@ -22,8 +21,6 @@
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
                 linkedObject.InteractableObjectUnused += InteractableObjectUnused;
             }
-
-          
         }
 
         protected virtual void OnDisable()
@@ -39,33 +36,24 @@
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
 
-            Label.SetActive(true);
+            // Label.SetActive(true);
+
+            foreach(GameObject label in labels)
+            {
+                label.SetActive(true);
+            }
             //print("triggered");
             showlabel = true;
-
-            if(recorder != null)
-            {
-                recorder.QueueMessage(Label.name + ";true");
-            }
-
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
-        {
+        { 
+            // Label.SetActive(false);
 
-            Label.SetActive(false);
-
-            if(recorder != null)
+            foreach(GameObject label in labels)
             {
-                recorder.QueueMessage(Label.name + ";false");
+                label.SetActive(false);
             }
-
-        }
-
-        public void InjectRecorder(LabelRecording recorder)
-        {
-            Debug.Log("inserted recorder");
-            this.recorder = recorder;
         }
     }
 }

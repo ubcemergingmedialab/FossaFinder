@@ -25,4 +25,6 @@ MonoBehaviour:
   - Medial_Wall
   - Anterior_Wall
   lights: []
-  colliderEnabled: 0
+  nerves: []
+  enabledNerves: []
+  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
