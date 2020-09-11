@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
+  m_Name: Scene3Data
+  m_EditorClassIdentifier: 
+  forwardAnimationClipName: Scene2ToScene3AnimationClip
+  forwardAnimationClipLength: 1
+  backwardAnimationClipName: Scene4ToScene3AnimationClip
+  backwardAnimationClipLength: 1
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
+  highlights: []
+  boundaries: []
+  lights: []
