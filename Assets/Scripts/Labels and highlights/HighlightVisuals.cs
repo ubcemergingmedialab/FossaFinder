@@ -31,8 +31,11 @@ public class HighlightVisuals : MonoBehaviour
 
     public void OnEnable()
     {
-        GuidedTourManager.SetHighlights += EnableHighlights;
-        GuidedTourManager.DisableHighlights += DisableAllHighlights;
+        GuidedTourManager.SkipEvent += EnableHighlights;
+        GuidedTourManager.VisitPreviousEvent += EnableHighlights;
+        GuidedTourManager.VisitNextEvent += EnableHighlights;
+        GuidedTourManager.ZoomInEvent += EnableHighlights;
+        GuidedTourManager.InitializeEvent += DisableAllHighlights;
     }
 
     /*! Setup OnDisable
@@ -43,18 +46,21 @@ public class HighlightVisuals : MonoBehaviour
 
     public void OnDisable()
     {
-        GuidedTourManager.SetHighlights -= EnableHighlights;
-        GuidedTourManager.DisableHighlights -= DisableAllHighlights;
+        GuidedTourManager.SkipEvent -= EnableHighlights;
+        GuidedTourManager.VisitPreviousEvent -= EnableHighlights;
+        GuidedTourManager.VisitNextEvent -= EnableHighlights;
+        GuidedTourManager.ZoomInEvent -= EnableHighlights;
+        GuidedTourManager.InitializeEvent -= DisableAllHighlights;
     }
     
     /*! \Manage labels on the scene
         * only activate specific highlights by the number of scene
         * @param names Names of fissures that should be shown on the scene
      */
-    public void EnableHighlights(string[] names)
+    public void EnableHighlights(SceneData data)
     {
         DisableAllHighlights();
-
+        string[] names = data.highlights;
         foreach (string name in names)
         {
             foreach (GameObject availableHighlght in availableHighlights)

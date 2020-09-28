@@ -15,8 +15,12 @@ public class LightVisuals : MonoBehaviour {
 
     public void OnEnable()
     {
-        GuidedTourManager.Setlights += Enablelights;
-        GuidedTourManager.DisableLights += DisableAllLights;
+        GuidedTourManager.InitializeEvent += DisableAllLights;
+        GuidedTourManager.ZoomOutEvent += DisableAllLights;
+        GuidedTourManager.VisitPreviousEvent += EnableLights;
+        GuidedTourManager.VisitNextEvent += EnableLights;
+        GuidedTourManager.ZoomInEvent += EnableLights;
+        GuidedTourManager.SkipEvent += EnableLights;
     }
 
     /*! Setup OnDisable
@@ -26,8 +30,12 @@ public class LightVisuals : MonoBehaviour {
     */
     public void OnDisable()
     {
-        GuidedTourManager.Setlights -= Enablelights;
-        GuidedTourManager.DisableLights -= DisableAllLights;
+        GuidedTourManager.InitializeEvent -= DisableAllLights;
+        GuidedTourManager.ZoomOutEvent -= DisableAllLights;
+        GuidedTourManager.VisitPreviousEvent -= EnableLights;
+        GuidedTourManager.VisitNextEvent -= EnableLights;
+        GuidedTourManager.ZoomInEvent -= EnableLights;
+        GuidedTourManager.SkipEvent -= EnableLights;
     }
 
     /*! \Manage lightss on the scene
@@ -35,8 +43,9 @@ public class LightVisuals : MonoBehaviour {
         * @param names Names of fissures that should be shown on the scene
      */
 
-    public void Enablelights(string[] names)
+    public void EnableLights(SceneData sceneData)
     {
+        string[] names = sceneData.lights;
         foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
@@ -61,5 +70,9 @@ public class LightVisuals : MonoBehaviour {
         {
             availableLight.SetActive(false);
         }
+    }
+    public void DisableAllLights(SceneData sceneData)
+    {
+        DisableAllLights();
     }
 }
