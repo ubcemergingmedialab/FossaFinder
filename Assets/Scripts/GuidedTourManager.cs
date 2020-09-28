@@ -60,8 +60,12 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void ZoomIn(SceneData sceneData);
     public static event ZoomIn ZoomInEvent;
 
+    public delegate void ZoomOut(SceneData sceneData);
+    public static event ZoomOut ZoomOutEvent;
+
     public delegate void Skip(SceneData sceneData);
     public static event Skip SkipEvent;
+
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -95,7 +99,6 @@ public class GuidedTourManager : MonoBehaviour {
         
         DisableLights?.Invoke();
         DisableBoundaries?.Invoke();
-        DisableLabels?.Invoke();
         DisableRenderTexture?.Invoke();
 
         InitializeEvent?.Invoke();
@@ -152,8 +155,6 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
 
-            DisableLabels?.Invoke();
-            Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
             if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
             {
@@ -179,8 +180,6 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
-            DisableLabels?.Invoke();
-            Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
@@ -203,7 +202,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
         
-        Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
         DisableBoundaries?.Invoke();
 
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
@@ -217,10 +215,10 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Outward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
-
-        DisableLabels?.Invoke();
-        DisableHighlights?.Invoke();
+        
         DisableLights?.Invoke();
+
+        ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
     }
@@ -292,7 +290,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
         DisableLabels?.Invoke();
-        Setlights?.Invoke(sceneDataArray[currentSceneNumber - 1].lights);
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
     }

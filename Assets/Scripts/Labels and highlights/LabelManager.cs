@@ -19,12 +19,10 @@ public class LabelManager : MonoBehaviour {
     public void OnEnable()
     {
         GuidedTourManager.InitializeEvent += DisableLabels;
-        //GuidedTourManager.VisitPreviousEvent += DisableLabels;
-        //GuidedTourManager.VisitNextEvent += EnableHighlights;
-        //GuidedTourManager.ZoomInEvent += EnableHighlights;
-        //GuidedTourManager.SkipEvent += EnableHighlights;
-
-        GuidedTourManager.DisableLabels += DisableLabels;
+        GuidedTourManager.VisitPreviousEvent += DisableLabels;
+        GuidedTourManager.VisitNextEvent += DisableLabels;
+        GuidedTourManager.ZoomOutEvent += DisableLabels;
+        GuidedTourManager.SkipEvent += DisableLabels;
     }
 
     /*! Setup OnDisable
@@ -34,7 +32,11 @@ public class LabelManager : MonoBehaviour {
     */
     void OnDisable()
     {
-        GuidedTourManager.DisableLabels -= DisableLabels;
+        GuidedTourManager.InitializeEvent -= DisableLabels;
+        GuidedTourManager.VisitPreviousEvent -= DisableLabels;
+        GuidedTourManager.VisitNextEvent -= DisableLabels;
+        GuidedTourManager.ZoomOutEvent -= DisableLabels;
+        GuidedTourManager.SkipEvent -= DisableLabels;
     }
 
      /*! \Disable labels on the scene
@@ -47,5 +49,10 @@ public class LabelManager : MonoBehaviour {
         {
             availableLabel.SetActive(false);
         }
+    }
+
+    public void DisableLabels(SceneData sceneData)
+    {
+        DisableLabels();
     }
 }
