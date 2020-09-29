@@ -42,6 +42,11 @@ public class SwitchObjectOnZoom : MonoBehaviour {
         opaque.SetActive(false);
     }
 
+    private void SwitchToTransparent(SceneData sceneData)
+    {
+        SwitchToTransparent();
+    }
+
     private void SwitchToOpaque()
     {
         if (transparent == null || opaque == null)

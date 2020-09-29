@@ -25,28 +25,9 @@ public class GuidedTourManager : MonoBehaviour {
     public Animator cameraAnimator;
     public SceneData[] sceneDataArray;
 
+    /// APP STATE EVENTS
     public delegate void DefaultStateHandler();
-    public delegate void DuringTransitionHandler();
-    public delegate void ZoomedOutHandler();
-    public delegate void EnableBoundariesHandler(string[] names);
-    public delegate void DisableBoundariesHandler();
-    public delegate void SetlightsHandler(string[] names);
-    public delegate void DisableLightsHandler();
-    public delegate void DisableHighlightsHandler();
-    public delegate void DisableLabelsHandler();
-    public delegate void SetRenderTextureHandler(string name);
-    public delegate void DisableRenderTextureHandler();
     public static event DefaultStateHandler DefaultState;
-    public static event DuringTransitionHandler DuringTransition;
-    public static event ZoomedOutHandler ZoomedOut;
-    public static event EnableBoundariesHandler EnableBoundaries;
-    public static event DisableBoundariesHandler DisableBoundaries;
-    public static event SetlightsHandler Setlights;
-    public static event DisableLightsHandler DisableLights;
-    public static event DisableHighlightsHandler DisableHighlights;
-    public static event DisableLabelsHandler DisableLabels;
-    public static event SetRenderTextureHandler SetRenderTexture;
-    public static event DisableRenderTextureHandler DisableRenderTexture;
 
     public delegate void Initialize();
     public static event Initialize InitializeEvent;
@@ -63,8 +44,25 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void ZoomOut(SceneData sceneData);
     public static event ZoomOut ZoomOutEvent;
 
+    public delegate void ZoomedOutHandler();
+    public static event ZoomedOutHandler ZoomedOut;
+
+    public delegate void DuringTransition();
+    public static event DuringTransition DuringTransitionEvent;
+
     public delegate void Skip(SceneData sceneData);
     public static event Skip SkipEvent;
+
+    // VISUALS-SPECIFIC EVENTS (called in special cirumstances)
+
+    public delegate void EnableBoundariesHandler(string[] names);
+    public static event EnableBoundariesHandler EnableBoundaries;
+
+    public delegate void SetRenderTextureHandler(string name);
+    public static event SetRenderTextureHandler SetRenderTexture;
+
+    public delegate void DisableRenderTextureHandler();
+    public static event DisableRenderTextureHandler DisableRenderTexture;
 
 
     Vector3 adjustedCameraPosition;
@@ -96,10 +94,6 @@ public class GuidedTourManager : MonoBehaviour {
         distanceFromAdjustedCameraPositionThreshold = 0.2f;
         afterAnimationCoroutineIsRunning = false;
         oldAnimator = animator;
-        
-        DisableLights?.Invoke();
-        DisableBoundaries?.Invoke();
-        DisableRenderTexture?.Invoke();
 
         InitializeEvent?.Invoke();
 
@@ -201,8 +195,7 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Inward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomInAnimationClipLength;
-        
-        DisableBoundaries?.Invoke();
+
 
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
@@ -216,7 +209,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
         
-        DisableLights?.Invoke();
 
         ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
@@ -289,7 +281,6 @@ public class GuidedTourManager : MonoBehaviour {
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
-        DisableLabels?.Invoke();
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
     }

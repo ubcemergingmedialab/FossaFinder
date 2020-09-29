@@ -13,13 +13,6 @@ public class HighlightVisuals : MonoBehaviour
     public Dictionary<string, Material> highlightsMaterials;
     public List<GameObject> availableHighlights;
 
-    /// Material of inactive highlights
-    public Material defaultMaterial;
-
-    /// Material of active highlights
-    public Material highlightMaterial;
-
-
 
     /*! Setup onEnable
     * 
