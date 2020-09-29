@@ -1,6 +1,13 @@
-# FossaFinder (ARCHIVE)
+# FossaFinder 
 
-Archive of plastic project - this is an archive of main, but theres a lot of work on plastic. I recommend digging through the backup if at all possible 
+***application information***
+
+| Dependency | Version     | Description                           |
+|------------|-------------|---------------------------------------|
+| Unity      | v2018.2.15f | Game development platform             |
+| SteamVR    | v1.2.3      | SDK for Vive and Microsoft MR support |
+| Oculus     | v20.0       | SDK for Oculus support                |
+| VRTK       | v3.3.0      | General-purpose VR SDK                |
 
 Requires whitney font
 
