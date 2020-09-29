@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Fresnel_Holo_PPF_Cavity
   m_Shader: {fileID: 4800000, guid: 62ea2efaa971044a595e252df8c5aa04, type: 3}
@@ -42,12 +42,12 @@ Material:
     - _HitSize: 0.2
     - _HitTime: 0
     - _IntersectIntensity: 0
-    - _Opacity: 0.855
-    - _ShieldAnimSpeed: 0
+    - _Opacity: 0.385
+    - _ShieldAnimSpeed: 10
     - _ShieldDistortion: 0
-    - _ShieldPatternPower: 33.6
-    - _ShieldPatternSize: 6
-    - _ShieldRimPower: 8.33
+    - _ShieldPatternPower: 33.2
+    - _ShieldPatternSize: 10
+    - _ShieldRimPower: 8.67
     - __dirty: 0
     m_Colors:
     - _Color: {r: 0.05968858, g: 0.096062526, b: 0.11764705, a: 0}

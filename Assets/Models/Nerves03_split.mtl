@@ -1,0 +1,30 @@
+newmtl Nerves_V04:PPF_Cavity_1_001
+illum 4
+Kd 0.50 0.50 0.50
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.45
+Ks 1.00 1.00 1.00
+Ns 18.00
+newmtl Nerves_V05:NerveColor_001
+illum 4
+Kd 0.80 0.46 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 324.00
+newmtl Nerves_V05:NerveColor_002
+illum 4
+Kd 0.80 0.45 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 324.00
+newmtl lambert2SG
+illum 4
+Kd 0.40 0.25 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
