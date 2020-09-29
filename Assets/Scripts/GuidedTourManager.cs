@@ -223,7 +223,7 @@ public class GuidedTourManager : MonoBehaviour {
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
             animator.Play(currentAnimationClipName);
-            DuringTransition?.Invoke();   
+            DuringTransitionEvent?.Invoke();   
         }
 
         afterAnimationCoroutine = StartCoroutine(AfterAnimation());
