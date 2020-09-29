@@ -37,7 +37,7 @@ public class RadialMenuManager : MonoBehaviour {
     void OnEnable()
     {
         GuidedTourManager.DefaultState += OnDefaultState;
-        GuidedTourManager.DuringTransition += OnDuringTransition;
+        GuidedTourManager.DuringTransitionEvent += OnDuringTransition;
         GuidedTourManager.ZoomedOut += OnZoomedOut;
     }
 

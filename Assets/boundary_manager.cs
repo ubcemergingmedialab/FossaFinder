@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class boundary_manager : MonoBehaviour
 {
-
     public List<GameObject> availableBoundaries;
     public Material defaultMaterial;
-
-
 
     public void OnEnable()
     {
         GuidedTourManager.EnableBoundaries += EnableBoundaries;
-        GuidedTourManager.DisableBoundaries += DisableBoundaries;
+
+        GuidedTourManager.InitializeEvent += DisableBoundaries;
+        GuidedTourManager.ZoomInEvent += DisableBoundaries;
 
     }
 
     public void OnDisable()
     {
         GuidedTourManager.EnableBoundaries -= EnableBoundaries;
-        GuidedTourManager.DisableBoundaries -= DisableBoundaries;
+
+        GuidedTourManager.InitializeEvent -= DisableBoundaries;
+        GuidedTourManager.ZoomInEvent -= DisableBoundaries;
 
     }
 
@@ -31,7 +32,6 @@ public class boundary_manager : MonoBehaviour
 
     void EnableBoundaries(string[] names)
     {
-        // Debug.Log("Boundary_manager names length: " + names.Length);
         foreach (GameObject current in availableBoundaries) 
         {
             current.SetActive(false);
@@ -50,6 +50,12 @@ public class boundary_manager : MonoBehaviour
         }
     }
 
+    void EnableBoundaries(SceneData sceneData)
+    {
+        string[] names = sceneData.lights;
+        EnableBoundaries(names);
+    }
+
 
     void DisableBoundaries()
     {
@@ -57,5 +63,10 @@ public class boundary_manager : MonoBehaviour
         {
             current.SetActive(false);
         }
+    }
+
+    void DisableBoundaries(SceneData sceneData)
+    {
+        DisableBoundaries();
     }
 }

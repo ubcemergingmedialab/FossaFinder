@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene10ToScene11AnimationClip
   forwardAnimationClipLength: 20
-  backwardAnimationClipName: 
-  backwardAnimationClipLength: 0
+  backwardAnimationClipName: Scene12ToScene11AnimationClip
+  backwardAnimationClipLength: 13
   ZoomOutAnimationClipName: ZoomOutFromScene11AnimationClip
   ZoomOutAnimationClipLength: 14
   ZoomInAnimationClipName: ZoomInToScene11AnimationClip
@@ -25,3 +25,5 @@ MonoBehaviour:
   boundaries:
   - Anterior_Wall
   lights: []
+  nerves: []
+  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
