@@ -5,8 +5,9 @@
     public class Trigger_labels : MonoBehaviour
     {
         public VRTK_InteractableObject linkedObject;
-        public GameObject Label;
-        
+        // public GameObject Label;
+
+        public GameObject[] labels;
 
         protected bool showlabel;
 
@@ -20,8 +21,6 @@
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
                 linkedObject.InteractableObjectUnused += InteractableObjectUnused;
             }
-
-          
         }
 
         protected virtual void OnDisable()
@@ -37,17 +36,24 @@
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
 
-            Label.SetActive(true);
+            // Label.SetActive(true);
+
+            foreach(GameObject label in labels)
+            {
+                label.SetActive(true);
+            }
             //print("triggered");
             showlabel = true;
-
         }
 
         protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
-        {
+        { 
+            // Label.SetActive(false);
 
-            Label.SetActive(false);
-
+            foreach(GameObject label in labels)
+            {
+                label.SetActive(false);
+            }
         }
     }
 }

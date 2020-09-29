@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightVisuals : MonoBehaviour {
-	private Dictionary<string, GameObject> availablelights;
-
-    public List<GameObject> availableLightss;
+    public List<GameObject> availableLights;
 
     // Use this for initialization
 
@@ -17,8 +15,12 @@ public class LightVisuals : MonoBehaviour {
 
     public void OnEnable()
     {
-        GuidedTourManager.Setlights += Enablelights;
-        GuidedTourManager.DisableLights += DisableAllLights;
+        GuidedTourManager.InitializeEvent += DisableAllLights;
+        GuidedTourManager.ZoomOutEvent += DisableAllLights;
+        GuidedTourManager.VisitPreviousEvent += EnableLights;
+        GuidedTourManager.VisitNextEvent += EnableLights;
+        GuidedTourManager.ZoomInEvent += EnableLights;
+        GuidedTourManager.SkipEvent += EnableLights;
     }
 
     /*! Setup OnDisable
@@ -28,23 +30,12 @@ public class LightVisuals : MonoBehaviour {
     */
     public void OnDisable()
     {
-        GuidedTourManager.Setlights -= Enablelights;
-        GuidedTourManager.DisableLights -= DisableAllLights;
-    }
-    /*! Initialize list
-* 
-* Add all lights in the hierarchy to the dictionary
-*/
-    public void Start()
-    {
-        //availablelights = new Dictionary<string, GameObject>();
-        //foreach (Transform child in transform)
-        //{
-        //    availablelights.Add(child.name, child.gameObject);
-            
-
-        //}
-
+        GuidedTourManager.InitializeEvent -= DisableAllLights;
+        GuidedTourManager.ZoomOutEvent -= DisableAllLights;
+        GuidedTourManager.VisitPreviousEvent -= EnableLights;
+        GuidedTourManager.VisitNextEvent -= EnableLights;
+        GuidedTourManager.ZoomInEvent -= EnableLights;
+        GuidedTourManager.SkipEvent -= EnableLights;
     }
 
     /*! \Manage lightss on the scene
@@ -52,25 +43,17 @@ public class LightVisuals : MonoBehaviour {
         * @param names Names of fissures that should be shown on the scene
      */
 
-    public void Enablelights(string[] names)
+    public void EnableLights(SceneData sceneData)
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-        //foreach (string name in names)
-        //{
-        //    availablelights[name].SetActive(true);
-        //}
-
-        foreach (GameObject availableLight in availableLightss)
+        string[] names = sceneData.lights;
+        foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
         }
 
         foreach (string name in names)
         {
-            foreach (GameObject availableLight in availableLightss)
+            foreach (GameObject availableLight in availableLights)
             {
                 if (availableLight.name == name)
                 {
@@ -83,14 +66,13 @@ public class LightVisuals : MonoBehaviour {
 
     public void DisableAllLights()
     {
-        //foreach (KeyValuePair<string, GameObject> pair in availablelights)
-        //{
-        //    pair.Value.SetActive(false);
-        //}
-
-        foreach (GameObject availableLight in availableLightss)
+        foreach (GameObject availableLight in availableLights)
         {
             availableLight.SetActive(false);
         }
+    }
+    public void DisableAllLights(SceneData sceneData)
+    {
+        DisableAllLights();
     }
 }

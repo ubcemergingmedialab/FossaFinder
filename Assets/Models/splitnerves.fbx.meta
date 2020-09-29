@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 4c486a9703038b54eb420ed199cff380
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Greater_palatine_nerves
+    100002: Lesser_palatine_nerves
+    100004: Nasal
+    100006: Nerves_of_ptergoid_canal
+    100008: Orbital
+    100010: others
+    100012: Pharyngeal
+    100014: Posterior_superior_alveolar
+    100016: //RootNode
+    100018: V2_Infraorbital
+    100020: Zygomatic
+    400000: Greater_palatine_nerves
+    400002: Lesser_palatine_nerves
+    400004: Nasal
+    400006: Nerves_of_ptergoid_canal
+    400008: Orbital
+    400010: others
+    400012: Pharyngeal
+    400014: Posterior_superior_alveolar
+    400016: //RootNode
+    400018: V2_Infraorbital
+    400020: Zygomatic
+    2100000: lambert1
+    2300000: Greater_palatine_nerves
+    2300002: Lesser_palatine_nerves
+    2300004: Nasal
+    2300006: Nerves_of_ptergoid_canal
+    2300008: Orbital
+    2300010: others
+    2300012: Pharyngeal
+    2300014: Posterior_superior_alveolar
+    2300016: V2_Infraorbital
+    2300018: Zygomatic
+    3300000: Greater_palatine_nerves
+    3300002: Lesser_palatine_nerves
+    3300004: Nasal
+    3300006: Nerves_of_ptergoid_canal
+    3300008: Orbital
+    3300010: others
+    3300012: Pharyngeal
+    3300014: Posterior_superior_alveolar
+    3300016: V2_Infraorbital
+    3300018: Zygomatic
+    4300000: V2_Infraorbital
+    4300002: Pharyngeal
+    4300004: Greater_palatine_nerves
+    4300006: Nasal
+    4300008: Nerves_of_ptergoid_canal
+    4300010: Lesser_palatine_nerves
+    4300012: Posterior_superior_alveolar
+    4300014: Zygomatic
+    4300016: Orbital
+    4300018: others
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

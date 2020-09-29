@@ -15,3 +15,13 @@ MonoBehaviour:
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene3ToScene2AnimationClip
   backwardAnimationClipLength: 1
+  ZoomOutAnimationClipName: 
+  ZoomOutAnimationClipLength: 0
+  ZoomInAnimationClipName: 
+  ZoomInAnimationClipLength: 0
+  highlights: []
+  boundaries: []
+  lights: []
+  nerves: []
+  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+  animatorController: {fileID: 9100000, guid: 0e7e7af73a548c44fbb09c2193d09718, type: 2}
