@@ -104,8 +104,10 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
-        cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        //cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position;
+        //headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
+        //cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position;
+        headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
         adjustedCameraPosition = mainCamera.transform.position;
     }
 
