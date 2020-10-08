@@ -39,10 +39,14 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 <<<<<<< refs/remotes/origin/labelsAdjust
+<<<<<<< refs/remotes/origin/labelsAdjust
   m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
 =======
   m_IndirectSpecularColor: {r: 0.17276813, g: 0.21589187, b: 0.29782563, a: 1}
 >>>>>>> Add new ext scene data and modify scene transition logic
+=======
+  m_IndirectSpecularColor: {r: 0.17276794, g: 0.2158916, b: 0.29782537, a: 1}
+>>>>>>> modeladjust~4
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6876,6 +6880,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}
   - {fileID: 11400000, guid: c39fa11559e8f874fb34f324e86e6f50, type: 2}
   - {fileID: 11400000, guid: 82f841d0b001ca044ac2ed220a2737f5, type: 2}
+  - {fileID: 11400000, guid: 68cdc1160fdcd0649a5450e02c10ad75, type: 2}
   - {fileID: 11400000, guid: 73ff916ef05fe194d8807cc45d533e75, type: 2}
   - {fileID: 11400000, guid: cb61a7643ce1bdb438893238a053059e, type: 2}
   - {fileID: 11400000, guid: 818598a3342b0f642a9de9366691e321, type: 2}
@@ -32032,13 +32037,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928664682}
-  m_LocalRotation: {x: -0.12956871, y: -0.7805924, z: -0.10947791, w: 0.601583}
-  m_LocalPosition: {x: 0.0554, y: -0.0486, z: 0.0588}
+  m_LocalRotation: {x: -0.047125433, y: -0.6897033, z: -0.011601013, w: 0.7224638}
+  m_LocalPosition: {x: 0.1055, y: -0.0218, z: 0.0319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1228305732}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: -19.075, y: -105.479004, z: 4.282}
+  m_LocalEulerAnglesHint: {x: -4.8240004, y: -87.45901, z: 2.775}
 --- !u!1 &1935598567
 GameObject:
   m_ObjectHideFlags: 0
