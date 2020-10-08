@@ -142,7 +142,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Adjusts all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
     public void VisitPreviousScene()
     {
-        // Debug.Log("Before decreement: " + currentSceneNumber);
+        Debug.Log("Before decrement: " + currentSceneNumber);
         if (currentSceneNumber > 1)
         {
             currentSceneNumber -= 1;
@@ -152,12 +152,26 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].backwardAnimationClipLength;
 
 
-            if (!(sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData))
+            if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
-                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
-                animator = oldAnimator;
-                DisableRenderTexture?.Invoke();
+                if (!(sceneDataArray[currentSceneNumber] is ExteriorSceneData))
+                {
+                    animator = cameraAnimator;
+                    ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+                    SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+                }
+        
+            } else
+            {
+                if (sceneDataArray[currentSceneNumber] is ExteriorSceneData)
+                {
+                    // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+                    animator = oldAnimator;
+                    DisableRenderTexture?.Invoke();
+                }
             }
+
+           
 
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
@@ -168,6 +182,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
     public void VisitNextScene()
     {
+        Debug.Log("Before increment: " + currentSceneNumber);
         if (currentSceneNumber < sceneDataArray.Length)
         {
             currentSceneNumber += 1;
@@ -176,14 +191,34 @@ public class GuidedTourManager : MonoBehaviour {
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
-
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
-                // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
-                animator = cameraAnimator;
-                ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
-                SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+                if (sceneDataArray[currentSceneNumber - 2] is SceneData)
+                {
+                    animator = cameraAnimator;
+                    ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+                    SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+                } 
+            } else
+            {
+                if (sceneDataArray[currentSceneNumber - 2] is ExteriorSceneData)
+                {
+                    animator = oldAnimator;
+                    DisableRenderTexture?.Invoke();
+                }
             }
+
+
+            //if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
+            //{
+            //    // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
+            //    animator = cameraAnimator;
+            //    ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
+            //    SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
+            //} else
+            //{
+            //    animator = oldAnimator;
+            //}
 
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93dba5e537d0d6b409631aa50feffb24, type: 3}
-  m_Name: Scene13DataExt1
+  m_Name: Scene13DataExt2
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: FirstNervePerspective
-  forwardAnimationClipLength: 1
+  forwardAnimationClipName: 
+  forwardAnimationClipLength: 0
   backwardAnimationClipName: FirstNervePerspective
   backwardAnimationClipLength: 1
   ZoomOutAnimationClipName: 

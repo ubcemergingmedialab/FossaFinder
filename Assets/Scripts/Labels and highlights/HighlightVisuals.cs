@@ -61,7 +61,7 @@ public class HighlightVisuals : MonoBehaviour
                 if(availableHighlght.name == name)
                 {
                     availableHighlght.SetActive(true);
-                    Debug.Log("HIGHLIGHT: enabling " + availableHighlght.name);
+                    //Debug.Log("HIGHLIGHT: enabling " + availableHighlght.name);
                 }
             }
         }

@@ -33,7 +33,7 @@ public class NervesManager : MonoBehaviour {
                 if (availableNerve.name == name)
                 {
                     availableNerve.SetActive(true);
-                    Debug.Log("NERVE: enabling " + availableNerve.name);
+                    //Debug.Log("NERVE: enabling " + availableNerve.name);
                 }
             }
         }
