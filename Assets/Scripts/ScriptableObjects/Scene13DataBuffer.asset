@@ -8,13 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dba5e537d0d6b409631aa50feffb24, type: 3}
-  m_Name: Scene13DataExt1
+  m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
+  m_Name: Scene13DataBuffer
   m_EditorClassIdentifier: 
   forwardAnimationClipName: 
   forwardAnimationClipLength: 0
-  backwardAnimationClipName: Scene13Ext2toScene13Ext1
-  backwardAnimationClipLength: 1
+  backwardAnimationClipName: Scene14ToScene13AnimationClip
+  backwardAnimationClipLength: 14
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
@@ -39,4 +39,3 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 0}
-  renderTexture: FirstNerveRenderTexture

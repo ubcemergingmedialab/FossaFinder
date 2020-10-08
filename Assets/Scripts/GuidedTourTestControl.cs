@@ -20,9 +20,10 @@ public class GuidedTourTestControl : MonoBehaviour {
                 {
                     manager.SkipTransition();
                 }
-                return;
+            } else
+            {
+                manager.VisitNextScene();
             }
-            manager.VisitNextScene();
         }
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -32,8 +33,10 @@ public class GuidedTourTestControl : MonoBehaviour {
                 {
                     manager.SkipTransition();
                 }
+            } else
+            {
+                manager.VisitPreviousScene();
             }
-            manager.VisitPreviousScene();
         }
 	}
 }
