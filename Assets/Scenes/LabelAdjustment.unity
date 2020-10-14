@@ -3000,7 +3000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 140042490}
   labels:
-  - {fileID: 1535510834}
+  - {fileID: 2124706864}
 --- !u!64 &140042492
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25461,7 +25461,7 @@ GameObject:
   - component: {fileID: 1535510835}
   - component: {fileID: 1535510836}
   m_Layer: 0
-  m_Name: label_Greater and lesser palatine nerves
+  m_Name: 'label_Greater and lesser palatine nerves(Scene 2.7) '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36357,7 +36357,7 @@ GameObject:
   - component: {fileID: 2124706865}
   - component: {fileID: 2124706866}
   m_Layer: 0
-  m_Name: label_Greater and lesser palatine nerves (Scene 2.7)
+  m_Name: label_Greater and lesser palatine nerves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
