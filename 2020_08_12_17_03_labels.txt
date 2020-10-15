@@ -1,2 +1,0 @@
-161.2427;label_Ptergomaxillary;true
-178.095;label_Ptergomaxillary;false

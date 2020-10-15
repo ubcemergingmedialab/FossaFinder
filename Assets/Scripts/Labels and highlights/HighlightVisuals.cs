@@ -13,13 +13,6 @@ public class HighlightVisuals : MonoBehaviour
     public Dictionary<string, Material> highlightsMaterials;
     public List<GameObject> availableHighlights;
 
-    /// Material of inactive highlights
-    public Material defaultMaterial;
-
-    /// Material of active highlights
-    public Material highlightMaterial;
-
-
 
     /*! Setup onEnable
     * 
@@ -31,8 +24,11 @@ public class HighlightVisuals : MonoBehaviour
 
     public void OnEnable()
     {
-        GuidedTourManager.SetHighlights += EnableHighlights;
-        GuidedTourManager.DisableHighlights += DisableAllHighlights;
+        GuidedTourManager.SkipEvent += EnableHighlights;
+        GuidedTourManager.VisitPreviousEvent += EnableHighlights;
+        GuidedTourManager.VisitNextEvent += EnableHighlights;
+        GuidedTourManager.ZoomInEvent += EnableHighlights;
+        GuidedTourManager.InitializeEvent += DisableAllHighlights;
     }
 
     /*! Setup OnDisable
@@ -43,18 +39,21 @@ public class HighlightVisuals : MonoBehaviour
 
     public void OnDisable()
     {
-        GuidedTourManager.SetHighlights -= EnableHighlights;
-        GuidedTourManager.DisableHighlights -= DisableAllHighlights;
+        GuidedTourManager.SkipEvent -= EnableHighlights;
+        GuidedTourManager.VisitPreviousEvent -= EnableHighlights;
+        GuidedTourManager.VisitNextEvent -= EnableHighlights;
+        GuidedTourManager.ZoomInEvent -= EnableHighlights;
+        GuidedTourManager.InitializeEvent -= DisableAllHighlights;
     }
     
     /*! \Manage labels on the scene
         * only activate specific highlights by the number of scene
         * @param names Names of fissures that should be shown on the scene
      */
-    public void EnableHighlights(string[] names)
+    public void EnableHighlights(SceneData data)
     {
         DisableAllHighlights();
-
+        string[] names = data.highlights;
         foreach (string name in names)
         {
             foreach (GameObject availableHighlght in availableHighlights)
@@ -62,7 +61,7 @@ public class HighlightVisuals : MonoBehaviour
                 if(availableHighlght.name == name)
                 {
                     availableHighlght.SetActive(true);
-                    Debug.Log("HIGHLIGHT: enabling " + availableHighlght.name);
+                    //Debug.Log("HIGHLIGHT: enabling " + availableHighlght.name);
                 }
             }
         }

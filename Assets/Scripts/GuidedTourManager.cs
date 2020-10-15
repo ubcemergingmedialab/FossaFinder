@@ -75,6 +75,8 @@ public class GuidedTourManager : MonoBehaviour {
     Coroutine afterAnimationCoroutine;
     bool afterAnimationCoroutineIsRunning;
 
+    ActivityRecorder recorder;
+
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -98,6 +100,11 @@ public class GuidedTourManager : MonoBehaviour {
         InitializeEvent?.Invoke();
 
         StartCoroutine(AdjustCameraRigAndUserHeight());
+    }
+
+    public void InjectRecorder(ActivityRecorder ar)
+    {
+        recorder = ar;
     }
 
     // Defines the world position of the camera rig and the skull, after the position of the camera is set
@@ -176,6 +183,11 @@ public class GuidedTourManager : MonoBehaviour {
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
             PlayTransition();
+
+            if (recorder != null)
+            {
+                recorder.QueueMessage("VisitPreviousScene");
+            }
         }
     }
 
@@ -223,6 +235,12 @@ public class GuidedTourManager : MonoBehaviour {
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
             PlayTransition();
+
+
+            if (recorder != null)
+            {
+                recorder.QueueMessage("VisitNextScene");
+            }
         }
     }
 
@@ -237,6 +255,12 @@ public class GuidedTourManager : MonoBehaviour {
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
+
+
+        if (recorder != null)
+        {
+            recorder.QueueMessage("ZoomInToCurrentScene");
+        }
     }
 
     public void ZoomOutFromCurrentScene()
@@ -250,6 +274,11 @@ public class GuidedTourManager : MonoBehaviour {
         ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
+
+        if (recorder != null)
+        {
+            recorder.QueueMessage("ZoomOutFromCurrentScene");
+        }
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
@@ -320,5 +349,10 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
+
+        if (recorder != null)
+        {
+            recorder.QueueMessage("SkipTransition");
+        }
     }
 }

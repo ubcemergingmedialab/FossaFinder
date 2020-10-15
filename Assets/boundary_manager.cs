@@ -10,14 +10,18 @@ public class boundary_manager : MonoBehaviour
     public void OnEnable()
     {
         GuidedTourManager.EnableBoundaries += EnableBoundaries;
-        GuidedTourManager.DisableBoundaries += DisableBoundaries;
+
+        GuidedTourManager.InitializeEvent += DisableBoundaries;
+        GuidedTourManager.ZoomInEvent += DisableBoundaries;
 
     }
 
     public void OnDisable()
     {
         GuidedTourManager.EnableBoundaries -= EnableBoundaries;
-        GuidedTourManager.DisableBoundaries -= DisableBoundaries;
+
+        GuidedTourManager.InitializeEvent -= DisableBoundaries;
+        GuidedTourManager.ZoomInEvent -= DisableBoundaries;
 
     }
 
@@ -46,6 +50,12 @@ public class boundary_manager : MonoBehaviour
         }
     }
 
+    void EnableBoundaries(SceneData sceneData)
+    {
+        string[] names = sceneData.lights;
+        EnableBoundaries(names);
+    }
+
 
     void DisableBoundaries()
     {
@@ -53,5 +63,10 @@ public class boundary_manager : MonoBehaviour
         {
             current.SetActive(false);
         }
+    }
+
+    void DisableBoundaries(SceneData sceneData)
+    {
+        DisableBoundaries();
     }
 }

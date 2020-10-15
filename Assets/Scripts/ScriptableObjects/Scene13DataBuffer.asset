@@ -9,22 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene14Data
+  m_Name: Scene13DataBuffer
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene13ToScene14AnimationClip
-  forwardAnimationClipLength: 14
-  backwardAnimationClipName: Scene15ToScene14AnimationClip
-  backwardAnimationClipLength: 15
+  forwardAnimationClipName: 
+  forwardAnimationClipLength: 0
+  backwardAnimationClipName: Scene14ToScene13AnimationClip
+  backwardAnimationClipLength: 14
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Foramen_Rotundum
   boundaries: []
   lights: []
   nerves:
   - Maxillary
-  - Nasal
   enabledNerves:
   - Nasal
   - Orbital
@@ -38,4 +38,4 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
-  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+  animator: {fileID: 0}

@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class NervesVisual: MonoBehaviour
 {
-
     //public Dictionary<string, GameObject> availableHighlights;
     public Dictionary<GameObject, Material> HighlightsMaterials;
 
@@ -23,7 +22,6 @@ public class NervesVisual: MonoBehaviour
     * Add EnableHighlights() to eventsystem when enabled
     * @see GuidedTourManager()
     */
-
     public void OnEnable()
     {
         //availableHighlights = new Dictionary<string, GameObject>();
@@ -35,9 +33,12 @@ public class NervesVisual: MonoBehaviour
             Debug.Log("NERVE COLOUR" + HighlightsMaterials[availableHighlght].color);
         }
 
-        GuidedTourManager.SetNerveHighlights += EnableHighlights;
-        GuidedTourManager.DisableNerveHighlights += DisableAllHighlights;
+        GuidedTourManager.InitializeEvent += DisableAllHighlights;
+        GuidedTourManager.VisitPreviousEvent += EnableHighlights;
+        GuidedTourManager.VisitNextEvent += EnableHighlights;
+        GuidedTourManager.SkipEvent += EnableHighlights;
     }
+
     /*! Setup OnDisable
     * 
     * Remove EnableHighlights() to eventsystem when enabled
@@ -45,29 +46,21 @@ public class NervesVisual: MonoBehaviour
     */
     public void OnDisable()
     {
-        GuidedTourManager.SetNerveHighlights -= EnableHighlights;
-        GuidedTourManager.DisableNerveHighlights -= DisableAllHighlights;
-    }
-
-    /*! Initialize list
-   * 
-   * Add all highlights in the hierarchy to the dictionary
-*/
-    public void Start()
-    {
-       
-
+        GuidedTourManager.InitializeEvent -= DisableAllHighlights;
+        GuidedTourManager.VisitPreviousEvent -= EnableHighlights;
+        GuidedTourManager.VisitNextEvent -= EnableHighlights;
+        GuidedTourManager.SkipEvent -= EnableHighlights;
     }
 
     /*! \Manage labels on the scene
         * only activate specific highlights by the number of scene
         * @param names Names of fissures that should be shown on the scene
      */
-
-    public void EnableHighlights(string[] names)
+    public void EnableHighlights(SceneData data)
     {
         DisableAllHighlights();
 
+        string[] names = data.nerves;
         foreach (string name in names)
         {
             foreach (GameObject availableHighlght in availableHighlights)
@@ -76,7 +69,7 @@ public class NervesVisual: MonoBehaviour
                 {
                     highlightMaterial = HighlightsMaterials[availableHighlght];
                     availableHighlght.GetComponent<Renderer>().material = highlightMaterial;
-                    Debug.Log("NERVES: enabling " + availableHighlght.name);
+                    //Debug.Log("NERVES: enabling " + availableHighlght.name);
                 }
             }
         }

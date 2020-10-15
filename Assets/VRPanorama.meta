@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/VRPanorama.meta
 guid: 8714debabd5669e44919a38e8a782411
 folderAsset: yes
+=======
+guid: a19984b88ba1ffd4a9f3387d58898326
+>>>>>>> 3c9bca1195504d8510665ccfceb9f8ea552031bb:Assets/Scenes/devMyFeature.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

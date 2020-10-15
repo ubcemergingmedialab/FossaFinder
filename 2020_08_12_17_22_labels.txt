@@ -1,4 +1,0 @@
-10.48084;label_Foramen Rotundum;true
-11.19422;label_Superior orbital fissure;true
-11.97893;label_Pterygoid Canal;true
-12.62932;label_Palatovaginal Canal;true

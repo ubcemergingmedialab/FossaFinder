@@ -7,23 +7,25 @@ public class NervesManager : MonoBehaviour {
 
     public void OnEnable()
     {
-        GuidedTourManager.SetNerves += EnableNerves;
-        GuidedTourManager.DisableNerves += DisableAllNerves;
+        GuidedTourManager.InitializeEvent += DisableAllNerves;
+        GuidedTourManager.VisitPreviousEvent += EnableNerves;
+        GuidedTourManager.VisitNextEvent += EnableNerves;
+        GuidedTourManager.SkipEvent += EnableNerves;
     }
 
     public void OnDisable()
     {
-        GuidedTourManager.SetNerves -= EnableNerves;
-        GuidedTourManager.DisableNerves -= DisableAllNerves;
+        GuidedTourManager.InitializeEvent -= DisableAllNerves;
+        GuidedTourManager.VisitPreviousEvent -= EnableNerves;
+        GuidedTourManager.VisitNextEvent -= EnableNerves;
+        GuidedTourManager.SkipEvent -= EnableNerves;
     }
 
-    public void EnableNerves(string[] names)
+    public void EnableNerves(SceneData data)
     {
-        foreach (GameObject availableNerve in availableNerves)
-        {
-            availableNerve.SetActive(false);
-        }
+        DisableAllNerves();
 
+        string[] names = data.enabledNerves;
         foreach (string name in names)
         {
             foreach (GameObject availableNerve in availableNerves)
@@ -31,7 +33,7 @@ public class NervesManager : MonoBehaviour {
                 if (availableNerve.name == name)
                 {
                     availableNerve.SetActive(true);
-                    Debug.Log("NERVE: enabling " + availableNerve.name);
+                    //Debug.Log("NERVE: enabling " + availableNerve.name);
                 }
             }
         }

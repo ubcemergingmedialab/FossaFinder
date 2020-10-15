@@ -9,12 +9,14 @@ public class RenderTextureManager : MonoBehaviour {
     {
         GuidedTourManager.SetRenderTexture += EnableRenderTexture;
         GuidedTourManager.DisableRenderTexture += DisableRenderTexture;
+        GuidedTourManager.InitializeEvent += DisableRenderTexture;
     }
 
     public void OnDisable()
     {
         GuidedTourManager.SetRenderTexture -= EnableRenderTexture;
         GuidedTourManager.DisableRenderTexture -= DisableRenderTexture;
+        GuidedTourManager.InitializeEvent -= DisableRenderTexture;
     }
 
     public void EnableRenderTexture(string name)
