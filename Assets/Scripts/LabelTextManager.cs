@@ -13,6 +13,7 @@ public class LabelTextManager : MonoBehaviour
     {
         labelText = this.transform.Find("TextWindow").gameObject;
     }
+
     public void showText(bool value) {
         labelText.SetActive(value);
     }
@@ -21,5 +22,4 @@ public class LabelTextManager : MonoBehaviour
     {
         labelText.SetActive(!labelText.activeSelf);
     }
-
 }
