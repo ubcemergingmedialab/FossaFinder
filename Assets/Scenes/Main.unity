@@ -1156,11 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c023340b47ba2a5488495efc53ec6827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableLightss:
-  - {fileID: 1079947614}
-  - {fileID: 1412211187}
-  - {fileID: 1056971331}
-  - {fileID: 1323407309}
+  availableLights: []
 --- !u!1 &48286815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,6 +3981,11 @@ MonoBehaviour:
   downButton: {fileID: 986059486}
   leftOuterButton: {fileID: 20823479}
   rightOuterButton: {fileID: 95137981}
+--- !u!1 &195197241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &201259410
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,7 +5693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 274006343}
-  Label: {fileID: 1215697022}
+  labels: []
 --- !u!114 &274006343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8477,7 +8478,8 @@ MonoBehaviour:
   headContainer: {fileID: 385871840}
   cameraRig: {fileID: 1108160144}
   mainCamera: {fileID: 900869779}
-  anim: {fileID: 1228305729}
+  animator: {fileID: 0}
+  cameraAnimator: {fileID: 0}
   sceneDataArray:
   - {fileID: 11400000, guid: 01d67808770a8b04d87069308a7801ed, type: 2}
   - {fileID: 11400000, guid: 2b6c3b5776d97104c9d37023b8cae3ef, type: 2}
@@ -9645,7 +9647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 497503997}
-  Label: {fileID: 1216522810}
+  labels: []
 --- !u!23 &497503999
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12316,6 +12318,11 @@ MonoBehaviour:
   update: 1
   lookForMainCamera: 1
   cameraTransform: {fileID: 0}
+--- !u!1 &666551110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &679632750
 GameObject:
   m_ObjectHideFlags: 0
@@ -12938,36 +12945,6 @@ Prefab:
 --- !u!4 &726004946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 726004945}
---- !u!1 &726004952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
     type: 2}
   m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &735607359
@@ -16261,7 +16238,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -16781,7 +16758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 930337867}
-  Label: {fileID: 2075364434}
+  labels: []
 --- !u!114 &930337867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19956,14 +19933,14 @@ MonoBehaviour:
   size: 2
   color: {r: 0, g: 1, b: 1, a: 1}
   vertices:
-  - {x: 1.5, y: 0.01, z: 1.125}
   - {x: 1.5, y: 0.01, z: -1.125}
   - {x: -1.5, y: 0.01, z: -1.125}
   - {x: -1.5, y: 0.01, z: 1.125}
-  - {x: 1.65, y: 0.01, z: 1.275}
+  - {x: 1.5, y: 0.01, z: 1.125}
   - {x: 1.65, y: 0.01, z: -1.275}
   - {x: -1.65, y: 0.01, z: -1.275}
   - {x: -1.65, y: 0.01, z: 1.275}
+  - {x: 1.65, y: 0.01, z: 1.275}
 --- !u!33 &1108160147
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19971,7 +19948,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1108160144}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 1676745073}
 --- !u!23 &1108160148
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19988,7 +19965,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 1247274484}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20288,7 +20265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1117362735}
-  Label: {fileID: 302066779}
+  labels: []
 --- !u!114 &1117362735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20670,6 +20647,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1128322255}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1128857302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &1139594847
 GameObject:
   m_ObjectHideFlags: 0
@@ -22193,6 +22175,11 @@ Transform:
   m_Father: {fileID: 997892601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -13.04, y: 0, z: 0}
+--- !u!1 &1196879981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &1201306545
 GameObject:
   m_ObjectHideFlags: 0
@@ -22743,7 +22730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1218029959}
-  Label: {fileID: 1385578315}
+  labels: []
 --- !u!23 &1218029961
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23428,12 +23415,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 726004952}
-  actualHeadset: {fileID: 726004951}
-  actualLeftController: {fileID: 726004950}
-  actualRightController: {fileID: 726004948}
-  modelAliasLeftController: {fileID: 726004949}
-  modelAliasRightController: {fileID: 726004947}
+  actualBoundaries: {fileID: 1622439992}
+  actualHeadset: {fileID: 1272364608}
+  actualLeftController: {fileID: 666551110}
+  actualRightController: {fileID: 1196879981}
+  modelAliasLeftController: {fileID: 195197241}
+  modelAliasRightController: {fileID: 1128857302}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -23596,6 +23583,39 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1247106792}
   m_CullTransparentMesh: 0
+--- !u!21 &1247274484
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1253352806
 GameObject:
   m_ObjectHideFlags: 0
@@ -23784,6 +23804,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1266165017}
   m_CullTransparentMesh: 0
+--- !u!1 &1272364608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &1273525919
 GameObject:
   m_ObjectHideFlags: 0
@@ -27567,7 +27592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1472218476}
-  Label: {fileID: 1319792406}
+  labels: []
 --- !u!114 &1472218476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27963,7 +27988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1493626186}
-  Label: {fileID: 706628306}
+  labels: []
 --- !u!114 &1493626186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30190,7 +30215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1597504665}
-  Label: {fileID: 765925187}
+  labels: []
 --- !u!114 &1597504665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30408,6 +30433,11 @@ MonoBehaviour:
   update: 1
   lookForMainCamera: 1
   cameraTransform: {fileID: 0}
+--- !u!1 &1622439992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &1625755040
 GameObject:
   m_ObjectHideFlags: 0
@@ -30730,7 +30760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObject: {fileID: 1633785863}
-  Label: {fileID: 538817787}
+  labels: []
 --- !u!114 &1633785863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31434,6 +31464,161 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!43 &1676745073
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  serializedVersion: 9
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 24
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 8
+    localAABB:
+      m_Center: {x: 0, y: 0.01, z: 0}
+      m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
+  m_VertexData:
+    serializedVersion: 2
+    m_VertexCount: 8
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 288
+    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0.01, z: 0}
+    m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimized: 0
 --- !u!1 &1680018428
 GameObject:
   m_ObjectHideFlags: 0
@@ -34830,18 +35015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e383ec818b390e49bb6dd354e62cca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableHighlightss:
-  - {fileID: 1493626182}
-  - {fileID: 1472218472}
-  - {fileID: 930337863}
-  - {fileID: 1633785859}
-  - {fileID: 274006340}
-  - {fileID: 1117362732}
-  - {fileID: 497503994}
-  - {fileID: 1597504661}
-  - {fileID: 1218029956}
-  defaultMaterial: {fileID: 2100000, guid: b1b42a03aaabed44f8a2cbfe3bd3047c, type: 2}
-  highlightMaterial: {fileID: 2100000, guid: 391f7a939c15b5a489a44a05ca95a449, type: 2}
+  availableHighlights: []
 --- !u!1 &1941085116
 GameObject:
   m_ObjectHideFlags: 0
