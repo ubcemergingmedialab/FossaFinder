@@ -660,9 +660,9 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 3
-  cloudProjectId: b8b70575-d1b4-4c44-bbf6-0bb27c23a95a
-  projectName: FossaFinder (1)
-  organizationId: ubceml
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
