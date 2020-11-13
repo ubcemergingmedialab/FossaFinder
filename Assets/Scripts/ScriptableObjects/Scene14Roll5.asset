@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene14Data
+  m_Name: Scene14Roll5
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene13ToScene14AnimationClip
-  forwardAnimationClipLength: 14
-  backwardAnimationClipName: Scene14Roll2toRoll1
-  backwardAnimationClipLength: 1
+  forwardAnimationClipName: Scene14Roll5toRoll1
+  forwardAnimationClipLength: 1.25
+  backwardAnimationClipName: Scene15ToScene14AnimationClip
+  backwardAnimationClipLength: 15
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
