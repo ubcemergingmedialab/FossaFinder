@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene15Roll4
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: 
-  forwardAnimationClipLength: 0
-  backwardAnimationClipName: 
-  backwardAnimationClipLength: 0
+  forwardAnimationClipName: MaxRoll3ToRoll4
+  forwardAnimationClipLength: 3
+  backwardAnimationClipName: MaxRoll5ToRoll4
+  backwardAnimationClipLength: 8
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
@@ -22,6 +22,22 @@ MonoBehaviour:
   highlights: []
   boundaries: []
   lights: []
-  nerves: []
-  enabledNerves: []
+  nerves:
+  - Maxillary
+  - Nasal
+  - Zygomatic
+  - Orbital
+  enabledNerves:
+  - Nasal
+  - Orbital
+  - Lesser_palatine_nerves
+  - Greater_palatine_nerves
+  - Zygomatic
+  - Nerves_of_ptergoid_canal
+  - Infraorbital
+  - Posterior_superior_alveolar
+  - Maxillary
+  - Pharyngeal
+  - others
+  - Middle_superior_alveolar
   animator: {fileID: 0}
