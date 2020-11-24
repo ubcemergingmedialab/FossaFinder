@@ -233,6 +233,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &1102925512557132448
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: NasalExt3ToExt4
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 13c78b450b8e5054e8981136a01ecb06, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &1107644521637216292
 AnimatorStateMachine:
   serializedVersion: 5
@@ -270,9 +295,17 @@ AnimatorStateMachine:
     m_State: {fileID: 1102173731463624354}
     m_Position: {x: 600, y: 300, z: 0}
   - serializedVersion: 1
+<<<<<<< refs/remotes/origin/labelsAdjust
     m_State: {fileID: 1102967610047249686}
     m_Position: {x: 600, y: 348, z: 0}
 >>>>>>> modeladjust~2
+=======
+    m_State: {fileID: 1102759727435401666}
+    m_Position: {x: 420, y: 552, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102925512557132448}
+    m_Position: {x: 455, y: 617, z: 0}
+>>>>>>> modeladjust~0
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
