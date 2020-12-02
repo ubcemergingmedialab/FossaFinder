@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< refs/remotes/origin/labelsAdjust
   m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.17276813, g: 0.21589187, b: 0.29782563, a: 1}
+>>>>>>> Add new ext scene data and modify scene transition logic
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5644,13 +5648,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 326181189}
-  m_LocalRotation: {x: 0.05335701, y: 0.6303159, z: -0.75208235, w: -0.18500559}
-  m_LocalPosition: {x: 0.012, y: -0.0238, z: 0.0477}
+  m_LocalRotation: {x: -0.62736815, y: 0.08095861, z: 0.1518324, w: -0.75947475}
+  m_LocalPosition: {x: 0.012, y: -0.023800015, z: 0.0477}
   m_LocalScale: {x: 0.00025, y: 0.00025, z: 0.00025}
   m_Children: []
   m_Father: {fileID: 413356116}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 111.82, y: 122.5, z: -68.38}
+  m_LocalEulerAnglesHint: {x: 111.82001, y: 122.5, z: -243.351}
 --- !u!64 &326181191
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6871,6 +6875,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c3aa38feb9722446881d0ad6c49aec3, type: 2}
   - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}
   - {fileID: 11400000, guid: c39fa11559e8f874fb34f324e86e6f50, type: 2}
+  - {fileID: 11400000, guid: 82f841d0b001ca044ac2ed220a2737f5, type: 2}
   - {fileID: 11400000, guid: 73ff916ef05fe194d8807cc45d533e75, type: 2}
   - {fileID: 11400000, guid: cb61a7643ce1bdb438893238a053059e, type: 2}
   - {fileID: 11400000, guid: 818598a3342b0f642a9de9366691e321, type: 2}

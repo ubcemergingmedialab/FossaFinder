@@ -69,7 +69,7 @@ public class NervesVisual: MonoBehaviour
                 {
                     highlightMaterial = HighlightsMaterials[availableHighlght];
                     availableHighlght.GetComponent<Renderer>().material = highlightMaterial;
-                    Debug.Log("NERVES: enabling " + availableHighlght.name);
+                    //Debug.Log("NERVES: enabling " + availableHighlght.name);
                 }
             }
         }
