@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: Scene16Data
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: MaxRoll5ToScene16
-  forwardAnimationClipLength: 1
+  forwardAnimationClipName: Scene15ToScene16AnimationClip
+  forwardAnimationClipLength: 8
   backwardAnimationClipName: Scene17ToScene16AnimationClip
   backwardAnimationClipLength: 15
   ZoomOutAnimationClipName: 

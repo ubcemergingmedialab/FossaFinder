@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: AlveRoll5ToRoll1
   forwardAnimationClipLength: 4.967
-  backwardAnimationClipName: Scene18ToScene17AnimationClip
-  backwardAnimationClipLength: 17
+  backwardAnimationClipName: PalRoll2ToRoll1
+  backwardAnimationClipLength: 1
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
@@ -43,6 +43,6 @@ MonoBehaviour:
   - Posterior_superior_alveolar
   - Maxillary
   - Pharyngeal
-  - Pharyngeal
+  - others
   - Middle_superior_alveolar
   animator: {fileID: 0}

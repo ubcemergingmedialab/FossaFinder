@@ -14,7 +14,7 @@ MonoBehaviour:
   forwardAnimationClipName: AlveRoll3ToRoll4
   forwardAnimationClipLength: 5
   backwardAnimationClipName: AlveRoll5ToRoll4
-  backwardAnimationClipLength: 5.067
+  backwardAnimationClipLength: 4.983
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 

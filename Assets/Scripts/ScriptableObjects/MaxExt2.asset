@@ -8,12 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene15Roll5
+  m_Script: {fileID: 11500000, guid: 93dba5e537d0d6b409631aa50feffb24, type: 3}
+  m_Name: MaxExt2
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: MaxRoll4ToRoll5
-  forwardAnimationClipLength: 8
-  backwardAnimationClipName: Scene16ToMaxRoll5
+  forwardAnimationClipName: MaxExt2ToExt3
+  forwardAnimationClipLength: 1
+  backwardAnimationClipName: MaxExt4ToExt3
   backwardAnimationClipLength: 1
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
@@ -41,3 +41,4 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 0}
+  renderTexture: MaxRenderTexture

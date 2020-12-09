@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene15Roll3
+  m_Name: MaxRoll1
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: MaxRoll2ToRoll3
-  forwardAnimationClipLength: 3
-  backwardAnimationClipName: MaxRoll4ToRoll3
+  forwardAnimationClipName: MaxRoll1ToRoll2
+  forwardAnimationClipLength: 10
+  backwardAnimationClipName: MaxRoll3ToRol2
   backwardAnimationClipLength: 3
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
   - Nasal
   - Orbital
   - Lesser_palatine_nerves
-  - eater_palatine_nerves
+  - Greater_palatine_nerves
   - Zygomatic
   - Nerves_of_ptergoid_canal
   - Infraorbital
