@@ -21,7 +21,8 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 0
   highlights: []
   boundaries: []
-  lights: []
+  lights:
+  - Palatine_Canal
   nerves:
   - Maxillary
   - Nasal
