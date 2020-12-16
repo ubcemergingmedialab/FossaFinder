@@ -189,7 +189,7 @@ public class GuidedTourManager : MonoBehaviour {
             isDuringTransition = true;
             currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
-            Debug.Log(sceneDataArray[currentSceneNumber].name);
+            Debug.Log(sceneDataArray[currentSceneNumber-1].name);
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)

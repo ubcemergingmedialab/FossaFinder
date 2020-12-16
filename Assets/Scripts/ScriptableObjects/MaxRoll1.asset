@@ -19,7 +19,8 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Foramen_Rotundum
   boundaries: []
   lights: []
   nerves:
