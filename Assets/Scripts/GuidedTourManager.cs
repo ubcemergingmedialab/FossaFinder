@@ -75,8 +75,6 @@ public class GuidedTourManager : MonoBehaviour {
     Coroutine afterAnimationCoroutine;
     bool afterAnimationCoroutineIsRunning;
 
-    ActivityRecorder recorder;
-
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -99,26 +97,17 @@ public class GuidedTourManager : MonoBehaviour {
 
         InitializeEvent?.Invoke();
 
-        StartCoroutine(AdjustCameraRigAndUserHeight());
-    }
-
-    public void InjectRecorder(ActivityRecorder ar)
-    {
-        recorder = ar;
+        //StartCoroutine(AdjustCameraRigAndUserHeight());
     }
 
     // Defines the world position of the camera rig and the skull, after the position of the camera is set
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
-        cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position; // mainCamera.GetComponent<SteamVR_Camera>().head.localPosition.y, 1f) - mainCamera.GetComponent<SteamVR_Camera>().head.localPosition
-        headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
-        adjustedCameraPosition = mainCamera.transform.position;
-        //yield return new WaitForSeconds(.5f);
         //cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position;
         //headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
-       // cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position;
-       // headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
+        //cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position;
+        //headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
         //adjustedCameraPosition = mainCamera.transform.position;
     }
 
@@ -187,11 +176,6 @@ public class GuidedTourManager : MonoBehaviour {
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
             PlayTransition();
-
-            if (recorder != null)
-            {
-                recorder.QueueMessage("VisitPreviousScene");
-            }
         }
     }
 
@@ -205,6 +189,7 @@ public class GuidedTourManager : MonoBehaviour {
             isDuringTransition = true;
             currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
+            Debug.Log(sceneDataArray[currentSceneNumber-1].name);
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
@@ -239,12 +224,6 @@ public class GuidedTourManager : MonoBehaviour {
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
             PlayTransition();
-
-
-            if (recorder != null)
-            {
-                recorder.QueueMessage("VisitNextScene");
-            }
         }
     }
 
@@ -259,12 +238,6 @@ public class GuidedTourManager : MonoBehaviour {
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
-
-
-        if (recorder != null)
-        {
-            recorder.QueueMessage("ZoomInToCurrentScene");
-        }
     }
 
     public void ZoomOutFromCurrentScene()
@@ -278,17 +251,12 @@ public class GuidedTourManager : MonoBehaviour {
         ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
-
-        if (recorder != null)
-        {
-            recorder.QueueMessage("ZoomOutFromCurrentScene");
-        }
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
     void PlayTransition()
     {
-        AdjustSkullPositionIfPastThreshold();
+        //AdjustSkullPositionIfPastThreshold();
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
@@ -304,7 +272,6 @@ public class GuidedTourManager : MonoBehaviour {
         Vector3 currentCameraPosition = mainCamera.transform.position;
         if (Vector3.Distance(currentCameraPosition, adjustedCameraPosition) > distanceFromAdjustedCameraPositionThreshold)
         {
-            
             Vector3 offset = new Vector3(currentCameraPosition.x - adjustedCameraPosition.x, currentCameraPosition.y - adjustedCameraPosition.y, currentCameraPosition.z - adjustedCameraPosition.z);
             headContainer.transform.position += offset;
             adjustedCameraPosition = mainCamera.transform.position;
@@ -354,10 +321,5 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
-
-        if (recorder != null)
-        {
-            recorder.QueueMessage("SkipTransition");
-        }
     }
 }
