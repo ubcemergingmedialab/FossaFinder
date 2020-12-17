@@ -14,6 +14,8 @@
 
         private LabelRecording recorder;
 
+        private bool isActive;
+
         protected virtual void OnEnable()
         {
             showlabel = false;
