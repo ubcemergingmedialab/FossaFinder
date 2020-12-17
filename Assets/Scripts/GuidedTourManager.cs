@@ -97,7 +97,7 @@ public class GuidedTourManager : MonoBehaviour {
 
         InitializeEvent?.Invoke();
 
-        StartCoroutine(AdjustCameraRigAndUserHeight());
+        //StartCoroutine(AdjustCameraRigAndUserHeight());
     }
 
     // Defines the world position of the camera rig and the skull, after the position of the camera is set
@@ -107,8 +107,8 @@ public class GuidedTourManager : MonoBehaviour {
         //cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position;
         //headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
         //cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position;
-        headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
-        adjustedCameraPosition = mainCamera.transform.position;
+        //headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
+        //adjustedCameraPosition = mainCamera.transform.position;
     }
 
     // Returns the current scene number
@@ -189,6 +189,7 @@ public class GuidedTourManager : MonoBehaviour {
             isDuringTransition = true;
             currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
+            Debug.Log(sceneDataArray[currentSceneNumber-1].name);
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
@@ -255,7 +256,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
     void PlayTransition()
     {
-        AdjustSkullPositionIfPastThreshold();
+        //AdjustSkullPositionIfPastThreshold();
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
