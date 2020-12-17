@@ -14,7 +14,7 @@ MonoBehaviour:
   forwardAnimationClipName: Scene14Roll2toRoll3
   forwardAnimationClipLength: 1
   backwardAnimationClipName: Scene14Roll4toRoll3
-  backwardAnimationClipLength: 1
+  backwardAnimationClipLength: 4
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 

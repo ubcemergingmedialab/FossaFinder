@@ -125,16 +125,34 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 12
-        value: {x: 2.09792, y: 0.6, z: 0.8}
-        inSlope: {x: -0.44352, y: -0.2803, z: -0.788592}
-        outSlope: {x: -0.44352, y: -0.2803, z: -0.788592}
+        value: {x: 2.0924907, y: 0.6, z: 0.8}
+        inSlope: {x: -0.41901448, y: -0.29490298, z: -0.87331915}
+        outSlope: {x: -0.41901448, y: -0.29490298, z: -0.87331915}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 12.85
+        value: {x: 1.75, y: 0.3898816, z: 0.17775995}
+        inSlope: {x: -0.36363634, y: -0.194599, z: -0.6034989}
+        outSlope: {x: -0.36363634, y: -0.194599, z: -0.6034989}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 13.85
+        value: {x: 1.24, y: 0.23999178, z: -0.31647313}
+        inSlope: {x: -0.32883728, y: -0.111200765, z: -0.37242794}
+        outSlope: {x: -0.32883728, y: -0.111200765, z: -0.37242794}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 15
-        value: {x: 1.1, y: 0.1508, z: -0.62296}
+        value: {x: 1.043, y: 0.1508, z: -0.62296}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -361,8 +379,26 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 12.85
+        value: 1.75
+        inSlope: -0.36363634
+        outSlope: -0.36363634
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 13.85
+        value: 1.24
+        inSlope: -0.32883728
+        outSlope: -0.32883728
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 15
-        value: 1.1
+        value: 1.043
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -427,8 +463,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 12
         value: 0.6
-        inSlope: -0.2803
-        outSlope: -0.2803
+        inSlope: -0.29490298
+        outSlope: -0.29490298
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 12.85
+        value: 0.3898816
+        inSlope: -0.194599
+        outSlope: -0.194599
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 13.85
+        value: 0.23999178
+        inSlope: -0.111200765
+        outSlope: -0.111200765
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -500,8 +554,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 12
         value: 0.8
-        inSlope: -0.788592
-        outSlope: -0.788592
+        inSlope: -0.87331915
+        outSlope: -0.87331915
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 12.85
+        value: 0.17775995
+        inSlope: -0.6034989
+        outSlope: -0.6034989
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 13.85
+        value: -0.31647313
+        inSlope: -0.37242794
+        outSlope: -0.37242794
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
