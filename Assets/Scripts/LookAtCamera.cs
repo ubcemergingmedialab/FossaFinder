@@ -20,7 +20,7 @@ public class LookAtCamera : MonoBehaviour
         //cameraTransform = FindObjectOfType<OVRCameraRig>().transform;
         OnEnable();
     }
-
+    
     void OnEnable()
     {
         if(!cameraTransform) cameraTransform = Camera.main.transform;

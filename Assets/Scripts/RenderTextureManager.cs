@@ -31,7 +31,7 @@ public class RenderTextureManager : MonoBehaviour {
             if (availableRenderTexture.name == name)
             {
                 availableRenderTexture.SetActive(true);
-                Debug.Log("LIGHT: enabling " + availableRenderTexture.name);
+                //Debug.Log("LIGHT: enabling " + availableRenderTexture.name);
             }
         }
     }
