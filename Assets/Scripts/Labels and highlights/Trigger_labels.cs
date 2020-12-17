@@ -69,6 +69,35 @@
             }
         }
 
+        public void OnMouseDown()
+        {
+            if (isActive)
+            {
+                foreach (GameObject label in labels)
+                {
+                    label.SetActive(false);
+
+                    if (recorder != null)
+                    {
+                        recorder.QueueMessage(label.name + ";false");
+                    }
+                }
+            }
+            else
+            {
+                foreach (GameObject label in labels)
+                {
+                    label.SetActive(true);
+
+                    if (recorder != null)
+                    {
+                        recorder.QueueMessage(label.name + ";true");
+                    }
+                }
+            }
+            isActive = !isActive;
+        }
+
         public void InjectRecorder(LabelRecording recorder)
         {
             Debug.Log("inserted recorder");
