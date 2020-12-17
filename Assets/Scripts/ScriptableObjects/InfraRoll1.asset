@@ -19,7 +19,8 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Inferior_Orbital_Fissure
   boundaries: []
   lights: []
   nerves:
