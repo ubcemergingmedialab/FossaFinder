@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Scene14Roll1
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene14Roll1toRoll2
-  forwardAnimationClipLength: 1
+  forwardAnimationClipLength: 3
   backwardAnimationClipName: Scene14Roll3toRoll2
   backwardAnimationClipLength: 1
   ZoomOutAnimationClipName: 
@@ -21,7 +21,10 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 0
   highlights: []
   boundaries: []
-  lights: []
+  lights:
+  - Sphenopalatine_Foramen
+  - Sphenopalatine_Foramen1
+  - Sphenopalatine_Foramen2
   nerves:
   - Maxillary
   - Nasal
