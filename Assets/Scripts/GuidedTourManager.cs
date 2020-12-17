@@ -64,6 +64,8 @@ public class GuidedTourManager : MonoBehaviour {
     public delegate void DisableRenderTextureHandler();
     public static event DisableRenderTextureHandler DisableRenderTexture;
 
+    ActivityRecorder ar;
+
 
     Vector3 adjustedCameraPosition;
     int currentSceneNumber; // the current scene destination number
@@ -98,6 +100,11 @@ public class GuidedTourManager : MonoBehaviour {
         InitializeEvent?.Invoke();
 
         //StartCoroutine(AdjustCameraRigAndUserHeight());
+    }
+
+    public void InjectRecorder(ActivityRecorder r)
+    {
+        ar = r;
     }
 
     // Defines the world position of the camera rig and the skull, after the position of the camera is set
@@ -176,6 +183,11 @@ public class GuidedTourManager : MonoBehaviour {
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
             PlayTransition();
+
+            if(ar != null)
+            {
+                ar.QueueMessage("VisitPreviousScene");
+            }
         }
     }
 
@@ -224,6 +236,10 @@ public class GuidedTourManager : MonoBehaviour {
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
             PlayTransition();
+            if (ar != null)
+            {
+                ar.QueueMessage("VisitNextScene");
+            }
         }
     }
 
@@ -236,8 +252,12 @@ public class GuidedTourManager : MonoBehaviour {
 
 
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
-
+        
         PlayTransition();
+        if (ar != null)
+        {
+            ar.QueueMessage("ZoomInToCurrentScene");
+        }
     }
 
     public void ZoomOutFromCurrentScene()
@@ -251,6 +271,10 @@ public class GuidedTourManager : MonoBehaviour {
         ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
         PlayTransition();
+        if (ar != null)
+        {
+            ar.QueueMessage("ZoomOutFromCurrentScene");
+        }
     }
 
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
@@ -321,5 +345,9 @@ public class GuidedTourManager : MonoBehaviour {
         DefaultState?.Invoke();
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
+        if (ar != null)
+        {
+            ar.QueueMessage("SkipTransition");
+        }
     }
 }
