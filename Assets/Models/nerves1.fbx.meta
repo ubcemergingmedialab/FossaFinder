@@ -16,6 +16,10 @@ ModelImporter:
     100020: Posterior_superior_alveolar
     100022: V2
     100024: Zygomatic
+    100026: Camera
+    100028: Light
+    100030: Camera.001
+    100032: Light.001
     400000: Greater_palatine_nerves
     400002: Infraorbital
     400004: Lesser_palatine_nerves
@@ -29,6 +33,12 @@ ModelImporter:
     400020: Posterior_superior_alveolar
     400022: V2
     400024: Zygomatic
+    400026: Camera
+    400028: Light
+    400030: Camera.001
+    400032: Light.001
+    2000000: Camera
+    2000002: Camera.001
     2100000: lambert1
     2100002: lambert2
     2300000: Greater_palatine_nerves
@@ -67,6 +77,8 @@ ModelImporter:
     4300018: Infraorbital
     4300020: V2
     4300022: Middle_superior_alveolar
+    10800000: Light
+    10800002: Light.001
   externalObjects: {}
   materials:
     importMaterials: 1
