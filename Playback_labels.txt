@@ -1,0 +1,20 @@
+96.39602;label_Maxillary nerves;true
+96.39602;label_Foramen Rotundum;true
+97.76306;label_Nerve of the pterygoid canal;true
+97.76306;label_Pterygoid Canal;true
+180.9118;label_Nasal nerves;true
+180.9118;label_Sphenopalatine Foramen;true
+261.2154;label_Orbital branches;true
+268.5475;label_Zygomatic Nerves;true
+321.5515;label_Inferior Orbital fissure;true
+321.5515;label_Infra-orbital Nerves;true
+321.5515;label_Middle superior alveolar;true
+400.0844;label_Posterior superior alveolar nerve;true
+506.9971;label_Greater and lesser palatine nerves;true
+506.9971;label_Palatine Canal;true
+525.4011;label_Pharyngeal;true
+536.4258;label_Palatovaginal Canal;true
+564.7933;label_Nerve of the pterygoid canal;false
+564.7933;label_Pterygoid Canal;false
+566.1946;label_Nerve of the pterygoid canal;true
+566.1946;label_Pterygoid Canal;true

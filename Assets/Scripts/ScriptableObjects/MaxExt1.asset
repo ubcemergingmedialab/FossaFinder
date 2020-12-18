@@ -24,7 +24,6 @@ MonoBehaviour:
   lights: []
   nerves:
   - Maxillary
-  - Nasal
   - Zygomatic
   - Orbital
   enabledNerves:

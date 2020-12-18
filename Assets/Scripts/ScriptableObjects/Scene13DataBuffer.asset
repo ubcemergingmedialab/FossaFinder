@@ -21,10 +21,12 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 0
   highlights:
   - Foramen_Rotundum
+  - Pterygoid_Canal
   boundaries: []
   lights: []
   nerves:
   - Maxillary
+  - Nerves_of_ptergoid_canal
   enabledNerves:
   - Nasal
   - Orbital

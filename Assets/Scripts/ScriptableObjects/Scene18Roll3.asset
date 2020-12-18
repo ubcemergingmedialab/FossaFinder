@@ -34,6 +34,7 @@ MonoBehaviour:
   - Greater_palatine_nerves
   - Posterior_superior_alveolar
   - Middle_superior_alveolar
+  - Pharyngeal
   enabledNerves:
   - Nasal
   - Orbital
