@@ -31,6 +31,8 @@ ModelImporter:
     400024: Zygomatic
     2100000: lambert1
     2100002: lambert2
+    2100004: lambert1.001
+    2100006: lambert2.001
     2300000: Greater_palatine_nerves
     2300002: Infraorbital
     2300004: Lesser_palatine_nerves
