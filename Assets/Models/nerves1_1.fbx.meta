@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32fade3bf5e4c6c4a99e35d74efba7b9
+guid: 5b1df1d3e26a5c94dbde1d21885a1a3e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -16,15 +16,6 @@ ModelImporter:
     100020: Posterior_superior_alveolar
     100022: V2
     100024: Zygomatic
-    100026: others.006
-    100028: others.007
-    100030: others.008
-    100032: others.009
-    100034: others.010
-    100036: others.015
-    100038: others.016
-    100040: others.018
-    100042: others.019
     400000: Greater_palatine_nerves
     400002: Infraorbital
     400004: Lesser_palatine_nerves
@@ -38,19 +29,8 @@ ModelImporter:
     400020: Posterior_superior_alveolar
     400022: V2
     400024: Zygomatic
-    400026: others.006
-    400028: others.007
-    400030: others.008
-    400032: others.009
-    400034: others.010
-    400036: others.015
-    400038: others.016
-    400040: others.018
-    400042: others.019
     2100000: lambert1
     2100002: lambert2
-    2100004: lambert1.001
-    2100006: lambert2.001
     2300000: Greater_palatine_nerves
     2300002: Infraorbital
     2300004: Lesser_palatine_nerves
@@ -63,15 +43,6 @@ ModelImporter:
     2300018: Posterior_superior_alveolar
     2300020: V2
     2300022: Zygomatic
-    2300024: others.006
-    2300026: others.007
-    2300028: others.008
-    2300030: others.009
-    2300032: others.010
-    2300034: others.015
-    2300036: others.016
-    2300038: others.018
-    2300040: others.019
     3300000: Greater_palatine_nerves
     3300002: Infraorbital
     3300004: Lesser_palatine_nerves
@@ -84,15 +55,6 @@ ModelImporter:
     3300018: Posterior_superior_alveolar
     3300020: V2
     3300022: Zygomatic
-    3300024: others.006
-    3300026: others.007
-    3300028: others.008
-    3300030: others.009
-    3300032: others.010
-    3300034: others.015
-    3300036: others.016
-    3300038: others.018
-    3300040: others.019
     4300000: Pharyngeal
     4300002: Greater_palatine_nerves
     4300004: Nasal
@@ -103,17 +65,8 @@ ModelImporter:
     4300014: Orbital
     4300016: others
     4300018: Infraorbital
-    4300020: V2
-    4300022: Middle_superior_alveolar
-    4300024: others.006
-    4300026: others.007
-    4300028: others.008
-    4300030: others.009
-    4300032: others.010
-    4300034: others.015
-    4300036: others.016
-    4300038: others.018
-    4300040: others.019
+    4300020: Middle_superior_alveolar
+    4300022: V2
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -21,10 +21,16 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 0
   highlights: []
   boundaries: []
-  lights: []
+  lights:
+  - Sphenopalatine_Foramen
+  - Sphenopalatine_Foramen1
+  - Sphenopalatine_Foramen2
   nerves:
   - Maxillary
   - Nasal
+  - Nerves_of_ptergoid_canal
+  - Greater_palatine_nerves
+  - Lesser_palatine_nerves
   enabledNerves:
   - Nasal
   - Orbital

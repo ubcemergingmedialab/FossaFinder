@@ -28,6 +28,8 @@ MonoBehaviour:
   nerves:
   - Maxillary
   - Nasal
+  - Greater_palatine_nerves
+  - Lesser_palatine_nerves
   enabledNerves:
   - Nasal
   - Orbital
