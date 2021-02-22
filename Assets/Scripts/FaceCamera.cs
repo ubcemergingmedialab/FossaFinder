@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeepUpright : MonoBehaviour {
+public class FaceCamera : MonoBehaviour {
 
     public GameObject head;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -12,10 +13,5 @@ public class KeepUpright : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.rotation = Quaternion.identity;
-        if(head != null)
-        {
-            transform.LookAt(head.transform);
-        }
-	}
+    }
 }
