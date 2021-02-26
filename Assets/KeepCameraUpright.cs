@@ -16,7 +16,6 @@ public class KeepCameraUpright : MonoBehaviour {
 	void FixedUpdate() {
 		if(rbMount != null)
         {
-            Debug.Log("updating camera rb");
             Quaternion rotationUpright = Quaternion.LookRotation(rbMount.transform.forward, Vector3.up);
             GetComponent<Rigidbody>().MoveRotation(rotationUpright);
         }
