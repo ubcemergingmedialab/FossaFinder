@@ -5,8 +5,6 @@ using UnityEngine;
 public class SceneTransitionUI : MonoBehaviour {
 
     GuidedTourManager guidedTourManager;
-    bool isAnimationPlaying;
-
     public GameObject[] availableButtons;
     private GameObject currentActiveButton;
 
@@ -24,19 +22,31 @@ public class SceneTransitionUI : MonoBehaviour {
 
     void OnDefaultState()
     {
-        // change active button to active
+        foreach (GameObject button in availableButtons)
+        {
+            button.GetComponent<SceneTransitionButton>().SetDefaultColor();
+        }
+        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveColor();
     }
 
+    // Change all buttons to their default state and change the active button to disabled
+    // Shouldn't all buttons be disabled?
     void OnDuringTransition()
     {
-        // change all buttons to default state
-        // change active button to disabled
+        foreach (GameObject button in availableButtons)
+        {
+            button.GetComponent<SceneTransitionButton>().SetDisabledColor();
+        }
     }
 
+    // Change the value in guided tour manager to button's target scene, call visit next scene, and set active button to button
     public void ButtonClicked(GameObject button)
     {
-        // change value in guided tour manager to button.GetComponent<SceneTransitionButton>().targetScene
-        // call guidedTourManager.VisitNextScene()
-        // set active button to button
+        button.GetComponent<SceneTransitionButton>().SetActiveColor();
+        currentActiveButton.GetComponent<SceneTransitionButton>().SetDefaultColor();
+        currentActiveButton = button;
+
+        guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
+        guidedTourManager.VisitNextScene();
     }
 }
