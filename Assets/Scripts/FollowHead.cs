@@ -34,7 +34,7 @@ public class FollowHead : MonoBehaviour {
         Vector3 UIDirection = transform.forward;
         Vector3 cross;
         float angle = Vector3.Angle(headDirection, UIDirection);
-        Debug.Log("HEAD: " + angle);
+        //Debug.Log("HEAD: " + angle);
         if(angle >= targetDelta)
         {
             headDirection = head.forward;
@@ -42,10 +42,10 @@ public class FollowHead : MonoBehaviour {
             UIDirection = transform.TransformVector(transform.up);
             angle = Vector3.Angle(headDirection, UIDirection);
             angleCounter -= 1;
-            Debug.Log("COUNTER: " + angleCounter);
+            //Debug.Log("COUNTER: " + angleCounter);
             if(angleCounter <= 0)
             {
-                Debug.Log("Adding torque: " + headDirection + " " + UIDirection);
+                //Debug.Log("Adding torque: " + headDirection + " " + UIDirection);
                 rb.AddTorque(cross * torque);
                 isAdjusting = true;
             }
