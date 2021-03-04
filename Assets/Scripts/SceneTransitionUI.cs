@@ -9,6 +9,7 @@ public class SceneTransitionUI : MonoBehaviour {
 
     public GameObject[] availableButtons;
     private GameObject currentActiveButton;
+    private SceneTransitionButton transitionButton;
 
     // Use this for initialization
     void Start () {
@@ -25,12 +26,20 @@ public class SceneTransitionUI : MonoBehaviour {
     void OnDefaultState()
     {
         // change active button to active
+        availableButtons.GetComponent<SceneTransitionButton>().SetDisabledColor();
     }
 
     void OnDuringTransition()
-    {
-        // change all buttons to default state
+    {           
         // change active button to disabled
+        availableButtons.GetComponent<SceneTransitionButton>().SetDisabledColor();   
+        // change all buttons to default state
+        foreach (GameObject availableButtons in availableButtons)
+        {
+            availableButtons.OnDefaultState();
+        }
+
+
     }
 
     public void ButtonClicked(GameObject button)
