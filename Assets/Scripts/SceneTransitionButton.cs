@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SceneTransitionButton : MonoBehaviour {
 
     public Material defaultColor, activeColor, disabledColor;
@@ -36,7 +37,8 @@ public class SceneTransitionButton : MonoBehaviour {
     void OnMouseDown()
     {
         // set this button active color, change current scene
-        Debug.Log("button click");
+        //Debug.Log("button clicked");
         manager.ButtonClicked(this.gameObject);
+
     }
 }
