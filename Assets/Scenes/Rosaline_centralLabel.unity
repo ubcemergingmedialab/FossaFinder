@@ -1388,8 +1388,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.024320126, y: -0.02123022, z: 1.41291}
-  - {x: -0.007601738, y: -0.010923862, z: 1.4232213}
+  - {x: -2.4320126, y: -2.123022, z: -4.2390003}
+  - {x: -0.7601738, y: -1.0923862, z: -3.2078717}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -3220,6 +3220,7 @@ GameObject:
   - component: {fileID: 140042468}
   - component: {fileID: 140042466}
   - component: {fileID: 140042467}
+  - component: {fileID: 140042492}
   m_Layer: 0
   m_Name: Middle_superior_alveolar
   m_TagString: Untagged
@@ -3259,6 +3260,7 @@ GameObject:
   - component: {fileID: 140042471}
   - component: {fileID: 140042469}
   - component: {fileID: 140042470}
+  - component: {fileID: 140042491}
   m_Layer: 0
   m_Name: Pharyngeal
   m_TagString: Untagged
@@ -3280,6 +3282,7 @@ GameObject:
   - component: {fileID: 140042474}
   - component: {fileID: 140042472}
   - component: {fileID: 140042473}
+  - component: {fileID: 140042490}
   m_Layer: 0
   m_Name: Posterior_superior_alveolar
   m_TagString: Untagged
@@ -3301,6 +3304,7 @@ GameObject:
   - component: {fileID: 140042477}
   - component: {fileID: 140042475}
   - component: {fileID: 140042476}
+  - component: {fileID: 140042519}
   m_Layer: 0
   m_Name: Maxillary
   m_TagString: Untagged
@@ -3322,6 +3326,7 @@ GameObject:
   - component: {fileID: 140042480}
   - component: {fileID: 140042478}
   - component: {fileID: 140042479}
+  - component: {fileID: 140042488}
   m_Layer: 0
   m_Name: Nerves_of_ptergoid_canal
   m_TagString: Untagged
@@ -3343,6 +3348,7 @@ GameObject:
   - component: {fileID: 140042483}
   - component: {fileID: 140042481}
   - component: {fileID: 140042482}
+  - component: {fileID: 140042461}
   m_Layer: 0
   m_Name: Infraorbital
   m_TagString: Untagged
@@ -3364,6 +3370,7 @@ GameObject:
   - component: {fileID: 140042486}
   - component: {fileID: 140042484}
   - component: {fileID: 140042485}
+  - component: {fileID: 140042462}
   m_Layer: 0
   m_Name: Zygomatic
   m_TagString: Untagged
@@ -3371,6 +3378,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &140042461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Infraorbital
+--- !u!114 &140042462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Zygomatic nerve
 --- !u!1 &140042463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,6 +3416,7 @@ GameObject:
   - component: {fileID: 140042495}
   - component: {fileID: 140042493}
   - component: {fileID: 140042494}
+  - component: {fileID: 140042489}
   m_Layer: 0
   m_Name: Orbital
   m_TagString: Untagged
@@ -3867,7 +3899,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Nasal nerve
+--- !u!114 &140042488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Nerves of ptergoid canal
+--- !u!114 &140042489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Orbital nerve
+--- !u!114 &140042490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Posterior superior alveolar
+--- !u!114 &140042491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Pharyngeal
+--- !u!114 &140042492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Middle superior alveolar
 --- !u!114 &140042493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4386,6 +4478,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042459}
   m_Mesh: {fileID: 4300018, guid: 32fade3bf5e4c6c4a99e35d74efba7b9, type: 3}
+--- !u!114 &140042519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Maxillary nerve
 --- !u!4 &140042522
 Transform:
   m_ObjectHideFlags: 0
@@ -5625,7 +5729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Ptergomaxillary Fissure
 --- !u!1 &177704073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,7 +6023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Foramen Rotundum
 --- !u!1 &185216473
 GameObject:
   m_ObjectHideFlags: 0
@@ -11002,8 +11106,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.005534172, y: -0.028745651, z: 1.42908}
-  - {x: -0.007188797, y: -0.028260231, z: 1.428726}
+  - {x: -0.5534172, y: -2.8745651, z: -2.6219995}
+  - {x: -0.7188797, y: -2.826023, z: -2.6574047}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -14223,6 +14327,7 @@ GameObject:
   - component: {fileID: 571404068}
   - component: {fileID: 571404070}
   - component: {fileID: 571404071}
+  - component: {fileID: 571404072}
   m_Layer: 0
   m_Name: Lesser_palatine_nerves
   m_TagString: Untagged
@@ -14317,6 +14422,18 @@ MonoBehaviour:
   labels:
   - {fileID: 880393128}
   - {fileID: 232297129}
+--- !u!114 &571404072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571404066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Lesser palatine nerves
 --- !u!1 &578007578
 GameObject:
   m_ObjectHideFlags: 0
@@ -15114,7 +15231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Superior orbital fissure
 --- !u!1 &602389430
 GameObject:
   m_ObjectHideFlags: 0
@@ -16577,8 +16694,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.010720253, y: -0.023910046, z: 1.4232}
-  - {x: -0.011134148, y: -0.025202274, z: 1.4214307}
+  - {x: -1.0720253, y: -2.3910046, z: -3.2100003}
+  - {x: -1.1134148, y: -2.5202274, z: -3.3869364}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -17363,8 +17480,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.023560047, y: -0.027665138, z: 1.4199976}
-  - {x: -0.0172863, y: -0.023766994, z: 1.4216274}
+  - {x: -2.3560047, y: -2.7665138, z: -3.530244}
+  - {x: -1.7286301, y: -2.3766994, z: -3.3672612}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -17582,8 +17699,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.0248003, y: -0.023030281, z: 1.41091}
-  - {x: -0.018183708, y: -0.012004375, z: 1.4113553}
+  - {x: -2.48003, y: -2.303028, z: -4.438999}
+  - {x: -1.8183708, y: -1.2004375, z: -4.394478}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -17792,6 +17909,36 @@ Prefab:
 --- !u!4 &726004946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 726004945}
+--- !u!1 &726004952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
     type: 2}
   m_PrefabInternal: {fileID: 726004945}
 --- !u!1 &726801536
@@ -18055,7 +18202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Inferior orbital fissure
 --- !u!1 &728255083
 GameObject:
   m_ObjectHideFlags: 0
@@ -19506,8 +19653,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.00892067, y: -0.028535843, z: 1.4303423}
-  - {x: -0.00876379, y: -0.026189804, z: 1.4220777}
+  - {x: -0.89206696, y: -2.8535843, z: -2.495775}
+  - {x: -0.876379, y: -2.6189804, z: -3.3222315}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -20238,7 +20385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Pterygold canal
 --- !u!1 &880393128
 GameObject:
   m_ObjectHideFlags: 0
@@ -20973,8 +21120,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.012252331, y: -0.02832985, z: 1.425362}
-  - {x: -0.011837959, y: -0.028164864, z: 1.4226598}
+  - {x: -1.2252331, y: -2.832985, z: -2.9937994}
+  - {x: -1.1837959, y: -2.8164864, z: -3.264026}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -21995,8 +22142,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.012252331, y: -0.021576405, z: 1.429126}
-  - {x: -0.013611317, y: -0.02628088, z: 1.4235373}
+  - {x: -1.2252331, y: -2.1576405, z: -2.6173995}
+  - {x: -1.3611317, y: -2.628088, z: -3.1762764}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -23389,8 +23536,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.0066404343, y: -0.0240798, z: 1.42616}
-  - {x: -0.012242317, y: -0.027256489, z: 1.4233159}
+  - {x: -0.6640434, y: -2.40798, z: -2.9139998}
+  - {x: -1.2242317, y: -2.7256489, z: -3.1984103}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -25423,8 +25570,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.01472044, y: -0.023590088, z: 1.4274501}
-  - {x: -0.016366482, y: -0.023946285, z: 1.4212584}
+  - {x: -1.472044, y: -2.3590088, z: -2.7849996}
+  - {x: -1.6366482, y: -2.3946285, z: -3.4041617}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -26560,8 +26707,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.014361858, y: -0.023828983, z: 1.422762}
-  - {x: -0.014489651, y: -0.023179054, z: 1.422837}
+  - {x: -1.4361858, y: -2.3828983, z: -3.2538002}
+  - {x: -1.4489651, y: -2.3179054, z: -3.2462966}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -27827,7 +27974,7 @@ Transform:
   m_GameObject: {fileID: 1228305728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 1631393391}
   - {fileID: 226896114}
@@ -28333,12 +28480,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 0}
-  actualHeadset: {fileID: 0}
-  actualLeftController: {fileID: 0}
-  actualRightController: {fileID: 0}
-  modelAliasLeftController: {fileID: 0}
-  modelAliasRightController: {fileID: 0}
+  actualBoundaries: {fileID: 726004952}
+  actualHeadset: {fileID: 726004951}
+  actualLeftController: {fileID: 726004950}
+  actualRightController: {fileID: 726004948}
+  modelAliasLeftController: {fileID: 726004949}
+  modelAliasRightController: {fileID: 726004947}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -28989,8 +29136,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.019633591, y: -0.02201553, z: 1.4193845}
-  - {x: -0.016627237, y: -0.020453164, z: 1.4201837}
+  - {x: -1.9633591, y: -2.201553, z: -3.5915525}
+  - {x: -1.6627238, y: -2.0453165, z: -3.511637}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -29177,8 +29324,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.011640072, y: -0.02626419, z: 1.425462}
-  - {x: -0.01116991, y: -0.02540493, z: 1.4236486}
+  - {x: -1.1640072, y: -2.626419, z: -2.9837997}
+  - {x: -1.116991, y: -2.540493, z: -3.1651485}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -31765,8 +31912,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.020356692, y: -0.01984255, z: 1.4168249}
-  - {x: -0.009271584, y: -0.0128459595, z: 1.4240432}
+  - {x: -2.0356693, y: -1.9842551, z: -3.84751}
+  - {x: -0.9271585, y: -1.284596, z: -3.1256835}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -32053,7 +32200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Palatine canal
 --- !u!1 &1384629834
 GameObject:
   m_ObjectHideFlags: 0
@@ -32258,8 +32405,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.00892067, y: -0.028535843, z: 1.4303423}
-  - {x: -0.008705616, y: -0.027109623, z: 1.425486}
+  - {x: -0.89206696, y: -2.8535843, z: -2.495775}
+  - {x: -0.8705616, y: -2.7109623, z: -2.981406}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -32986,8 +33133,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.014810085, y: -0.025102615, z: 1.4292152}
-  - {x: -0.012862682, y: -0.025875807, z: 1.4233639}
+  - {x: -1.4810085, y: -2.5102615, z: -2.6084893}
+  - {x: -1.2862682, y: -2.5875807, z: -3.1936162}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -33625,8 +33772,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.020760536, y: -0.018889904, z: 1.42173}
-  - {x: -0.015216827, y: -0.019728184, z: 1.4201603}
+  - {x: -2.0760536, y: -1.8889904, z: -3.3569996}
+  - {x: -1.5216827, y: -1.9728184, z: -3.5139773}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -36692,8 +36839,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.00582695, y: -0.028729916, z: 1.4287901}
-  - {x: -0.00803709, y: -0.028145313, z: 1.4221401}
+  - {x: -0.582695, y: -2.8729916, z: -2.6509993}
+  - {x: -0.80370903, y: -2.8145313, z: -3.3159945}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -36880,8 +37027,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.01210122, y: -0.040698595, z: 1.4201803}
-  - {x: -0.010828542, y: -0.032996804, z: 1.4247222}
+  - {x: -1.210122, y: -4.0698595, z: -3.511968}
+  - {x: -1.0828542, y: -3.2996802, z: -3.057779}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -37068,8 +37215,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.01874733, y: -0.036917686, z: 1.4218997}
-  - {x: -0.04365635, y: -0.020041943, z: 1.4353124}
+  - {x: -1.874733, y: -3.6917686, z: -3.3400338}
+  - {x: -4.365635, y: -2.0041943, z: -1.9987624}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.003
@@ -37556,7 +37703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Sphenopalatine foramen
 --- !u!1 &1668754030
 GameObject:
   m_ObjectHideFlags: 0
@@ -37720,8 +37867,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.020320415, y: -0.026230335, z: 1.42011}
-  - {x: -0.006652832, y: -0.026594162, z: 1.4092271}
+  - {x: -2.0320415, y: -2.6230335, z: -3.5189998}
+  - {x: -0.6652832, y: -2.6594162, z: -4.6072855}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -39747,6 +39894,7 @@ GameObject:
   - component: {fileID: 1731042641}
   - component: {fileID: 1731042643}
   - component: {fileID: 1731042644}
+  - component: {fileID: 1731042645}
   m_Layer: 0
   m_Name: Greater_palatine_nerves
   m_TagString: Untagged
@@ -39841,6 +39989,18 @@ MonoBehaviour:
   labels:
   - {fileID: 880393128}
   - {fileID: 232297129}
+--- !u!114 &1731042645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1731042639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Greater palatine nerves
 --- !u!1 &1733820099
 GameObject:
   m_ObjectHideFlags: 0
@@ -40176,8 +40336,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.020356692, y: -0.02201515, z: 1.419385}
-  - {x: -0.012883075, y: -0.018719733, z: 1.4212613}
+  - {x: -2.0356693, y: -2.201515, z: -3.5915048}
+  - {x: -1.2883074, y: -1.8719733, z: -3.4038665}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -44942,8 +45102,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.01281786, y: -0.035451412, z: 1.4220898}
-  - {x: -0.012650967, y: -0.030789852, z: 1.4247345}
+  - {x: -1.281786, y: -3.5451412, z: -3.32102}
+  - {x: -1.2650967, y: -3.0789852, z: -3.0565598}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -46151,8 +46311,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.012892246, y: -0.033474207, z: 1.4227822}
-  - {x: -0.00057554245, y: -0.036757946, z: 1.4202741}
+  - {x: -1.2892246, y: -3.3474207, z: -3.2517889}
+  - {x: -0.057554245, y: -3.6757946, z: -3.50259}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01
@@ -46861,7 +47021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Ptergomaxillary fissure
 --- !u!1 &2068649004
 GameObject:
   m_ObjectHideFlags: 0
@@ -48618,7 +48778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
+  labelText: Palatovaginal canal
 --- !u!1 &2129305256
 GameObject:
   m_ObjectHideFlags: 0
@@ -48859,8 +49019,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.014696121, y: -0.024975538, z: 1.429023}
-  - {x: -0.012602806, y: -0.026427746, z: 1.4220948}
+  - {x: -1.4696121, y: -2.4975538, z: -2.6277}
+  - {x: -1.2602806, y: -2.6427746, z: -3.3205192}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.01

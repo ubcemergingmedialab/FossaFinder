@@ -41,7 +41,8 @@ public static class OVRPlugin
 #endif
 
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
-	public static readonly System.Version wrapperVersion = _versionZero;
+	public static readonly System.Version wrapperVersion = new System.Version(0, 0, 0);
+		//_versionZero;
 #else
 	public static readonly System.Version wrapperVersion = OVRP_1_45_0.version;
 #endif

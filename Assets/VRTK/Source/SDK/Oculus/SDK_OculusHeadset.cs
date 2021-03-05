@@ -95,7 +95,8 @@ namespace VRTK
         public override Vector3 GetHeadsetVelocity()
         {
 #if VRTK_DEFINE_OCULUS_UTILITIES_1_11_0_OR_OLDER
-            return OVRManager.isHmdPresent ? OVRPlugin.GetEyeVelocity(OVRPlugin.Eye.Left).ToOVRPose().position : Vector3.zero;
+            return Vector3.zero;
+            //return OVRManager.isHmdPresent ? OVRPlugin.GetEyeVelocity(OVRPlugin.Eye.Left).ToOVRPose().position : Vector3.zero;
 #elif VRTK_DEFINE_OCULUS_UTILITIES_1_12_0_OR_NEWER
             return OVRManager.isHmdPresent ? OVRPlugin.GetNodeVelocity(OVRPlugin.Node.EyeCenter, OVRPlugin.Step.Render).FromFlippedZVector3f() : Vector3.zero;
 #else
