@@ -55,17 +55,11 @@ public class SceneTransitionUI : MonoBehaviour {
             currentActiveButton = button;
         } else
         {
-            if (GameObject.ReferenceEquals(currentActiveButton, button))
-            {
-                // do nothing
-            } else
-            {
-                foreach (GameObject b in availableButtons)
+           foreach (GameObject b in availableButtons)
                 {
                     b.GetComponent<SceneTransitionButton>().SetDefaultState();
                 }
                 currentActiveButton = button;
-            }
         }
         currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
         guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;

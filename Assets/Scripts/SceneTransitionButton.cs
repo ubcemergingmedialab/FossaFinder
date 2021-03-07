@@ -27,18 +27,28 @@ public class SceneTransitionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(mouseOver);
         if (mouseOver)
         {
-            Color hoverColor = GetComponent<MeshRenderer>().material.color;
-            hoverColor.a = 0.25f;
-            GetComponent<MeshRenderer>().material.color = hoverColor;
+            GetComponent<MeshRenderer>().material.color = Color.yellow;
         }
         else
         {
-            Color originalColor = GetComponent<MeshRenderer>().material.color;
-            originalColor.a = 0.5f;
-            GetComponent<MeshRenderer>().material.color = originalColor;
+            if (state == ButtonState.Active)
+            {
+                SetActiveState();
+            } else if (state == ButtonState.Default)
+            {
+                SetDefaultState();
+            } else
+            {
+                SetDisabledState();
+            }
+          
         }
+
+        Debug.Log(GetComponent<MeshRenderer>().material.color.a);
     }
 
     public void SetDefaultState()
@@ -70,7 +80,7 @@ public class SceneTransitionButton : MonoBehaviour
         manager.ButtonClicked(this.gameObject);
     }
 
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         mouseOver = true;
     }
