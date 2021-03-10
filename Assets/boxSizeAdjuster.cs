@@ -14,20 +14,19 @@ public class boxSizeAdjuster : MonoBehaviour {
 		tsa = textObj.GetComponent<textSizeAdjuster>();
 		prevScale = 1;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		scaleSize = tsa.verticalScaleSize;
-		if (prevScale != scaleSize)
+
+    public void ChangeText(float newSize)
+    {
+        if (prevScale != newSize)
         {
-			print("adjusting scale");
-			print(prevScale);
-			transform.localScale = new Vector3(
-				(float)transform.localScale.x * (float) scaleSize / (float) prevScale,
-				transform.localScale.y, transform.localScale.z);
-			prevScale = scaleSize;
-			print(prevScale);
-		}
-	}
+            print("adjusting scale");
+            print(prevScale);
+            transform.localScale = new Vector3(
+                (float)transform.localScale.x * (float)newSize / (float)prevScale,
+                transform.localScale.y, transform.localScale.z);
+            prevScale = newSize;
+            print(prevScale);
+        }
+    }
 
 }

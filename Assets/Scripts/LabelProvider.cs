@@ -19,6 +19,7 @@ public class LabelProvider : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("something was clicked");
-        LabelListener.Instance.GetComponent<TextMesh>().text = labelText;
+        LabelListener.Instance.ChangeText(labelText);
+
     }
 }

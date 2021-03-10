@@ -17,16 +17,21 @@ public class textSizeAdjuster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameobjName = gameObject.GetComponent<TextMesh>().text;
-		verticalScaleSize = (float) gameobjName.Length / (float) 11;
-
-		if (prevScale != verticalScaleSize)
-		{
-			transform.localScale = new Vector3(
-				transform.localScale.x / verticalScaleSize * prevScale,
-				transform.localScale.y,
-				transform.localScale.z);
-			prevScale = verticalScaleSize;
-		}
 	}
+
+    public float ChangeText(string newText)
+    {
+        verticalScaleSize = (float)newText.Length / (float)11;
+
+        if (prevScale != verticalScaleSize)
+        {
+            transform.localScale = new Vector3(
+                transform.localScale.x / verticalScaleSize * prevScale,
+                transform.localScale.y,
+                transform.localScale.z);
+            prevScale = verticalScaleSize;
+        }
+
+        return verticalScaleSize;
+    }
 }
