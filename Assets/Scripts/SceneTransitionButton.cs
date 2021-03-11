@@ -11,11 +11,13 @@ public class SceneTransitionButton : MonoBehaviour
         Active, Disabled, Default
     }
 
-    public Material defaultColor, activeColor, disabledColor;
+    public Material defaultColor, activeColor, disabledColor, hoverColor;
     public int targetScene;
     private SceneTransitionUI manager;
     private ButtonState state;
     private bool mouseOver;
+
+    private Material buttonMaterial;
 
     // Use this for initialization
     void Start()
@@ -27,45 +29,34 @@ public class SceneTransitionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(mouseOver);
         if (mouseOver)
         {
-            GetComponent<MeshRenderer>().material.color = Color.yellow;
+            if (state != ButtonState.Disabled)
+            {
+                GetComponent<MeshRenderer>().material = hoverColor;
+            }
         }
         else
         {
-            if (state == ButtonState.Active)
-            {
-                SetActiveState();
-            } else if (state == ButtonState.Default)
-            {
-                SetDefaultState();
-            } else
-            {
-                SetDisabledState();
-            }
-          
+            GetComponent<MeshRenderer>().material = buttonMaterial;
         }
-
-        Debug.Log(GetComponent<MeshRenderer>().material.color.a);
     }
 
     public void SetDefaultState()
     {
-        GetComponent<MeshRenderer>().material = defaultColor;
+        buttonMaterial = defaultColor;
         state = ButtonState.Default;
     }
 
     public void SetActiveState()
     {
-        GetComponent<MeshRenderer>().material = activeColor;
+        buttonMaterial = activeColor;
         state = ButtonState.Active;
     }
 
     public void SetDisabledState()
     {
-        GetComponent<MeshRenderer>().material = disabledColor;
+        //GetComponent<MeshRenderer>().material = disabledColor;
         state = ButtonState.Disabled;
     }
 

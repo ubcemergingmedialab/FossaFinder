@@ -230,7 +230,7 @@ Transform:
   - {fileID: 516356608}
   - {fileID: 905017813}
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &15164736
 GameObject:
@@ -1289,7 +1289,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &77329529
 MonoBehaviour:
@@ -2078,7 +2078,6 @@ GameObject:
   - component: {fileID: 105208307}
   - component: {fileID: 105208306}
   - component: {fileID: 105208304}
-  - component: {fileID: 105208305}
   m_Layer: 0
   m_Name: Phase2Button
   m_TagString: Untagged
@@ -2108,29 +2107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 105208302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
+  m_Script: {fileID: 11500000, guid: 6104d5eddbb1e5f4da4b573f5658f43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
-  activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
-  disabledColor: {fileID: 2100000, guid: ff13f282db37be141b3227a8841b401b, type: 2}
-  hoverColor: {fileID: 2100000, guid: ff0c3c224f2c2864fa157bc94f9dd284, type: 2}
-  targetScene: 12
---- !u!54 &105208305
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 105208302}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  availableButtons: []
 --- !u!65 &105208306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14088,12 +14068,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 562862994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: -0.369}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 731149080}
-  m_Father: {fileID: 1044684601}
-  m_RootOrder: 4
+  m_Father: {fileID: 1117840918}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &562862996
 Rigidbody:
@@ -14124,7 +14104,7 @@ MonoBehaviour:
   targetDelta: 7.97
   angleCount: 15
   torque: 10
-  headObject: {fileID: 1993101166}
+  headObject: {fileID: 1318038127}
 --- !u!1 &568866922
 GameObject:
   m_ObjectHideFlags: 0
@@ -18498,7 +18478,7 @@ Transform:
   - {fileID: 1686523929}
   - {fileID: 696050662}
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760649032
 GameObject:
@@ -18653,7 +18633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &771587042
 MonoBehaviour:
@@ -23870,7 +23850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1012826283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24147,9 +24127,8 @@ Transform:
   - {fileID: 1697893265}
   - {fileID: 1542743106}
   - {fileID: 463291334}
-  - {fileID: 562862995}
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045802995
 GameObject:
@@ -24299,12 +24278,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1062831990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6104d5eddbb1e5f4da4b573f5658f43c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableButtons:
-  - {fileID: 1384629834}
-  - {fileID: 105208302}
+  defaultColor: {fileID: 0}
+  activeColor: {fileID: 0}
+  disabledColor: {fileID: 0}
+  targetScene: 0
 --- !u!1 &1082919670
 GameObject:
   m_ObjectHideFlags: 0
@@ -25157,6 +25137,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 562862995}
   - {fileID: 771587041}
   - {fileID: 2039165620}
   - {fileID: 7363366}
@@ -31880,7 +31861,6 @@ GameObject:
   - component: {fileID: 1384629839}
   - component: {fileID: 1384629838}
   - component: {fileID: 1384629836}
-  - component: {fileID: 1384629837}
   m_Layer: 0
   m_Name: Phase1Button
   m_TagString: Untagged
@@ -31910,29 +31890,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1384629834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
+  m_Script: {fileID: 11500000, guid: 6104d5eddbb1e5f4da4b573f5658f43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
-  activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
-  disabledColor: {fileID: 2100000, guid: ff13f282db37be141b3227a8841b401b, type: 2}
-  hoverColor: {fileID: 2100000, guid: ff0c3c224f2c2864fa157bc94f9dd284, type: 2}
-  targetScene: 1
---- !u!54 &1384629837
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1384629834}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  availableButtons: []
 --- !u!65 &1384629838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33209,6 +33170,7 @@ GameObject:
   - component: {fileID: 1440951762}
   - component: {fileID: 1440951765}
   - component: {fileID: 1440951764}
+  - component: {fileID: 1440951763}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -33230,6 +33192,20 @@ Transform:
   m_Father: {fileID: 731149080}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!64 &1440951763
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440951761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1440951764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44910,13 +44886,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1993101166}
-  m_LocalRotation: {x: -0, y: -0.02095339, z: -0, w: -0.9997805}
-  m_LocalPosition: {x: -0.49, y: 1.51, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1044684601}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 362.401, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!124 &1993101168
 Behaviour:
   m_ObjectHideFlags: 0
@@ -45314,7 +45290,7 @@ Transform:
   - {fileID: 1179168778}
   - {fileID: 1239106801}
   m_Father: {fileID: 1117840918}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2039165621
 GameObject:
