@@ -35,6 +35,7 @@ public class SceneTransitionButton : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = hoverColor;
             }
+
         }
         else
         {
