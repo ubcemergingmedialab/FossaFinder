@@ -27,11 +27,13 @@ public class SceneTransitionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(mouseOver);
         if (mouseOver)
         {
-            GetComponent<MeshRenderer>().material.color = Color.yellow;
+            if (state != ButtonState.Disabled)
+            {
+                GetComponent<MeshRenderer>().material.color = Color.red;
+            }
+            
         }
         else
         {
@@ -47,8 +49,6 @@ public class SceneTransitionButton : MonoBehaviour
             }
           
         }
-
-        Debug.Log(GetComponent<MeshRenderer>().material.color.a);
     }
 
     public void SetDefaultState()
@@ -65,7 +65,7 @@ public class SceneTransitionButton : MonoBehaviour
 
     public void SetDisabledState()
     {
-        GetComponent<MeshRenderer>().material = disabledColor;
+        //GetComponent<MeshRenderer>().material = disabledColor;
         state = ButtonState.Disabled;
     }
 
