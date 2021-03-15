@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 
 public class SceneTransitionButton : MonoBehaviour
@@ -10,7 +11,7 @@ public class SceneTransitionButton : MonoBehaviour
     {
         Active, Disabled, Default
     }
-
+    public VRTK_InteractableObject linkedObject;
     public Material defaultColor, activeColor, disabledColor, hoverColor;
     public int targetScene;
     private SceneTransitionUI manager;
@@ -24,6 +25,16 @@ public class SceneTransitionButton : MonoBehaviour
     {
         manager = GetComponentInParent<SceneTransitionUI>();
         state = ButtonState.Default;
+        linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
+
+        if (linkedObject != null)
+        {
+            linkedObject.InteractableObjectUsed += InteractableObjectUsed;
+
+            linkedObject.InteractableObjectTouched += InteractableObjectTouched;
+
+            linkedObject.InteractableObjectUntouched += InteractableObjectUntouched;
+        }
     }
 
     // Update is called once per frame
@@ -35,7 +46,6 @@ public class SceneTransitionButton : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = hoverColor;
             }
-
         }
         else
         {
@@ -61,6 +71,15 @@ public class SceneTransitionButton : MonoBehaviour
         state = ButtonState.Disabled;
     }
 
+    protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
+    {
+        Debug.Log("used");
+        if (state == ButtonState.Disabled)
+        {
+            return;
+        }
+        manager.ButtonClicked(this.gameObject);
+    }
 
     void OnMouseDown()
     {
@@ -70,6 +89,16 @@ public class SceneTransitionButton : MonoBehaviour
             return;
         }
         manager.ButtonClicked(this.gameObject);
+    }
+
+    protected virtual void InteractableObjectTouched(object sender, InteractableObjectEventArgs e)
+    {
+        mouseOver = true;
+    }
+
+    protected virtual void InteractableObjectUntouched(object sender, InteractableObjectEventArgs e)
+    {
+        mouseOver = false;
     }
 
     void OnMouseEnter()

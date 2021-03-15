@@ -33,7 +33,10 @@ public class SceneTransitionUI : MonoBehaviour {
         {
             button.GetComponent<SceneTransitionButton>().SetDefaultState();
         }
-        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        if(currentActiveButton != null)
+        {
+            currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        }
     }
 
     void OnDuringTransition()
