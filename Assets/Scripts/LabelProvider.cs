@@ -21,11 +21,12 @@ public class LabelProvider : MonoBehaviour {
             linkedObject.InteractableObjectUsed += InteractableObjectUsed;
         }
         renderer = GetComponent<MeshRenderer>();
-        if(renderer == null)
+        if (renderer == null)
         {
             light = GetComponentInParent<Light>();
             color = light.color;
-        } else
+        }
+        else
         {
             color = renderer.material.color;
         }

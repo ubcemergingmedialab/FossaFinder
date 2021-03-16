@@ -16,6 +16,7 @@ public class LabelListener : MonoBehaviour {
     private TextMesh text;
 
     private MeshRenderer renderer;
+    private Color defaultColor;
 
     // Use this for initialization
     void Start () {
@@ -31,6 +32,7 @@ public class LabelListener : MonoBehaviour {
         {
             text = GetComponent<TextMesh>();
         }
+        // build reference to renderer, load default color
 	}
 	
 	// Update is called once per frame
