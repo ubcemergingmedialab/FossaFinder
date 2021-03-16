@@ -5,8 +5,6 @@ using UnityEngine;
 public class SceneTransitionUI : MonoBehaviour {
 
     GuidedTourManager guidedTourManager;
-    bool isAnimationPlaying;
-
     public GameObject[] availableButtons;
     private GameObject currentActiveButton;
 
@@ -15,7 +13,13 @@ public class SceneTransitionUI : MonoBehaviour {
         guidedTourManager = GameObject.Find("GuidedTourManager").GetComponent<GuidedTourManager>();
         GuidedTourManager.DefaultState += OnDefaultState;
         GuidedTourManager.DuringTransitionEvent += OnDuringTransition;
-	}
+
+        foreach (GameObject button in availableButtons)
+        {
+            button.GetComponent<SceneTransitionButton>().SetDefaultState();
+        }
+        currentActiveButton = null;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,19 +28,42 @@ public class SceneTransitionUI : MonoBehaviour {
 
     void OnDefaultState()
     {
-        // change active button to active
+        Debug.Log("Default State");
+        foreach (GameObject button in availableButtons)
+        {
+            button.GetComponent<SceneTransitionButton>().SetDefaultState();
+        }
+        if(currentActiveButton != null)
+        {
+            currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        }
     }
 
     void OnDuringTransition()
     {
-        // change all buttons to default state
-        // change active button to disabled
+        Debug.Log("Transition");
+        foreach (GameObject button in availableButtons)
+        {
+            button.GetComponent<SceneTransitionButton>().SetDisabledState();
+        }
     }
 
+    // Change the value in guided tour manager to button's target scene, call visit next scene, and set active button to button
     public void ButtonClicked(GameObject button)
     {
-        // change value in guided tour manager to button.GetComponent<SceneTransitionButton>().targetScene
-        // call guidedTourManager.VisitNextScene()
-        // set active button to button
+        if (currentActiveButton == null)
+        {
+            currentActiveButton = button;
+        } else
+        {
+           foreach (GameObject b in availableButtons)
+            {
+                b.GetComponent<SceneTransitionButton>().SetDefaultState();
+            }
+                currentActiveButton = button;
+        }
+        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
+        guidedTourManager.VisitNextScene();
     }
 }

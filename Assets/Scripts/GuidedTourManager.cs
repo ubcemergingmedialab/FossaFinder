@@ -289,7 +289,7 @@ public class GuidedTourManager : MonoBehaviour {
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
-            animator.Play(currentAnimationClipName);
+            animator.Play(currentAnimationClipName, 0, 0f);
             DuringTransitionEvent?.Invoke();   
         }
 

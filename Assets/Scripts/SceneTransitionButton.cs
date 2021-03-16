@@ -3,64 +3,111 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class SceneTransitionButton : MonoBehaviour {
 
-    public Material defaultColor, activeColor, disabledColor;
-    public int targetScene;
+public class SceneTransitionButton : MonoBehaviour
+{
+
+    public enum ButtonState
+    {
+        Active, Disabled, Default
+    }
     public VRTK_InteractableObject linkedObject;
+    public Material defaultColor, activeColor, disabledColor, hoverColor;
+    public int targetScene;
     private SceneTransitionUI manager;
+    private ButtonState state;
+    private bool mouseOver;
+
+    private Material buttonMaterial;
 
     // Use this for initialization
-    void Start () {
-        manager = GetComponentInParent<SceneTransitionUI>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    protected virtual void OnEnable()
+    void Start()
     {
+        manager = GetComponentInParent<SceneTransitionUI>();
+        state = ButtonState.Default;
         linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
 
         if (linkedObject != null)
         {
             linkedObject.InteractableObjectUsed += InteractableObjectUsed;
-            linkedObject.InteractableObjectUnused += InteractableObjectUnused;
+
+            linkedObject.InteractableObjectTouched += InteractableObjectTouched;
+
+            linkedObject.InteractableObjectUntouched += InteractableObjectUntouched;
         }
     }
 
-    public void SetDefaultColor()
+    // Update is called once per frame
+    void Update()
     {
-        GetComponent<MeshRenderer>().material = defaultColor;
+        if (mouseOver)
+        {
+            if (state != ButtonState.Disabled)
+            {
+                GetComponent<MeshRenderer>().material = hoverColor;
+            }
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material = buttonMaterial;
+        }
     }
 
-    public void SetActiveColor()
+    public void SetDefaultState()
     {
-        GetComponent<MeshRenderer>().material = activeColor;
+        buttonMaterial = defaultColor;
+        state = ButtonState.Default;
     }
 
-    public void SetDisabledColor()
+    public void SetActiveState()
     {
-        GetComponent<MeshRenderer>().material = disabledColor;
+        buttonMaterial = activeColor;
+        state = ButtonState.Active;
+    }
+
+    public void SetDisabledState()
+    {
+        //GetComponent<MeshRenderer>().material = disabledColor;
+        state = ButtonState.Disabled;
     }
 
     protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
     {
-        Debug.Log("Interactable Object Used");
+        Debug.Log("used");
+        if (state == ButtonState.Disabled)
+        {
+            return;
+        }
         manager.ButtonClicked(this.gameObject);
-    }
-
-    protected virtual void InteractableObjectUnused(object sender, InteractableObjectEventArgs e)
-    {
-        Debug.Log("Interacatable Object Unused");
     }
 
     void OnMouseDown()
     {
-        // set this button active color, change current scene
-        Debug.Log("button click");
+        // Don't allow user to click if button is diabled
+        if (state == ButtonState.Disabled)
+        {
+            return;
+        }
         manager.ButtonClicked(this.gameObject);
+    }
+
+    protected virtual void InteractableObjectTouched(object sender, InteractableObjectEventArgs e)
+    {
+        mouseOver = true;
+    }
+
+    protected virtual void InteractableObjectUntouched(object sender, InteractableObjectEventArgs e)
+    {
+        mouseOver = false;
+    }
+
+    void OnMouseEnter()
+    {
+        mouseOver = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseOver = false;
     }
 }
