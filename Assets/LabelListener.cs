@@ -15,6 +15,8 @@ public class LabelListener : MonoBehaviour {
     private textSizeAdjuster textSize;
     private TextMesh text;
 
+    private MeshRenderer renderer;
+
     // Use this for initialization
     void Start () {
 		if (boxSize == null)
@@ -52,5 +54,10 @@ public class LabelListener : MonoBehaviour {
         text.text = newText;
         float newSize = textSize.ChangeText(newText);
         boxSize.ChangeText(newSize);
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        renderer.material.color = newColor;
     }
 }
