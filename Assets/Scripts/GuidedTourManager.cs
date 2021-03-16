@@ -197,7 +197,7 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
-    public void VisitNextScene()
+    public float VisitNextScene()
     {
         Debug.Log("Before increment: " + currentSceneNumber);
         if (currentSceneNumber < sceneDataArray.Length)
@@ -239,13 +239,15 @@ public class GuidedTourManager : MonoBehaviour {
             //}
 
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
-
             PlayTransition();
             if (ar != null)
             {
                 ar.QueueMessage("VisitNextScene");
             }
+
+            return currentAnimationClipLength;
         }
+        return 0f;
     }
 
     public void ZoomInToCurrentScene()

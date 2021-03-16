@@ -7,6 +7,7 @@ public class SceneTransitionUI : MonoBehaviour {
     GuidedTourManager guidedTourManager;
     public GameObject[] availableButtons;
     private GameObject currentActiveButton;
+    public Animator fadeAnimator;
 
     // Use this for initialization
     void Start () {
@@ -62,8 +63,21 @@ public class SceneTransitionUI : MonoBehaviour {
             }
                 currentActiveButton = button;
         }
+        StartCoroutine(TriggerTransition());
+       // currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+       // guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
+       // guidedTourManager.VisitNextScene();
+    }
+
+    private IEnumerator TriggerTransition()
+    {
+        fadeAnimator.Play("FadeToBlack");
         currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        yield return new WaitForSeconds(0.667f);
         guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-        guidedTourManager.VisitNextScene();
+        float clipLength = guidedTourManager.VisitNextScene();
+        //skip transition to speed things up
+        yield return new WaitForSeconds(clipLength);
+        fadeAnimator.Play("FadeFromBlack");
     }
 }
