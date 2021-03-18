@@ -75,9 +75,9 @@ public class SceneTransitionUI : MonoBehaviour {
         currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
         yield return new WaitForSeconds(0.667f);
         guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-        float clipLength = guidedTourManager.VisitNextScene();
-        //skip transition to speed things up
-        yield return new WaitForSeconds(clipLength);
+        guidedTourManager.VisitNextScene();
+        guidedTourManager.SkipTransition();
+        yield return new WaitForSeconds(0.667f);
         fadeAnimator.Play("FadeFromBlack");
     }
 }
