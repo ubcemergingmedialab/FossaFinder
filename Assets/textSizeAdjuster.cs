@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class textSizeAdjuster : MonoBehaviour {
 
-	public float verticalScaleSize;
+	public float horizontalScaleSize;
 	public string gameobjName;
 	public float prevScale;
 
 	// Use this for initialization
 	void Start () {
-		verticalScaleSize = 1;
+		horizontalScaleSize = 1;
 		prevScale = 1;
 	}
 	
@@ -21,17 +21,17 @@ public class textSizeAdjuster : MonoBehaviour {
 
     public float ChangeText(string newText)
     {
-        verticalScaleSize = (float)newText.Length / (float)11;
+        horizontalScaleSize = (float)newText.Length / (float)11;
 
-        if (prevScale != verticalScaleSize)
+        if (prevScale != horizontalScaleSize)
         {
             transform.localScale = new Vector3(
-                transform.localScale.x / verticalScaleSize * prevScale,
+                transform.localScale.x / horizontalScaleSize * prevScale,
                 transform.localScale.y,
                 transform.localScale.z);
-            prevScale = verticalScaleSize;
+            prevScale = horizontalScaleSize;
         }
 
-        return verticalScaleSize;
+        return horizontalScaleSize;
     }
 }
