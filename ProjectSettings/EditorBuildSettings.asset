@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/centralLabel.unity
     guid: ae2aa619c32c0e24f90107dd399dfcd8
+  - enabled: 1
+    path: Assets/Scenes/OculusSetup.unity
+    guid: e13c3784f1de914479aaf2b2d98bd084
   m_configObjects: {}
