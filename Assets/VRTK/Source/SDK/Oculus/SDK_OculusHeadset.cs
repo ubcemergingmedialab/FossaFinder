@@ -75,11 +75,11 @@ namespace VRTK
             {
                 case OVRPlugin.SystemHeadset.Rift_CV1:
                     return CleanPropertyString("oculusrift");
-                case OVRPlugin.SystemHeadset.GearVR_R320:
-                case OVRPlugin.SystemHeadset.GearVR_R321:
-                case OVRPlugin.SystemHeadset.GearVR_R322:
-                case OVRPlugin.SystemHeadset.GearVR_R323:
-                    return CleanPropertyString("oculusgearvr");
+                //case OVRPlugin.SystemHeadset.GearVR_R320:
+                //case OVRPlugin.SystemHeadset.GearVR_R321:
+                //case OVRPlugin.SystemHeadset.GearVR_R322:
+                //case OVRPlugin.SystemHeadset.GearVR_R323:
+                //    return CleanPropertyString("oculusgearvr");
                 case OVRPlugin.SystemHeadset.Rift_DK1:
                     return CleanPropertyString("oculusriftdk1");
                 case OVRPlugin.SystemHeadset.Rift_DK2:
@@ -95,8 +95,7 @@ namespace VRTK
         public override Vector3 GetHeadsetVelocity()
         {
 #if VRTK_DEFINE_OCULUS_UTILITIES_1_11_0_OR_OLDER
-            return Vector3.zero;
-            //return OVRManager.isHmdPresent ? OVRPlugin.GetEyeVelocity(OVRPlugin.Eye.Left).ToOVRPose().position : Vector3.zero;
+            return OVRManager.isHmdPresent ? OVRPlugin.GetEyeVelocity(OVRPlugin.Eye.Left).ToOVRPose().position : Vector3.zero;
 #elif VRTK_DEFINE_OCULUS_UTILITIES_1_12_0_OR_NEWER
             return OVRManager.isHmdPresent ? OVRPlugin.GetNodeVelocity(OVRPlugin.Node.EyeCenter, OVRPlugin.Step.Render).FromFlippedZVector3f() : Vector3.zero;
 #else
