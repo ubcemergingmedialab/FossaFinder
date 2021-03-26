@@ -91,5 +91,5 @@ public class LabelListener : MonoBehaviour {
     {
         ChangeColor(defaultColor);
         ChangeText("");
-    }
+   }
 }
