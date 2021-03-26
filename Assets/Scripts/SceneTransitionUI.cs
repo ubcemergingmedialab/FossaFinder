@@ -24,12 +24,10 @@ public class SceneTransitionUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     void OnDefaultState()
     {
-        Debug.Log("Default State");
         foreach (GameObject button in availableButtons)
         {
             button.GetComponent<SceneTransitionButton>().SetDefaultState();
@@ -42,14 +40,13 @@ public class SceneTransitionUI : MonoBehaviour {
 
     void OnDuringTransition()
     {
-        Debug.Log("Transition");
         foreach (GameObject button in availableButtons)
         {
             button.GetComponent<SceneTransitionButton>().SetDisabledState();
         }
     }
 
-    // Change the value in guided tour manager to button's target scene, call visit next scene, and set active button to button
+
     public void ButtonClicked(GameObject button)
     {
         if (currentActiveButton == null)
@@ -57,6 +54,7 @@ public class SceneTransitionUI : MonoBehaviour {
             currentActiveButton = button;
         } else
         {
+            // If the button is not currently active or disabled, change the target scene to the current scene
             if (button.GetComponent<SceneTransitionButton>().GetButtonState() == SceneTransitionButton.ButtonState.Default)
             {
                 currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber - 1;

@@ -72,7 +72,6 @@ public class SceneTransitionButton : MonoBehaviour
 
     public void SetDisabledState()
     {
-        //GetComponent<MeshRenderer>().material = disabledColor;
         state = ButtonState.Disabled;
     }
 
@@ -88,7 +87,6 @@ public class SceneTransitionButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Don't allow user to click if button is diabled
         if (state == ButtonState.Disabled)
         {
             return;
