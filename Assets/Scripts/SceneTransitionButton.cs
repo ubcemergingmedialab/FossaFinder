@@ -53,6 +53,11 @@ public class SceneTransitionButton : MonoBehaviour
         }
     }
 
+    public ButtonState GetButtonState()
+    {
+        return state;
+    }
+
     public void SetDefaultState()
     {
         buttonMaterial = defaultColor;

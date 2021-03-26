@@ -57,17 +57,19 @@ public class SceneTransitionUI : MonoBehaviour {
             currentActiveButton = button;
         } else
         {
-           foreach (GameObject b in availableButtons)
+            if (button.GetComponent<SceneTransitionButton>().GetButtonState() == SceneTransitionButton.ButtonState.Default)
+            {
+                currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber - 1;
+            }
+            foreach (GameObject b in availableButtons)
             {
                 b.GetComponent<SceneTransitionButton>().SetDefaultState();
             }
                 currentActiveButton = button;
         }
         StartCoroutine(TriggerTransition());
-       // currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
-       // guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-       // guidedTourManager.VisitNextScene();
     }
+
 
     private IEnumerator TriggerTransition()
     {
