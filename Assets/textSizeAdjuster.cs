@@ -21,7 +21,13 @@ public class textSizeAdjuster : MonoBehaviour {
 
     public float ChangeText(string newText)
     {
-        horizontalScaleSize = (float)newText.Length / (float)11;
+        if (newText == "")
+        {
+            horizontalScaleSize = 1;
+        } else
+        {
+            horizontalScaleSize = (float)newText.Length / (float)11;
+        }
 
         if (prevScale != horizontalScaleSize)
         {

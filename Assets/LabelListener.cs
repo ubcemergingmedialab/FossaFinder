@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LabelListener : MonoBehaviour {
 
+    private GuidedTourManager gtm;
+
     private static LabelListener _instance;
     public static LabelListener Instance
     {
@@ -14,13 +16,17 @@ public class LabelListener : MonoBehaviour {
     private boxSizeAdjuster boxSize;
     private textSizeAdjuster textSize;
     private TextMesh text;
-
-    private MeshRenderer renderer;
     private Color defaultColor;
+    private MeshRenderer boxRenderer;
+
+    public GameObject textbox;
+
+    private bool changed;
 
     // Use this for initialization
     void Start () {
-		if (boxSize == null)
+
+        if (boxSize == null)
         {
             boxSize = GetComponentInParent<boxSizeAdjuster>();
         }
@@ -28,11 +34,18 @@ public class LabelListener : MonoBehaviour {
         {
             textSize = GetComponent<textSizeAdjuster>();
         }
-        if( text == null)
+        if(text == null)
         {
             text = GetComponent<TextMesh>();
         }
-        // build reference to renderer, load default color
+        boxRenderer = textbox.GetComponent<MeshRenderer>();
+
+        if (defaultColor == null)
+        {
+            defaultColor = boxRenderer.material.color;
+        }
+
+        changed = false;
 	}
 	
 	// Update is called once per frame
@@ -60,6 +73,23 @@ public class LabelListener : MonoBehaviour {
 
     public void ChangeColor(Color newColor)
     {
-        renderer.material.color = newColor;
+        if (changed == false)
+        {
+            defaultColor = boxRenderer.material.color;
+            newColor = defaultColor;
+            newColor.a = 0.25f;
+            changed = true;
+        }
+        else
+        {
+            newColor.a = 0.5f;
+        }
+        boxRenderer.material.color = newColor;
+    }
+
+    public void ToDefault()
+    {
+        ChangeColor(defaultColor);
+        ChangeText("");
     }
 }
