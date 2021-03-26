@@ -77,7 +77,6 @@ public class SceneTransitionButton : MonoBehaviour
 
     protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
     {
-        Debug.Log("used");
         if (state == ButtonState.Disabled)
         {
             return;

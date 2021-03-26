@@ -46,6 +46,30 @@ public class SceneTransitionUI : MonoBehaviour {
         }
     }
 
+    public void Refresh(GameObject button)
+    {
+        for (var i = 0; i < availableButtons.Length; i++)
+        {
+           availableButtons[i].GetComponent<SceneTransitionButton>().targetScene = button.GetComponent<RefreshButton>().originalSceneNumbers[i];
+        }
+        currentActiveButton = availableButtons[0];
+        StartCoroutine(TriggerRefresh());
+    }
+
+    private IEnumerator TriggerRefresh()
+    {
+        fadeAnimator.Play("FadeToBlack");
+        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
+        yield return new WaitForSeconds(0.667f);
+        guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
+        guidedTourManager.VisitNextScene();
+        guidedTourManager.SkipTransition();
+        guidedTourManager.VisitPreviousScene();
+        guidedTourManager.SkipTransition();
+        yield return new WaitForSeconds(0.667f*2f);
+        fadeAnimator.Play("FadeFromBlack");
+    }
+
 
     public void ButtonClicked(GameObject button)
     {
