@@ -12,7 +12,6 @@ public class RefreshButton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log("Initializing refresh button");
         sceneTransitionUI = GetComponentInParent<SceneTransitionUI>();
 
         for (var i = 0; i < phaseButtons.Length; i++)
@@ -36,23 +35,15 @@ public class RefreshButton : MonoBehaviour {
 
     protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
     {
-        Debug.Log("here");
         sceneTransitionUI.Refresh(this.gameObject);
-     //   if (state == ButtonState.Disabled)
-      //  {
-     //       return;
-     //   }
-     //   manager.ButtonClicked(this.gameObject);
     }
 
     protected virtual void InteractableObjectTouched(object sender, InteractableObjectEventArgs e)
     {
-        //mouseOver = true;
     }
 
     protected virtual void InteractableObjectUntouched(object sender, InteractableObjectEventArgs e)
     {
-      //  mouseOver = false;
     }
 
     // Update is called once per frame

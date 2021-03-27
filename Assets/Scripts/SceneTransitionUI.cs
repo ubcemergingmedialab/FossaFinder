@@ -81,7 +81,14 @@ public class SceneTransitionUI : MonoBehaviour {
             // If the button is not currently active or disabled, change the target scene to the current scene
             if (button.GetComponent<SceneTransitionButton>().GetButtonState() == SceneTransitionButton.ButtonState.Default)
             {
-                currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber - 1;
+                if (guidedTourManager.CurrentSceneNumber < 1)
+                {
+                    currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber;
+                } else
+                {
+                    currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber - 1;
+                }
+                
             }
             foreach (GameObject b in availableButtons)
             {
