@@ -8,6 +8,7 @@ public class SceneTransitionUI : MonoBehaviour {
     public GameObject[] availableButtons;
     private GameObject currentActiveButton;
     public Animator fadeAnimator;
+    public int[] originalSceneNumbers;
 
     // Use this for initialization
     void Start () {
@@ -15,16 +16,29 @@ public class SceneTransitionUI : MonoBehaviour {
         GuidedTourManager.DefaultState += OnDefaultState;
         GuidedTourManager.DuringTransitionEvent += OnDuringTransition;
 
-        foreach (GameObject button in availableButtons)
+        for (var i = 0; i < availableButtons.Length; i++)
         {
-            button.GetComponent<SceneTransitionButton>().SetDefaultState();
+            availableButtons[i].GetComponent<SceneTransitionButton>().SetDefaultState();
+            originalSceneNumbers[i] = availableButtons[i].GetComponent<SceneTransitionButton>().targetScene;
         }
         currentActiveButton = null;
     }
 	
 	// Update is called once per frame
 	void Update () {
-	}
+        for (var i = 0; i < availableButtons.Length; i++)
+        {
+            if (guidedTourManager.CurrentSceneNumber == originalSceneNumbers[i])
+            {
+                foreach (GameObject b in availableButtons)
+                {
+                    b.GetComponent<SceneTransitionButton>().SetDefaultState();
+                }
+                currentActiveButton = availableButtons[i];
+                return;
+            }
+        }
+    }
 
     void OnDefaultState()
     {
@@ -32,7 +46,7 @@ public class SceneTransitionUI : MonoBehaviour {
         {
             button.GetComponent<SceneTransitionButton>().SetDefaultState();
         }
-        if(currentActiveButton != null)
+        if (currentActiveButton != null)
         {
             currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
         }
@@ -50,10 +64,10 @@ public class SceneTransitionUI : MonoBehaviour {
     {
         for (var i = 0; i < availableButtons.Length; i++)
         {
-           availableButtons[i].GetComponent<SceneTransitionButton>().targetScene = button.GetComponent<RefreshButton>().originalSceneNumbers[i];
+           availableButtons[i].GetComponent<SceneTransitionButton>().targetScene = originalSceneNumbers[i];    
         }
         currentActiveButton = availableButtons[0];
-        StartCoroutine(TriggerRefresh());
+        StartCoroutine(TriggerTransition());
     }
 
     private IEnumerator TriggerRefresh()
