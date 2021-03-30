@@ -6,7 +6,6 @@ using VRTK;
 public class RefreshButton : MonoBehaviour {
 
     public GameObject[] phaseButtons;
-    public int[] originalSceneNumbers;
     public VRTK_InteractableObject linkedObject;
     private SceneTransitionUI sceneTransitionUI;
 
@@ -14,18 +13,18 @@ public class RefreshButton : MonoBehaviour {
     void Start () {
         sceneTransitionUI = GetComponentInParent<SceneTransitionUI>();
 
-        for (var i = 0; i < phaseButtons.Length; i++)
-        {
-            originalSceneNumbers[i] = phaseButtons[i].GetComponent<SceneTransitionButton>().targetScene;
-        }
         linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
-
+   
         if (linkedObject != null)
         {
             linkedObject.InteractableObjectUsed += InteractableObjectUsed;
             linkedObject.InteractableObjectTouched += InteractableObjectTouched;
             linkedObject.InteractableObjectUntouched += InteractableObjectUntouched;
         }
+    }
+
+    void Update()
+    {
     }
 
     void OnMouseDown()
@@ -45,8 +44,4 @@ public class RefreshButton : MonoBehaviour {
     protected virtual void InteractableObjectUntouched(object sender, InteractableObjectEventArgs e)
     {
     }
-
-    // Update is called once per frame
-    void Update () {
-	}
 }

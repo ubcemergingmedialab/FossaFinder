@@ -70,21 +70,6 @@ public class SceneTransitionUI : MonoBehaviour {
         StartCoroutine(TriggerTransition());
     }
 
-    private IEnumerator TriggerRefresh()
-    {
-        fadeAnimator.Play("FadeToBlack");
-        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
-        yield return new WaitForSeconds(0.667f);
-        guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-        guidedTourManager.VisitNextScene();
-        guidedTourManager.SkipTransition();
-        guidedTourManager.VisitPreviousScene();
-        guidedTourManager.SkipTransition();
-        yield return new WaitForSeconds(0.667f*2f);
-        fadeAnimator.Play("FadeFromBlack");
-    }
-
-
     public void ButtonClicked(GameObject button)
     {
         if (currentActiveButton == null)
@@ -95,7 +80,7 @@ public class SceneTransitionUI : MonoBehaviour {
             // If the button is not currently active or disabled, change the target scene to the current scene
             if (button.GetComponent<SceneTransitionButton>().GetButtonState() == SceneTransitionButton.ButtonState.Default)
             {
-                if (guidedTourManager.CurrentSceneNumber < 1)
+                if (guidedTourManager.CurrentSceneNumber < 2)
                 {
                     currentActiveButton.GetComponent<SceneTransitionButton>().targetScene = guidedTourManager.CurrentSceneNumber;
                 } else
@@ -116,6 +101,7 @@ public class SceneTransitionUI : MonoBehaviour {
 
     private IEnumerator TriggerTransition()
     {
+        Debug.Log("State before transition: " + guidedTourManager.CurrentSceneNumber);
         fadeAnimator.Play("FadeToBlack");
         currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
         yield return new WaitForSeconds(0.667f);
