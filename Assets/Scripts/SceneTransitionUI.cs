@@ -6,7 +6,8 @@ public class SceneTransitionUI : MonoBehaviour {
 
     GuidedTourManager guidedTourManager;
     public GameObject[] availableButtons;
-    private GameObject currentActiveButton;
+    public int currentPhase;
+    public GameObject currentActiveButton;
     public Animator fadeAnimator;
 
     // Use this for initialization
@@ -19,7 +20,6 @@ public class SceneTransitionUI : MonoBehaviour {
         {
             button.GetComponent<SceneTransitionButton>().SetDefaultState();
         }
-        currentActiveButton = null;
     }
 	
 	// Update is called once per frame
@@ -29,24 +29,30 @@ public class SceneTransitionUI : MonoBehaviour {
 
     void OnDefaultState()
     {
-        Debug.Log("Default State");
         foreach (GameObject button in availableButtons)
         {
             button.GetComponent<SceneTransitionButton>().SetDefaultState();
         }
-        if(currentActiveButton != null)
-        {
-            currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
-        }
+        Debug.Log(currentPhase);
+        currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
     }
 
     void OnDuringTransition()
     {
-        Debug.Log("Transition");
-        foreach (GameObject button in availableButtons)
+        for (int i = 0; i < availableButtons.Length; i++)
         {
-            button.GetComponent<SceneTransitionButton>().SetDisabledState();
+            availableButtons[i].GetComponent<SceneTransitionButton>().SetDisabledState();
+
+            if (currentPhase == i && guidedTourManager.CurrentSceneNumber >= availableButtons[i].GetComponent<SceneTransitionButton>().targetScene)
+            {
+                currentActiveButton = availableButtons[i];
+            } else if (currentPhase == i + 2 && guidedTourManager.CurrentSceneNumber < currentActiveButton.GetComponent<SceneTransitionButton>().targetScene)
+            {
+                Debug.Log("Phase 2 to 1");
+                currentActiveButton = availableButtons[i];
+            }
         }
+        currentPhase = currentActiveButton.GetComponent<SceneTransitionButton>().phaseNumber;
     }
 
     // Change the value in guided tour manager to button's target scene, call visit next scene, and set active button to button
@@ -63,10 +69,8 @@ public class SceneTransitionUI : MonoBehaviour {
             }
                 currentActiveButton = button;
         }
+        currentPhase = currentActiveButton.GetComponent<SceneTransitionButton>().phaseNumber;
         StartCoroutine(TriggerTransition());
-       // currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
-       // guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-       // guidedTourManager.VisitNextScene();
     }
 
     private IEnumerator TriggerTransition()

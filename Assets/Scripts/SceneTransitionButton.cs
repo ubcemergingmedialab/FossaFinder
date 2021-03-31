@@ -14,6 +14,7 @@ public class SceneTransitionButton : MonoBehaviour
     public VRTK_InteractableObject linkedObject;
     public Material defaultColor, activeColor, disabledColor, hoverColor;
     public int targetScene;
+    public int phaseNumber;
     private SceneTransitionUI manager;
     private ButtonState state;
     private bool mouseOver;
@@ -65,9 +66,7 @@ public class SceneTransitionButton : MonoBehaviour
         state = ButtonState.Active;
     }
 
-    public void SetDisabledState()
-    {
-        //GetComponent<MeshRenderer>().material = disabledColor;
+    public void SetDisabledState() { 
         state = ButtonState.Disabled;
     }
 
