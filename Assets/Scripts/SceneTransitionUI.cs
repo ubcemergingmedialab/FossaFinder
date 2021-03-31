@@ -26,18 +26,7 @@ public class SceneTransitionUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        for (var i = 0; i < availableButtons.Length; i++)
-        {
-            if (guidedTourManager.CurrentSceneNumber == originalSceneNumbers[i])
-            {
-                foreach (GameObject b in availableButtons)
-                {
-                    b.GetComponent<SceneTransitionButton>().SetDefaultState();
-                }
-                currentActiveButton = availableButtons[i];
-                return;
-            }
-        }
+       
     }
 
     void OnDefaultState()
@@ -57,6 +46,19 @@ public class SceneTransitionUI : MonoBehaviour {
         foreach (GameObject button in availableButtons)
         {
             button.GetComponent<SceneTransitionButton>().SetDisabledState();
+        }
+
+        for (var i = 0; i < availableButtons.Length; i++)
+        {
+            if (guidedTourManager.CurrentSceneNumber == originalSceneNumbers[i])
+            {
+                foreach (GameObject b in availableButtons)
+                {
+                    b.GetComponent<SceneTransitionButton>().SetDefaultState();
+                }
+                currentActiveButton = availableButtons[i];
+                return;
+            }
         }
     }
 

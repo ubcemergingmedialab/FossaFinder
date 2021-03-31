@@ -6576,7 +6576,6 @@ MonoBehaviour:
   phaseButtons:
   - {fileID: 1384629834}
   - {fileID: 105208302}
-  originalSceneNumbers: 0000000000000000
   linkedObject: {fileID: 0}
 --- !u!1 &206603152
 GameObject:
@@ -24741,6 +24740,7 @@ MonoBehaviour:
   - {fileID: 1384629834}
   - {fileID: 105208302}
   fadeAnimator: {fileID: 442406131}
+  originalSceneNumbers: 0000000000000000
 --- !u!1 &1082919670
 GameObject:
   m_ObjectHideFlags: 0
