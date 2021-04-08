@@ -60,6 +60,6 @@ public class LabelListener : MonoBehaviour {
 
     public void ChangeColor(Color newColor)
     {
-        renderer.material.color = newColor;
+        //renderer.material.color = newColor;
     }
 }

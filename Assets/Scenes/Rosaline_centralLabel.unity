@@ -16421,6 +16421,7 @@ MonoBehaviour:
   availableButtons:
   - {fileID: 723856423}
   - {fileID: 983260810}
+  fadeAnimator: {fileID: 0}
 --- !u!1 &670384628
 GameObject:
   m_ObjectHideFlags: 0
@@ -24587,8 +24588,8 @@ MonoBehaviour:
   autoManageVRSettings: 1
   autoLoadSetup: 1
   setups:
-  - {fileID: 1179168779}
   - {fileID: 1239106802}
+  - {fileID: 1179168779}
   excludeTargetGroups: 1b0000001a000000
   persistOnLoad: 0
 --- !u!1 &1017604397
