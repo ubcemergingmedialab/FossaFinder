@@ -8449,6 +8449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440099699}
   - component: {fileID: 440099698}
+  - component: {fileID: 440099700}
   m_Layer: 0
   m_Name: GuidedTourManager
   m_TagString: Untagged
@@ -8541,6 +8542,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &440099700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440099697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee5642e56237264a9aeaefc64cf278a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442143069
 GameObject:
   m_ObjectHideFlags: 0
@@ -12631,7 +12643,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0.94
@@ -16472,7 +16484,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -38665,6 +38677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fb68f1c91953643bbbf661ef35aa70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textbox: {fileID: 1440951761}
 --- !u!114 &1675781898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38676,7 +38689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ab5f700858d4edb90b05e2336fdcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalScaleSize: 0
+  horizontalScaleSize: 0
   gameobjName: 
   prevScale: 0
 --- !u!1 &1677463657
@@ -46836,6 +46849,7 @@ GameObject:
   - component: {fileID: 1993101169}
   - component: {fileID: 1993101168}
   - component: {fileID: 1993101173}
+  - component: {fileID: 1993101174}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -47037,7 +47051,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -47064,6 +47078,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36aa8319559359d44abba0df9806b93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1993101167}
+  mousesensitivity: 10
+  cameraon: 1
+--- !u!114 &1993101174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1993101166}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d272962517f2714f89e420c7d598a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1993101167}
@@ -47198,7 +47226,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0.84
