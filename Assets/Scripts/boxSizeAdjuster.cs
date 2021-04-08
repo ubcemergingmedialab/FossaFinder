@@ -6,7 +6,6 @@ public class boxSizeAdjuster : MonoBehaviour {
 
 	public GameObject textObj;
 	public textSizeAdjuster tsa;
-	float scaleSize;
 	float prevScale;
 
 	// Use this for initialization

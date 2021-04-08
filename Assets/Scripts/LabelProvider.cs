@@ -14,13 +14,16 @@ public class LabelProvider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        GuidedTourManager.DuringTransitionEvent += ToDefault;
         linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
 
         if (linkedObject != null)
         {
             linkedObject.InteractableObjectUsed += InteractableObjectUsed;
         }
+
         renderer = GetComponent<MeshRenderer>();
+
         if (renderer == null)
         {
             light = GetComponentInParent<Light>();
@@ -37,9 +40,13 @@ public class LabelProvider : MonoBehaviour {
 		
 	}
 
+    private void ToDefault()
+    {
+        LabelListener.Instance.ToDefault();
+    }
+
     private void OnMouseDown()
     {
-        Debug.Log("something was clicked");
         LabelListener.Instance.ChangeText(labelText);
         LabelListener.Instance.ChangeColor(color);
 
