@@ -48,13 +48,13 @@ public class LabelProvider : MonoBehaviour {
     private void OnMouseDown()
     {
         LabelListener.Instance.ChangeText(labelText);
-        LabelListener.Instance.ChangeColor(color);
+        LabelListener.Instance.ChangeColor(renderer.material.color);
 
     }
 
     protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
     {
         LabelListener.Instance.ChangeText(labelText);
-        LabelListener.Instance.ChangeColor(color);
+        LabelListener.Instance.ChangeColor(renderer.material.color);
     }
 }
