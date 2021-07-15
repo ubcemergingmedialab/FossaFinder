@@ -10,12 +10,12 @@ public class CustomMouseLook : MonoBehaviour
     private float x = 0;
     private float y = 0;
 
-    public bool cameraon = true;
+    public bool cameraon = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
