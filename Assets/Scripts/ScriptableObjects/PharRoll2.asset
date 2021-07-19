@@ -21,6 +21,8 @@ MonoBehaviour:
   ZoomInAnimationClipLength: 0
   highlights:
   - Palatovaginal_Canal
+  - Foramen_Rotundum
+  - Pterygoid_Canal
   boundaries: []
   lights: []
   nerves:

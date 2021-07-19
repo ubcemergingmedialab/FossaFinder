@@ -19,7 +19,9 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
-  highlights: []
+  highlights:
+  - Pterygoid_Canal
+  - Foramen_Rotundum
   boundaries: []
   lights:
   - Sphenopalatine_Foramen

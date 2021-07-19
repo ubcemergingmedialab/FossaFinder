@@ -98,6 +98,7 @@ public class GuidedTourManager : MonoBehaviour {
         oldAnimator = animator;
 
         InitializeEvent?.Invoke();
+        VisitNextEvent?.Invoke(sceneDataArray[0]);
 
         //StartCoroutine(AdjustCameraRigAndUserHeight());
     }
