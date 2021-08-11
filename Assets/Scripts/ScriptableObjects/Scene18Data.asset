@@ -35,6 +35,7 @@ MonoBehaviour:
   - Posterior_superior_alveolar
   - Middle_superior_alveolar
   - Pharyngeal
+  - Nasopalatine
   enabledNerves:
   - Nasal
   - Orbital
@@ -48,4 +49,5 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
+  - Nasopalatine
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}

@@ -29,6 +29,7 @@ MonoBehaviour:
   - Zygomatic
   - Orbital
   - Infraorbital
+  - Nasopalatine
   enabledNerves:
   - Nasal
   - Orbital
@@ -42,4 +43,5 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
+  - Nasopalatine
   animator: {fileID: 0}
