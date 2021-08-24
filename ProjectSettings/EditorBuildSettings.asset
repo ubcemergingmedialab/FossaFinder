@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/centralLabel.unity
-    guid: ae2aa619c32c0e24f90107dd399dfcd8
+    path: Assets/Scenes/devTransitionWithFade.unity
+    guid: bb0d4bfbec62dca478881c45f9388501
   m_configObjects: {}
