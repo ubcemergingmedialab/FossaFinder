@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class RadialMenuManager : MonoBehaviour {
     enum ButtonType
@@ -15,6 +16,7 @@ public class RadialMenuManager : MonoBehaviour {
     Coroutine upgradeButtonCoroutine;
     bool isUpgradeButtonCoroutineRunning;
     GuidedTourManager guidedTourManager;
+    public VRTK_ControllerEvents controllerEvents;
     // bool isThumbstickHeldAfterTransition;
 
 
@@ -44,7 +46,8 @@ public class RadialMenuManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         // Debug.Log(rightButton.GetComponent<RadialMenuButton>().CurrentState);
-        Vector2 thumbStickCoordinates = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        //Vector2 thumbStickCoordinates = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        Vector2 thumbStickCoordinates = controllerEvents.GetTouchpadAxis();
         if (Mathf.Abs(thumbStickCoordinates.x) >= thumbStickThreshold || Mathf.Abs(thumbStickCoordinates.y) >= thumbStickThreshold)
         {
             SelectButtonBasedOnThumbstickCoordinates(thumbStickCoordinates);
