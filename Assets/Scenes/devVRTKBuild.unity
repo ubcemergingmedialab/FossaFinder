@@ -2079,6 +2079,7 @@ GameObject:
   - component: {fileID: 105208306}
   - component: {fileID: 105208304}
   - component: {fileID: 105208305}
+  - component: {fileID: 105208309}
   m_Layer: 5
   m_Name: Phase2Button
   m_TagString: Untagged
@@ -2111,11 +2112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedObject: {fileID: 0}
+  linkedObject: {fileID: 105208309}
   defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
   activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
   disabledColor: {fileID: 2100000, guid: ff13f282db37be141b3227a8841b401b, type: 2}
-  hoverColor: {fileID: 0}
+  hoverColor: {fileID: 2100000, guid: e5c6865bb9456244da81c446f97fce81, type: 2}
   targetScene: 12
 --- !u!54 &105208305
 Rigidbody:
@@ -2186,6 +2187,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105208302}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &105208309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105208302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 0
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 0
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &105412831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,6 +3254,7 @@ GameObject:
   - component: {fileID: 140042468}
   - component: {fileID: 140042466}
   - component: {fileID: 140042467}
+  - component: {fileID: 140042461}
   m_Layer: 0
   m_Name: Middle_superior_alveolar
   m_TagString: Untagged
@@ -3260,6 +3294,7 @@ GameObject:
   - component: {fileID: 140042471}
   - component: {fileID: 140042469}
   - component: {fileID: 140042470}
+  - component: {fileID: 140042489}
   m_Layer: 0
   m_Name: Pharyngeal
   m_TagString: Untagged
@@ -3281,6 +3316,7 @@ GameObject:
   - component: {fileID: 140042474}
   - component: {fileID: 140042472}
   - component: {fileID: 140042473}
+  - component: {fileID: 140042462}
   m_Layer: 0
   m_Name: Posterior_superior_alveolar
   m_TagString: Untagged
@@ -3302,6 +3338,7 @@ GameObject:
   - component: {fileID: 140042477}
   - component: {fileID: 140042475}
   - component: {fileID: 140042476}
+  - component: {fileID: 140042490}
   m_Layer: 0
   m_Name: Maxillary
   m_TagString: Untagged
@@ -3323,6 +3360,7 @@ GameObject:
   - component: {fileID: 140042480}
   - component: {fileID: 140042478}
   - component: {fileID: 140042479}
+  - component: {fileID: 140042519}
   m_Layer: 0
   m_Name: Nerves_of_ptergoid_canal
   m_TagString: Untagged
@@ -3344,6 +3382,7 @@ GameObject:
   - component: {fileID: 140042483}
   - component: {fileID: 140042481}
   - component: {fileID: 140042482}
+  - component: {fileID: 140042491}
   m_Layer: 0
   m_Name: Infraorbital
   m_TagString: Untagged
@@ -3365,6 +3404,7 @@ GameObject:
   - component: {fileID: 140042486}
   - component: {fileID: 140042484}
   - component: {fileID: 140042485}
+  - component: {fileID: 140042492}
   m_Layer: 0
   m_Name: Zygomatic
   m_TagString: Untagged
@@ -3372,6 +3412,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &140042461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Middle Superior Alveolar nerve
+  linkedObject: {fileID: 140042467}
+--- !u!114 &140042462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Posterior Superior Alveolar Nerve
+  linkedObject: {fileID: 140042473}
 --- !u!1 &140042463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3452,7 @@ GameObject:
   - component: {fileID: 140042495}
   - component: {fileID: 140042493}
   - component: {fileID: 140042494}
+  - component: {fileID: 140042488}
   m_Layer: 0
   m_Name: Orbital
   m_TagString: Untagged
@@ -3439,7 +3506,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3498,7 +3565,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3559,7 +3626,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042456}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3651,7 +3718,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042457}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3680,7 +3747,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3773,7 +3840,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3835,7 +3902,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042460}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3868,15 +3935,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
---- !u!114 &140042493
+  labelText: Nasal nerve
+  linkedObject: {fileID: 140042496}
+--- !u!114 &140042488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042463}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Orbital Nerve
+  linkedObject: {fileID: 140042494}
+--- !u!114 &140042489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Pharyngeal Nerve
+  linkedObject: {fileID: 140042470}
+--- !u!114 &140042490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Maxillary nerve
+  linkedObject: {fileID: 140042475}
+--- !u!114 &140042491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Infraorbital nerve
+  linkedObject: {fileID: 140042481}
+--- !u!114 &140042492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Zygomatic Nerve
+  linkedObject: {fileID: 140042484}
+--- !u!114 &140042493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042463}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -3968,7 +4100,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -4388,6 +4520,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140042459}
   m_Mesh: {fileID: 4300018, guid: 32fade3bf5e4c6c4a99e35d74efba7b9, type: 3}
+--- !u!114 &140042519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140042458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Nerves of pterygoid canal
+  linkedObject: {fileID: 140042479}
 --- !u!4 &140042522
 Transform:
   m_ObjectHideFlags: 0
@@ -4871,7 +5016,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Zygomatic nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5627,8 +5772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Pterygomaxillary Fissure
+  linkedObject: {fileID: 169414851}
 --- !u!1 &177704073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5922,8 +6067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Foramen Rotundum
+  linkedObject: {fileID: 182474760}
 --- !u!1 &185216473
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,39 +8871,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!21 &328159260
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &334641481
 GameObject:
   m_ObjectHideFlags: 0
@@ -10263,7 +10375,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Greater and lesser palatine nerves
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10882,7 +10994,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Nasal nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13252,161 +13364,6 @@ MonoBehaviour:
   update: 1
   lookForMainCamera: 1
   cameraTransform: {fileID: 0}
---- !u!43 &519445869
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  serializedVersion: 9
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 24
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 8
-    localAABB:
-      m_Center: {x: 0, y: 0.01, z: 0}
-      m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
-  m_VertexData:
-    serializedVersion: 2
-    m_VertexCount: 8
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 288
-    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0.01, z: 0}
-    m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimized: 0
 --- !u!1 &523827516
 GameObject:
   m_ObjectHideFlags: 0
@@ -14235,13 +14192,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 562862994}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0, y: 2, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 731149080}
-  m_Father: {fileID: 1044684601}
-  m_RootOrder: 4
+  m_Father: {fileID: 1108160145}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &562862996
 Rigidbody:
@@ -14269,10 +14226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb6a820bff2b54f88671526f3fc95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDelta: 7.97
-  angleCount: 15
-  torque: 10
-  headObject: {fileID: 1993101166}
+  targetDelta: 15.16
+  angleCount: 12
+  torque: 22.06
+  headObject: {fileID: 1523432567}
 --- !u!1 &568866922
 GameObject:
   m_ObjectHideFlags: 0
@@ -14332,6 +14289,8 @@ GameObject:
   - component: {fileID: 571404068}
   - component: {fileID: 571404070}
   - component: {fileID: 571404071}
+  - component: {fileID: 571404073}
+  - component: {fileID: 571404072}
   m_Layer: 0
   m_Name: Lesser_palatine_nerves
   m_TagString: Untagged
@@ -14417,7 +14376,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 571404066}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -14426,6 +14385,51 @@ MonoBehaviour:
   labels:
   - {fileID: 880393128}
   - {fileID: 232297129}
+--- !u!114 &571404072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571404066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Lesser Palatine Nerve
+  linkedObject: {fileID: 571404073}
+--- !u!114 &571404073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571404066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 1
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &578007578
 GameObject:
   m_ObjectHideFlags: 0
@@ -14693,7 +14697,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Nerve of the pterygoid canal
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15223,8 +15227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Superior Orbital Fissure
+  linkedObject: {fileID: 600500389}
 --- !u!1 &602389430
 GameObject:
   m_ObjectHideFlags: 0
@@ -15683,7 +15687,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Orbital branches
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -18195,8 +18199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Inferior Orbital Fissure
+  linkedObject: {fileID: 727891121}
 --- !u!1 &728255083
 GameObject:
   m_ObjectHideFlags: 0
@@ -18258,7 +18262,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Infra-orbital nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -18462,7 +18466,7 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 731149079}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -18487,7 +18491,7 @@ Camera:
     m_Bits: 279
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -19058,7 +19062,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Pharyngeal nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -19945,6 +19949,7 @@ GameObject:
   - component: {fileID: 844091674}
   - component: {fileID: 844091675}
   - component: {fileID: 844091676}
+  - component: {fileID: 844091677}
   m_Layer: 0
   m_Name: Sphenopalatine_Foramen
   m_TagString: Untagged
@@ -19988,8 +19993,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Sphenopalatine Foramen
+  linkedObject: {fileID: 844091677}
+--- !u!114 &844091677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844091673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 0
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 0
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &844453198
 GameObject:
   m_ObjectHideFlags: 0
@@ -20380,8 +20417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Pterygoid Canal
+  linkedObject: {fileID: 878482839}
 --- !u!1 &880393128
 GameObject:
   m_ObjectHideFlags: 0
@@ -24462,7 +24499,6 @@ Transform:
   - {fileID: 1697893265}
   - {fileID: 1542743106}
   - {fileID: 463291334}
-  - {fileID: 562862995}
   m_Father: {fileID: 1117840918}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24584,7 +24620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062831991}
   - component: {fileID: 1062831992}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24965,7 +25001,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Posterior superior alveolar nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -25212,6 +25248,7 @@ Transform:
   - {fileID: 1726956137}
   - {fileID: 1585980130}
   - {fileID: 1523432568}
+  - {fileID: 562862995}
   m_Father: {fileID: 1179168778}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -25249,7 +25286,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1108160144}
-  m_Mesh: {fileID: 519445869}
+  m_Mesh: {fileID: 1462491418}
 --- !u!23 &1108160148
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25266,7 +25303,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 328159260}
+  - {fileID: 1514394834}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26366,7 +26403,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Posterior Wall
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -27373,31 +27410,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 0
-  actualBoundaries: {fileID: 776193198}
-  actualHeadset: {fileID: 1318038127}
-  actualLeftController: {fileID: 399253690}
-  actualRightController: {fileID: 646967982}
-  modelAliasLeftController: {fileID: 1430112855}
-  modelAliasRightController: {fileID: 988748697}
+  actualBoundaries: {fileID: 1108160144}
+  actualHeadset: {fileID: 900869779}
+  actualLeftController: {fileID: 1726956136}
+  actualRightController: {fileID: 1585980129}
+  modelAliasLeftController: {fileID: 2039165622}
+  modelAliasRightController: {fileID: 2039165621}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
-    typeName: VRTK.SDK_SimSystem
+    typeName: VRTK.SDK_SteamVRSystem
     descriptionIndex: 0
   cachedBoundariesSDKInfo:
     baseTypeName: VRTK.SDK_BaseBoundaries
     fallbackTypeName: VRTK.SDK_FallbackBoundaries
-    typeName: VRTK.SDK_SimBoundaries
+    typeName: VRTK.SDK_SteamVRBoundaries
     descriptionIndex: 0
   cachedHeadsetSDKInfo:
     baseTypeName: VRTK.SDK_BaseHeadset
     fallbackTypeName: VRTK.SDK_FallbackHeadset
-    typeName: VRTK.SDK_SimHeadset
+    typeName: VRTK.SDK_SteamVRHeadset
     descriptionIndex: 0
   cachedControllerSDKInfo:
     baseTypeName: VRTK.SDK_BaseController
     fallbackTypeName: VRTK.SDK_FallbackController
-    typeName: VRTK.SDK_SimController
+    typeName: VRTK.SDK_SteamVRController
     descriptionIndex: 0
 --- !u!1 &1179795263
 GameObject:
@@ -28291,7 +28328,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Middle superior alveolar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -30300,7 +30337,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Maxillary nerve
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -32197,8 +32234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Palatine Canal
+  linkedObject: {fileID: 1375880541}
 --- !u!1 &1384629834
 GameObject:
   m_ObjectHideFlags: 0
@@ -32212,6 +32249,7 @@ GameObject:
   - component: {fileID: 1384629838}
   - component: {fileID: 1384629836}
   - component: {fileID: 1384629837}
+  - component: {fileID: 1384629841}
   m_Layer: 5
   m_Name: Phase1Button
   m_TagString: Untagged
@@ -32244,12 +32282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedObject: {fileID: 0}
+  linkedObject: {fileID: 1384629841}
   defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
   activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
   disabledColor: {fileID: 2100000, guid: ff13f282db37be141b3227a8841b401b, type: 2}
-  hoverColor: {fileID: 0}
-  targetScene: 0
+  hoverColor: {fileID: 2100000, guid: e5c6865bb9456244da81c446f97fce81, type: 2}
+  targetScene: 1
 --- !u!54 &1384629837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32319,6 +32357,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1384629834}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1384629841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384629834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 0
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 0
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &1384907922
 GameObject:
   m_ObjectHideFlags: 0
@@ -33541,6 +33611,7 @@ GameObject:
   - component: {fileID: 1440951762}
   - component: {fileID: 1440951765}
   - component: {fileID: 1440951764}
+  - component: {fileID: 1440951763}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -33562,6 +33633,19 @@ Transform:
   m_Father: {fileID: 731149080}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1440951763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440951761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8add7a22c4766499a8ca0bb6898c2e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObj: {fileID: 1675781893}
+  tsa: {fileID: 1675781898}
 --- !u!23 &1440951764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33874,6 +33958,161 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!43 &1462491418
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  serializedVersion: 9
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 24
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 8
+    localAABB:
+      m_Center: {x: 0, y: 0.01, z: 0}
+      m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
+  m_VertexData:
+    serializedVersion: 2
+    m_VertexCount: 8
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 288
+    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0.01, z: 0}
+    m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimized: 0
 --- !u!1 &1474630650
 GameObject:
   m_ObjectHideFlags: 0
@@ -34273,6 +34512,39 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &1514394834
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1520050208
 GameObject:
   m_ObjectHideFlags: 0
@@ -37730,8 +38002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Sphenopalatine Foramen
+  linkedObject: {fileID: 1663193365}
 --- !u!1 &1668754030
 GameObject:
   m_ObjectHideFlags: 0
@@ -38120,6 +38392,7 @@ GameObject:
   - component: {fileID: 1675781896}
   - component: {fileID: 1675781895}
   - component: {fileID: 1675781897}
+  - component: {fileID: 1675781898}
   m_Layer: 5
   m_Name: HelmetUILabel
   m_TagString: Untagged
@@ -38207,6 +38480,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fb68f1c91953643bbbf661ef35aa70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1675781898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1675781893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ab5f700858d4edb90b05e2336fdcd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalScaleSize: 0
+  gameobjName: 
+  prevScale: 0
 --- !u!1 &1677271053
 GameObject:
   m_ObjectHideFlags: 0
@@ -39922,6 +40209,8 @@ GameObject:
   - component: {fileID: 1731042641}
   - component: {fileID: 1731042643}
   - component: {fileID: 1731042644}
+  - component: {fileID: 1731042646}
+  - component: {fileID: 1731042645}
   m_Layer: 0
   m_Name: Greater_palatine_nerves
   m_TagString: Untagged
@@ -40007,7 +40296,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1731042639}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19c7b68481c784b9763d195a2b12df, type: 3}
   m_Name: 
@@ -40016,6 +40305,51 @@ MonoBehaviour:
   labels:
   - {fileID: 880393128}
   - {fileID: 232297129}
+--- !u!114 &1731042645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1731042639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelText: Greater Palatine Nerve
+  linkedObject: {fileID: 1731042646}
+--- !u!114 &1731042646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1731042639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 0
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 0
+  useOnlyIfGrabbed: 0
+  pointerActivatesUseAction: 1
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  usingState: 0
 --- !u!1 &1733820099
 GameObject:
   m_ObjectHideFlags: 0
@@ -41814,7 +42148,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Greater and lesser palatine nerves
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -45523,12 +45857,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.05
   far clip plane: 1000
-  field of view: 60
+  field of view: 62
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0.84
+  m_Depth: 0.36
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 32
@@ -45735,7 +46069,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012826282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -45743,7 +46077,7 @@ Transform:
   - {fileID: 1239106801}
   m_Father: {fileID: 1117840918}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2039165621
 GameObject:
   m_ObjectHideFlags: 0
@@ -47036,8 +47370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Pterygomaxillary Fissure
+  linkedObject: {fileID: 2067950692}
 --- !u!1 &2068649004
 GameObject:
   m_ObjectHideFlags: 0
@@ -47569,7 +47903,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Palatine canal
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -48803,7 +49137,7 @@ MonoBehaviour:
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 0
-  holdButtonToGrab: 1
+  holdButtonToGrab: 0
   stayGrabbedOnTeleport: 1
   validDrop: 1
   grabOverrideButton: 0
@@ -48888,8 +49222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: 
-  linkedObject: {fileID: 0}
+  labelText: Palatovaginal Canal
+  linkedObject: {fileID: 2128768709}
 --- !u!1 &2129305256
 GameObject:
   m_ObjectHideFlags: 0

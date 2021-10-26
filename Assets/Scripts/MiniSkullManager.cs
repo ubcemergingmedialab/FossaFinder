@@ -15,7 +15,7 @@ public class MiniSkullManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.rotation = skull.transform.rotation;
-        recorder = GameObject.Find("ActivityRecording").GetComponent<ActivityRecorder>();
+        //recorder = GameObject.Find("ActivityRecording").GetComponent<ActivityRecorder>();
 	}
 
     public void ToggleMiniSkull()
