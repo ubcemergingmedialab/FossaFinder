@@ -24,6 +24,9 @@ public class GuidedTourManager : MonoBehaviour {
     public Animator cameraAnimator;
     public SceneData[] sceneDataArray;
 
+    // Testing 2022 07 21
+    public AudioSource narrationSource;
+
     /// APP STATE EVENTS
     public delegate void DefaultStateHandler();
     public static event DefaultStateHandler DefaultState;
@@ -295,6 +298,14 @@ public class GuidedTourManager : MonoBehaviour {
         }
 
         afterAnimationCoroutine = StartCoroutine(AfterAnimation());
+
+        //Testing 2022 07 21
+        if (sceneDataArray[currentSceneNumber].narration != null)
+        {
+            narrationSource.clip = sceneDataArray[currentSceneNumber].narration;
+            narrationSource.Play();
+            
+        }
     }
 
     void AdjustSkullPositionIfPastThreshold()
