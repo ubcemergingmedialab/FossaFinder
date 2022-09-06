@@ -23,6 +23,10 @@ public class GuidedTourManager : MonoBehaviour {
     public Animator animator;
     private Animator oldAnimator;
     public Animator cameraAnimator;
+    public AudioSource narrationSource;
+
+    public GameObject instructions; // Included for toggling instructions when past Scene 2
+
     public SceneData[] sceneDataArray;
 
     /// APP STATE EVENTS
@@ -188,12 +192,30 @@ public class GuidedTourManager : MonoBehaviour {
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
 
             PlayTransition();
+            Debug.Log(sceneDataArray[currentSceneNumber - 1].name);
 
-            if(ar != null)
+            if (ar != null)
             {
                 ar.QueueMessage("VisitPreviousScene");
             }
+
+            // Play Narration (if we want to play it while rewinding)
+            if (sceneDataArray[currentSceneNumber - 1].narration != null)
+            {
+//                narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
+//                narrationSource.Play();
+            }
+
+
+            // Kludge: Manually turn on instructions for now when entering scene 1, 2
+            if (currentSceneNumber < 3)
+            {
+                instructions.active = true;
+            }
+
         }
+
+
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
@@ -206,7 +228,6 @@ public class GuidedTourManager : MonoBehaviour {
             isDuringTransition = true;
             currentTransitionType = TransitionType.Forward;
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
-            Debug.Log(sceneDataArray[currentSceneNumber-1].name);
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
@@ -240,10 +261,25 @@ public class GuidedTourManager : MonoBehaviour {
 
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
             PlayTransition();
+            Debug.Log(sceneDataArray[currentSceneNumber - 1].name);
             if (ar != null)
             {
                 ar.QueueMessage("VisitNextScene");
             }
+
+            if (sceneDataArray[currentSceneNumber - 1].narration != null)
+            {
+                narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
+                narrationSource.Play();
+            }
+
+
+            // Kludge: Manually turn on instructions for now when entering scene 1
+            if (currentSceneNumber > 2)
+            {
+                instructions.active = false;
+            }
+
 
             return currentAnimationClipLength;
         }
@@ -287,6 +323,7 @@ public class GuidedTourManager : MonoBehaviour {
     // Checks whether the skull needs to be adjusted first. Then, plays the appropriate transition animation clip.
     void PlayTransition()
     {
+        Debug.Log("Playing Animation: " + CurrentAnimationClipName);
         //AdjustSkullPositionIfPastThreshold();
 
         if (!string.IsNullOrEmpty(currentAnimationClipName))

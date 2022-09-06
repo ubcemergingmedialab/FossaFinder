@@ -13,14 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: MaxRoll5ToRoll1
   forwardAnimationClipLength: 5.017
-  backwardAnimationClipName: 
-  backwardAnimationClipLength: 0
+  backwardAnimationClipName: Scene14ToScene13AnimationClip
+  backwardAnimationClipLength: 14
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
   highlights:
   - Foramen_Rotundum
+  - Pterygoid_Canal
   boundaries: []
   lights: []
   nerves:
@@ -41,4 +42,5 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
+  - Nasopalatine
   animator: {fileID: 0}

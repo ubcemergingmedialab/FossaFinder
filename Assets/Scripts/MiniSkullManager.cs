@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MiniSkullManager : MonoBehaviour {
     public GameObject skull;
+    public GameObject miniSkull;    // 2022 09 05: Adding miniSkill for activation via Spacebar (actual script seems to be missing)
 
     private ActivityRecorder recorder;
 
@@ -16,7 +17,13 @@ public class MiniSkullManager : MonoBehaviour {
 	void Update () {
         transform.rotation = skull.transform.rotation;
         recorder = GameObject.Find("ActivityRecording").GetComponent<ActivityRecorder>();
-	}
+
+        // 2022 09 05 Daniel Lindenberger: Adding Spacebar to activate MiniSkull here, as I believe that script is missing.
+        if (Input.GetKeyDown("space"))
+        {
+            miniSkull.SetActive(!miniSkull.active);
+        }
+    }
 
     public void ToggleMiniSkull()
     {

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: MaxRoll4ToRoll5
   forwardAnimationClipLength: 8
-  backwardAnimationClipName: MaxRoll1ToRoll5
-  backwardAnimationClipLength: 10
+  backwardAnimationClipName: 0
+  backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
