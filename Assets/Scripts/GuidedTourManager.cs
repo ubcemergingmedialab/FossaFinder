@@ -24,6 +24,7 @@ public class GuidedTourManager : MonoBehaviour {
     private Animator oldAnimator;
     public Animator cameraAnimator;
     public AudioSource narrationSource;
+    public GameObject miniSkull; // Included so it can be toggled via SceneData
 
     public GameObject instructions; // Included for toggling instructions when past Scene 2
 
@@ -206,6 +207,20 @@ public class GuidedTourManager : MonoBehaviour {
 //                narrationSource.Play();
             }
 
+            // If the SceneData specifies the MiniSkull being on or off, make that happen.
+            if (sceneDataArray[currentSceneNumber - 1].showMiniSkull != SceneData.enableMiniSkull.Ignore)
+            {
+                if (sceneDataArray[currentSceneNumber - 1].showMiniSkull == SceneData.enableMiniSkull.Disable)
+                {
+                    miniSkull.SetActive(false);
+                }
+
+                if (sceneDataArray[currentSceneNumber - 1].showMiniSkull == SceneData.enableMiniSkull.Enable)
+                {
+                    miniSkull.SetActive(true);
+                }
+
+            }
 
             // Kludge: Manually turn on instructions for now when entering scene 1, 2
             if (currentSceneNumber < 3)
@@ -265,6 +280,21 @@ public class GuidedTourManager : MonoBehaviour {
             if (ar != null)
             {
                 ar.QueueMessage("VisitNextScene");
+            }
+
+            // If the SceneData specifies the MiniSkull being on or off, make that happen.
+            if (sceneDataArray[currentSceneNumber - 1].showMiniSkull != SceneData.enableMiniSkull.Ignore)
+            {
+                if (sceneDataArray[currentSceneNumber - 1].showMiniSkull == SceneData.enableMiniSkull.Disable)
+                {
+                    miniSkull.SetActive(false);
+                }
+
+                if (sceneDataArray[currentSceneNumber - 1].showMiniSkull == SceneData.enableMiniSkull.Enable)
+                {
+                    miniSkull.SetActive(true);
+                }
+
             }
 
             if (sceneDataArray[currentSceneNumber - 1].narration != null)

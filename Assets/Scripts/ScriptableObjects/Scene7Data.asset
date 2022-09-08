@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -19,11 +20,12 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 12
   ZoomInAnimationClipName: ZoomInToScene7AnimationClip
   ZoomInAnimationClipLength: 12
+  showMiniSkull: 0
   highlights: []
   boundaries:
   - Medial_Wall
   lights: []
   nerves: []
   enabledNerves: []
-  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  narration: {fileID: 8300000, guid: e7a2dc1ce2e2af8429b9017561bbe2a7, type: 3}
+  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 3}
+  narration: {fileID: 8300000, guid: a61d697efc38e7b4ea78a1774d813907, type: 3}

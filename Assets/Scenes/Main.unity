@@ -9422,8 +9422,10 @@ MonoBehaviour:
   animator: {fileID: 511660711}
   cameraAnimator: {fileID: 610809541}
   narrationSource: {fileID: 1993101176}
+  miniSkull: {fileID: 15620519}
   instructions: {fileID: 1652503922}
   sceneDataArray:
+  - {fileID: 11400000, guid: 5b36ff05e4ab95b43a75b6fe37d8a761, type: 2}
   - {fileID: 11400000, guid: 01d67808770a8b04d87069308a7801ed, type: 2}
   - {fileID: 11400000, guid: 2b6c3b5776d97104c9d37023b8cae3ef, type: 2}
   - {fileID: 11400000, guid: 1fe482e166d03fb418a340d8abc25c5e, type: 2}
@@ -9432,8 +9434,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 223f2f1ec580d754a9840661a20f15ef, type: 2}
   - {fileID: 11400000, guid: 812697dbd27c1ff4c8ea2a4c17d38b5e, type: 2}
   - {fileID: 11400000, guid: e8f222d08b52d1d4aa9afe67b964bd54, type: 2}
-  - {fileID: 11400000, guid: fd2c62da478a38a43a684eca0cc2f3f5, type: 2}
-  - {fileID: 11400000, guid: 1e9baa366b7ba35468a8497d587bdfbf, type: 2}
+  - {fileID: 11400000, guid: f10ddd161f023b14994f5cd18b77888c, type: 2}
+  - {fileID: 11400000, guid: d2a96fdc54d76164d8a9941627d68a6d, type: 2}
+  - {fileID: 11400000, guid: c711f741930c959499a0c4737aab1071, type: 2}
+  - {fileID: 11400000, guid: e6cc2666e5dd57844af6404cfad8b503, type: 2}
+  - {fileID: 11400000, guid: 5e5951f788131ea4a9d3103e2e22792d, type: 2}
   - {fileID: 11400000, guid: 51259a63129febf418071257f01efcb6, type: 2}
   - {fileID: 11400000, guid: 6c3aa38feb9722446881d0ad6c49aec3, type: 2}
   - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}

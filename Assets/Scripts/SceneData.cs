@@ -10,6 +10,8 @@ public class SceneData : ScriptableObject {
     public float ZoomOutAnimationClipLength;
     public string ZoomInAnimationClipName;
     public float ZoomInAnimationClipLength;
+    public enum enableMiniSkull {Ignore, Disable, Enable };
+    public enableMiniSkull showMiniSkull;
     public string[] highlights;
     public string[] boundaries;
     public string[] lights;
