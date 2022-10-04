@@ -9507,7 +9507,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d2a96fdc54d76164d8a9941627d68a6d, type: 2}
   - {fileID: 11400000, guid: c711f741930c959499a0c4737aab1071, type: 2}
   - {fileID: 11400000, guid: e6cc2666e5dd57844af6404cfad8b503, type: 2}
+  - {fileID: 11400000, guid: f367a2180f678ff4381995a90d5245ee, type: 2}
   - {fileID: 11400000, guid: 5e5951f788131ea4a9d3103e2e22792d, type: 2}
+  - {fileID: 11400000, guid: 1e9baa366b7ba35468a8497d587bdfbf, type: 2}
   - {fileID: 11400000, guid: 51259a63129febf418071257f01efcb6, type: 2}
   - {fileID: 11400000, guid: 6c3aa38feb9722446881d0ad6c49aec3, type: 2}
   - {fileID: 11400000, guid: 99e08ba48bd1e2943aedda0d0f660081, type: 2}
@@ -29731,7 +29733,7 @@ MeshRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227809692}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

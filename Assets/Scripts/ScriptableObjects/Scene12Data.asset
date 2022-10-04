@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Ptergomaxillary_Fissure
   boundaries: []
@@ -38,3 +39,4 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+  narration: {fileID: 8300000, guid: 81be92669f104464db2a1a64291d0411, type: 3}

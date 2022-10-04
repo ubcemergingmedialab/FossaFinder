@@ -299,6 +299,7 @@ public class GuidedTourManager : MonoBehaviour {
 
             if (sceneDataArray[currentSceneNumber - 1].narration != null)
             {
+                Debug.Log("Playing Narration Clip: " + sceneDataArray[currentSceneNumber - 1].narration.name);
                 narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
                 narrationSource.Play();
             }

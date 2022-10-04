@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Foramen_Rotundum
   - Pterygoid_Canal
@@ -42,3 +43,4 @@ MonoBehaviour:
   - Middle_superior_alveolar
   - Nasopalatine
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
+  narration: {fileID: 8300000, guid: 1ba8650dde04de543a79498e0862d83b, type: 3}

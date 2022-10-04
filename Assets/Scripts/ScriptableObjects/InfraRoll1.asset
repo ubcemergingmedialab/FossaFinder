@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Inferior_Orbital_Fissure
   boundaries: []
@@ -43,3 +44,4 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 0}
+  narration: {fileID: 8300000, guid: bcb087dc11110d444926d2b98415576e, type: 3}
