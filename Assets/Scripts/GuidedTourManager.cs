@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.UI;
 
 public enum TransitionType
 {
@@ -12,14 +13,22 @@ public enum TransitionType
     Inward
 }
 
-public class GuidedTourManager : MonoBehaviour {
+public class GuidedTourManager : MonoBehaviour
+{
     private static GuidedTourManager _instance;
     public static GuidedTourManager Instance
     {
         get { return _instance; }
     }
 
-    public GameObject head, headContainer, cameraRig, mainCamera; 
+    [Header("Show Scene Data Info (boolean)")]
+    public bool displaySceneDataInfo = false;
+    public Text sceneNameTextAsset;
+    public Text animationNameTextAsset;
+    public Text narrationTextAsset;
+    public GameObject sceneDataCanvasGo;
+
+    public GameObject head, headContainer, cameraRig, mainCamera;
     public Animator animator;
     private Animator oldAnimator;
     public Animator cameraAnimator;
@@ -94,7 +103,8 @@ public class GuidedTourManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         currentSceneNumber = 1;
         isDuringTransition = false;
         currentTransitionType = TransitionType.None;
@@ -107,6 +117,12 @@ public class GuidedTourManager : MonoBehaviour {
         //StartCoroutine(AdjustCameraRigAndUserHeight());
     }
 
+    private void Update()
+    {
+        //can toggle the Scene Data Canvas on and off during run time using the editor
+        sceneDataCanvasGo.SetActive(displaySceneDataInfo);
+    }
+
     public void InjectRecorder(ActivityRecorder r)
     {
         ar = r;
@@ -116,11 +132,12 @@ public class GuidedTourManager : MonoBehaviour {
     IEnumerator AdjustCameraRigAndUserHeight()
     {
         yield return new WaitForSeconds(.5f);
-        if(mainCamera.GetComponent<SteamVR_Camera>())
+        if (mainCamera.GetComponent<SteamVR_Camera>())
         {
             cameraRig.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, .5f) - mainCamera.GetComponent<SteamVR_Camera>().head.position;
             headContainer.transform.position = new Vector3(0, mainCamera.GetComponent<SteamVR_Camera>().head.position.y, 0);
-        } else
+        }
+        else
         {
             cameraRig.transform.position = new Vector3(0, mainCamera.transform.position.y, .5f) - mainCamera.transform.position;
             headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
@@ -177,8 +194,9 @@ public class GuidedTourManager : MonoBehaviour {
                     ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
                     SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
                 }
-        
-            } else
+
+            }
+            else
             {
                 if (sceneDataArray[currentSceneNumber] is ExteriorSceneData)
                 {
@@ -188,9 +206,9 @@ public class GuidedTourManager : MonoBehaviour {
                 }
             }
 
-           
 
-            VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber -1]);
+
+            VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
             PlayTransition();
             Debug.Log(sceneDataArray[currentSceneNumber - 1].name);
@@ -200,11 +218,13 @@ public class GuidedTourManager : MonoBehaviour {
                 ar.QueueMessage("VisitPreviousScene");
             }
 
+            bool isNarrationPresent = sceneDataArray[currentSceneNumber - 1].narration != null;
+
             // Play Narration (if we want to play it while rewinding)
-            if (sceneDataArray[currentSceneNumber - 1].narration != null)
+            if (isNarrationPresent)
             {
-//                narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
-//                narrationSource.Play();
+                //                narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
+                //                narrationSource.Play();
             }
 
             // If the SceneData specifies the MiniSkull being on or off, make that happen.
@@ -228,9 +248,10 @@ public class GuidedTourManager : MonoBehaviour {
                 instructions.active = true;
             }
 
+            //Display SceneDataInfo
+            DisplaySceneDataInfo(sceneDataArray[currentSceneNumber - 1].name, sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName, isNarrationPresent ? sceneDataArray[currentSceneNumber - 1].narration.name : "");
+
         }
-
-
     }
 
     // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
@@ -252,8 +273,9 @@ public class GuidedTourManager : MonoBehaviour {
                     animator = cameraAnimator;
                     ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
                     SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
-                } 
-            } else
+                }
+            }
+            else
             {
                 if (sceneDataArray[currentSceneNumber - 2] is ExteriorSceneData)
                 {
@@ -297,7 +319,9 @@ public class GuidedTourManager : MonoBehaviour {
 
             }
 
-            if (sceneDataArray[currentSceneNumber - 1].narration != null)
+            bool isNarrationPresent = sceneDataArray[currentSceneNumber - 1].narration != null;
+
+            if (isNarrationPresent)
             {
                 Debug.Log("Playing Narration Clip: " + sceneDataArray[currentSceneNumber - 1].narration.name);
                 narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
@@ -311,10 +335,23 @@ public class GuidedTourManager : MonoBehaviour {
                 instructions.active = false;
             }
 
+            //Display SceneDataInfo
+            DisplaySceneDataInfo(sceneDataArray[currentSceneNumber - 1].name, sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName, isNarrationPresent ? sceneDataArray[currentSceneNumber - 1].narration.name : "");
 
             return currentAnimationClipLength;
         }
         return 0f;
+    }
+
+    public void DisplaySceneDataInfo(string sceneName, string animationName, string narrationName)
+    {
+        if (displaySceneDataInfo)
+        {
+            //show current scene + animation + narration name
+            sceneNameTextAsset.text = sceneName;
+            animationNameTextAsset.text = animationName;
+            narrationTextAsset.text = narrationName;
+        }
     }
 
     public void ZoomInToCurrentScene()
@@ -326,7 +363,7 @@ public class GuidedTourManager : MonoBehaviour {
 
 
         ZoomInEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
-        
+
         PlayTransition();
         if (ar != null)
         {
@@ -340,7 +377,7 @@ public class GuidedTourManager : MonoBehaviour {
         currentTransitionType = TransitionType.Outward;
         currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipName;
         currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].ZoomOutAnimationClipLength;
-        
+
 
         ZoomOutEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
@@ -360,7 +397,7 @@ public class GuidedTourManager : MonoBehaviour {
         if (!string.IsNullOrEmpty(currentAnimationClipName))
         {
             animator.Play(currentAnimationClipName, 0, 0f);
-            DuringTransitionEvent?.Invoke();   
+            DuringTransitionEvent?.Invoke();
         }
 
         afterAnimationCoroutine = StartCoroutine(AfterAnimation());
