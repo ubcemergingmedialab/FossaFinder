@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights: []
   boundaries: []
   lights: []
@@ -47,4 +48,5 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 0}
+  narration: {fileID: 8300000, guid: 353a2e310c4d4af4d99238abf1eefb9d, type: 3}
   renderTexture: PalRenderTexture

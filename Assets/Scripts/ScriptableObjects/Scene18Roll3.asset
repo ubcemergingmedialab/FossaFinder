@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Palatine_Canal
   boundaries: []
@@ -50,3 +51,4 @@ MonoBehaviour:
   - Middle_superior_alveolar
   - Nasopalatine
   animator: {fileID: 0}
+  narration: {fileID: 8300000, guid: 43bd7e59900de7b418510413558a213b, type: 3}

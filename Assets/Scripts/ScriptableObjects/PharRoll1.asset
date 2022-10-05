@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Palatovaginal_Canal
   boundaries: []
@@ -48,3 +49,4 @@ MonoBehaviour:
   - others
   - Middle_superior_alveolar
   animator: {fileID: 0}
+  narration: {fileID: 8300000, guid: 257e9d894ae0c5e4fbf6807554dc6733, type: 3}
