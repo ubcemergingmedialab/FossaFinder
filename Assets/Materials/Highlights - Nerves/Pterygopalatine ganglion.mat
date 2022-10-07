@@ -107,7 +107,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.8584906, g: 0.8584906, b: 0.17412782, a: 0.85882354}
+    - _Color: {r: 0.2559512, g: 0.85882354, b: 0.17254902, a: 0.85882354}
     - _EmissionColor: {r: 1, g: 1, b: 0, a: 1}
     - _HitColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitPosition: {r: 0, g: 0, b: 0, a: 0}

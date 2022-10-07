@@ -249,7 +249,7 @@ public class GuidedTourManager : MonoBehaviour
             }
 
             //Display SceneDataInfo
-            DisplaySceneDataInfo(sceneDataArray[currentSceneNumber - 1].name, sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName, isNarrationPresent ? sceneDataArray[currentSceneNumber - 1].narration.name : "");
+            DisplaySceneDataInfo(sceneDataArray[currentSceneNumber - 1].name, sceneDataArray[currentSceneNumber - 1].backwardAnimationClipName, isNarrationPresent ? sceneDataArray[currentSceneNumber - 1].narration.name : "");
 
         }
     }

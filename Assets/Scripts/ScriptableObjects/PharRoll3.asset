@@ -22,6 +22,7 @@ MonoBehaviour:
   showMiniSkull: 0
   highlights:
   - Palatovaginal_Canal
+  - Pterygoid_Canal
   boundaries: []
   lights: []
   nerves:
