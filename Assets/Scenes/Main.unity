@@ -9857,6 +9857,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b63795b804b5ea7488700ab1a4be69ce, type: 2}
   - {fileID: 11400000, guid: d0816cb2a3c96024399d52d50215d273, type: 2}
   - {fileID: 11400000, guid: 208f6d62a6c8bf74bb0ef663994ed6fb, type: 2}
+  - {fileID: 11400000, guid: f1405788477922644bb1654a56ef1583, type: 2}
   - {fileID: 11400000, guid: 79c2d7652e78d704db6a96b2a640e76d, type: 2}
   - {fileID: 11400000, guid: f1f03223fa28aa043bf4c45ed736b19f, type: 2}
   - {fileID: 11400000, guid: 0b983872cd3951b4781775fd45fd3a6f, type: 2}
@@ -43972,7 +43973,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 391f7a939c15b5a489a44a05ca95a449, type: 2}
+  - {fileID: 2100000, guid: edb00f38c11010845abfe256b51ab897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

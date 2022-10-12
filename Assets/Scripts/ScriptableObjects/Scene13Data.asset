@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: Scene12ToScene13AnimationClip
   forwardAnimationClipLength: 15
-  backwardAnimationClipName: MaxRoll2ToRoll1
+  backwardAnimationClipName: MaxRoll1ToScene13
   backwardAnimationClipLength: 14
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0

@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
   m_Name: MaxRoll1
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: MaxRoll1ToRoll2
+  forwardAnimationClipName: Scene13ToMaxRoll1
   forwardAnimationClipLength: 10
-  backwardAnimationClipName: MaxRoll3ToRol2
+  backwardAnimationClipName: MaxRoll3ToRoll2
   backwardAnimationClipLength: 3
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0

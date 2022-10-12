@@ -9,28 +9,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene16Data
+  m_Name: Scene14Roll5_BACKUP
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene15ToScene16AnimationClip
-  forwardAnimationClipLength: 8
-  backwardAnimationClipName: InfraRoll2ToRoll1
-  backwardAnimationClipLength: 2
+  forwardAnimationClipName: Scene14Roll5toRoll1
+  forwardAnimationClipLength: 6
+  backwardAnimationClipName: Scene15ToScene14AnimationClip
+  backwardAnimationClipLength: 15
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
   showMiniSkull: 0
-  highlights:
-  - Inferior_Orbital_Fissure
+  highlights: []
   boundaries: []
-  lights: []
+  lights:
+  - Sphenopalatine_Foramen
+  - Sphenopalatine_Foramen1
+  - Sphenopalatine_Foramen2
   nerves:
   - Maxillary
   - Nasal
-  - Zygomatic
-  - Orbital
-  - Infraorbital
-  - Middle_superior_alveolar
+  - Greater_palatine_nerves
+  - Lesser_palatine_nerves
   enabledNerves:
   - Nasal
   - Orbital
@@ -46,4 +46,4 @@ MonoBehaviour:
   - Middle_superior_alveolar
   - Nasopalatine
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  narration: {fileID: 8300000, guid: 35e192cf23d24ea4baacf2754545457a, type: 3}
+  narration: {fileID: 8300000, guid: c78c03d37574d7240b38efed019d59f7, type: 3}

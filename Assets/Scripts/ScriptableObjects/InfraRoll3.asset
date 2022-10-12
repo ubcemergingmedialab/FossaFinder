@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c80f355253b9634faf26075b9ae2c30, type: 3}
-  m_Name: Scene16Data
+  m_Name: InfraRoll3
   m_EditorClassIdentifier: 
-  forwardAnimationClipName: Scene15ToScene16AnimationClip
-  forwardAnimationClipLength: 8
-  backwardAnimationClipName: InfraRoll2ToRoll1
-  backwardAnimationClipLength: 2
+  forwardAnimationClipName: InfraRoll2ToRoll1
+  forwardAnimationClipLength: 2
+  backwardAnimationClipName: Scene17ToScene16AnimationClip
+  backwardAnimationClipLength: 15
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
@@ -30,7 +30,6 @@ MonoBehaviour:
   - Zygomatic
   - Orbital
   - Infraorbital
-  - Middle_superior_alveolar
   enabledNerves:
   - Nasal
   - Orbital
@@ -44,6 +43,5 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
-  - Nasopalatine
-  animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  narration: {fileID: 8300000, guid: 35e192cf23d24ea4baacf2754545457a, type: 3}
+  animator: {fileID: 0}
+  narration: {fileID: 0}
