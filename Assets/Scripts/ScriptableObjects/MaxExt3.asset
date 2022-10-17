@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: MaxExt3ToExt4
   forwardAnimationClipLength: 1
-  backwardAnimationClipName: MaxExt1ToExt4
-  backwardAnimationClipLength: 1
+  backwardAnimationClipName: 
+  backwardAnimationClipLength: 0
   ZoomOutAnimationClipName: 
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
@@ -40,6 +40,7 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
+  - Nasopalatine
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 05c0c19acbe83b746b203114fa8dbfdd, type: 3}
   renderTexture: MaxRenderTexture

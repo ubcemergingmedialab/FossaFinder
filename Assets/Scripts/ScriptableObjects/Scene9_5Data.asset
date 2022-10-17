@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardAnimationClipName: 
   forwardAnimationClipLength: 0
-  backwardAnimationClipName: 
-  backwardAnimationClipLength: 0
-  ZoomOutAnimationClipName: 
-  ZoomOutAnimationClipLength: 0
-  ZoomInAnimationClipName: 
-  ZoomInAnimationClipLength: 0
+  backwardAnimationClipName: Scene10ToScene9AnimationClip
+  backwardAnimationClipLength: 20
+  ZoomOutAnimationClipName: ZoomOutFromScene9AnimationClip
+  ZoomOutAnimationClipLength: 12
+  ZoomInAnimationClipName: ZoomInToScene9AnimationClip
+  ZoomInAnimationClipLength: 12
   showMiniSkull: 0
   highlights:
   - Foramen_Rotundum

@@ -40,6 +40,7 @@ MonoBehaviour:
   - Pharyngeal
   - others
   - Middle_superior_alveolar
+  - Nasopalatine
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 2c3592bc37a0d26469626f07166356a2, type: 3}
   renderTexture: MaxRenderTexture
