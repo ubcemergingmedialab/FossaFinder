@@ -23,9 +23,9 @@ MonoBehaviour:
   highlights: []
   boundaries: []
   lights:
-  - Sphenopalatine_Foramen
-  - Sphenopalatine_Foramen1
-  - Sphenopalatine_Foramen2
+  - Sphenopalatine_Foramen3
+  - Sphenopalatine_Foramen4
+  - Sphenopalatine_Foramen5
   nerves:
   - Maxillary
   - Nasal
