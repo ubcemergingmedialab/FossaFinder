@@ -46,4 +46,4 @@ MonoBehaviour:
   - Middle_superior_alveolar
   - Nasopalatine
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
-  narration: {fileID: 8300000, guid: 33c97e02db6ffcf4683b08fcf10a3639, type: 3}
+  narration: {fileID: 8300000, guid: 2bd479446c290e74cac2aa93b3ebb3de, type: 3}

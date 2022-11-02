@@ -23,6 +23,8 @@ public class GuidedTourManager : MonoBehaviour
 
     [Header("Show Scene Data Info (boolean)")]
     public bool displaySceneDataInfo = false;
+    [Header("Narration Text UI")]
+    public FadableUI currentlyNarratingUI;
     public Text sceneNameTextAsset;
     public Text animationNameTextAsset;
     public Text narrationTextAsset;
@@ -121,6 +123,19 @@ public class GuidedTourManager : MonoBehaviour
     {
         //can toggle the Scene Data Canvas on and off during run time using the editor
         sceneDataCanvasGo.SetActive(displaySceneDataInfo);
+
+        //Manage narration UI object
+        if (narrationSource != null)
+        {
+            if (narrationSource.isPlaying && narrationSource.clip != null)
+            {
+                currentlyNarratingUI.FadeIn();
+            }
+            else
+            {
+                currentlyNarratingUI.FadeOut(); ;
+            }
+        }
     }
 
     public void InjectRecorder(ActivityRecorder r)
@@ -143,6 +158,12 @@ public class GuidedTourManager : MonoBehaviour
             headContainer.transform.position = new Vector3(0, mainCamera.transform.position.y, 0);
         }
         adjustedCameraPosition = mainCamera.transform.position;
+    }
+
+    public bool showSceneDataInfo
+    {
+        get { return displaySceneDataInfo; }
+        set { displaySceneDataInfo = value; }
     }
 
     // Returns the current scene number
@@ -321,11 +342,13 @@ public class GuidedTourManager : MonoBehaviour
 
             bool isNarrationPresent = sceneDataArray[currentSceneNumber - 1].narration != null;
 
+            StopNarration();
+
             if (isNarrationPresent)
             {
                 Debug.Log("Playing Narration Clip: " + sceneDataArray[currentSceneNumber - 1].narration.name);
                 narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
-                narrationSource.Play();
+                narrationSource.PlayOneShot(narrationSource.clip);
             }
 
 
@@ -343,15 +366,21 @@ public class GuidedTourManager : MonoBehaviour
         return 0f;
     }
 
+    private void StopNarration()
+    {
+        //Stop Narration
+        if (narrationSource != null)
+        {
+            narrationSource.Stop();
+        }
+    }
+
     public void DisplaySceneDataInfo(string sceneName, string animationName, string narrationName)
     {
-        if (displaySceneDataInfo)
-        {
-            //show current scene + animation + narration name
-            sceneNameTextAsset.text = sceneName;
-            animationNameTextAsset.text = animationName;
-            narrationTextAsset.text = narrationName;
-        }
+        //show current scene + animation + narration name
+        sceneNameTextAsset.text = sceneName;
+        animationNameTextAsset.text = animationName;
+        narrationTextAsset.text = narrationName;
     }
 
     public void ZoomInToCurrentScene()
@@ -455,6 +484,8 @@ public class GuidedTourManager : MonoBehaviour
         currentAnimationClipName = "";
         currentAnimationClipLength = 0;
         DefaultState?.Invoke();
+
+        StopNarration();
 
         SkipEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
         if (ar != null)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LabelListener : MonoBehaviour {
 
+    public string defaultLabelValue;
     private GuidedTourManager gtm;
 
     private static LabelListener _instance;
@@ -90,6 +91,6 @@ public class LabelListener : MonoBehaviour {
     public void ToDefault()
     {
         ChangeColor(defaultColor);
-        ChangeText("");
+        ChangeText(defaultLabelValue);
    }
 }

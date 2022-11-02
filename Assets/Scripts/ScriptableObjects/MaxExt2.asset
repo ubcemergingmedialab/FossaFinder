@@ -42,5 +42,5 @@ MonoBehaviour:
   - Middle_superior_alveolar
   - Nasopalatine
   animator: {fileID: 0}
-  narration: {fileID: 8300000, guid: 2f568edce99282b408e54d43d372db4b, type: 3}
+  narration: {fileID: 0}
   renderTexture: MaxRenderTexture
