@@ -11,11 +11,11 @@ public class SceneTransitionButton : MonoBehaviour
     {
         Active, Disabled, Default
     }
+    public SceneTransitionUI manager;
     public VRTK_InteractableObject linkedObject;
     public Material defaultColor, activeColor, disabledColor, hoverColor;
     public int targetScene;
     public int phaseNumber;
-    private SceneTransitionUI manager;
     private ButtonState state;
     private bool mouseOver;
 
@@ -24,7 +24,6 @@ public class SceneTransitionButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        manager = GetComponentInParent<SceneTransitionUI>();
         state = ButtonState.Default;
         linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
 
