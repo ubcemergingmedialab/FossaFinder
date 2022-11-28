@@ -75,15 +75,14 @@ public class SceneTransitionUI : MonoBehaviour {
 
     private IEnumerator TriggerTransition()
     {
-        //fadeAnimator.Play("FadeToBlack");
         fadeAnimator.Play("ImageFadeToBlack");
         currentActiveButton.GetComponent<SceneTransitionButton>().SetActiveState();
         yield return new WaitForSeconds(0.667f);
+        int previousScene = guidedTourManager.CurrentSceneNumber;
         guidedTourManager.CurrentSceneNumber = currentActiveButton.GetComponent<SceneTransitionButton>().targetScene;
-        guidedTourManager.VisitNextScene();
+        guidedTourManager.VisitNextScene(previousScene);
         guidedTourManager.SkipTransition();
         yield return new WaitForSeconds(0.667f);
-        //fadeAnimator.Play("FadeFromBlack");
         fadeAnimator.Play("ImageFadeFromBlack");
     }
 }

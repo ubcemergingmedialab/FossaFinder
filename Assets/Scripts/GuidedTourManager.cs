@@ -227,8 +227,6 @@ public class GuidedTourManager : MonoBehaviour
                 }
             }
 
-
-
             VisitPreviousEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
 
             PlayTransition();
@@ -275,8 +273,12 @@ public class GuidedTourManager : MonoBehaviour
         }
     }
 
-    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
-    public float VisitNextScene()
+    /// <summary>
+    ///  Adjusts all necessary variables for transitioning into the previous scene (the scene with the smaller scene number). TransitionToAnotherScene() will handle the actual animation
+    /// previousScene: define the previous scene.  If it was not provided, we will assume it follows a liner track (ie: look at the last scenes from the current track)
+    /// if previousScene was provided, we need to explicity override the default value
+    /// </summary>
+    public float VisitNextScene(int inputPreviousScene)
     {
         Debug.Log("Before increment: " + currentSceneNumber);
         if (currentSceneNumber < sceneDataArray.Length)
@@ -287,9 +289,17 @@ public class GuidedTourManager : MonoBehaviour
             currentAnimationClipName = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipName;
             currentAnimationClipLength = sceneDataArray[currentSceneNumber - 1].forwardAnimationClipLength;
 
+            int previousScene = currentSceneNumber - 2;
+            if (inputPreviousScene != -1)
+            {
+                previousScene = inputPreviousScene - 1;
+            }
+
+            //if the 'next' scene is a exterior scene data
             if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
             {
-                if (sceneDataArray[currentSceneNumber - 2] is SceneData)
+                //...and the previous one is a normal scene data, then update the camera and render texture
+                if (sceneDataArray[previousScene] is SceneData)
                 {
                     animator = cameraAnimator;
                     ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
@@ -298,24 +308,13 @@ public class GuidedTourManager : MonoBehaviour
             }
             else
             {
-                if (sceneDataArray[currentSceneNumber - 2] is ExteriorSceneData)
+                //going from exterior scene to a normal scene
+                if (sceneDataArray[previousScene] is ExteriorSceneData && sceneDataArray[currentSceneNumber - 1] is SceneData)
                 {
                     animator = oldAnimator;
                     DisableRenderTexture?.Invoke();
                 }
             }
-
-
-            //if (sceneDataArray[currentSceneNumber - 1] is ExteriorSceneData)
-            //{
-            //    // sceneDataArray[currentSceneNumber - 1].AssignAnimatorAndRuntimeController(this);
-            //    animator = cameraAnimator;
-            //    ExteriorSceneData currentExteriorSceneData = (ExteriorSceneData)sceneDataArray[currentSceneNumber - 1];
-            //    SetRenderTexture?.Invoke(currentExteriorSceneData.renderTexture);
-            //} else
-            //{
-            //    animator = oldAnimator;
-            //}
 
             VisitNextEvent?.Invoke(sceneDataArray[currentSceneNumber - 1]);
             PlayTransition();
@@ -364,6 +363,12 @@ public class GuidedTourManager : MonoBehaviour
             return currentAnimationClipLength;
         }
         return 0f;
+    }
+
+    // Maintains all necessary variables for transitioning into the next scene (the scene with the greater scene number). PlayTransition() will handle the actual animation
+    public float VisitNextScene()
+    {
+        return VisitNextScene(-1);
     }
 
     private void StopNarration()

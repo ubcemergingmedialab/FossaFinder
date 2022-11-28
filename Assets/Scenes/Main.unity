@@ -2435,6 +2435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1768821487}
   linkedObject: {fileID: 0}
   defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
   activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
@@ -2442,7 +2443,6 @@ MonoBehaviour:
   hoverColor: {fileID: 2100000, guid: ff0c3c224f2c2864fa157bc94f9dd284, type: 2}
   targetScene: 17
   phaseNumber: 2
-  manager: {fileID: 1768821487}
 --- !u!54 &105208305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33395,6 +33395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ac2b0ebe4fb64ea8c1465a2f67465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1768821487}
   linkedObject: {fileID: 0}
   defaultColor: {fileID: 2100000, guid: eef2c3c2ac59ec144a90512e4f90f936, type: 2}
   activeColor: {fileID: 2100000, guid: 500830ece63cf1f4eb5be3111926ef00, type: 2}
@@ -33402,7 +33403,6 @@ MonoBehaviour:
   hoverColor: {fileID: 2100000, guid: ff0c3c224f2c2864fa157bc94f9dd284, type: 2}
   targetScene: 2
   phaseNumber: 1
-  manager: {fileID: 1768821487}
 --- !u!54 &1384629837
 Rigidbody:
   m_ObjectHideFlags: 0
