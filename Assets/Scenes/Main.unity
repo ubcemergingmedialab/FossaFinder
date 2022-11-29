@@ -16701,7 +16701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262af32e555e1f4fa6f345c81635e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelText: Trigeminal Ganglion
+  labelText: Trigeminal ganglion
   linkedObject: {fileID: 0}
 --- !u!64 &708531340
 MeshCollider:
