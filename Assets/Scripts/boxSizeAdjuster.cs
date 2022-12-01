@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("no longer adjusting the size of box, done with Content Size Fitter component  ", true)]
 public class boxSizeAdjuster : MonoBehaviour {
 
 	public GameObject textObj;
-	public textSizeAdjuster tsa;
+	//public textSizeAdjuster tsa;
 	float prevScale;
 
 	// Use this for initialization
 	void Start () {
-		tsa = textObj.GetComponent<textSizeAdjuster>();
+		//tsa = textObj.GetComponent<textSizeAdjuster>();
 		prevScale = 1;
 	}
 

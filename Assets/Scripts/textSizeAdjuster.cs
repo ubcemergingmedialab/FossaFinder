@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Obsolete("no longer adjusting the size of text, done with Content Size Fitter component  ",true)]
 public class textSizeAdjuster : MonoBehaviour {
 
 	public float horizontalScaleSize;

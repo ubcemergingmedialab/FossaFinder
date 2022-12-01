@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LabelListener : MonoBehaviour {
-
+public class LabelListener : MonoBehaviour
+{
     public string defaultLabelValue;
-    private GuidedTourManager gtm;
 
     private static LabelListener _instance;
     public static LabelListener Instance
@@ -14,45 +13,26 @@ public class LabelListener : MonoBehaviour {
         get { return _instance; }
     }
 
-    private boxSizeAdjuster boxSize;
-    private textSizeAdjuster textSize;
-    private TextMesh text;
+    public Text textBox;
     private Color defaultColor;
-    private MeshRenderer boxRenderer;
+    private Image bgImage;
 
     public GameObject textbox;
 
     private bool changed;
 
     // Use this for initialization
-    void Start () {
-
-        if (boxSize == null)
-        {
-            boxSize = GetComponentInParent<boxSizeAdjuster>();
-        }
-        if(textSize == null)
-        {
-            textSize = GetComponent<textSizeAdjuster>();
-        }
-        if(text == null)
-        {
-            text = GetComponent<TextMesh>();
-        }
-        boxRenderer = textbox.GetComponent<MeshRenderer>();
-
+    void Start()
+    {
+        //background panel image
+        bgImage = GetComponentInParent<Image>();
         if (defaultColor == null)
         {
-            defaultColor = boxRenderer.material.color;
+            defaultColor = bgImage.color;
         }
 
         changed = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
     void Awake()
     {
@@ -67,16 +47,14 @@ public class LabelListener : MonoBehaviour {
 
     public void ChangeText(string newText)
     {
-        text.text = newText;
-        float newSize = textSize.ChangeText(newText);
-        boxSize.ChangeText(newSize);
+        textBox.text = newText;
     }
 
     public void ChangeColor(Color newColor)
     {
         if (changed == false)
         {
-            defaultColor = boxRenderer.material.color;
+            defaultColor = bgImage.color;
             newColor = defaultColor;
             newColor.a = 0.25f;
             changed = true;
@@ -85,12 +63,13 @@ public class LabelListener : MonoBehaviour {
         {
             newColor.a = 0.5f;
         }
-        boxRenderer.material.color = newColor;
+
+        bgImage.color = newColor;
     }
 
     public void ToDefault()
     {
         ChangeColor(defaultColor);
         ChangeText(defaultLabelValue);
-   }
+    }
 }
