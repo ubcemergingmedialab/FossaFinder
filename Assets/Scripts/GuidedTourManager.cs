@@ -39,6 +39,9 @@ public class GuidedTourManager : MonoBehaviour
 
     public GameObject instructions; // Included for toggling instructions when past Scene 2
 
+    //the pulse script of the '[D] Next' button
+    public PulsingAlphaEffect nextButtonPulsingEffect;
+
     public SceneData[] sceneDataArray;
 
     /// APP STATE EVENTS
@@ -129,11 +132,17 @@ public class GuidedTourManager : MonoBehaviour
         {
             if (narrationSource.isPlaying && narrationSource.clip != null)
             {
+                //Should show the narration symbol
+                //Conversely... the next button should be normal color
                 currentlyNarratingUI.FadeIn();
+                nextButtonPulsingEffect.SetPulsingEffect(false);
             }
             else
             {
+                //do the opposite for both the narration symbol and next button
+                //next button will change color
                 currentlyNarratingUI.FadeOut(); ;
+                nextButtonPulsingEffect.SetPulsingEffect(true);
             }
         }
     }
@@ -497,5 +506,40 @@ public class GuidedTourManager : MonoBehaviour
         {
             ar.QueueMessage("SkipTransition");
         }
+    }
+
+    public void VisitOrSkipNextScene()
+    {
+        if (GetIsDuringTransition())
+        {
+            if (GetCurrentTransitionType() == TransitionType.Forward)
+            {
+                SkipTransition();
+            }
+        }
+        else
+        {
+            VisitNextScene();
+        }
+    }
+
+    public void VisitOrSkipPreviousScene()
+    {
+        if (GetIsDuringTransition())
+        {
+            if (GetCurrentTransitionType() == TransitionType.Backward)
+            {
+                SkipTransition();
+            }
+        }
+        else
+        {
+            VisitPreviousScene();
+        }
+    }
+
+    public void ToggleSceneDataInfo()
+    {
+        showSceneDataInfo = !showSceneDataInfo;
     }
 }

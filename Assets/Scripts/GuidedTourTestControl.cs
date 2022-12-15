@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GuidedTourTestControl : MonoBehaviour
 {
-
     public GuidedTourManager manager;
+
     // Use this for initialization
     void Start()
     {
@@ -17,36 +17,15 @@ public class GuidedTourTestControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (manager.GetIsDuringTransition())
-            {
-                if (manager.GetCurrentTransitionType() == TransitionType.Forward)
-                {
-                    manager.SkipTransition();
-                }
-            }
-            else
-            {
-                manager.VisitNextScene();
-            }
+            manager.VisitOrSkipNextScene();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (manager.GetIsDuringTransition())
-            {
-                if (manager.GetCurrentTransitionType() == TransitionType.Backward)
-                {
-                    manager.SkipTransition();
-                }
-            }
-            else
-            {
-                manager.VisitPreviousScene();
-            }
+            manager.VisitOrSkipPreviousScene();
         }
         if (Input.GetKeyDown("2"))
         {
-            manager.showSceneDataInfo = !manager.showSceneDataInfo;
+            manager.ToggleSceneDataInfo();
         }
-
     }
 }
