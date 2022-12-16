@@ -4529,6 +4529,11 @@ Prefab:
       propertyPath: phaseNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbce18981a6d49347a67f42b57ca19c2, type: 2}
   m_IsPrefabAsset: 0
@@ -7966,6 +7971,11 @@ Prefab:
         type: 2}
       propertyPath: phaseNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbce18981a6d49347a67f42b57ca19c2, type: 2}
@@ -28944,6 +28954,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2025032991}
     m_Modifications:
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224340916948448938, guid: dbce18981a6d49347a67f42b57ca19c2,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -29072,6 +29087,21 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114574265408886482, guid: dbce18981a6d49347a67f42b57ca19c2, type: 2}
@@ -33148,6 +33178,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2024834801}
     m_Modifications:
+    - target: {fileID: 114422773679576912, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224340916948448938, guid: dbce18981a6d49347a67f42b57ca19c2,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -33285,6 +33320,21 @@ Prefab:
     - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422773679576912, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422773679576912, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -37427,6 +37477,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: VisitOrSkipPreviousScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642634151336778, guid: dbce18981a6d49347a67f42b57ca19c2,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114574265408886482, guid: dbce18981a6d49347a67f42b57ca19c2, type: 2}
