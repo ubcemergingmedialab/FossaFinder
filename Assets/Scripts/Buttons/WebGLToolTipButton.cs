@@ -20,13 +20,8 @@ public class WebGLToolTipButton : MonoBehaviour
 
     }
 
-    public void ButtonHoverEnter()
+    public void ButtonClick()
     {
-        toolTipDisplayGo.SetActive(true);
-    }
-
-    public void ButtonHoverExit()
-    {
-        toolTipDisplayGo.SetActive(false);
+        toolTipDisplayGo.SetActive(!toolTipDisplayGo.activeSelf);
     }
 }
