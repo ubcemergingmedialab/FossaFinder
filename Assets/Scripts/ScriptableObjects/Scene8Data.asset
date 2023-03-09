@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 12
   ZoomInAnimationClipName: ZoomInToScene8AnimationClip
   ZoomInAnimationClipLength: 12
+  showMiniSkull: 0
   highlights:
   - Sphenopalatine_Foramen
   boundaries:
@@ -31,3 +32,5 @@ MonoBehaviour:
   enabledNerves: []
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
   narration: {fileID: 8300000, guid: 0a1fa7cbf3057d4448db71d9a7ac3869, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 7a058b2dcb16b714bb58d65d43c3d5c2, type: 2}

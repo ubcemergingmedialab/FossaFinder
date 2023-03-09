@@ -36,7 +36,7 @@ public class SceneTransitionUI : MonoBehaviour
         {
             button.GetComponent<WebGLSceneTransitionButton>().SetDefaultState();
         }
-        Debug.Log(currentPhase);
+        //Debug.Log(currentPhase);
         currentActiveButton.GetComponent<WebGLSceneTransitionButton>().SetActiveState();
     }
 

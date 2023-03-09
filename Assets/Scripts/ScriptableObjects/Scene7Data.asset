@@ -4,8 +4,7 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -29,3 +28,6 @@ MonoBehaviour:
   enabledNerves: []
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 3}
   narration: {fileID: 8300000, guid: a61d697efc38e7b4ea78a1774d813907, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 84d7b57bb84a8c048abf6622c28ec5aa, type: 2}
+  - {fileID: 11400000, guid: 22c2fd5a808009b47afb951a3b0dc8bd, type: 2}

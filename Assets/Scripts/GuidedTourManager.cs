@@ -72,6 +72,9 @@ public class GuidedTourManager : MonoBehaviour
     public delegate void Skip(SceneData sceneData);
     public static event Skip SkipEvent;
 
+    public delegate void NarrationEnd();
+    public static event NarrationEnd NarrationEndEvent;
+
     // VISUALS-SPECIFIC EVENTS (called in special cirumstances)
 
     public delegate void EnableBoundariesHandler(string[] names);
@@ -141,7 +144,8 @@ public class GuidedTourManager : MonoBehaviour
             {
                 //do the opposite for both the narration symbol and next button
                 //next button will change color
-                currentlyNarratingUI.FadeOut(); ;
+                currentlyNarratingUI.FadeOut();
+                NarrationEndEvent?.Invoke();
                 nextButtonPulsingEffect.SetPulsingEffect(true);
             }
         }
@@ -278,7 +282,6 @@ public class GuidedTourManager : MonoBehaviour
 
             //Display SceneDataInfo
             DisplaySceneDataInfo(sceneDataArray[currentSceneNumber - 1].name, sceneDataArray[currentSceneNumber - 1].backwardAnimationClipName, isNarrationPresent ? sceneDataArray[currentSceneNumber - 1].narration.name : "");
-
         }
     }
 
@@ -385,8 +388,9 @@ public class GuidedTourManager : MonoBehaviour
         //Stop Narration
         if (narrationSource != null)
         {
-            narrationSource.Stop();
+            narrationSource.Stop();  
         }
+        NarrationEndEvent?.Invoke();
     }
 
     public void DisplaySceneDataInfo(string sceneName, string animationName, string narrationName)

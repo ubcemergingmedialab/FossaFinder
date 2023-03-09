@@ -32,3 +32,6 @@ MonoBehaviour:
   enabledNerves: []
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 3}
   narration: {fileID: 8300000, guid: 35218be5c0dec0046bd010cbeb21a72c, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: ff06d4573e0434348a2082958a143a7b, type: 2}
+  - {fileID: 11400000, guid: e0d45db21e5026b49aa179fc725c698f, type: 2}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5293be237ff7fd4fa72bd819deaa053, type: 3}
+  m_Name: VO_FossaFinderMedia_002
+  m_EditorClassIdentifier: 
+  captionString: "It is clinically significant as it innervates the upper teeth, supplies
+    blood to the upper and lower teeth, and regulates the activity of the tear-producing
+    lacrimal glands.\_"
+  timing: 8.2

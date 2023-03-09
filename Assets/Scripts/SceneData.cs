@@ -19,6 +19,7 @@ public class SceneData : ScriptableObject {
     public string[] enabledNerves;
     public Animator animator;
     public AudioClip narration;
+    public NarrationCaptionData[] captionDataArray;
     // public RuntimeAnimatorController animatorController;
 
     public void AssignAnimatorAndRuntimeController(GuidedTourManager manager)

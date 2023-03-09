@@ -19,6 +19,7 @@ MonoBehaviour:
   ZoomOutAnimationClipLength: 0
   ZoomInAnimationClipName: 
   ZoomInAnimationClipLength: 0
+  showMiniSkull: 0
   highlights:
   - Ptergomaxillary_Fissure
   boundaries:
@@ -28,3 +29,5 @@ MonoBehaviour:
   enabledNerves: []
   animator: {fileID: 95665789042324302, guid: 014f6dcdb6d34764e9bba6cb7f49ae5f, type: 2}
   narration: {fileID: 8300000, guid: ac52496bea5a5dc428b112d303e7dfe5, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 8b720998d4d9de5449dae07ddcc4bd86, type: 2}
