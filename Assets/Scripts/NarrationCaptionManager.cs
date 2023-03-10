@@ -8,7 +8,8 @@ public class NarrationCaptionManager : MonoBehaviour
     //Engineering Notes for Captioning
     //Update SceneData scriptable object to take in an array of new scriptable objects called NarrationCaptionData
     //NarrationCaptionData will have two properties:
-    //1 float - Timestamp of when to show the caption
+    //1 float - Timestamp of when to show the caption.  # represents how long to delay before the caption is played.  If they are part of a group, it represents the time it has to wait after the last text is read.
+    //So for ex:  If the previous caption takes 6s to fully read out, then the timestamp for this caption will be 6s.
     //2 String - the caption 
 
     //In GuidedTourManager, when we 'play' the scene we will trigger an event (located here)
@@ -20,7 +21,9 @@ public class NarrationCaptionManager : MonoBehaviour
 
     public Text captionTextField;
     public Image backgroundImage;
+    public CanvasGroup captionCanvasGroup;
     private IEnumerator displayCaptionCoroutine;
+    private bool showCaptions = true;
 
     //Timers
     private float currentTime = 0;
@@ -100,5 +103,22 @@ public class NarrationCaptionManager : MonoBehaviour
     private void Pause()
     {
         //TODO
+    }
+
+    public void ToggleShowCaption()
+    {
+        if (null != captionCanvasGroup)
+        {
+            if (showCaptions)
+            {
+                captionCanvasGroup.alpha = 0;
+                showCaptions = false;
+            }
+            else
+            {
+                captionCanvasGroup.alpha = 1;
+                showCaptions = true;
+            }
+        }
     }
 }

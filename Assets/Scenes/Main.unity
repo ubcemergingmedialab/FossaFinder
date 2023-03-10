@@ -10571,6 +10571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   captionTextField: {fileID: 234446975}
   backgroundImage: {fileID: 930776526}
+  captionCanvasGroup: {fileID: 930776528}
 --- !u!1 &442143069
 GameObject:
   m_ObjectHideFlags: 0
@@ -23059,6 +23060,7 @@ GameObject:
   - component: {fileID: 930776526}
   - component: {fileID: 930776525}
   - component: {fileID: 930776524}
+  - component: {fileID: 930776528}
   m_Layer: 0
   m_Name: Caption Display
   m_TagString: Untagged
@@ -23154,6 +23156,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930776522}
   m_CullTransparentMesh: 0
+--- !u!225 &930776528
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930776522}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &932501827
 GameObject:
   m_ObjectHideFlags: 0
@@ -41975,6 +41988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 440099698}
+  ncm: {fileID: 440099700}
 --- !u!1 &1696566827
 GameObject:
   m_ObjectHideFlags: 0
@@ -45393,7 +45407,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 75}
-  m_SizeDelta: {x: 400, y: 325}
+  m_SizeDelta: {x: 400, y: 360}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1815678737
 MonoBehaviour:
@@ -48096,6 +48110,8 @@ MonoBehaviour:
     [A] - Previous Scene
 
     [D] - Next Scene
+
+    [C] - Toggle Captions
 
     Spacebar - Toggle minimap
 

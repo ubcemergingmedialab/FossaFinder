@@ -5,6 +5,7 @@ using UnityEngine;
 public class GuidedTourTestControl : MonoBehaviour
 {
     public GuidedTourManager manager;
+    public NarrationCaptionManager ncm;
 
     // Use this for initialization
     void Start()
@@ -26,6 +27,10 @@ public class GuidedTourTestControl : MonoBehaviour
         if (Input.GetKeyDown("2"))
         {
             manager.ToggleSceneDataInfo();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            ncm.ToggleShowCaption();
         }
     }
 }
