@@ -45,3 +45,10 @@ MonoBehaviour:
   - Middle_superior_alveolar
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: bcb087dc11110d444926d2b98415576e, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 98fdd0f67a5fdc34788af7954c7c2557, type: 2}
+  - {fileID: 11400000, guid: fe5d601d6d4b39c4abe7a843adf46175, type: 2}
+  - {fileID: 11400000, guid: 8b3d8ce001898074787d36d6681577f4, type: 2}
+  - {fileID: 11400000, guid: 5777d8fdcb0742f4fb9bdc0c2def99ac, type: 2}
+  - {fileID: 11400000, guid: 830c497f2c74f0b46acba3f8ae586614, type: 2}
+  - {fileID: 11400000, guid: af872e540bb272543a34fed2899ddbc2, type: 2}

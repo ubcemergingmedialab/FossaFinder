@@ -52,3 +52,14 @@ MonoBehaviour:
   - Nasopalatine
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 3abd0f367692cce45b4e4897b742ce36, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 22160cdf55dc551419f81b84ee63509f, type: 2}
+  - {fileID: 11400000, guid: e80230107af8e7d4f9409ea15ec0eca1, type: 2}
+  - {fileID: 11400000, guid: 4476ac3b41e7538428333f66bdac58d0, type: 2}
+  - {fileID: 11400000, guid: fea9dae275784cc40a4f5b3dac31bf7f, type: 2}
+  - {fileID: 11400000, guid: b384bde8691108743b37a74dfabda327, type: 2}
+  - {fileID: 11400000, guid: 73b13869e15453d47885efb3d9c5015e, type: 2}
+  - {fileID: 11400000, guid: a8ba496e387af4249a1237c6f90b680a, type: 2}
+  - {fileID: 11400000, guid: 581ddbc02ef685e47b3e234e7431f5c5, type: 2}
+  - {fileID: 11400000, guid: dd609726e59f1104b88f84cd884aa2f8, type: 2}
+  - {fileID: 11400000, guid: e99d523776209244fb99cdc0de03d1fd, type: 2}

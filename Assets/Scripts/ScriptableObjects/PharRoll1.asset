@@ -50,3 +50,5 @@ MonoBehaviour:
   - Middle_superior_alveolar
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 8a802fa2c0e9059488634b8f23a7b042, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 06591b617fc805b44845b333fd9a4d3f, type: 2}

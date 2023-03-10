@@ -43,4 +43,7 @@ MonoBehaviour:
   - Nasopalatine
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 2c3592bc37a0d26469626f07166356a2, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 6ea0bc89776ae47418e3e1bb7dc8e742, type: 2}
+  - {fileID: 11400000, guid: 3f45b93d6bdded14fb6e60a4b83b9f1d, type: 2}
   renderTexture: MaxRenderTexture

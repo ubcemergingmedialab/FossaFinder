@@ -44,4 +44,7 @@ MonoBehaviour:
   - Middle_superior_alveolar
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: 6545cd29d9221ed48a62e71081cc54b3, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: ecc9c84b4be0daf42917ac5ce75e2986, type: 2}
+  - {fileID: 11400000, guid: 1c6e98c4780be164ebed9c90d53ded0d, type: 2}
   renderTexture: InfraRenderTexture
