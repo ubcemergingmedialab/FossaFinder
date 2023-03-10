@@ -45,3 +45,7 @@ MonoBehaviour:
   - Nasopalatine
   animator: {fileID: 0}
   narration: {fileID: 8300000, guid: bae0d75f6b408c64899e85de6a8b1f13, type: 3}
+  captionDataArray:
+  - {fileID: 11400000, guid: 3ada622c958eff045bd2ce7b62e64a43, type: 2}
+  - {fileID: 11400000, guid: b248bc1deece9c64b814404be994f5e6, type: 2}
+  - {fileID: 11400000, guid: 1831c923eda67ff4b923bc72fba9b21b, type: 2}
