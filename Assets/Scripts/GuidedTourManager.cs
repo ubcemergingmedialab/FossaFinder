@@ -252,12 +252,8 @@ public class GuidedTourManager : MonoBehaviour
 
             bool isNarrationPresent = sceneDataArray[currentSceneNumber - 1].narration != null;
 
-            // Play Narration (if we want to play it while rewinding)
-            if (isNarrationPresent)
-            {
-                //                narrationSource.clip = sceneDataArray[currentSceneNumber - 1].narration;
-                //                narrationSource.Play();
-            }
+            // Stop current narration
+            StopNarration();
 
             // If the SceneData specifies the MiniSkull being on or off, make that happen.
             if (sceneDataArray[currentSceneNumber - 1].showMiniSkull != SceneData.enableMiniSkull.Ignore)
@@ -388,7 +384,7 @@ public class GuidedTourManager : MonoBehaviour
         //Stop Narration
         if (narrationSource != null)
         {
-            narrationSource.Stop();  
+            narrationSource.Stop();
         }
         NarrationEndEvent?.Invoke();
     }
