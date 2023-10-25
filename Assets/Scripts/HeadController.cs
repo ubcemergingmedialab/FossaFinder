@@ -38,7 +38,7 @@ public class HeadController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        OVRInput.Update();
+//        OVRInput.Update();
 
 		if (transform.parent == null)
         {
@@ -49,7 +49,7 @@ public class HeadController : MonoBehaviour {
             // rigidbody.WakeUp();
             rigidbody.constraints = RigidbodyConstraints.None;
         }
-
+/*
         if (transform.parent != null && OVRInput.Get(OVRInput.Button.PrimaryThumbstick))
         {
             // Debug.Log("Are we here yet?");
@@ -76,6 +76,7 @@ public class HeadController : MonoBehaviour {
                 journeyIsSet = false;
             }
         }
+*/
 	}
 
     public void setDefaultTransform()
